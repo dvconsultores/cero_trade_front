@@ -435,6 +435,9 @@ export default {
         legend: {
           show: false,
         },
+        dataLabels: {
+          enabled: false
+        },
         fill: {
           opacity: 1
         }

@@ -97,6 +97,18 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/my-portfolio',
+    component: () => import('@/layouts/default-layout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'My portfolio',
+        component: () => import('@/pages/my-portfolio.vue'),
+        meta: { head: `My portfolio - ${DEFAULT_TITLE}` }
+      },
+    ],
+  },
 ]
 
 const router = createRouter({

@@ -41,7 +41,7 @@ export default {
     return{
       dataNavbar:[
         {img: 'home', name: 'Home', link:'/dashboard'},
-        {img: 'wallet', name: 'My portfolio', link: '/' },
+        {img: 'wallet', name: 'My portfolio', link: '/my-portfolio' },
         {img: 'marketplace', name: 'Marketplace', link:'marketplace'},
         {img: 'market_trends', name:'Market trends', link: '/'},
         {img: 'config', name:'Settings', link: '/settings'}

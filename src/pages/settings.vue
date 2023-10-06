@@ -120,7 +120,7 @@
         <h5>Notification</h5>
         <span class="tertiary">Lorem ipsum dolor sit amet consectetur, adipisicing elit</span>
 
-        <v-tabs
+        <!-- <v-tabs
           v-model="tabsWindow"
           bg-color="transparent"
           color="basil"
@@ -137,11 +137,15 @@
           </v-tab>
         </v-tabs>
 
-        <v-window v-model="windowStep">
+        <v-window v-model="tabsWindow">
           <v-window-item :value="1">
-            
+            <div class="divcol" style="gap: 20px;">
+              <div class="divrow center">
+                v-switch
+              </div>
+            </div>
           </v-window-item>
-        </v-window>
+        </v-window> -->
 
         <div class="divrow mt-6" style="gap: 10px;">
           <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogNotification = false">Cancel <v-icon>mdi-close</v-icon></v-btn>
