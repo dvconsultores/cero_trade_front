@@ -1,0 +1,95 @@
+@use "@/assets/styles/main.scss" as *;
+//---------------------------------------------------------------------------------------------//
+//========================================= home ==============================================//
+//---------------------------------------------------------------------------------------------//
+
+#home {
+  @extend .parent;
+  @extend .margin-global;
+  gap: 64px;
+
+  .container-windows-step{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    padding-block: 30px;
+
+    .card-register{
+      box-shadow: 0px!important;
+      width: 550px!important;
+      display: flex;
+      flex-direction: column;
+
+      .input{
+        max-height: 45px!important;
+        height: 45px;
+
+        i{
+          font-size: 20px;
+        }
+
+        .v-field{
+					height: 40px!important;
+					max-height: 40px!important;
+					min-height: 1px!important;
+          border-radius: 10px!important;
+				}
+	
+				input{
+					color: #000!important;
+					font-size: 13px;
+					height: 40px!important;
+					max-height: 40px!important;
+					min-height: 1px!important;
+					margin-top: -5px;
+				}
+	
+				.v-field__input{
+					padding-left: 15px;
+					padding-block: 5px;
+					height: 40px!important;
+					max-height: 40px!important;
+					min-height: 1px!important;
+				}
+      }
+
+      .img-logo{
+        width: 45px;
+        height: 45px;
+        padding: 5px;
+      }
+
+      .font300{
+        font-weight: 300!important;
+      }
+
+      .color-grey{
+        color: #475467!important;
+      }
+
+      label{
+        color: #475467;
+        font-weight: 300;
+      }
+
+      .v-btn{
+        border-radius: 10px!important;
+      }
+    }
+  }
+
+  .side-banner{
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 90vh;
+    width: 40vw;
+
+    @include media(max, 1264px){
+      display: none;
+    }
+  }
+}

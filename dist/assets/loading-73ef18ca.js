@@ -1,0 +1,1 @@
+const s="/assets/visa-c07595dc.svg",a="/assets/mastercard-9be3ec69.svg",t="/assets/mastercard-yellow-fb74b2ca.svg",e="/assets/bticoin-65b34da2.svg",o="/assets/ethereum-27be9dc6.svg",c="/assets/bank-a7b27a02.svg",_="/assets/tether-e08ab184.svg",r="/assets/loading-0a8a06eb.svg";export{s as _,a,t as b,e as c,o as d,c as e,_ as f,r as g};
