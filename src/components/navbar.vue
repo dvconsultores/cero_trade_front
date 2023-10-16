@@ -20,12 +20,17 @@
       </div>
 
       <!-- Mobile Nav -->
-      <div class="chip-mobile show-mobile">
-        <img src="@/assets/sources/icons/logo.svg" alt="Logo" class="logo-mobile">
-      </div>
+      <img src="@/assets/sources/logos/logo-mobile.svg" alt="Logo" class="logo-mobile show-mobile">
 
-      <img src="@/assets/sources/icons/menu-bars.svg" alt="Menu Bars" class="menu-bars show-mobile">
+      <div class="right-mobile" style="gap: 20px;">
+        <img src="@/assets/sources/images/avatar-online.svg" alt="Avatar" style="width: 35px;">
+        <v-icon color="#fff" style="font-size: 25px;">mdi-bell-outline</v-icon>
+        <img src="@/assets/sources/icons/menu-bars-mobile.svg" alt="Menu Bars" class="menu-bars show-mobile">
+      </div>
     </div>
+
+    <!-- Menu Mobile -->
+    
   </nav>
 </template>
 
@@ -43,7 +48,7 @@ export default {
         {img: 'home', name: 'Home', link:'/dashboard'},
         {img: 'wallet', name: 'My portfolio', link: '/my-portfolio' },
         {img: 'marketplace', name: 'Marketplace', link:'marketplace'},
-        {img: 'market_trends', name:'Market trends', link: '/'},
+        {img: 'market_trends', name:'Market trends', link: '/market-trends'},
         {img: 'config', name:'Settings', link: '/settings'}
       ],
 
@@ -77,7 +82,6 @@ export default {
   transition: none;
 
   @include media(max, 960px){
-    background-color: transparent;
     position: static;
     padding-inline: 20px;
   }
@@ -85,6 +89,17 @@ export default {
   .displaynone{
     @include media(max, 960px){
       display: none;
+    }
+  }
+
+  .right-mobile{
+    display: none;
+    @include media(max, 960px){
+      display: flex!important;
+      flex-direction: row!important;;
+      width: max-content;
+      justify-content: center!important;
+      align-items: center!important;
     }
   }
 

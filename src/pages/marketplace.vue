@@ -1,8 +1,28 @@
 <template>
   <div id="marketplace">
-    <span class="mb-10" style="color: #00555B; font-size: 16px; font-weight: 700;"><v-icon>mdi-home</v-icon> <v-icon>mdi-chevron-right</v-icon> Marketplace</span>
+    <span class="mb-10 mbb16" style="font-size: 16px; font-weight: 700;"><v-icon>mdi-home</v-icon> <v-icon>mdi-chevron-right</v-icon> Marketplace</span>
     <h3>Marketplace</h3>
-    <span class="mb-16" style="color:#475467">Lorem ipsum dolor sit amet.</span>
+    <span class="mbb16" style="color:#475467;">Lorem ipsum dolor sit amet.</span>
+
+    <v-tabs
+      v-model="tabsMobile"
+      bg-color="transparent"
+      color="basil"
+      class="mt-2 mb-2 showmobile"
+    >
+      <v-tab :value="1" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+        My details
+      </v-tab>
+      <v-tab :value="2" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+        My details
+      </v-tab>
+      <v-tab :value="3" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+        My details
+      </v-tab>
+      <v-tab :value="4" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+        My details
+      </v-tab>
+    </v-tabs>
 
     <div class="divrow jspace">
       <div class="divrow" style="gap: 15px;">
@@ -12,7 +32,7 @@
         variant="solo"
         flat
         menu-icon="mdi-chevron-down"
-        class="select"
+        class="select deletemobile"
         bg-color="#EAECF0"
         hide-details
         density="compact"
@@ -34,13 +54,13 @@
         variant="solo"
         flat
         menu-icon="mdi-chevron-down"
-        class="select"
+        class="select deletemobile"
         bg-color="#EAECF0"
         hide-details
         density="compact"
         ></v-select>
 
-        <v-btn-toggle class="center" rounded="1" v-model="toggle">
+        <v-btn-toggle class="center deletemobile" rounded="1" v-model="toggle">
           <v-btn class="btn-toggle" @click="windowStep = 1"><img src="@/assets/sources/icons/table-view.svg" alt="Table icon"></v-btn>
           <v-btn class="btn-toggle" @click="windowStep = 2"><img src="@/assets/sources/icons/card-view.svg" alt="Card icon"></v-btn>
         </v-btn-toggle>
@@ -58,13 +78,14 @@
         class="mt-6 my-data-table"
         density="compact"
         >
-        <!-- <template #[`column.checkbox`]>
-          <tr>
-            <th>
-              <span class="mr-2 cursor-pointer">{{ column.title }} hola</span>
-            </th>
-          </tr>
-        </template> -->
+        <template #[`column.checkbox`]="{ column }">
+          <span style="display: none;">{{ column.title }}</span>
+          <v-checkbox
+          hide-details
+          density="compact"
+          style="max-width: 10px!important; min-width: 10px!important;"
+          ></v-checkbox>
+        </template>
 
           <template #[`item.checkbox`]="{ item }">
             <v-checkbox
@@ -171,8 +192,9 @@ import sphere from '@/assets/sources/icons/sphere.svg'
 export default{
   data() {
     return{
+      tabsMobile: 1,
       itemsPerPage: 100,
-      windowStep: 1,
+      windowStep: undefined,
       allItems: 'All items',
       items: ['All items', 'Items'],
       items_timeline: ['Timeline', 'Others'],
@@ -180,7 +202,7 @@ export default{
       toggle: 0,
 
        headers: [
-        { title: '$', key: 'checkbox', sortable: false, align: 'center'},
+        { title: '', key: 'checkbox', sortable: false, align: 'center'},
         { title: 'Facility name', sortable: false, key: 'facility'},
         { title: 'Energy source', key: 'energy_source', sortable: false },
         { title: 'Region', key: 'region', sortable: false },
@@ -378,10 +400,28 @@ export default{
     }
   },
 
+  computed: {
+    windowStepComputed() {
+      if (window.innerWidth > 960) {
+        return 1;
+      } else {
+        return 2;
+      }
+    }
+  },
+
   methods:{
     goDetails(){
       this.$router.push('rec-single')
+    },
+  },
+  watch: {
+    windowStepComputed(newVal) {
+      this.windowStep = newVal;
     }
+  },
+  created() {
+    this.windowStep = this.windowStepComputed;
   }
 }
 </script>

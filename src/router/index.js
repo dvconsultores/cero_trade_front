@@ -11,13 +11,12 @@ const routes = [
   {
     path: '/register',
     component: () => import('@/layouts/empty-layout.vue'),
-    meta: { requiresAuth: true },
     children: [
       {
         path: '',
-        name: 'Home',
-        component: () => import('@/pages/home.vue'),
-        meta: { head: `Home - ${DEFAULT_TITLE}` }
+        name: 'Register',
+        component: () => import('@/pages/register.vue'),
+        meta: { head: `Register - ${DEFAULT_TITLE}` }
       },
     ],
   },
@@ -106,6 +105,18 @@ const routes = [
         name: 'My portfolio',
         component: () => import('@/pages/my-portfolio.vue'),
         meta: { head: `My portfolio - ${DEFAULT_TITLE}` }
+      },
+    ],
+  },
+  {
+    path: '/market-trends',
+    component: () => import('@/layouts/default-layout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'Market trends',
+        component: () => import('@/pages/market-trends.vue'),
+        meta: { head: `Market trends - ${DEFAULT_TITLE}` }
       },
     ],
   },

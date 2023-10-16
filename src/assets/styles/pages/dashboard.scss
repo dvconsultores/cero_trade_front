@@ -15,6 +15,10 @@
     font-weight: 700;
   }
 
+  h6{
+    font-weight: 500!important;
+  }
+
   .sheet{
     background-color: #CCCCCC;
     border-radius: 10px;
@@ -54,10 +58,68 @@
   .v-btn{
     border-radius: 10px!important;
   }
+
+  .btn-mobile-width{
+    @include media(max, 660px){
+      min-width: 100%!important;
+      width: 100%!important;
+    }
+  }
+
+  .divcol-mobile{
+    @include media(max, 660px){
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+    }
+  }
 }
 
 
 
+/////////// responsive ////////////////////
+
+span{
+  @include media(max, 660px){
+    font-size: 12px!important;
+  }
+}
+
+.mbb16{
+  @include media(max, 660px){
+    margin-bottom: 16px!important;
+  }
+}
+.mbb0{
+  @include media(max, 660px){
+    margin-bottom: 0px!important;
+  }
+}
+
+.v-card{
+  @include media(max, 660px){
+    padding: 15px!important;
+  }
+}
+
+.div-cards-mobile{
+  @include media(max, 660px){
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+
+    h5, img, .v-icon{
+      margin-bottom: 0px!important;
+    }
+
+    h5{
+      font-weight: 500;
+    }
+  }
+}
 
 // ////////////////////////dialogs//////////////////
 
@@ -67,9 +129,28 @@
   justify-content: center;
   align-items: center;
   .card-dialog-connect{
-    width: 900px!important;
+    width: 900px;
+    max-width: 900px!important;
     position: relative;
     padding-block: 20px!important;
+
+    @include media(max, 660px){
+      width: 100vw!important;
+      .divrow-mobile{
+        display: grid;
+        grid-template-columns: 1fr 90px;
+
+        h6{
+          font-size: 14px;
+        }
+
+        .btn{
+          justify-self: end;
+          align-self: center;
+        }
+      }
+    }
+    
     .tertiary{
       color: $tertiary;
     }
@@ -105,9 +186,17 @@
    justify-content: center;
    align-items: center;
    .card-dialog-credit-card{
-     width: 600px!important;
+    width: 600px;
+     max-width: 600px!important;
      position: relative;
      padding-block: 20px!important;
+     @include media(max, 660px){
+      width: 100vw!important;
+
+      .v-btn{
+        min-width: 49%!important;
+      }
+    }
      .tertiary{
        color: $tertiary;
      }
@@ -177,9 +266,17 @@
    justify-content: center;
    align-items: center;
    .card-dialog-2fa{
-     width: 400px!important;
+     width: 400px;
+     max-width: 400px!important;
      position: relative;
      padding-block: 20px!important;
+     @include media(max, 660px){
+      width: 100vw!important;
+
+      .v-btn{
+        min-width: 49%!important;
+      }
+    }
      .tertiary{
        color: $tertiary;
      }
@@ -258,9 +355,47 @@
     justify-content: center;
     align-items: center;
     .card-dialog-participant{
-      width: 900px!important;
+      width: 900px;
+      max-width: 900px!important;
       position: relative;
       padding-block: 20px!important;
+      @include media(max, 660px){
+        width: 100vw!important;
+      }
+
+      .showmobile{
+        display: none;
+
+        @include media(max, 960px){
+          display: grid;
+        }
+      }
+      .deletemobile{
+        display: grid;
+
+        @include media(max, 960px){
+          display: none;
+        }
+      }
+
+      .divcol-mobile{
+        @include media(max, 660px){
+          flex-direction: column;
+          gap: 10px!important;
+          justify-content: flex-start;
+          align-items: flex-start;
+
+          .v-btn{
+            min-width: 100%!important;
+          }
+
+          .v-btn:first-of-type{
+            background-color: #fff!important;
+            border: 1px solid rgba(0,0,0,0.25)!important;
+          }
+        }
+      }
+
       .tertiary{
         color: $tertiary;
       }
@@ -314,9 +449,13 @@
    justify-content: center;
    align-items: center;
    .card-dialog-form{
-     width: 400px!important;
+     width: 400px;
+     max-width: 400px!important;
      position: relative;
      padding-block: 20px!important;
+     @include media(max, 660px){
+        width: 100vw!important;
+      }
      .tertiary{
        color: $tertiary;
      }

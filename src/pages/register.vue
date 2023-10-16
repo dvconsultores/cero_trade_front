@@ -5,9 +5,11 @@
       <!-- registration -->
       <v-window-item :value="1">
         <div class="container-windows-step">
-          <v-card class="card ml-2 card-register">
-            <img src="@/assets/sources/icons/logo.svg" alt="Logo" class="img-logo mb-6">
-            <h5 class="mb-1">HELLO</h5>
+          <v-card class="card card-register">
+            <v-sheet class="sheet-img mb-6">
+              <img src="@/assets/sources/icons/logo.svg" alt="Logo" class="img-logo">
+            </v-sheet>
+            <h5 class="mb-2">HELLO</h5>
             <p class="font300 color-grey">Please enter your company details</p>
             <v-row>
               <v-col xl="6" lg="6" md="6" cols="12">
@@ -61,16 +63,20 @@
       <v-window-item :value="2">
         <div class="container-windows-step">
           <v-card class="card ml-2 card-register pt-10 pb-10">
-            <img src="@/assets/sources/icons/logo.svg" alt="Logo" class="img-logo mb-6">
-            <h5 class="mb-1">Please verify your email</h5>
+            <v-sheet class="sheet-img mb-6">
+              <img src="@/assets/sources/icons/logo.svg" alt="Logo" class="img-logo">
+            </v-sheet>
+            <h5 class="mb-2">Please verify your email</h5>
             <p class="font300 color-grey">Please enter security code you received on your email</p>
             
             <v-row>
               <v-col cols="12" class="jstart astart divcol">
-                <label for="otp" style="font-weight: 500; color: #000;">Secure Code</label>
+                <label for="otp" style="font-weight: 700; color: #000;">Secure Code</label>
                 <v-otp-input id="otp"></v-otp-input>
               </v-col>
             </v-row>
+
+            <v-btn class="btn2 mt-4">Resend code</v-btn>
           </v-card>
         </div>
       </v-window-item>

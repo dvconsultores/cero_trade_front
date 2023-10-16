@@ -114,6 +114,62 @@
   }
 }
 
+.btn2 {
+  --bg: #fff;
+  --c: #000000;
+  --b: initial;
+  --p: .5em 1em;
+  --w: initial;
+  --max-w: none;
+  --min-w: none;
+  --h: initial;
+  --max-h: none;
+  --min-h: 36px;
+  --g: 5px;
+  --br: 10px;
+  &:has(> .v-btn__content > :only-child) {--br: 10px};
+  --bs: 0px;
+  --fs: max(16px, 1em);
+  --fw: 500;
+  --ls: -0.005em;
+  --lh: 1;
+  --f: initial;
+  --t: initial;
+  --b: 1px solid rgba(0,0,0,0.25);
+  
+  border: var(--b) !important;
+  background: var(--bg) !important;
+  color: var(--c) !important;
+  box-shadow: var(--bs) !important;
+  border-radius: var(--br) !important;
+  font-size: var(--fs);
+  padding: var(--p) !important;
+  width: var(--w) !important;
+  max-width: var(--max-w) !important;
+  min-width: var(--min-w) !important;
+  height: var(--h) !important;
+  max-height: var(--max-h) !important;
+  min-height: var(--min-h) !important;
+  border: var(--b);
+  transform: var(--t);
+  filter: var(--f);
+  
+  & :is(span, img, i) {
+    color: var(--c);
+    font-size: 1em;
+    font-weight: var(--fw) !important;
+    text-transform: var(--tt, initial);
+    letter-spacing: var(--ls);
+    line-height: var(--lh);
+  }
+  
+  // margin
+  &, > .v-btn__content {
+    display: flex;
+    gap: var(--g);
+  }
+}
+
 //*- cards -//
 .card {
   --w: initial;
@@ -240,3 +296,36 @@
   flex-wrap: wrap;
   & > * {flex-basis: var(--fb) !important}
 }
+.bold{
+  font-weight: 700!important;
+}
+.border-card{
+  border: 1px solid rgba(0,0,0,0.25);
+  border-radius: 10px;
+  padding: 15px 20px;
+}
+.sheet-img{
+  border: 1px solid rgba(0,0,0,0.25)!important;
+  display: grid!important;
+  place-items: center!important;
+  width: max-content!important;
+  border-radius: 50%!important;
+  padding: 5px!important;
+}
+.double-sheet{
+  background-color: #F9FAFB; 
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  width: max-content;
+  padding: 10px;
+
+  .v-sheet{
+   background-color: #F2F4F7;
+   display: grid;
+   place-items: center;
+   border-radius: 50%;
+   width: max-content;
+   padding: 10px;
+  }
+ }

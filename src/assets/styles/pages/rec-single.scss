@@ -15,7 +15,7 @@
     border-radius: 10px!important;
   }
 
-  h3, h4, h6{
+  h3, h4, h6, h5{
     font-weight: 700;
   }
   .green-chip{
@@ -74,4 +74,260 @@
       color: #475467;
     }
   }
+
+  .btn2{
+    border: 1px solid rgba(0,0,0,0.25)!important;
+    background-color: #fff!important;
+  }
+}
+
+
+
+
+
+// //////////////////////// dialogs////////////////////////////////////
+
+
+
+.v-dialog{
+  .v-overlay__content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .dialog-card-tokenize{
+      width: 600px!important;
+      position: relative;
+      padding-block: 20px!important;
+
+      .tertiary{
+        color: $tertiary;
+      }
+
+      h6{
+        font-weight: 700;
+      }
+  
+      .div-check-items{
+        border: 1px solid rgba(0,0,0,0.25);
+        border-radius: 10px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .close{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        color: $tertiary;
+      }
+  
+      .v-btn{
+        border: 1px solid rgba(0,0,0,0.25)!important;
+        width: 49%!important;
+        border-radius: 10px!important;
+        --fw: 700!important;
+      }
+    }
+  }
+}
+
+.v-dialog{
+  .v-overlay__content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .dialog-card-detokenize{
+      width: 600px;
+      max-width: 600px!important;
+      position: relative;
+      padding-block: 20px!important;
+
+      .cards-rec{
+        overflow-y: scroll!important;
+      }
+
+      .div-textfield-select{
+        display: flex;
+        gap: 0px;
+        align-items: center;
+        border-radius: 10px;
+        border: 1px solid rgba(0,0,0,0.25);
+        .select{
+          margin-top: -5px;
+          max-width: max-content!important;
+          .v-field__input{
+            padding-left: 0px;
+            color: #000;
+          }
+        }
+    
+         .input{
+          max-height: 45px!important;
+          height: 45px;
+    
+          i{
+            font-size: 20px;
+          }
+    
+          .v-field{
+            height: 40px!important;
+            max-height: 40px!important;
+            min-height: 1px!important;
+            border-radius: 10px!important;
+          }
+    
+          input{
+            color: #000!important;
+            font-size: 13px;
+            height: 40px!important;
+            max-height: 40px!important;
+            min-height: 1px!important;
+            margin-top: -5px;
+          }
+    
+          .v-field__input{
+            padding-left: 10px;
+            padding-block: 5px;
+            height: 40px!important;
+            max-height: 40px!important;
+            min-height: 1px!important;
+          }
+        }
+      }
+
+      .blue{
+        color: #2970FF;
+      }
+  
+      .grey{
+        color: #98A2B3;
+      }
+  
+      .yellow{
+        color: #FDB022;
+      }
+
+      .tertiary{
+        color: $tertiary;
+      }
+
+      h6{
+        font-weight: 700;
+      }
+  
+      .div-check-items{
+        border: 1px solid rgba(0,0,0,0.25);
+        border-radius: 10px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .close{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        color: $tertiary;
+      }
+  
+      .v-btn{
+        border: 1px solid rgba(0,0,0,0.25)!important;
+        width: 49%!important;
+        border-radius: 10px!important;
+        --fw: 700!important;
+      }
+
+      .div-radio-sell{
+        border: 1px solid rgba(0,0,0,0.25);
+        border-radius: 10px;
+        padding: 10px 20px;
+        margin-block: 15px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+
+        .radio-right{
+          position: absolute;
+          top: 10px;
+          right: 10px;
+        }
+      }
+    }
+  }
+}
+
+.v-dialog{
+  overflow: visible!important;
+  .v-overlay__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .card-dialog-participant{
+      width: 900px;
+      max-width: 900px!important;
+      position: relative;
+      padding-block: 20px!important;
+      h6{
+        font-weight: 700!important;
+      }
+
+      .tertiary{
+        color: $tertiary;
+      }
+      .close{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        color: $tertiary;
+      }
+
+      img{
+        border-radius: 0px;
+        border: 0px solid #fff!important;
+        background-color: transparent!important;
+        box-shadow: 0px;
+        padding: 0px;
+      }
+
+      .v-btn{
+        border: 1px solid rgba(0,0,0,0.25)!important;
+        width: max-content!important;
+        border-radius: 10px!important;
+        --fw: 700!important;
+        min-height: 30px!important;
+        height: 40px!important;
+        min-width: 49%!important;
+      }
+
+      .check{
+        background-color: #F2F4F7;
+        border-radius: 50%;
+        padding: 10px;
+        font-size: 15px;
+        color: #667085;
+      }
+
+      .check-green{
+        background-color: #DCFAE6;
+        border-radius: 50%;
+        padding: 10px;
+        font-size: 15px;
+        color: #17B26A;
+      }
+    }
+  }
+}
+
+
+
+.border{
+  border: 1px solid rgba(0,0,0,0.25);
+  border-radius: 10px;
+  padding: 10px 20px;
 }

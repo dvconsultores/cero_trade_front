@@ -14,7 +14,25 @@
     justify-content: flex-start;
     align-items: center;
     height: 100vh;
-    padding-block: 30px;
+    margin-block: 50px;
+
+    h5{
+      @include media(max, 660px){
+        font-size: 18px!important;
+      }
+    }
+
+    span, p, label{
+      @include media(max, 660px){
+        font-size: 13px!important;
+      }
+    }
+
+    @include media(max, 660px){
+      justify-content: center;
+      align-items: flex-start;
+      padding-inline: 5px;
+    }
 
     .card-register{
       box-shadow: 0px!important;

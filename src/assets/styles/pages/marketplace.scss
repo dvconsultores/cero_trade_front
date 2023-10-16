@@ -158,10 +158,58 @@
       color: #FDB022;
     }
   }
+
+  .mbb16{
+    @include media(max, 660px){
+      margin-bottom: 16px!important;
+    }
+  }
+  .mbb0{
+    @include media(max, 660px){
+      margin-bottom: 0px!important;
+    }
+  }
+  .showmobile{
+    display: none;
+
+    @include media(max, 960px){
+      display: grid;
+    }
+  }
+  .deletemobile{
+    display: flex;
+
+    @include media(max, 960px){
+      display: none;
+    }
+  }
 }
 
 
+/////////// responsive ////////////////////
 
+span{
+  @include media(max, 660px){
+    font-size: 12px!important;
+  }
+}
+
+.mbb16{
+  @include media(max, 660px){
+    margin-bottom: 16px!important;
+  }
+}
+.mbb0{
+  @include media(max, 660px){
+    margin-bottom: 0px!important;
+  }
+}
+
+.v-card{
+  @include media(max, 660px){
+    padding: 15px!important;
+  }
+}
 
 // /////////////// Data Table//////////////////////
 
