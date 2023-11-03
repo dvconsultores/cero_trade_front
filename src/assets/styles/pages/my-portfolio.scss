@@ -11,6 +11,12 @@
   justify-content: flex-start;
   margin-block: 30px;
 
+  .delete-mobile{
+    @include media(max, 960px){
+      display: none;
+    }
+  }
+
   h3, h5, h4{
     font-weight: 700;
   }
@@ -156,6 +162,24 @@
 
     .yellow{
       color: #FDB022;
+    }
+  }
+
+  .tab-btn{
+    @include media(max, 960px){
+      padding-inline: 10px!important;
+      width: max-content!important;
+      min-width: 1px!important;
+      span{
+        font-size: 12px;
+      }
+    }
+  }
+
+  .show-mobile{
+    display: none;
+    @include media(max, 960px){
+      display: grid;
     }
   }
 }

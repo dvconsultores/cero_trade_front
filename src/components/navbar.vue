@@ -48,7 +48,7 @@ export default {
         {img: 'home', name: 'Home', link:'/dashboard'},
         {img: 'wallet', name: 'My portfolio', link: '/my-portfolio' },
         {img: 'marketplace', name: 'Marketplace', link:'marketplace'},
-        {img: 'market_trends', name:'Market trends', link: '/market-trends'},
+        // {img: 'market_trends', name:'Market trends', link: '/market-trends'},
         {img: 'config', name:'Settings', link: '/settings'}
       ],
 

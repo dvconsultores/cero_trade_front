@@ -6,18 +6,18 @@
       <v-window-item :value="1">
         <div class="container-windows-step">
           <v-card class="card ml-2 card-register">
-            <v-sheet class="sheet-img mb-6">
+            <v-sheet class="sheet-img mb-6 delete-mobile">
               <img src="@/assets/sources/icons/logo.svg" alt="Logo" class="img-logo">
             </v-sheet>
-            <h5 class="mb-1">Login here</h5>
-            <p class="font300 color-grey">Please enter your login details</p>
+            <h5 class="mb-4 show-mobile">Login here</h5>
+            <!-- <p class="font300 color-grey">Please enter your login details</p> -->
             <v-row>
-              <v-col cols="12">
+              <!-- <v-col cols="12">
                 <label for="email-address">Email address</label>
                 <v-text-field id="email-address" class="input" variant="outlined" elevation="0" placeholder="Enter email address"></v-text-field>
-              </v-col>
+              </v-col> -->
 
-              <v-col cols="12">
+              <!-- <v-col cols="12">
                 <label for="password">Password</label>
                 <v-text-field
                 id="password" class="input" variant="outlined" elevation="0" 
@@ -26,19 +26,19 @@
                 placeholder="Enter your password"
                 @click:append-inner="show_password = !show_password"
                 ></v-text-field>
-              </v-col>
+              </v-col> -->
 
-              <span style="color: #667085; font-weight: 700;" class="ml-4">
+              <!-- <span style="color: #667085; font-weight: 700;" class="ml-4">
                 <img src="@/assets/sources/icons/help-octagon.svg" alt="Help Octagon" class="help-octagon"> Forgot your password
-              </span>
+              </span> -->
 
               <v-col cols="12">
-                <v-btn class="center btn" @click="windowStep = 2" style="background-color: #fff!important; border: 1px solid rgba(0,0,0,0.25);">Login with Internet Identity <img src="@/assets/sources/icons/internet-computer-icon.svg" alt="IC icon" class="ic-icon"></v-btn>
+                <v-btn class="center btn" @click="$router.push('dashboard')" style="background-color: #fff!important; border: 1px solid rgba(0,0,0,0.25);">Login with Internet Identity <img src="@/assets/sources/icons/internet-computer-icon.svg" alt="IC icon" class="ic-icon"></v-btn>
               </v-col>
 
-              <v-col cols="12">
+              <!-- <v-col cols="12">
                 <v-btn class="center btn" @click="windowStep = 2; $router.push('dashboard')">Log in <v-icon style="margin-bottom: -3px; margin-left: 5px;">mdi-login</v-icon></v-btn>
-              </v-col>
+              </v-col> -->
             </v-row>
           </v-card>
         </div>

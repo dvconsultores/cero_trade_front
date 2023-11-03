@@ -1,8 +1,12 @@
 <template>
   <div id="marketplace">
-    <span class="mb-10 mbb16" style="font-size: 16px; font-weight: 700;"><v-icon>mdi-home</v-icon> <v-icon>mdi-chevron-right</v-icon> Marketplace</span>
+    <span class="mb-10 acenter" style="color:#475467 ;font-size: 16px; font-weight: 700;">
+      <img src="@/assets/sources/icons/home-layout.svg" alt="Home Icon" style="width: 20px;">
+      <v-icon>mdi-chevron-right</v-icon> 
+      <span style="color: #00555B;">Marketplace</span>
+    </span>
     <h3>Marketplace</h3>
-    <span class="mbb16" style="color:#475467;">Lorem ipsum dolor sit amet.</span>
+    <span class="mbb16 mb-6" style="color:#475467;">Lorem ipsum dolor sit amet.</span>
 
     <v-tabs
       v-model="tabsMobile"
@@ -26,7 +30,7 @@
 
     <div class="divrow jspace">
       <div class="divrow" style="gap: 15px;">
-        <v-select
+        <!-- <v-select
         v-model="allItems"
         :items="items"
         variant="solo"
@@ -36,7 +40,7 @@
         bg-color="#EAECF0"
         hide-details
         density="compact"
-        ></v-select>
+        ></v-select> -->
 
         <v-btn class="btn"><v-icon>mdi-filter-variant</v-icon> Add filter</v-btn>
       </div>
@@ -48,7 +52,7 @@
         prepend-inner-icon="mdi-magnify"
         ></v-text-field>
 
-        <v-select
+        <!-- <v-select
         v-model="timeline"
         :items="items_timeline"
         variant="solo"
@@ -58,7 +62,7 @@
         bg-color="#EAECF0"
         hide-details
         density="compact"
-        ></v-select>
+        ></v-select> -->
 
         <v-btn-toggle class="center deletemobile" rounded="1" v-model="toggle">
           <v-btn class="btn-toggle" @click="windowStep = 1"><img src="@/assets/sources/icons/table-view.svg" alt="Table icon"></v-btn>
@@ -96,11 +100,11 @@
             ></v-checkbox>
           </template>
 
-          <template #[`item.facility`]="{ item }">
+          <!-- <template #[`item.facility`]="{ item }">
             <span class="acenter">
               <img :src="iconMap[item.selectable.facility_img]" :alt="item.facility_img" class="mr-1"> {{ item.selectable.facility }} 
             </span>
-          </template>
+          </template> -->
 
           <template #[`item.energy_source`]="{ item }">
             <span>
@@ -120,12 +124,12 @@
             </span>
           </template>
 
-          <template #[`item.volume`]="{ item }">
+          <!-- <template #[`item.volume`]="{ item }">
             <div class="divrow acenter">
               <v-chip style="border-radius: 10px!important;" :class="{ 'red-chip-table': item.selectable.icon_arrow === 'mdi-arrow-down', 'green-chip-table': item.selectable.icon_arrow === 'mdi-arrow-up'}"><v-icon>{{ item.selectable.icon_arrow }}</v-icon> {{ item.selectable.percent }} %</v-chip>
               <span class="ml-2">{{ item.selectable.volume }}</span>
             </div>
-          </template>
+          </template> -->
 
           <template #[`item.actions`]="{ item }">
             <v-chip @click="goDetails(item)" color="white" class="chip-table mr-1" style="border-radius: 10px!important;">
@@ -142,9 +146,10 @@
           <v-col v-for="(item,index) in dataMarketplace" :key="index" xl="3" lg="3" md="4" sm="6" cols="12">
             <v-card class="card cards-marketplace" @click="goDetails(item)">
               <div class="divrow jspace acenter mb-6">
-                <div class="divrow center" style="gap: 5px;">
-                  <h6 class="mb-0 font700">#{{ item.id }}</h6>
-                  <v-chip :class="{ 'red-chip': item.icon_arrow === 'mdi-arrow-down', 'green-chip': item.icon_arrow === 'mdi-arrow-up'}"><v-icon>{{ item.icon_arrow }}</v-icon> {{ item.percent }} %</v-chip>
+                <div class="divcol astart" style="gap: 5px;">
+                  <span style="color: #475467;">Asset</span>
+                  <h6 class="mb-0 font700">{{ item.asset_id }}</h6>
+                  <!-- <v-chip :class="{ 'red-chip': item.icon_arrow === 'mdi-arrow-down', 'green-chip': item.icon_arrow === 'mdi-arrow-up'}"><v-icon>{{ item.icon_arrow }}</v-icon> {{ item.percent }} %</v-chip> -->
                 </div>
                 <v-btn class="btn btn-dots" icon="mdi-dots-vertical"></v-btn>
               </div>
@@ -154,12 +159,12 @@
                 <span style="color: #475467;">{{ item.currency }} {{ item.price }}</span>
               </div>
 
-              <div class="jspace divrow mb-1">
+              <!-- <div class="jspace divrow mb-1">
                 <span>Facility name</span>
                 <span class="center" style="color: #475467">
                   <img :src="iconMap[item.facility_img]" :alt="item.facility_img" class="mr-1"> {{ item.facility }}
                 </span>
-              </div>
+              </div> -->
 
               <div class="jspace divrow mb-1">
                 <span>Energy source</span>
@@ -203,22 +208,24 @@ export default{
 
        headers: [
         { title: '', key: 'checkbox', sortable: false, align: 'center'},
-        { title: 'Facility name', sortable: false, key: 'facility'},
+        // { title: 'Facility name', sortable: false, key: 'facility'},
+        { title: 'Asset ID', key: 'asset_id', sortable: false },
         { title: 'Energy source', key: 'energy_source', sortable: false },
         { title: 'Region', key: 'region', sortable: false },
         { title: 'Price', key: 'price', sortable: false },
         { title: 'MWh', key: 'mwh', sortable: false },
-        { title: 'Volume', key: 'volume', sortable: false },
+        { title: 'Volume Produced', key: 'volume', sortable: false },
         { title: 'Actions', key: 'actions', sortable: false, align: 'center'},
       ],
       dataMarketplace: [
         {
+          asset_id: '#1234567',
           id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
           facility_img: 'sphere',
           facility: 'Sphere',
-          price: 125.00,
+          price: "125.00 - 223.00",
           currency: '$',
           icon_source: 'mdi-waves',
           energy_source: 'Hydroenergy',
@@ -228,27 +235,13 @@ export default{
           checkbox: false,
         },
         {
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-up',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: 125.00,
-          currency: '$',
-          icon_source: 'mdi-weather-sunny',
-          energy_source: 'Sun',
-          region: 'Santiago, Chile',
-          mwh: 32,
-          volume: 7654,
-          checkbox: false,
-        },
-        {
+          asset_id: '#1234567',
           id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
           facility_img: 'sphere',
           facility: 'Sphere',
-          price: 125.00,
+          price: "125.00 - 223.00",
           currency: '$',
           icon_source: 'mdi-weather-windy',
           energy_source: 'Wind energy',
@@ -258,12 +251,29 @@ export default{
           checkbox: false,
         },
         {
+          asset_id: '#1234567',
           id: '1234567',
-          icon_arrow: 'mdi-arrow-up',
+          icon_arrow: 'mdi-arrow-down',
           percent: '20',
           facility_img: 'sphere',
           facility: 'Sphere',
-          price: 125.00,
+          price: "125.00 - 223.00",
+          currency: '$',
+          icon_source: 'mdi-waves',
+          energy_source: 'Hydroenergy',
+          region: 'Santiago, Chile',
+          mwh: 32,
+          volume: 7654,
+          checkbox: false,
+        },
+        {
+          asset_id: '#1234567',
+          id: '1234567',
+          icon_arrow: 'mdi-arrow-down',
+          percent: '20',
+          facility_img: 'sphere',
+          facility: 'Sphere',
+          price: "125.00 - 223.00",
           currency: '$',
           icon_source: 'mdi-weather-sunny',
           energy_source: 'Sun',
@@ -273,12 +283,29 @@ export default{
           checkbox: false,
         },
         {
+          asset_id: '#1234567',
           id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
           facility_img: 'sphere',
           facility: 'Sphere',
-          price: 125.00,
+          price: "125.00 - 223.00",
+          currency: '$',
+          icon_source: 'mdi-waves',
+          energy_source: 'Hydroenergy',
+          region: 'Santiago, Chile',
+          mwh: 32,
+          volume: 7654,
+          checkbox: false,
+        },
+        {
+          asset_id: '#1234567',
+          id: '1234567',
+          icon_arrow: 'mdi-arrow-down',
+          percent: '20',
+          facility_img: 'sphere',
+          facility: 'Sphere',
+          price: "125.00 - 223.00",
           currency: '$',
           icon_source: 'mdi-weather-windy',
           energy_source: 'Wind energy',
@@ -288,12 +315,29 @@ export default{
           checkbox: false,
         },
         {
+          asset_id: '#1234567',
           id: '1234567',
-          icon_arrow: 'mdi-arrow-up',
+          icon_arrow: 'mdi-arrow-down',
           percent: '20',
           facility_img: 'sphere',
           facility: 'Sphere',
-          price: 125.00,
+          price: "125.00 - 223.00",
+          currency: '$',
+          icon_source: 'mdi-waves',
+          energy_source: 'Hydroenergy',
+          region: 'Santiago, Chile',
+          mwh: 32,
+          volume: 7654,
+          checkbox: false,
+        },
+        {
+          asset_id: '#1234567',
+          id: '1234567',
+          icon_arrow: 'mdi-arrow-down',
+          percent: '20',
+          facility_img: 'sphere',
+          facility: 'Sphere',
+          price: "125.00 - 223.00",
           currency: '$',
           icon_source: 'mdi-weather-sunny',
           energy_source: 'Sun',
@@ -303,12 +347,29 @@ export default{
           checkbox: false,
         },
         {
+          asset_id: '#1234567',
           id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
           facility_img: 'sphere',
           facility: 'Sphere',
-          price: 125.00,
+          price: "125.00 - 223.00",
+          currency: '$',
+          icon_source: 'mdi-waves',
+          energy_source: 'Hydroenergy',
+          region: 'Santiago, Chile',
+          mwh: 32,
+          volume: 7654,
+          checkbox: false,
+        },
+        {
+          asset_id: '#1234567',
+          id: '1234567',
+          icon_arrow: 'mdi-arrow-down',
+          percent: '20',
+          facility_img: 'sphere',
+          facility: 'Sphere',
+          price: "125.00 - 223.00",
           currency: '$',
           icon_source: 'mdi-weather-windy',
           energy_source: 'Wind energy',
@@ -318,72 +379,29 @@ export default{
           checkbox: false,
         },
         {
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-up',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: 125.00,
-          currency: '$',
-          icon_source: 'mdi-weather-sunny',
-          energy_source: 'Sun',
-          region: 'Santiago, Chile',
-          mwh: 32,
-          volume: 7654,
-          checkbox: false,
-        },
-        {
+          asset_id: '#1234567',
           id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
           facility_img: 'sphere',
           facility: 'Sphere',
-          price: 125.00,
+          price: "125.00 - 223.00",
           currency: '$',
-          icon_source: 'mdi-weather-windy',
-          energy_source: 'Wind energy',
+          icon_source: 'mdi-waves',
+          energy_source: 'Hydroenergy',
           region: 'Santiago, Chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
         },
         {
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-up',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: 125.00,
-          currency: '$',
-          icon_source: 'mdi-weather-sunny',
-          energy_source: 'Sun',
-          region: 'Santiago, Chile',
-          mwh: 32,
-          volume: 7654,
-          checkbox: false,
-        },
-        {
+          asset_id: '#1234567',
           id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
           facility_img: 'sphere',
           facility: 'Sphere',
-          price: 125.00,
-          currency: '$',
-          icon_source: 'mdi-weather-windy',
-          energy_source: 'Wind energy',
-          region: 'Santiago, Chile',
-          mwh: 32,
-          volume: 7654,
-          checkbox: false,
-        },
-        {
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-up',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: 125.00,
+          price: "125.00 - 223.00",
           currency: '$',
           icon_source: 'mdi-weather-sunny',
           energy_source: 'Sun',

@@ -1,6 +1,12 @@
 <template>
   <div id="my-portfolio">
-    <span class="mb-10" style="color: #00555B; font-size: 16px; font-weight: 700;"><v-icon>mdi-home</v-icon> <v-icon>mdi-chevron-right</v-icon> My portfolio <v-icon>mdi-chevron-right</v-icon>  My wallet</span>
+    <span class="mb-10 acenter" style="color:#475467; font-size: 16px; font-weight: 700;">
+      <img src="@/assets/sources/icons/home-layout.svg" alt="Home Icon" style="width: 20px;">
+      <v-icon>mdi-chevron-right</v-icon> 
+      My portfolio 
+      <v-icon>mdi-chevron-right</v-icon>  
+      <span style="color: #00555B;">My wallet</span>
+    </span>
     <h3>My wallet</h3>
     <span class="mb-16" style="color:#475467">Lorem ipsum dolor sit amet Lorem, ipsum dolor</span>
 
@@ -12,14 +18,14 @@
         </v-card>
       </v-col>
 
-      <v-col xl="4" lg="4" md="4" sm="4" cols="12">
+      <v-col xl="4" lg="4" md="4" sm="6" cols="12">
         <v-card class="card" style="min-height: 100%!important;">
           <h6>My portfolio</h6>
           <apexchart type="donut" :options="donutOptions" :series="donutSeries"></apexchart>
         </v-card>
       </v-col>
 
-      <v-col xl="2" lg="2" md="4" sm="2" cols="12">
+      <v-col xl="2" lg="2" md="4" sm="2" cols="12" class="delete-mobile">
         <v-card class="card divcol jspace" style="min-height: 100%!important; position: relative;">
           <h6>Renewable sources</h6>
           <h5 style="position: absolute; bottom: 0; left: 20px;">10MWh</h5>
@@ -33,20 +39,26 @@
       color="basil"
       class="mt-6"
     >
-      <v-tab :value="1" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+      <v-tab :value="1" class="tab-btn" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
         All tokens
       </v-tab>
-      <v-tab :value="2" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+      <v-tab :value="6" class="tab-btn show-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+        De-tokenize
+      </v-tab>
+      <v-tab :value="2" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
         Tokenized
       </v-tab>
-      <v-tab :value="3" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+      <v-tab :value="3" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
         Non Tokenized
       </v-tab>
-      <v-tab :value="4" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+      <v-tab :value="4" class="tab-btn" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
         Redeemed
       </v-tab>
-      <v-tab :value="5" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+      <v-tab :value="5" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
         Sold
+      </v-tab>
+      <v-tab :value="7" class="tab-btn show-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+        Selling
       </v-tab>
     </v-tabs>
 
@@ -58,7 +70,7 @@
         variant="solo"
         flat
         menu-icon="mdi-chevron-down"
-        class="select"
+        class="select delete-mobile"
         bg-color="#EAECF0"
         hide-details
         density="compact"
@@ -80,13 +92,13 @@
         variant="solo"
         flat
         menu-icon="mdi-chevron-down"
-        class="select"
+        class="select delete-mobile"
         bg-color="#EAECF0"
         hide-details
         density="compact"
         ></v-select>
 
-        <v-btn-toggle class="center" rounded="1" v-model="toggle">
+        <v-btn-toggle class="center delete-mobile" rounded="1" v-model="toggle">
           <v-btn class="btn-toggle" @click="windowStep = 1"><img src="@/assets/sources/icons/table-view.svg" alt="Table icon"></v-btn>
           <v-btn class="btn-toggle" @click="windowStep = 2"><img src="@/assets/sources/icons/card-view.svg" alt="Card icon"></v-btn>
         </v-btn-toggle>
@@ -104,13 +116,14 @@
         class="mt-6 my-data-table"
         density="compact"
         >
-        <!-- <template #[`column.checkbox`]>
-          <tr>
-            <th>
-              <span class="mr-2 cursor-pointer">{{ column.title }} hola</span>
-            </th>
-          </tr>
-        </template> -->
+        <template #[`column.checkbox`]="{ column }">
+          <span style="display: none;">{{ column.title }}</span>
+          <v-checkbox
+          hide-details
+          density="compact"
+          style="max-width: 10px!important; min-width: 10px!important;"
+          ></v-checkbox>
+        </template>
 
           <template #[`item.checkbox`]="{ item }">
             <v-checkbox
@@ -222,7 +235,7 @@ export default{
   },
   data(){
     return{
-      windowStep: 1,
+      windowStep: undefined,
       tabsWindow: 1,
       donutSeries: [44, 55, 81],
       donutOptions: {
@@ -240,11 +253,11 @@ export default{
           breakpoint: 480,
           options: {
             chart: {
-              width: 200
+              width: 300
             },
-            legend: {
-              position: 'bottom'
-            }
+            // legend: {
+            //   position: 'bottom'
+            // }
           }
         }]
       },
@@ -469,16 +482,7 @@ export default{
           }
         },
         colors: ['#1D2939'],
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            legend: {
-              position: 'bottom',
-              offsetX: -10,
-              offsetY: 0
-            }
-          }
-        }],
+        
         plotOptions: {
           bar: {
             horizontal: false,
@@ -507,7 +511,23 @@ export default{
       },
     }
   },
-
+  computed: {
+    windowStepComputed() {
+      if (window.innerWidth > 960) {
+        return 1;
+      } else {
+        return 2;
+      }
+    }
+  },
+  watch: {
+    windowStepComputed(newVal) {
+      this.windowStep = newVal;
+    }
+  },
+  created() {
+    this.windowStep = this.windowStepComputed;
+  },
   methods:{
     goDetails(){
       this.$router.push('rec-single')

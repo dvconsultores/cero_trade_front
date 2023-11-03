@@ -11,6 +11,20 @@
   justify-content: flex-start;
   margin-block: 30px;
 
+  .apexcharts-toolbar{
+    display: none!important;
+  }
+
+  .p12{
+    font-weight: 300!important;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .btn-max-content{
+    width: max-content!important;
+  }
+
   h4{
     font-weight: 700;
   }
@@ -79,7 +93,12 @@
 
 
 /////////// responsive ////////////////////
-
+.apexcharts-toolbar{
+  display: none!important;
+}
+.apexcharts-xaxis-tick{
+  display: none!important;
+}
 span{
   @include media(max, 660px){
     font-size: 12px!important;

@@ -8,6 +8,21 @@
   @extend .margin-global;
   gap: 64px;
   
+  .show-mobile{
+    display: none;
+
+    @include media(max, 660px){
+      display: grid;
+    }
+  }
+
+  .delete-mobile{
+    display: grid;
+
+    @include media(max, 660px){
+      display: none!important;
+    }
+  }
 
   .container-windows-step{
     display: flex;

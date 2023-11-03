@@ -1,6 +1,10 @@
 <template>
   <div id="market-trends">
-    <span class="mb-10" style="color: #00555B; font-size: 16px; font-weight: 700;"><v-icon>mdi-home</v-icon> <v-icon>mdi-chevron-right</v-icon> Market trends</span>
+    <span class="mb-10 acenter" style="color:#475467 ;font-size: 16px; font-weight: 700;">
+      <img src="@/assets/sources/icons/home-layout.svg" alt="Home Icon" style="width: 20px;">
+      <v-icon>mdi-chevron-right</v-icon> 
+      <span style="color: #00555B;">Market trends</span>
+    </span>
     <h3>Market trends</h3>
     <span class="mb-16" style="color:#475467">Lorem ipsum dolor sit amet.</span>
 
