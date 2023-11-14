@@ -4,17 +4,17 @@
     <span class="mbb16" style="color:#475467; margin-bottom: 64px;">Welcome to Cero Trade platform.</span>
 
     <v-row>
-      <v-col xl="9" lg="9" cols="12">
+      <v-col cols="12">
         <v-row>
-          <!-- <v-col xl="6" lg="6" cols="8" class="jstart acenter divrow" style="gap: 10px;">
+          <v-col xl="6" lg="6" cols="8" class="jstart acenter divrow" style="gap: 10px;">
             <v-sheet class="center sheet"><v-icon>mdi-image-filter-center-focus-weak</v-icon></v-sheet>
             <h5 class="mb-0" style="font-weight: 700;">Setup your profile</h5>
           </v-col>
           <v-col xl="6" lg="6" cols="4" class="jend acenter">
-            <h6 class="mb-0" style="font-weight: 700;">0 / 3 Steps</h6>
-          </v-col> -->
+            <h6 class="mb-0 bold">0 / 3 Steps</h6>
+          </v-col>
 
-          <!-- <v-col xl="4" lg="4" md="4" sm="6" cols="12">
+          <v-col xl="4" lg="4" md="4" sm="6" cols="12">
             <v-card class="card" :class="{'verifyStatus' : walletStatus}" style="background-color: #F9FAFB!important;">
               <div class="div-cards-mobile">
                 <img v-if="!walletStatus" class="mb-10 mbb-0" src="@/assets/sources/icons/wallet.svg" alt="Wallet">
@@ -72,7 +72,7 @@
                 <v-btn class="btn btn-mobile-width" style="font-size: 12px!important;background-color: #fff!important; border-radius: 10px!important; border: 1px solid rgba(0,0,0,0.25)!important;">Security</v-btn>
               </div>
             </v-card>
-          </v-col> -->
+          </v-col>
 
           <v-col xl="4" lg="4" md="4" cols="12">
             <v-card class="card jspace no-bottom-pa">
