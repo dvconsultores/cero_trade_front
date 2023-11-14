@@ -1,17 +1,21 @@
 <template>
   <div id="my-portfolio">
-    <span class="mb-10 acenter" style="color:#475467; font-size: 16px; font-weight: 700;">
+    <span class="mb-4 acenter" style="color:#475467; font-size: 16px; font-weight: 700;">
       <img src="@/assets/sources/icons/home-layout.svg" alt="Home Icon" style="width: 20px;">
       <v-icon>mdi-chevron-right</v-icon> 
       My portfolio 
       <v-icon>mdi-chevron-right</v-icon>  
       <span style="color: #00555B;">My wallet</span>
     </span>
-    <h3>My wallet</h3>
-    <span class="mb-16" style="color:#475467">Lorem ipsum dolor sit amet Lorem, ipsum dolor</span>
+    <h3>My portfolio</h3>
+    <div class="jspace wrap mb-16" style="gap: 10px;">    
+      <span style="color:#475467">Lorem ipsum dolor sit amet Lorem, ipsum dolor</span>
+
+      <v-btn class="btn2"><v-icon>mdi-pencil-outline</v-icon> Edit profile information</v-btn>
+    </div>
 
     <v-row>
-      <v-col xl="6" lg="6" md="4" sm="6" cols="12">
+      <v-col xl="5" lg="5" md="4" sm="6" cols="12">
         <v-card class="card" style="min-height: 100%!important;">
           <h6>Renewable sources</h6>
           <apexchart type="bar" height="250" :options="chartOptions" :series="series"></apexchart>
@@ -25,46 +29,68 @@
         </v-card>
       </v-col>
 
-      <v-col xl="2" lg="2" md="4" sm="2" cols="12" class="delete-mobile">
-        <v-card class="card divcol jspace" style="min-height: 100%!important; position: relative;">
-          <h6>Renewable sources</h6>
+      <v-col xl="2" lg="2" md="4" sm="2" cols="12" class="delete-mobile divcol" style="gap: 20px;">
+        <v-card class="card card-mwh">
+          <h6>Total MWh</h6>
+          <h5 style="position: absolute; bottom: 0; left: 20px;">10MWh</h5>
+        </v-card>
+
+        <v-card class="card card-mwh">
+          <h6>Total MWh</h6>
+          <h5 style="position: absolute; bottom: 0; left: 20px;">10MWh</h5>
+        </v-card>
+
+        <v-card class="card card-mwh" >
+          <h6>Total MWh</h6>
           <h5 style="position: absolute; bottom: 0; left: 20px;">10MWh</h5>
         </v-card>
       </v-col>
     </v-row>
 
-    <v-tabs
-      v-model="tabsWindow"
-      bg-color="transparent"
-      color="basil"
-      class="mt-6"
-    >
-      <v-tab :value="1" class="tab-btn" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
-        All tokens
-      </v-tab>
-      <v-tab :value="6" class="tab-btn show-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
-        De-tokenize
-      </v-tab>
-      <v-tab :value="2" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
-        Tokenized
-      </v-tab>
-      <v-tab :value="3" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
-        Non Tokenized
-      </v-tab>
-      <v-tab :value="4" class="tab-btn" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
-        Redeemed
-      </v-tab>
-      <v-tab :value="5" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
-        Sold
-      </v-tab>
-      <v-tab :value="7" class="tab-btn show-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
-        Selling
-      </v-tab>
-    </v-tabs>
+    <v-row>
+      <v-col xl="6" lg="6" cols="12">
+        <v-tabs
+          v-model="tabsWindow"
+          bg-color="transparent"
+          color="basil"
+          class="mt-6"
+        >
+          <v-tab :value="1" class="tab-btn" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+            All tokens
+          </v-tab>
+          <v-tab :value="6" class="tab-btn show-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+            De-tokenize
+          </v-tab>
+          <v-tab :value="2" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+            Tokenized
+          </v-tab>
+          <v-tab :value="3" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+            Non Tokenized
+          </v-tab>
+          <v-tab :value="4" class="tab-btn" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+            Redeemed
+          </v-tab>
+          <v-tab :value="5" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+            Sold
+          </v-tab>
+          <v-tab :value="7" class="tab-btn show-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+            Selling
+          </v-tab>
+        </v-tabs>
+      </v-col>
+
+      <v-col xl="6" lg="6" cols="12" class="divrow aend jend" style="gap: 10px;">
+        <v-btn class="btn2"><img src="@/assets/sources/icons/sell-btn.svg" alt="Sell">Sell</v-btn>
+        <v-btn class="btn2"><img src="@/assets/sources/icons/sell-btn.svg" alt="Sell">Take of market</v-btn>
+        <v-btn class="btn2"><img src="@/assets/sources/icons/de-tokenize-btn.svg" alt="Sell">De-tokenize</v-btn>
+        <v-btn class="btn2"><img src="@/assets/sources/icons/tokenize-btn.svg" alt="Sell">Tokenize</v-btn>
+        <v-btn class="btn2"><img src="@/assets/sources/icons/redeem-btn.svg" alt="Sell">Redeem</v-btn>
+      </v-col>
+    </v-row>
 
     <div class="divrow jspace mt-4">
       <div class="divrow" style="gap: 15px;">
-        <v-select
+        <!-- <v-select
         v-model="allItems"
         :items="items"
         variant="solo"
@@ -74,7 +100,7 @@
         bg-color="#EAECF0"
         hide-details
         density="compact"
-        ></v-select>
+        ></v-select> -->
 
         <v-btn class="btn"><v-icon>mdi-filter-variant</v-icon> Add filter</v-btn>
       </div>
@@ -84,9 +110,10 @@
         class="input" variant="solo" flat
         elevation="0" placeholder="Search"
         prepend-inner-icon="mdi-magnify"
+        style="min-width: 110px;"
         ></v-text-field>
 
-        <v-select
+        <!-- <v-select
         v-model="timeline"
         :items="items_timeline"
         variant="solo"
@@ -96,7 +123,7 @@
         bg-color="#EAECF0"
         hide-details
         density="compact"
-        ></v-select>
+        ></v-select> -->
 
         <v-btn-toggle class="center delete-mobile" rounded="1" v-model="toggle">
           <v-btn class="btn-toggle" @click="windowStep = 1"><img src="@/assets/sources/icons/table-view.svg" alt="Table icon"></v-btn>
@@ -134,16 +161,8 @@
             ></v-checkbox>
           </template>
 
-          <template #[`item.facility`]="{ item }">
-            <span class="acenter">
-              <img :src="iconMap[item.selectable.facility_img]" :alt="item.facility_img" class="mr-1"> {{ item.selectable.facility }} 
-            </span>
-          </template>
-
-          <template #[`item.energy_source`]="{ item }">
-            <span>
-              <v-icon :class="{'blue' : item.selectable.energy_source === 'Hydroenergy', 'grey' : item.selectable.energy_source === 'Wind energy', 'yellow' : item.selectable.energy_source === 'Sun'}">{{ item.selectable.icon_source }}</v-icon> {{ item.selectable.energy_source }}
-            </span>
+          <template #[`item.id`]="{ item }">
+            # {{ item.selectable.id }}
           </template>
 
           <template #[`item.price`]="{ item }">
@@ -158,20 +177,10 @@
             </span>
           </template>
 
-          <template #[`item.volume`]="{ item }">
+          <template #[`item.status`]="{ item }">
             <div class="divrow acenter">
-              <v-chip style="border-radius: 10px!important;" :class="{ 'red-chip-table': item.selectable.icon_arrow === 'mdi-arrow-down', 'green-chip-table': item.selectable.icon_arrow === 'mdi-arrow-up'}"><v-icon>{{ item.selectable.icon_arrow }}</v-icon> {{ item.selectable.percent }} %</v-chip>
-              <span class="ml-2">{{ item.selectable.volume }}</span>
+              <img :src="iconMap[item.selectable.icon_status]" alt="Icon"> <span class="ml-2">{{ item.selectable.status }}</span>
             </div>
-          </template>
-
-          <template #[`item.actions`]="{ item }">
-            <v-chip @click="goDetails(item)" color="white" class="chip-table mr-1" style="border-radius: 10px!important;">
-              <img src="@/assets/sources/icons/wallet.svg" alt="wallet">
-            </v-chip>
-            <v-chip class="chip-table" color="white" style="border-radius: 10px!important;">
-              <v-icon size="default" style="color: #000!important;">mdi-file-chart-outline</v-icon>
-            </v-chip>
           </template>
         </v-data-table>
       </v-window-item>
@@ -181,22 +190,10 @@
             <v-card class="card cards-marketplace" @click="goDetails(item)">
               <div class="divrow jspace acenter mb-6">
                 <div class="divrow center" style="gap: 5px;">
-                  <h6 class="mb-0 font700">#{{ item.id }}</h6>
-                  <v-chip :class="{ 'red-chip': item.icon_arrow === 'mdi-arrow-down', 'green-chip': item.icon_arrow === 'mdi-arrow-up'}"><v-icon>{{ item.icon_arrow }}</v-icon> {{ item.percent }} %</v-chip>
+                  <h6 class="mb-0 font700">IREC #{{ item.irec_id }}</h6>
+                  <!-- <v-chip :class="{ 'red-chip': item.icon_arrow === 'mdi-arrow-down', 'green-chip': item.icon_arrow === 'mdi-arrow-up'}"><v-icon>{{ item.icon_arrow }}</v-icon> {{ item.percent }} %</v-chip> -->
                 </div>
                 <v-btn class="btn btn-dots" icon="mdi-dots-vertical"></v-btn>
-              </div>
-
-              <div class="jspace divrow mb-1">
-                <span>Price</span>
-                <span style="color: #475467;">{{ item.currency }} {{ item.price }}</span>
-              </div>
-
-              <div class="jspace divrow mb-1">
-                <span>Facility name</span>
-                <span class="center" style="color: #475467">
-                  <img :src="iconMap[item.facility_img]" :alt="item.facility_img" class="mr-1"> {{ item.facility }}
-                </span>
               </div>
 
               <div class="jspace divrow mb-1">
@@ -212,8 +209,20 @@
               </div>
 
               <div class="jspace divrow mb-1">
+                <span>Assets ID</span>
+                <span style="color: #475467;">#{{ item.id }}</span>
+              </div>
+
+              <div class="jspace divrow mb-1">
                 <span>MWh</span>
                 <span style="color: #475467;"><v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.mwh }}</span>
+              </div>
+
+              <div class="jspace divrow mb-1">
+                <span>Status</span>
+                <span class="center" style="color: #475467">
+                  <img :src="iconMap[item.icon_status]" alt="Icon" class="mr-1"> {{ item.status }}
+                </span>
               </div>
             </v-card>
           </v-col>
@@ -227,6 +236,9 @@
 import '@/assets/styles/pages/my-portfolio.scss'
 import VueApexCharts from "vue3-apexcharts"
 import sphere from '@/assets/sources/icons/sphere.svg'
+import tokenized from '@/assets/sources/icons/tokenized-table.svg'
+import redeemed from '@/assets/sources/icons/redeemed-table.svg'
+
 
 
 export default{
@@ -264,16 +276,16 @@ export default{
 
       headers: [
         { title: '$', key: 'checkbox', sortable: false, align: 'center'},
-        { title: 'Facility name', sortable: false, key: 'facility'},
+        { title: 'IREC ID', sortable: false, key: 'irec_id'},
         { title: 'Energy source', key: 'energy_source', sortable: false },
         { title: 'Region', key: 'region', sortable: false },
-        { title: 'Price', key: 'price', sortable: false },
+        { title: 'Asset ID', key: 'id', sortable: false },
         { title: 'MWh', key: 'mwh', sortable: false },
-        { title: 'Volume', key: 'volume', sortable: false },
-        { title: 'Actions', key: 'actions', sortable: false, align: 'center'},
+        { title: 'Volume', key: 'status', sortable: false },
       ],
       dataMarketplace: [
-        {
+        { 
+          irec_id: 1,
           id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
@@ -287,8 +299,11 @@ export default{
           mwh: 32,
           volume: 7654,
           checkbox: false,
+          status: 'Tokenized',
+          icon_status: 'tokenized'
         },
         {
+          irec_id: 2,
           id: '1234567',
           icon_arrow: 'mdi-arrow-up',
           percent: '20',
@@ -302,8 +317,11 @@ export default{
           mwh: 32,
           volume: 7654,
           checkbox: false,
+          status: 'Redeemed',
+          icon_status: 'redeemed'
         },
         {
+          irec_id: 3,
           id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
@@ -317,8 +335,11 @@ export default{
           mwh: 32,
           volume: 7654,
           checkbox: false,
+          status: 'Tokenized',
+          icon_status: 'tokenized'
         },
         {
+          irec_id: 4,
           id: '1234567',
           icon_arrow: 'mdi-arrow-up',
           percent: '20',
@@ -332,8 +353,11 @@ export default{
           mwh: 32,
           volume: 7654,
           checkbox: false,
+          status: 'Redeemed',
+          icon_status: 'redeemed'
         },
         {
+          irec_id: 5,
           id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
@@ -347,8 +371,11 @@ export default{
           mwh: 32,
           volume: 7654,
           checkbox: false,
+          status: 'Tokenized',
+          icon_status: 'tokenized'
         },
         {
+          irec_id: 6,
           id: '1234567',
           icon_arrow: 'mdi-arrow-up',
           percent: '20',
@@ -362,8 +389,11 @@ export default{
           mwh: 32,
           volume: 7654,
           checkbox: false,
+          status: 'Redeemed',
+          icon_status: 'redeemed'
         },
         {
+          irec_id: 7,
           id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
@@ -377,8 +407,11 @@ export default{
           mwh: 32,
           volume: 7654,
           checkbox: false,
+          status: 'Tokenized',
+          icon_status: 'tokenized'
         },
         {
+          irec_id: 8,
           id: '1234567',
           icon_arrow: 'mdi-arrow-up',
           percent: '20',
@@ -392,8 +425,11 @@ export default{
           mwh: 32,
           volume: 7654,
           checkbox: false,
+          status: 'Redeemed',
+          icon_status: 'redeemed'
         },
         {
+          irec_id: 9,
           id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
@@ -407,8 +443,11 @@ export default{
           mwh: 32,
           volume: 7654,
           checkbox: false,
+          status: 'Tokenized',
+          icon_status: 'tokenized'
         },
         {
+          irec_id: 10,
           id: '1234567',
           icon_arrow: 'mdi-arrow-up',
           percent: '20',
@@ -422,41 +461,15 @@ export default{
           mwh: 32,
           volume: 7654,
           checkbox: false,
-        },
-        {
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-down',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: 125.00,
-          currency: '$',
-          icon_source: 'mdi-weather-windy',
-          energy_source: 'Wind energy',
-          region: 'Santiago, Chile',
-          mwh: 32,
-          volume: 7654,
-          checkbox: false,
-        },
-        {
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-up',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: 125.00,
-          currency: '$',
-          icon_source: 'mdi-weather-sunny',
-          energy_source: 'Sun',
-          region: 'Santiago, Chile',
-          mwh: 32,
-          volume: 7654,
-          checkbox: false,
+          status: 'Redeemed',
+          icon_status: 'redeemed'
         },
       ],
 
       iconMap: {
         sphere,
+        redeemed,
+        tokenized,
       },
 
       allItems: 'All items',
@@ -481,7 +494,7 @@ export default{
             enabled: true
           }
         },
-        colors: ['#1D2939'],
+        colors: ['#C6F221'],
         
         plotOptions: {
           bar: {

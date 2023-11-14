@@ -11,6 +11,10 @@
   justify-content: flex-start;
   margin-block: 30px;
 
+  .no-bottom-pa{
+    padding-bottom: 0px!important;
+  }
+  
   .apexcharts-toolbar{
     display: none!important;
   }

@@ -215,7 +215,7 @@ span{
 
 .my-data-table th{
   background-color: transparent!important;
-  border: 1px solid rgba(0,0,0,0.25);
+  border: 1px solid #EAECF0;
   min-height: 1px!important;
   height: 40px!important;
   max-height: 40px!important;
@@ -237,7 +237,7 @@ span{
 
 .my-data-table td{
   background-color: transparent!important;
-  border: 1px solid rgba(0,0,0,0.25);
+  border: 1px solid #EAECF0;
   min-height: 1px!important;
   height: 40px!important;
   max-height: 40px!important;
@@ -302,8 +302,15 @@ span{
   }
 }
 
+.chip-currency{
+  color: #475467; 
+  padding-inline: 5px; 
+  border: 1px solid #EAECF0; 
+  border-radius: 5px;
+}
+
 
 .chip-table{
   padding-inline: 5px!important;
-  border: 1px solid rgba(0,0,0,0.25);
+  border: 1px solid #EAECF0;
 }

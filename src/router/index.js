@@ -97,6 +97,18 @@ const routes = [
     ],
   },
   {
+    path: '/support',
+    component: () => import('@/layouts/default-layout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'Support',
+        component: () => import('@/pages/support.vue'),
+        meta: { head: `Support - ${DEFAULT_TITLE}` }
+      },
+    ],
+  },
+  {
     path: '/my-portfolio',
     component: () => import('@/layouts/default-layout.vue'),
     children: [

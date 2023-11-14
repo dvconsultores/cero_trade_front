@@ -22,7 +22,7 @@
         </v-card>
       </v-col>
 
-      <v-col xl="4" lg="4" md="4" sm="6" cols="12">
+      <!-- <v-col xl="4" lg="4" md="4" sm="6" cols="12">
         <v-card class="card" style="background-color: #F9FAFB!important;">
           <img class="mb-10" src="@/assets/sources/icons/wallet.svg" alt="Wallet">
           <h5 class="mb-6">Connect your wallet</h5>
@@ -33,9 +33,9 @@
             Connect +
           </v-btn>
         </v-card>
-      </v-col>
+      </v-col> -->
 
-      <v-col xl="4" lg="4" md="4" sm="6" cols="12">
+      <!-- <v-col xl="4" lg="4" md="4" sm="6" cols="12">
         <v-card class="card" style="background-color: #F9FAFB!important;">
           <v-icon class="mb-10" color="#000">mdi-lock-outline</v-icon>
           <h5 class="mb-6">2FA Authentification</h5>
@@ -46,9 +46,9 @@
             Setup <v-icon>mdi-lock-outline</v-icon>
           </v-btn>
         </v-card>
-      </v-col>
+      </v-col> -->
 
-      <v-col xl="4" lg="4" md="4" sm="6" cols="12">
+      <!-- <v-col xl="4" lg="4" md="4" sm="6" cols="12">
         <v-card class="card" style="background-color: #F9FAFB!important;">
           <v-icon class="mb-10" color="#000">mdi-check-decagram-outline</v-icon>
           <h5 class="mb-6">Veirfy as participant</h5>
@@ -59,7 +59,7 @@
             Veirfy as participant <v-icon>mdi-check-decagram-outline</v-icon>
           </v-btn>
         </v-card>
-      </v-col>
+      </v-col> -->
 
       <v-col xl="4" lg="4" md="4" sm="6" cols="12">
         <v-card class="card" style="background-color: #F9FAFB!important;">
@@ -74,7 +74,7 @@
         </v-card>
       </v-col>
 
-      <v-col xl="4" lg="4" md="4" sm="6" cols="12">
+      <!-- <v-col xl="4" lg="4" md="4" sm="6" cols="12">
         <v-card class="card" style="background-color: #F9FAFB!important;">
           <img class="mb-10" src="@/assets/sources/icons/password-resset.svg" alt="Password reset" style="width: 21px; height: 21px;">
           <h5 class="mb-6">Reset password</h5>
@@ -85,7 +85,7 @@
             Reset your password <v-icon>mdi-sync</v-icon>
           </v-btn>
         </v-card>
-      </v-col>
+      </v-col> -->
 
       <v-col xl="4" lg="4" md="4" sm="6" cols="12">
         <v-card class="card" style="background-color: #F9FAFB!important;">
@@ -96,6 +96,19 @@
           </span>
           <v-btn class="btn mt-6">
             Contac Support <v-icon>mdi-headphones</v-icon>
+          </v-btn>
+        </v-card>
+      </v-col>
+
+      <v-col xl="4" lg="4" md="4" sm="6" cols="12">
+        <v-card class="card" style="background-color: #F9FAFB!important;">
+          <v-icon class="mb-10">mdi-domain</v-icon>
+          <h5 class="mb-6">Beneficiary accounts</h5>
+          <span class="tertiary" style="font-weight: 300;">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
+          </span>
+          <v-btn class="btn mt-6" @click="dialogBeneficiary = true">
+            Edit accounts <v-icon>mdi-pencil-outline</v-icon>
           </v-btn>
         </v-card>
       </v-col>
@@ -110,7 +123,7 @@
             <img src="@/assets/sources/icons/ring-belt.svg" alt="Password reset" style="width: 25px; height: 25px;">
           </v-sheet>
         </v-sheet>
-        <h5>Notification</h5>
+        <h5 class="bold">Notification</h5>
         <span class="tertiary">Lorem ipsum dolor sit amet consectetur, adipisicing elit</span>
 
         <v-tabs
@@ -120,19 +133,126 @@
           class="mt-5"
         >
           <v-tab :value="1" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
-            Email notifications
-          </v-tab>
-          <v-tab :value="2" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
             In-app notifications
           </v-tab>
-          <v-tab :value="3" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+          <v-tab :value="2" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
             Push notifications
           </v-tab>
         </v-tabs>
 
         <v-window v-model="tabsWindow">
           <v-window-item :value="1">
-            <div class="divrow pl-3 pr-3 mt-3" style="gap: 20px;">
+            <div class="divrow pl-3 pr-3 mt-6 pl0-pr0-mobile" style="gap: 20px;">
+                <v-switch density="compact" inset color="#C6F221" hide-details style="max-width: 50px;"></v-switch>
+                <div class="divcol astart jcenter">
+                  <span class="bold">
+                    Lorem Ipsum
+                  </span>
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </span>
+                </div>
+            </div>
+
+            <div class="divrow pl-3 pr-3 mt-3 pl0-pr0-mobile" style="gap: 20px;">
+                <v-switch density="compact" inset color="#C6F221" hide-details style="max-width: 50px;"></v-switch>
+                <div class="divcol astart jcenter">
+                  <span class="bold">
+                    Lorem Ipsum
+                  </span>
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </span>
+                </div>
+            </div>
+
+            <div class="divrow pl-3 pr-3 mt-3 pl0-pr0-mobile" style="gap: 20px;">
+                <v-switch density="compact" inset color="#C6F221" hide-details style="max-width: 50px;"></v-switch>
+                <div class="divcol astart jcenter">
+                  <span class="bold">
+                    Lorem Ipsum
+                  </span>
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </span>
+                </div>
+            </div>
+
+            <div class="divrow pl-3 pr-3 mt-3 pl0-pr0-mobile" style="gap: 20px;">
+                <v-switch density="compact" inset color="#C6F221" hide-details style="max-width: 50px;"></v-switch>
+                <div class="divcol astart jcenter">
+                  <span class="bold">
+                    Lorem Ipsum
+                  </span>
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </span>
+                </div>
+            </div>
+
+            <div class="divrow pl-3 pr-3 mt-3 mb-6 pl0-pr0-mobile" style="gap: 20px;">
+                <v-switch density="compact" inset color="#C6F221" hide-details style="max-width: 50px;"></v-switch>
+                <div class="divcol astart jcenter">
+                  <span class="bold">
+                    Lorem Ipsum
+                  </span>
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </span>
+                </div>
+            </div>
+          </v-window-item>
+
+          <v-window-item :value="2">
+            <div class="divrow pl-3 pr-3 mt-6 pl0-pr0-mobile" style="gap: 20px;">
+                <v-switch density="compact" inset color="#C6F221" hide-details style="max-width: 50px;"></v-switch>
+                <div class="divcol astart jcenter">
+                  <span class="bold">
+                    Lorem Ipsum
+                  </span>
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </span>
+                </div>
+            </div>
+
+            <div class="divrow pl-3 pr-3 mt-3 pl0-pr0-mobile" style="gap: 20px;">
+                <v-switch density="compact" inset color="#C6F221" hide-details style="max-width: 50px;"></v-switch>
+                <div class="divcol astart jcenter">
+                  <span class="bold">
+                    Lorem Ipsum
+                  </span>
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </span>
+                </div>
+            </div>
+
+            <div class="divrow pl-3 pr-3 mt-3 pl0-pr0-mobile" style="gap: 20px;">
+                <v-switch density="compact" inset color="#C6F221" hide-details style="max-width: 50px;"></v-switch>
+                <div class="divcol astart jcenter">
+                  <span class="bold">
+                    Lorem Ipsum
+                  </span>
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </span>
+                </div>
+            </div>
+
+            <div class="divrow pl-3 pr-3 mt-3 pl0-pr0-mobile" style="gap: 20px;">
+                <v-switch density="compact" inset color="#C6F221" hide-details style="max-width: 50px;"></v-switch>
+                <div class="divcol astart jcenter">
+                  <span class="bold">
+                    Lorem Ipsum
+                  </span>
+                  <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  </span>
+                </div>
+            </div>
+
+            <div class="divrow pl-3 pr-3 mt-3 mb-6 pl0-pr0-mobile" style="gap: 20px;">
                 <v-switch density="compact" inset color="#C6F221" hide-details style="max-width: 50px;"></v-switch>
                 <div class="divcol astart jcenter">
                   <span class="bold">
@@ -229,7 +349,11 @@
 
           <v-col xl="6" lg="6" cols="12">
             <label for="country">Country</label>
-            <v-text-field id="country" class="input" variant="outlined" elevation="0" placeholder="USA"></v-text-field>
+            <v-select 
+            id="country" class="input" variant="outlined" 
+            elevation="0" placeholder="USA"
+            menu-icon="mdi-chevron-down"
+            ></v-select>
           </v-col>
 
           <v-col cols="12">
@@ -517,33 +641,178 @@
         <span class="tertiary">Lorem ipsum dolor sit amet consectetur adipisicing elit. At alias laboriosam iste eum, repellendus.</span>
       </v-card>
     </v-dialog>
+    <!-- Dialog Beneficiary Account -->
+    <v-dialog v-model="dialogBeneficiary" persistent>
+      <v-card class="card card-dialog-notification">
+        <v-icon class="close" @click="dialogBeneficiary = false;">mdi-close</v-icon>
+        <v-sheet class="mb-6 double-sheet">
+          <v-sheet>
+            <v-icon>mdi-domain</v-icon>
+          </v-sheet>
+        </v-sheet>
+        <h5 class="bold">Benefitiary accounts</h5>
+        <span class="tertiary">Lorem ipsum dolor sit amet consectetur adipisicing elit. At alias laboriosam iste eum, repellendus.</span>
+
+        <div class="div-radio-sell mb-0" v-for="(item, index) in dataBanks" :key="index">
+          <v-sheet class="double-sheet">
+            <v-sheet>
+              <v-icon>mdi-bank-outline</v-icon>
+            </v-sheet>
+          </v-sheet>
+          <div class="divcol ml-6">
+            <span class="bold">{{ item.account_name }}</span>
+            <span>{{ item.address_bank }}</span>
+          </div>
+        </div>
+
+        <div class="div-radio-sell" @click="dialogNewBeneficiary = true; dialogBeneficiary = false">
+          <v-sheet class="double-sheet">
+            <v-sheet>
+              <v-icon>mdi-plus-box-outline</v-icon>
+            </v-sheet>
+          </v-sheet>
+          <div class="divcol ml-6">
+            <span class="bold">Add an account</span>
+            <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span>
+          </div>
+        </div>
+      </v-card>
+    </v-dialog>
+    <!-- New Beneficiary Account -->
+    <v-dialog v-model="dialogNewBeneficiary" persistent>
+      <v-card class="card card-dialog-company">
+        <v-icon class="close" @click="dialogNewBeneficiary = false">mdi-close</v-icon>
+        <v-sheet class="mb-10 double-sheet">
+          <v-sheet>
+            <v-icon style="width: 25px;">mdi-domain</v-icon>
+          </v-sheet>
+        </v-sheet>
+        <h5 class="bold">New beneficiary account</h5>
+        <span class="tertiary mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit</span>
+
+        <v-row>
+          <v-col cols="12">
+            <label for="account-name">Account name</label>
+            <v-text-field 
+            v-model="account_name"
+            id="account-name" class="input" 
+            variant="outlined" elevation="0" placeholder="Insert account name"
+            ></v-text-field>
+          </v-col>
+
+          <v-col cols="12">
+            <label for="address">Address</label>
+            <v-text-field 
+            v-model="address_bank"
+            id="address" class="input" variant="outlined" 
+            elevation="0" placeholder="Insert address"
+            ></v-text-field>
+          </v-col>
+
+          <v-col cols="12">
+            <label for="country">Country</label>
+            <v-select
+            id="country" class="input" variant="outlined" elevation="0" 
+            placeholder="Choose country"
+            menu-icon="mdi-chevron-down"
+            ></v-select>
+          </v-col>
+
+          <v-col cols="12">
+            <label for="location">Location</label>
+            <v-text-field 
+            id="location" class="input" variant="outlined" 
+            elevation="0" placeholder="Enter location"
+            ></v-text-field>
+          </v-col>
+
+          <v-col cols="12">
+            <label for="address">Company address</label>
+            <v-text-field id="address" class="input" variant="outlined" elevation="0" placeholder="office@abccompany.com"></v-text-field>
+          </v-col>
+        </v-row>
+
+        <div class="divrow mt-6" style="gap: 10px;">
+          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogNewBeneficiary = false">Cancel <v-icon>mdi-close</v-icon></v-btn>
+          <v-btn class="btn" @click="pushBanks()" style="border: none!important;">Save changes <v-icon>mdi-plus-box-outline</v-icon></v-btn>
+        </div>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
 <script>
 import '@/assets/styles/pages/settings.scss'
+import { ref } from 'vue'
 
 export default{
-  data(){
+  setup(){
+      const tabsWindow = ref(1);
+      const dialogNotification = ref(false);
+      const show_password= ref(false);
+      const dialogResetPassword= ref(false);
+      const dialogCompany= ref(false);
+      const walletStatus= ref(false);
+      const status2fa= ref(false);
+      const verifyStatus= ref(false);
+      const dialogParticipantForm= ref(false);
+      const dialogPending= ref(false);
+      const dialogParticipant= ref(false);
+      const dialogPhone= ref(false);
+      const items= ["US", "UK"];
+      const selectedLang= ref('USA');
+      const dialogConect= ref(false);
+      const dialogCreditCrad= ref(false);
+      const dialog2fa= ref(false);
+      const dialogBeneficiary= ref(false);
+      const dialogNewBeneficiary= ref(false);
+
+      const dataBanks = ref([]);
+      const address_bank = ref('');
+      const account_name = ref('');
+
     return{
-      tabsWindow: 1,
-      dialogNotification: false,
-      show_password: false,
-      dialogResetPassword: false,
-      dialogCompany: false,
-      walletStatus: false,
-      status2fa: false,
-      verifyStatus: false,
-      show_password: false,
-      dialogParticipantForm: false,
-      dialogPending: false,
-      dialogParticipant: false,
-      dialogPhone: false,
-      items: ["US", "UK"],
-      selectedLang:'USA',
-      dialogConect: false,
-      dialogCreditCrad: false,
-      dialog2fa: false,
+      tabsWindow,
+      dialogNotification,
+      show_password,
+      dialogResetPassword,
+      dialogCompany,
+      walletStatus,
+      status2fa,
+      verifyStatus,
+      dialogParticipantForm,
+      dialogPending,
+      dialogParticipant,
+      dialogPhone,
+      items,
+      selectedLang,
+      dialogConect,
+      dialogCreditCrad,
+      dialog2fa,
+      dialogBeneficiary,
+      dialogNewBeneficiary,
+      dataBanks,
+      address_bank,
+      account_name,
+    }
+  },
+
+  methods:{
+    pushBanks() {
+      if (this.address_bank && this.account_name) {
+        this.dataBanks.push({
+          address_bank: this.address_bank,
+          account_name: this.account_name
+        });
+
+        this.address_bank = '';
+        this.account_name = '';
+        this.dialogNewBeneficiary = false;
+        this.dialogBeneficiary = true;
+        this.dialog
+      } else {
+        console.error('Ambos campos deben ser llenados.');
+      }
     }
   }
 }

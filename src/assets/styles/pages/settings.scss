@@ -73,9 +73,25 @@
     align-items: center;
 
     .card-dialog-notification{
-      width: 600px!important;
+      width: 600px;
+      max-width: 600px!important;
       position: relative;
       padding-block: 20px!important;
+
+      .pl0-pr0-mobile{
+        padding-inline: 0px!important;
+      }
+      
+      .div-radio-sell{
+        border: 1px solid #EAECF0;
+        border-radius: 10px;
+        padding: 10px 20px;
+        margin-block: 15px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+      }
 
       .tertiary{
         color: $tertiary;

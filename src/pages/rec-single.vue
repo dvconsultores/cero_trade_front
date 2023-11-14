@@ -173,14 +173,14 @@
 
                       <div class="jspace divrow mt-3 mb-1">
                         <span style="color: #475467;">Device gruop</span>
-                        <span>
+                        <span  style="text-align: left;">
                           <v-icon :class="{'blue' : item.device_group === 'Hydroenergy', 'grey' : item.device_group === 'Wind energy', 'yellow' : item.device_group === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.device_group }}
                         </span>
                       </div>
 
                       <div class="jspace divrow mt-3 mb-1" style="gap: 20px;">
                         <span style="color: #475467;">Description</span>
-                        <span style="text-align: left; max-width: 60%;">{{ item.description }}</span>
+                        <span style="text-align: right; max-width: 60%;">{{ item.description }}</span>
                       </div>
                     </v-col>
                   </v-row>
@@ -267,6 +267,7 @@
             v-model:items-per-page="itemsPerPage"
             :headers="headers"
             :items="dataMarketplace"
+            items-per-page="-1"
             class="my-data-table"
             density="compact"
             >
@@ -287,7 +288,7 @@
 
               <template #[`item.price`]="{ item }">
                 <span class="divrow jspace acenter">
-                  {{ item.selectable.price }} <v-sheet style="color: #475467; ;padding-inline: 5px; border: 1px solid rgba(0,0,0,0.25); border-radius: 5px;">{{ item.selectable.currency }}</v-sheet>
+                  {{ item.selectable.price }} <v-sheet class="chip-currency bold">{{ item.selectable.currency }}</v-sheet>
                 </span>
               </template>
 
@@ -298,9 +299,9 @@
               </template>
 
               <template #[`item.actions`]="{ item }">
-                <v-chip @click="goDetails(item)" color="white" class="chip-table mr-1" style="border-radius: 10px!important;">
-                  <img src="@/assets/sources/icons/wallet.svg" alt="wallet">
-                </v-chip>
+                <div class="center" @click="goTo(item)">
+                  <img src="@/assets/sources/icons/wallet.svg" alt="wallet" style="width: 16px; height: 16px;"> <span class="bold ml-2">Buy</span>
+                </div>
               </template>
             </v-data-table>
           </v-col>
@@ -387,11 +388,11 @@
             </v-btn>
           </div>
 
-          <v-card class="card divcol">
-            <span style="color: #475467;">Inssuance Date</span>
-            <span class="mt-2 mb-4">{{ date }}</span>
+          <v-card class="card divcol pt-6">
+            <!-- <span style="color: #475467;">Inssuance Date</span>
+            <span class="mt-2 mb-4">{{ date }}</span> -->
 
-            <div v-for="(item,index) in dataPdf" :key="index" class="border mb-4 jspace">
+            <div v-for="(item,index) in dataPdf" :key="index" class="border mb-2 jspace">
               <div class="divrow acenter">
                 <img src="@/assets/sources/icons/pdf.svg" alt="PDF">
                 <div class="divcol ml-2">

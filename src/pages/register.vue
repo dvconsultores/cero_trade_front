@@ -14,19 +14,34 @@
             <v-row>
               <v-col xl="6" lg="6" md="6" cols="12">
                 <label for="companey-name">Company name</label>
-                <v-text-field id="company-name" class="input" variant="outlined" elevation="0" placeholder="name@cerotrade.com"></v-text-field>
+                <v-text-field 
+                id="company-name" class="input" variant="outlined" elevation="0" 
+                placeholder="name@cerotrade.com"
+                ></v-text-field>
               </v-col>
               <v-col xl="6" lg="6" md="6" sm="12" cols="12">
                 <label for="companey-id">Company ID</label>
-                <v-text-field id="company-id" class="input" variant="outlined" elevation="0" placeholder="123456789"></v-text-field>
+                <v-text-field 
+                id="company-id" class="input" variant="outlined" elevation="0" 
+                placeholder="123456789"
+                append-inner-icon="mdi-help-circle-outline"
+                ></v-text-field>
               </v-col>
               <v-col xl="6" lg="6" md="6" sm="12" cols="12">
                 <label for="city">City</label>
-                <v-text-field id="city" class="input" variant="outlined" elevation="0" placeholder="New York"></v-text-field>
+                <v-select 
+                id="city" class="input" variant="outlined" elevation="0" 
+                placeholder="New York"
+                menu-icon="mdi-chevron-down"
+                ></v-select>
               </v-col>
               <v-col xl="6" lg="6" md="6" sm="12" cols="12">
                 <label for="country">Country</label>
-                <v-text-field id="country" class="input" variant="outlined" elevation="0" placeholder="USA"></v-text-field>
+                <v-select
+                id="country" class="input" variant="outlined" 
+                elevation="0" placeholder="USA"
+                menu-icon="mdi-chevron-down"
+                ></v-select>
               </v-col>
               <v-col cols="12">
                 <label for="company-address">Company address</label>
@@ -49,6 +64,10 @@
                 :type="show_password ? 'text' : 'password'"
                 @click:append-inner="show_password = !show_password"
                 ></v-text-field>
+              </v-col>
+
+              <v-col cols="12">
+                <v-btn class="center btn2">Login with Internet Identity <img src="@/assets/sources/icons/internet-computer-icon.svg" alt="IC icon" class="ic-icon"></v-btn>
               </v-col>
 
               <v-col cols="12">

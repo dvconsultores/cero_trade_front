@@ -1,6 +1,6 @@
 <template>
   <div id="marketplace">
-    <span class="mb-10 acenter" style="color:#475467 ;font-size: 16px; font-weight: 700;">
+    <span class="mb-4 acenter" style="color:#475467 ;font-size: 16px; font-weight: 700;">
       <img src="@/assets/sources/icons/home-layout.svg" alt="Home Icon" style="width: 20px;">
       <v-icon>mdi-chevron-right</v-icon> 
       <span style="color: #00555B;">Marketplace</span>
@@ -12,7 +12,7 @@
       v-model="tabsMobile"
       bg-color="transparent"
       color="basil"
-      class="mt-2 mb-2 showmobile"
+      class="mt-2 mb-2"
     >
       <v-tab :value="1" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
         My details
@@ -50,6 +50,7 @@
         class="input" variant="solo" flat
         elevation="0" placeholder="Search"
         prepend-inner-icon="mdi-magnify"
+        style="min-width: 110px;"
         ></v-text-field>
 
         <!-- <v-select
@@ -100,11 +101,11 @@
             ></v-checkbox>
           </template>
 
-          <!-- <template #[`item.facility`]="{ item }">
-            <span class="acenter">
-              <img :src="iconMap[item.selectable.facility_img]" :alt="item.facility_img" class="mr-1"> {{ item.selectable.facility }} 
+          <template #[`item.asset_id`]="{ item }">
+            <span class="acenter bold" style="color: #475467;">
+              {{ item.selectable.asset_id }} 
             </span>
-          </template> -->
+          </template>
 
           <template #[`item.energy_source`]="{ item }">
             <span>
@@ -114,7 +115,7 @@
 
           <template #[`item.price`]="{ item }">
             <span class="divrow jspace acenter">
-              {{ item.selectable.price }} <v-sheet style="color: #475467; ;padding-inline: 5px; border: 1px solid rgba(0,0,0,0.25); border-radius: 5px;">{{ item.selectable.currency }}</v-sheet>
+              {{ item.selectable.price }} <v-sheet class="chip-currency bold">{{ item.selectable.currency }}</v-sheet>
             </span>
           </template>
 
@@ -181,6 +182,11 @@
               <div class="jspace divrow mb-1">
                 <span>MWh</span>
                 <span style="color: #475467;"><v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.mwh }}</span>
+              </div>
+
+              <div class="jspace divrow mb-1">
+                <span>Volume</span>
+                <span style="color: #475467;">{{ item.volume }}</span>
               </div>
             </v-card>
           </v-col>

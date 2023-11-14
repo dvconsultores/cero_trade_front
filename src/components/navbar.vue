@@ -40,6 +40,7 @@ import wallet from '@/assets/sources/icons/wallet-white.svg'
 import marketplace from '@/assets/sources/icons/marketplace.svg'
 import market_trends from '@/assets/sources/icons/market-trends.svg'
 import config from '@/assets/sources/icons/config.svg'
+import support from '@/assets/sources/icons/support.svg'
 
 export default {
   data(){
@@ -49,7 +50,8 @@ export default {
         {img: 'wallet', name: 'My portfolio', link: '/my-portfolio' },
         {img: 'marketplace', name: 'Marketplace', link:'marketplace'},
         // {img: 'market_trends', name:'Market trends', link: '/market-trends'},
-        {img: 'config', name:'Settings', link: '/settings'}
+        {img: 'config', name:'Settings', link: '/settings'},
+        {img: 'support', name:'Support', link: '/support'}
       ],
 
       iconMap: {
@@ -58,6 +60,7 @@ export default {
         marketplace,
         market_trends,
         config,
+        support,
       }
     }
   }

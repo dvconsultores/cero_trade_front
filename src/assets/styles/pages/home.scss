@@ -15,6 +15,16 @@
     height: 100vh;
     margin-block: 50px;
 
+    .btn2{
+      background-color: #fff!important; 
+      border: 1px solid rgba(0,0,0,0.25);
+      min-width: 100%!important;
+
+      span{
+        font-weight: 700!important;
+      }
+    }
+
     h5{
       @include media(max, 660px){
         font-size: 18px!important;
@@ -38,6 +48,7 @@
       width: 550px!important;
       display: flex;
       flex-direction: column;
+      margin-left: 1px;
 
       .input{
         max-height: 45px!important;

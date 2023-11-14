@@ -93,6 +93,13 @@
     }
   }
 
+  .card-mwh{
+    min-height: 100px!important; 
+    position: relative;
+    min-width: 300px!important;
+    max-width: 400px!important;
+  }
+
   .btn-toggle{
     border: 0px!important;
     background-color: transparent!important;
@@ -109,6 +116,12 @@
     background-color: #EAECF0;
     padding-inline: 5px;
     border-radius: 10px;
+  }
+
+  .btn2{
+    border: 2px solid #EAECF0;
+    background-color: #fff!important;
+    padding-inline: 10px!important;
   }
 
   .cards-marketplace{

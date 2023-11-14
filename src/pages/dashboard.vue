@@ -75,7 +75,7 @@
           </v-col> -->
 
           <v-col xl="4" lg="4" md="4" cols="12">
-            <v-card class="card jspace">
+            <v-card class="card jspace no-bottom-pa">
               <div class="divcol">
                 <span>Tokenized MWh</span>
                 <h4 class="bold mb-0">10MWh</h4>
@@ -88,7 +88,7 @@
           </v-col>
 
           <v-col xl="4" lg="4" md="4" cols="12">
-            <v-card class="card jspace">
+            <v-card class="card jspace no-bottom-pa">
               <div class="divcol">
                 <span>Tokenized MWh</span>
                 <h4 class="bold mb-0">10MWh</h4>
@@ -101,7 +101,7 @@
           </v-col>
 
           <v-col xl="4" lg="4" md="4" cols="12">
-            <v-card class="card jspace">
+            <v-card class="card jspace no-bottom-pa">
               <div class="divcol">
                 <span>Tokenized MWh</span>
                 <h4 class="bold mb-0">10MWh</h4>
@@ -139,19 +139,19 @@
       <v-col xl="3" lg="3" cols="12">
         <v-row>
           <v-col cols="12">
-            <v-card class="card divcol mb-4" style="background-color: #F9FAFB!important;">
+            <v-card class="card divcol mb-4" style="background-color: #F9FAFB!important; min-height: 200px!important;">
               <h5>Quick links</h5>
               <span class="mb-2" style="color: #00555B; font-size: 12px;"><v-icon color="#00555B">mdi-file-document-check-outline</v-icon> Documentation</span>
               <span class="mb-2" style="color: #00555B; font-size: 12px;"><v-icon color="#00555B">mdi-headphones</v-icon> Support</span>
             </v-card>
 
-            <v-card class="card divcol mb-4" style="background-color: #F9FAFB!important;">
+            <v-card class="card divcol mb-4" style="background-color: #F9FAFB!important; min-height: 200px!important;">
               <h5 class="acenter"><img src="@/assets/sources/icons/account-multiple.svg" alt="Account" class="mr-4" style="width: 20px;">Profile</h5>
               <p class="p12">Lorem ipsum dolor sit amet consectetur. Amet fusce elit nunc velit ultrices nibh. Nunc phasellus odio mauris gravida</p>
               <v-btn class="btn btn-max-content">Edit profile <v-icon>mdi-check-decagram-outline</v-icon></v-btn>
             </v-card>
 
-            <v-card class="card divcol mb-4" style="background-color: #F9FAFB!important;">
+            <v-card class="card divcol mb-4" style="background-color: #F9FAFB!important; min-height: 200px!important;">
               <h5 class="acenter"><img src="@/assets/sources/icons/marketplace-black.svg" alt="Marketplace" class="mr-4" style="width: 20px;">Marketplace</h5>
               <p class="p12">Lorem ipsum dolor sit amet consectetur. Amet fusce elit nunc velit ultrices nibh. Nunc phasellus odio mauris gravida</p>
               <v-btn class="btn btn-max-content">Go to marketplace <v-icon>mdi-circle-multiple-outline</v-icon></v-btn>

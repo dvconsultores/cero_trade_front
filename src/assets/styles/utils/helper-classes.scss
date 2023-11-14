@@ -63,7 +63,7 @@
 .btn {
   --bg: rgb(var(--v-theme-primary));
   --c: #000000;
-  --b: initial;
+  --b: 0px;
   --p: .5em 1em;
   --w: initial;
   --max-w: none;
@@ -76,7 +76,7 @@
   &:has(> .v-btn__content > :only-child) {--br: 10px};
   --bs: 0px;
   --fs: max(16px, 1em);
-  --fw: 500;
+  --fw: 700!important;
   --ls: -0.005em;
   --lh: 1;
   --f: initial;
