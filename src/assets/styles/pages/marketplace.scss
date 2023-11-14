@@ -213,12 +213,26 @@ span{
 
 // /////////////// Data Table//////////////////////
 
+
+.v-table__wrapper{
+  overflow: visible!important;
+}
+
+table{
+  overflow: visible!important;
+}
+
+.v-table{
+  overflow: visible!important;
+}
 .my-data-table th{
   background-color: transparent!important;
-  border: 1px solid #EAECF0;
+  border: 1px solid #f2f3f6;
+  // box-shadow: 0 0 0 .3px rgba(0,0,0,0.1)!important;
   min-height: 1px!important;
   height: 40px!important;
   max-height: 40px!important;
+  overflow: visible!important;
 
   span{
     color: #000;
@@ -237,7 +251,8 @@ span{
 
 .my-data-table td{
   background-color: transparent!important;
-  border: 1px solid #EAECF0;
+  border: 1px solid #f2f3f6;
+  // box-shadow: 0 0 0 .3px rgba(0,0,0,0.1)!important;
   min-height: 1px!important;
   height: 40px!important;
   max-height: 40px!important;
