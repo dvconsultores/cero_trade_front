@@ -375,15 +375,15 @@
               Buy
             </v-btn>
 
-            <v-btn class="btn" @click="dialogRedeemSure = true">
+            <v-btn class="btn" @click="dialogRedeemSure = true" style="min-width: 32%!important;">
               Reedem
             </v-btn>
 
-            <v-btn class="btn btn2" @click="dialogParticipantBenefits = true">
+            <v-btn class="btn btn2" @click="dialogParticipantBenefits = true" style="min-width: 31%!important;">
               Tokenize
             </v-btn>
 
-            <v-btn class="btn btn2" @click="dialogSellOptions = true">
+            <v-btn class="btn btn2" @click="dialogSellOptions = true" style="min-width: 31%!important;">
               Sell token
             </v-btn>
           </div>
@@ -401,7 +401,7 @@
                 </div>
               </div>
 
-              <v-card class="card center" style="width: max-content!important;">
+              <v-card class="card center" style="width: max-content!important; border-radius: 10px!important;">
                 <v-icon>mdi-tray-arrow-down</v-icon>
               </v-card>
             </div>

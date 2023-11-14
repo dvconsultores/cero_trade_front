@@ -33,7 +33,7 @@
               </span> -->
 
               <v-col cols="12">
-                <v-btn class="center btn" @click="$router.push('dashboard')" style="background-color: #fff!important; border: 1px solid rgba(0,0,0,0.25);">Login with Internet Identity <img src="@/assets/sources/icons/internet-computer-icon.svg" alt="IC icon" class="ic-icon"></v-btn>
+                <v-btn class="center btn2" @click="$router.push('dashboard')">Login with Internet Identity <img src="@/assets/sources/icons/internet-computer-icon.svg" alt="IC icon" class="ic-icon"></v-btn>
               </v-col>
 
               <!-- <v-col cols="12">

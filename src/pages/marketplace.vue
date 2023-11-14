@@ -9,6 +9,7 @@
     <span class="mbb16 mb-6" style="color:#475467;">Lorem ipsum dolor sit amet.</span>
 
     <v-tabs
+      v-if="windowStep === 2"
       v-model="tabsMobile"
       bg-color="transparent"
       color="basil"

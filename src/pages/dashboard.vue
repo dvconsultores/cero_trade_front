@@ -4,76 +4,78 @@
     <span class="mbb16" style="color:#475467; margin-bottom: 64px;">Welcome to Cero Trade platform.</span>
 
     <v-row>
-      <v-col cols="12">
-        <v-row>
-          <v-col xl="6" lg="6" cols="8" class="jstart acenter divrow" style="gap: 10px;">
+      <v-col xl="6" lg="6" cols="8" class="jstart acenter divrow" style="gap: 10px;">
             <v-sheet class="center sheet"><v-icon>mdi-image-filter-center-focus-weak</v-icon></v-sheet>
             <h5 class="mb-0" style="font-weight: 700;">Setup your profile</h5>
-          </v-col>
-          <v-col xl="6" lg="6" cols="4" class="jend acenter">
-            <h6 class="mb-0 bold">0 / 3 Steps</h6>
-          </v-col>
+      </v-col>
+      <v-col xl="6" lg="6" cols="4" class="jend acenter">
+        <h6 class="mb-0 bold">0 / 3 Steps</h6>
+      </v-col>
 
-          <v-col xl="4" lg="4" md="4" sm="6" cols="12">
-            <v-card class="card" :class="{'verifyStatus' : walletStatus}" style="background-color: #F9FAFB!important;">
-              <div class="div-cards-mobile">
-                <img v-if="!walletStatus" class="mb-10 mbb-0" src="@/assets/sources/icons/wallet.svg" alt="Wallet">
-                <img v-if="walletStatus" class="mb-10 mbb-0" src="@/assets/sources/icons/wallet-green.svg" alt="Wallet Green" style="height: 21px; width: 21px;">
-                <h5 class="mb-6 mbb-0">Connect your wallet</h5>
-              </div>
-              <span class="tertiary" style="font-weight: 300;">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
-              </span>
-              <v-btn v-if="!walletStatus" class="btn btn-mobile-width mt-6" @click="dialogConect = true">
-                Connect +
-              </v-btn>
-              <div class="divrow jspace acenter divcol-mobile mt-6" v-if="walletStatus">
-                <span style="font-size: 12px; font-weight: 700; color: #067647;"><v-icon class="mr-2 icon-green">mdi-check</v-icon>Wallet successfuly connected</span>
-                <v-btn class="btn btn-mobile-width" style="font-size: 12px!important;background-color: #fff!important; border-radius: 10px!important; border: 1px solid rgba(0,0,0,0.25)!important;">Payment methods</v-btn>
-              </div>
-            </v-card>
-          </v-col>
+      <v-col xl="4" lg="4" md="4" sm="6" cols="12">
+        <v-card class="card" :class="{'verifyStatus' : walletStatus}" style="background-color: #F9FAFB!important;">
+          <div class="div-cards-mobile">
+            <img v-if="!walletStatus" class="mb-10 mbb-0" src="@/assets/sources/icons/wallet.svg" alt="Wallet">
+            <img v-if="walletStatus" class="mb-10 mbb-0" src="@/assets/sources/icons/wallet-green.svg" alt="Wallet Green" style="height: 21px; width: 21px;">
+            <h5 class="mb-6 mbb-0">Connect your wallet</h5>
+          </div>
+          <span class="tertiary" style="font-weight: 300;">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
+          </span>
+          <v-btn v-if="!walletStatus" class="btn btn-mobile-width mt-6" @click="dialogConect = true">
+            Connect +
+          </v-btn>
+          <div class="divrow jspace acenter divcol-mobile mt-6" v-if="walletStatus">
+            <span style="font-size: 12px; font-weight: 700; color: #067647;"><v-icon class="mr-2 icon-green">mdi-check</v-icon>Wallet successfuly connected</span>
+            <v-btn class="btn btn-mobile-width" style="font-size: 12px!important;background-color: #fff!important; border-radius: 10px!important; border: 1px solid rgba(0,0,0,0.25)!important;">Payment methods</v-btn>
+          </div>
+        </v-card>
+      </v-col>
 
-          <v-col xl="4" lg="4" md="4" sm="6" cols="12">
-            <v-card class="card" :class="{'verifyStatus' : status2fa}" style="background-color: #F9FAFB!important;">
-              <div class="div-cards-mobile">
-                <v-icon v-if="!status2fa" class="mb-10" color="#000" style="font-size: 21px;">mdi-lock-outline</v-icon>
-                <v-icon v-if="status2fa" class="mb-10" color="#067647" style="font-size: 21px;">mdi-lock-outline</v-icon>
-                <h5 class="mb-6">2FA Authentification</h5>
-              </div>
-              <span class="tertiary" style="font-weight: 300;">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
-              </span>
-              <v-btn v-if="!status2fa" class="btn btn-mobile-width mt-6" @click="dialog2fa = true">
-                Setup <v-icon>mdi-lock-outline</v-icon>
-              </v-btn>
-              <div class="divrow jspace acenter divcol-mobile mt-6" v-if="status2fa">
-                <span style="font-size: 12px; font-weight: 700; color: #067647;"><v-icon class="mr-2 icon-green">mdi-check</v-icon>2FA successfuly added</span>
-                <v-btn class="btn btn-mobile-width" style="font-size: 12px!important;background-color: #fff!important; border-radius: 10px!important; border: 1px solid rgba(0,0,0,0.25)!important;">Security</v-btn>
-              </div>
-            </v-card>
-          </v-col>
+      <v-col xl="4" lg="4" md="4" sm="6" cols="12">
+        <v-card class="card" :class="{'verifyStatus' : status2fa}" style="background-color: #F9FAFB!important;">
+          <div class="div-cards-mobile">
+            <v-icon v-if="!status2fa" class="mb-10" color="#000" style="font-size: 21px;">mdi-lock-outline</v-icon>
+            <v-icon v-if="status2fa" class="mb-10" color="#067647" style="font-size: 21px;">mdi-lock-outline</v-icon>
+            <h5 class="mb-6">2FA Authentification</h5>
+          </div>
+          <span class="tertiary" style="font-weight: 300;">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
+          </span>
+          <v-btn v-if="!status2fa" class="btn btn-mobile-width mt-6" @click="dialog2fa = true">
+            Setup <v-icon>mdi-lock-outline</v-icon>
+          </v-btn>
+          <div class="divrow jspace acenter divcol-mobile mt-6" v-if="status2fa">
+            <span style="font-size: 12px; font-weight: 700; color: #067647;"><v-icon class="mr-2 icon-green">mdi-check</v-icon>2FA successfuly added</span>
+            <v-btn class="btn btn-mobile-width" style="font-size: 12px!important;background-color: #fff!important; border-radius: 10px!important; border: 1px solid rgba(0,0,0,0.25)!important;">Security</v-btn>
+          </div>
+        </v-card>
+      </v-col>
 
-          <v-col xl="4" lg="4" md="4" sm="6" cols="12">
-            <v-card class="card" :class="{'verifyStatus' : verifyStatus}" style="background-color: #F9FAFB!important;">
-              <div class="div-cards-mobile">
-                <v-icon v-if="!verifyStatus" class="mb-10" color="#000" style="font-size: 21px;">mdi-check-decagram-outline</v-icon>
-                <v-icon v-if="verifyStatus" class="mb-10" color="#067647" style="font-size: 21px;">mdi-check-decagram-outline</v-icon>
-                <h5 class="mb-6">Veirfy as participant</h5>
-              </div>
-              <span class="tertiary" style="font-weight: 300;">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
-              </span>
-              <v-btn v-if="!verifyStatus" class="btn btn-mobile-width mt-6" @click="dialogParticipant = true">
-                Veirfy as participant <v-icon>mdi-check-decagram-outline</v-icon>
-              </v-btn>
-              <div class="divrow divcol-mobile jspace acenter mt-6" v-if="verifyStatus">
-                <span style="font-size: 12px; font-weight: 700; color: #067647;"><v-icon class="mr-2 icon-green">mdi-check</v-icon>Veirification confirmed</span>
-                <v-btn class="btn btn-mobile-width" style="font-size: 12px!important;background-color: #fff!important; border-radius: 10px!important; border: 1px solid rgba(0,0,0,0.25)!important;">Security</v-btn>
-              </div>
-            </v-card>
-          </v-col>
+      <v-col xl="4" lg="4" md="4" sm="6" cols="12">
+        <v-card class="card" :class="{'verifyStatus' : verifyStatus}" style="background-color: #F9FAFB!important;">
+          <div class="div-cards-mobile">
+            <v-icon v-if="!verifyStatus" class="mb-10" color="#000" style="font-size: 21px;">mdi-check-decagram-outline</v-icon>
+            <v-icon v-if="verifyStatus" class="mb-10" color="#067647" style="font-size: 21px;">mdi-check-decagram-outline</v-icon>
+            <h5 class="mb-6">Veirfy as participant</h5>
+          </div>
+          <span class="tertiary" style="font-weight: 300;">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
+          </span>
+          <v-btn v-if="!verifyStatus" class="btn btn-mobile-width mt-6" @click="dialogParticipant = true">
+            Veirfy as participant <v-icon>mdi-check-decagram-outline</v-icon>
+          </v-btn>
+          <div class="divrow divcol-mobile jspace acenter mt-6" v-if="verifyStatus">
+            <span style="font-size: 12px; font-weight: 700; color: #067647;"><v-icon class="mr-2 icon-green">mdi-check</v-icon>Veirification confirmed</span>
+            <v-btn class="btn btn-mobile-width" style="font-size: 12px!important;background-color: #fff!important; border-radius: 10px!important; border: 1px solid rgba(0,0,0,0.25)!important;">Security</v-btn>
+          </div>
+        </v-card>
+      </v-col>
+    </v-row>
 
+    <v-row>
+      <v-col xl="9" lg="9" cols="12">
+        <v-row>
           <v-col xl="4" lg="4" md="4" cols="12">
             <v-card class="card jspace no-bottom-pa">
               <div class="divcol">
@@ -115,7 +117,7 @@
 
           <v-col xl="4" lg="4" md="6" cols="12">
             <v-card class="card mb-6" style="min-height: 100%!important;">
-              <h6>My portfolio</h6>
+              <h6 class="mb-10">My portfolio</h6>
               <apexchart type="donut" :options="donutOptions" :series="donutSeries"></apexchart>
             </v-card>
           </v-col>
@@ -129,7 +131,7 @@
 
           <v-col cols="12">
             <v-card class="card">
-              <h6>I-RECs Tokenized</h6>
+              <h6>Tokenized I-RECs</h6>
               <apexchart type="bar" height="250" :options="chartOptions" :series="series"></apexchart>
             </v-card>
           </v-col>
@@ -343,7 +345,7 @@
         <v-row class="mt-6">
           <v-col cols="12">
             <label class="bold" for="otp">Secure code</label>
-            <v-otp-input id="otp" :length="4"></v-otp-input>
+            <v-otp-input id="otp" :length="4" placeholder="0"></v-otp-input>
           </v-col>
         </v-row>
       </v-card>
@@ -364,7 +366,11 @@
           <v-btn class="btn deletemobile" style="border: none!important;" @click="dialogParticipant = false; dialogParticipantForm = true">Become a participant</v-btn>
           <v-btn class="btn" style="border: none!important;" @click="dialogParticipant = false; dialogParticipantForm = true">Verify as a participant</v-btn>
         </div>
-        <span class="tertiary mt-4 deletemobile" style="font-weight: 700;"><v-icon>mdi-help-circle-outline</v-icon> How to become a participant</span>
+        <div class="divrow jstart acenter mt-4">
+          <v-icon style="color: #475467!important;">mdi-help-circle-outline</v-icon>
+          <span class="tertiary deletemobile ml-2" style="font-weight: 700;">How to become a participant</span>
+        </div>
+      
         <v-row class="mt-6">
           <v-col xl="6" lg="6" md="6" cols="12">
             <v-card class="card pt-6 pb-6" style="height: 100%!important;"> 
@@ -473,12 +479,19 @@ export default {
         chart: {
           type: 'donut',
         },
+        plotOptions: {
+          pie: {
+            donut: {
+              size: '50%', // Ajusta este valor para cambiar el grosor del anillo
+            },
+          },
+        },
         colors: ['#00393D', '#00555B', '#C6F221'],
         dataLabels: {
           enabled: false,
         },
         stroke: {
-          width: 0, 
+          width: 0, // Ajusta este valor para cambiar el grosor del anillo
         },
         responsive: [{
           breakpoint: 480,
@@ -584,6 +597,12 @@ export default {
         xaxis: {
           type: 'category',
           categories: ['Wind', 'Solar', 'Biomass', 'Geothermal', 'Hydro', 'Ocean'],
+          labels: {
+            show: true,
+            style:{
+              fontWeight: 700,
+            }
+          },
         },
         dataLabels: {
           enabled: false
@@ -593,7 +612,7 @@ export default {
         },
         fill: {
           opacity: 1
-        }
+        },
       },
 
       seriesMwh: [{

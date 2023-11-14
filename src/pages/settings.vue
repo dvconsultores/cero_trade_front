@@ -288,7 +288,7 @@
           <v-col cols="12">
             <label for="password">New Password</label>
             <v-text-field
-            id="confirm-password" class="input" variant="outlined" elevation="0" 
+            id="confirm-password" class="input" variant="solo" flat elevation="0" 
             :append-inner-icon="show_password ? 'mdi-eye-outline' : 'mdi-eye-off-outline'"
             :type="show_password ? 'text' : 'password'"
             @click:append-inner="show_password = !show_password"
@@ -298,7 +298,7 @@
           <v-col cols="12">
             <label for="confirm-password">Confirm password</label>
             <v-text-field
-            id="confirm-password" class="input" variant="outlined" elevation="0" 
+            id="confirm-password" class="input" variant="solo" flat elevation="0" 
             :append-inner-icon="show_password ? 'mdi-eye-outline' : 'mdi-eye-off-outline'"
             :type="show_password ? 'text' : 'password'"
             @click:append-inner="show_password = !show_password"
@@ -334,23 +334,23 @@
         <v-row>
           <v-col xl="6" lg="6" cols="12">
             <label for="company-name">Company name</label>
-            <v-text-field id="company-name" class="input" variant="outlined" elevation="0" placeholder="ABC Company"></v-text-field>
+            <v-text-field id="company-name" class="input" variant="solo" flat elevation="0" placeholder="ABC Company"></v-text-field>
           </v-col>
 
           <v-col xl="6" lg="6" cols="12">
             <label for="company-id">Company ID</label>
-            <v-text-field id="company-id" class="input" variant="outlined" elevation="0" placeholder="0000000000"></v-text-field>
+            <v-text-field id="company-id" class="input" variant="solo" flat elevation="0" placeholder="0000000000"></v-text-field>
           </v-col>
 
           <v-col xl="6" lg="6" cols="12">
             <label for="city">City</label>
-            <v-text-field id="city" class="input" variant="outlined" elevation="0" placeholder="New York"></v-text-field>
+            <v-text-field id="city" class="input" variant="solo" flat elevation="0" placeholder="New York"></v-text-field>
           </v-col>
 
           <v-col xl="6" lg="6" cols="12">
             <label for="country">Country</label>
             <v-select 
-            id="country" class="input" variant="outlined" 
+            id="country" class="input" variant="solo" flat 
             elevation="0" placeholder="USA"
             menu-icon="mdi-chevron-down"
             ></v-select>
@@ -358,7 +358,7 @@
 
           <v-col cols="12">
             <label for="address">Company address</label>
-            <v-text-field id="address" class="input" variant="outlined" elevation="0" placeholder="office@abccompany.com"></v-text-field>
+            <v-text-field id="address" class="input" variant="solo" flat elevation="0" placeholder="office@abccompany.com"></v-text-field>
           </v-col>
         </v-row>
 
@@ -458,12 +458,12 @@
         <v-row class="mt-6">
           <v-col cols="12">
             <label for="card-name">Card issuer name</label>
-            <v-text-field id="card-name" class="input" variant="outlined" elevation="0" placeholder="Olivia Cero"></v-text-field>
+            <v-text-field id="card-name" class="input" variant="solo" flat elevation="0" placeholder="Olivia Cero"></v-text-field>
           </v-col>
           <v-col cols="12">
             <label for="card-number">Card number</label>
             <v-text-field
-            id="card-number" class="input" variant="outlined" 
+            id="card-number" class="input" variant="solo" flat 
             elevation="0" placeholder="Card number"
             append-inner-icon="mdi-help-circle-outline"
             >
@@ -474,11 +474,11 @@
           </v-col>
           <v-col xl="6" lg="6" md="6" cols="12">
             <label for="expiration">Expiration date</label>
-            <v-text-field id="expiration" class="input" variant="outlined" elevation="0" placeholder="12/24"></v-text-field>
+            <v-text-field id="expiration" class="input" variant="solo" flat elevation="0" placeholder="12/24"></v-text-field>
           </v-col>
           <v-col xl="6" lg="6" md="6" cols="12">
             <label for="cvc">Enter CVC</label>
-            <v-text-field id="cvc" class="input" variant="outlined" elevation="0" placeholder="Enter CVC" append-inner-icon="mdi-help-circle-outline"></v-text-field>
+            <v-text-field id="cvc" class="input" variant="solo" flat elevation="0" placeholder="Enter CVC" append-inner-icon="mdi-help-circle-outline"></v-text-field>
           </v-col>
         </v-row>
         <div class="divrow mt-6" style="gap: 10px;">
@@ -502,7 +502,7 @@
           <v-col cols="12">
             <label for="card-number">Add mobile phone</label>
             <v-text-field
-            id="card-number" class="input" variant="outlined" 
+            id="card-number" class="input" variant="solo" flat 
             elevation="0" placeholder="+1 (555) 000-0000"
             append-inner-icon="mdi-help-circle-outline"
             >
@@ -606,14 +606,14 @@
           <v-col cols="12">
             <label for="credential">Credential ID</label>
             <v-text-field
-            id="credential" class="input" variant="outlined" elevation="0" 
+            id="credential" class="input" variant="solo" flat elevation="0" 
             placeholder="Enter credential ID" append-inner-icon="mdi-help-circle-outline"
             ></v-text-field>
           </v-col>
           <v-col cols="12">
             <label for="password">Password</label>
             <v-text-field
-            id="password" class="input" variant="outlined" elevation="0" 
+            id="password" class="input" variant="solo" flat elevation="0" 
             :append-inner-icon="show_password ? 'mdi-eye-outline' : 'mdi-eye-off-outline'"
             :type="show_password ? 'text' : 'password'"
             placeholder="Enter password"
@@ -696,7 +696,7 @@
             <v-text-field 
             v-model="account_name"
             id="account-name" class="input" 
-            variant="outlined" elevation="0" placeholder="Insert account name"
+            variant="solo" flat elevation="0" placeholder="Insert account name"
             ></v-text-field>
           </v-col>
 
@@ -704,7 +704,7 @@
             <label for="address">Address</label>
             <v-text-field 
             v-model="address_bank"
-            id="address" class="input" variant="outlined" 
+            id="address" class="input" variant="solo" flat 
             elevation="0" placeholder="Insert address"
             ></v-text-field>
           </v-col>
@@ -712,7 +712,7 @@
           <v-col cols="12">
             <label for="country">Country</label>
             <v-select
-            id="country" class="input" variant="outlined" elevation="0" 
+            id="country" class="input" variant="solo" flat elevation="0" 
             placeholder="Choose country"
             menu-icon="mdi-chevron-down"
             ></v-select>
@@ -721,14 +721,14 @@
           <v-col cols="12">
             <label for="location">Location</label>
             <v-text-field 
-            id="location" class="input" variant="outlined" 
+            id="location" class="input" variant="solo" flat 
             elevation="0" placeholder="Enter location"
             ></v-text-field>
           </v-col>
 
           <v-col cols="12">
             <label for="address">Company address</label>
-            <v-text-field id="address" class="input" variant="outlined" elevation="0" placeholder="office@abccompany.com"></v-text-field>
+            <v-text-field id="address" class="input" variant="solo" flat elevation="0" placeholder="office@abccompany.com"></v-text-field>
           </v-col>
         </v-row>
 

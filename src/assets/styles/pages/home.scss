@@ -17,7 +17,7 @@
 
     .btn2{
       background-color: #fff!important; 
-      border: 1px solid rgba(0,0,0,0.25);
+      border: 1px solid #EAECF0!important;
       min-width: 100%!important;
 
       span{
@@ -63,11 +63,12 @@
 					max-height: 40px!important;
 					min-height: 1px!important;
           border-radius: 10px!important;
+          border: 1px solid #EAECF0;
 				}
 	
 				input{
 					color: #000!important;
-					font-size: 13px;
+					font-size: 14px;
 					height: 40px!important;
 					max-height: 40px!important;
 					min-height: 1px!important;

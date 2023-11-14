@@ -64,7 +64,7 @@
   --bg: rgb(var(--v-theme-primary));
   --c: #000000;
   --b: 0px;
-  --p: .5em 1em;
+  --p: .8em 1em;
   --w: initial;
   --max-w: none;
   --min-w: none;
@@ -75,7 +75,7 @@
   --br: 10px;
   &:has(> .v-btn__content > :only-child) {--br: 10px};
   --bs: 0px;
-  --fs: max(16px, 1em);
+  --fs: max(14px, .8em);
   --fw: 700!important;
   --ls: -0.005em;
   --lh: 1;
@@ -117,8 +117,8 @@
 .btn2 {
   --bg: #fff;
   --c: #000000;
-  --b: initial;
-  --p: .5em 1em;
+  --b: 1px solid #EAECF0;
+  --p: .8em 1em;
   --w: initial;
   --max-w: none;
   --min-w: none;
