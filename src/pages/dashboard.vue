@@ -3,7 +3,7 @@
     <h4>Hi Valentina 👋</h4>
     <span class="mbb16" style="color:#475467; margin-bottom: 64px;">Welcome to Cero Trade platform.</span>
 
-    <v-row>
+    <!-- <v-row>
       <v-col xl="6" lg="6" cols="8" class="jstart acenter divrow" style="gap: 10px;">
             <v-sheet class="center sheet"><v-icon>mdi-image-filter-center-focus-weak</v-icon></v-sheet>
             <h5 class="mb-0" style="font-weight: 700;">Setup your profile</h5>
@@ -71,7 +71,7 @@
           </div>
         </v-card>
       </v-col>
-    </v-row>
+    </v-row> -->
 
     <v-row>
       <v-col xl="9" lg="9" cols="12">

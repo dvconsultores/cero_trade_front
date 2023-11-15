@@ -102,7 +102,7 @@
 
       <v-col xl="4" lg="4" md="4" sm="6" cols="12">
         <v-card class="card" style="background-color: #F9FAFB!important;">
-          <v-icon class="mb-10">mdi-domain</v-icon>
+          <img src="@/assets/sources/icons/domain.svg" alt="Domain" class="mb-10" style="width: 25px;">
           <h5 class="mb-6">Beneficiary accounts</h5>
           <span class="tertiary" style="font-weight: 300;">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
@@ -647,11 +647,11 @@
         <v-icon class="close" @click="dialogBeneficiary = false;">mdi-close</v-icon>
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
-            <v-icon>mdi-domain</v-icon>
+            <img src="@/assets/sources/icons/domain.svg" alt="Domain" style="width: 25px;">
           </v-sheet>
         </v-sheet>
         <h5 class="bold">Benefitiary accounts</h5>
-        <span class="tertiary">Lorem ipsum dolor sit amet consectetur adipisicing elit. At alias laboriosam iste eum, repellendus.</span>
+        <span class="tertiary">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
 
         <div class="div-radio-sell mb-0" v-for="(item, index) in dataBanks" :key="index">
           <v-sheet class="double-sheet">
@@ -684,7 +684,7 @@
         <v-icon class="close" @click="dialogNewBeneficiary = false">mdi-close</v-icon>
         <v-sheet class="mb-10 double-sheet">
           <v-sheet>
-            <v-icon style="width: 25px;">mdi-domain</v-icon>
+            <img src="@/assets/sources/icons/domain.svg" alt="Domain" style="width: 25px;">
           </v-sheet>
         </v-sheet>
         <h5 class="bold">New beneficiary account</h5>
@@ -734,7 +734,7 @@
 
         <div class="divrow mt-6" style="gap: 10px;">
           <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogNewBeneficiary = false">Cancel <v-icon>mdi-close</v-icon></v-btn>
-          <v-btn class="btn" @click="pushBanks()" style="border: none!important;">Save changes <v-icon>mdi-plus-box-outline</v-icon></v-btn>
+          <v-btn class="btn" @click="pushBanks()" style="border: none!important;">Create account <v-icon>mdi-plus-box-outline</v-icon></v-btn>
         </div>
       </v-card>
     </v-dialog>
