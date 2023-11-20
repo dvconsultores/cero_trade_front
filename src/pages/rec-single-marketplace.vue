@@ -5,9 +5,9 @@
       <v-icon>mdi-chevron-right</v-icon> 
       Marketplace 
       <v-icon>mdi-chevron-right</v-icon> 
-      <span style="color: #00555B;">#123455667</span>
+      <span style="color: #00555B;">#12345678</span>
     </span>
-    <h3 class="acenter"><img src="@/assets/sources/images/avatar-rec.svg" alt="Avatar" class="mr-2"> #123455667</h3>
+    <h3 class="acenter"><img src="@/assets/sources/images/avatar-rec.svg" alt="Avatar" class="mr-2"> #12345678</h3>
     <!-- <div class="divrow aend" style="gap: 10px;">
       <h4 class="mb-0">
         $ 124.05
@@ -375,7 +375,7 @@
               Buy
             </v-btn>
 
-            <v-btn class="btn" @click="dialogRedeemSure = true" style="min-width: 32%!important;">
+            <!-- <v-btn class="btn" @click="dialogRedeemSure = true" style="min-width: 32%!important;">
               Reedem
             </v-btn>
 
@@ -385,7 +385,7 @@
 
             <v-btn class="btn btn2" @click="dialogSellOptions = true" style="min-width: 31%!important;">
               Sell token
-            </v-btn>
+            </v-btn> -->
           </div>
 
           <v-card class="card divcol pt-6">

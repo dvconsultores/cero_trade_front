@@ -8,7 +8,7 @@
     <h3>Marketplace</h3>
     <span class="mbb16 mb-6" style="color:#475467;">Lorem ipsum dolor sit amet.</span>
 
-    <v-tabs
+    <!-- <v-tabs
       v-if="windowStep === 2"
       v-model="tabsMobile"
       bg-color="transparent"
@@ -27,7 +27,7 @@
       <v-tab :value="4" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
         My details
       </v-tab>
-    </v-tabs>
+    </v-tabs> -->
 
     <div class="divrow jspace">
       <div class="divrow" style="gap: 15px;">
@@ -122,7 +122,7 @@
 
           <template #[`item.mwh`]="{ item }">
             <span class="divrow acenter">
-              {{ item.selectable.mwh }} <v-icon>mdi-lightbulb-variant-outline</v-icon>
+              <v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.selectable.mwh }}
             </span>
           </template>
 
@@ -437,7 +437,7 @@ export default{
 
   methods:{
     goDetails(){
-      this.$router.push('rec-single')
+      this.$router.push('rec-single-marketplace')
     },
   },
   watch: {

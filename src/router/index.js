@@ -73,13 +73,25 @@ const routes = [
     ],
   },
   {
-    path: '/rec-single',
+    path: '/rec-single-portfolio',
     component: () => import('@/layouts/default-layout.vue'),
     children: [
       {
         path: '',
         name: 'Rec Single',
-        component: () => import('@/pages/rec-single.vue'),
+        component: () => import('@/pages/rec-single-portfolio.vue'),
+        meta: { head: `Rec Single - ${DEFAULT_TITLE}` }
+      },
+    ],
+  },
+  {
+    path: '/rec-single-marketplace',
+    component: () => import('@/layouts/default-layout.vue'),
+    children: [
+      {
+        path: '',
+        name: 'Rec Single',
+        component: () => import('@/pages/rec-single-marketplace.vue'),
         meta: { head: `Rec Single - ${DEFAULT_TITLE}` }
       },
     ],

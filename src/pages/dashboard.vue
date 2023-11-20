@@ -476,6 +476,7 @@ export default {
       dialog2fa: false,
       donutSeries: [44, 55, 81],
       donutOptions: {
+        labels: ['Redeemed', 'Tokenized', 'Raw'], 
         chart: {
           type: 'donut',
         },
