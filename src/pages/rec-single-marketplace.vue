@@ -371,7 +371,7 @@
           </v-card>
 
           <div class="divrow mb-4" style="gap: 10px; flex-wrap: wrap;">
-            <v-btn class="btn" @click="dialogAreYouSure = true" style="min-width: 100%!important;">
+            <v-btn class="btn" @click="dialogPurchaseReview = true" style="min-width: 100%!important;">
               Buy
             </v-btn>
 
@@ -388,9 +388,9 @@
             </v-btn> -->
           </div>
 
-          <v-card class="card divcol pt-6">
-            <!-- <span style="color: #475467;">Inssuance Date</span>
-            <span class="mt-2 mb-4">{{ date }}</span> -->
+          <!-- <v-card class="card divcol pt-6">
+            <span style="color: #475467;">Inssuance Date</span>
+            <span class="mt-2 mb-4">{{ date }}</span>
 
             <div v-for="(item,index) in dataPdf" :key="index" class="border mb-2 jspace">
               <div class="divrow acenter">
@@ -405,7 +405,7 @@
                 <v-icon>mdi-tray-arrow-down</v-icon>
               </v-card>
             </div>
-          </v-card>
+          </v-card> -->
         </v-col>
       </v-col>
     </v-row>
@@ -873,11 +873,6 @@
             <span>{{ item.region }}</span>
           </div>
 
-          <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Certification type</span>
-            <span>{{ item.certification }}</span>
-          </div>
-
           <v-divider class="mb-3 mt-4"  thickness="2" style="width: 100%;"></v-divider>
 
           <div class="jspace divrow mt-4">
@@ -911,7 +906,7 @@
 
         <div class="divrow center mt-6" style="gap: 10px;">
           <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogPurchaseReview = false">Cancel</v-btn>
-          <v-btn class="btn" @click="dialogPurchaseReview = false; dialogPaymentConfirm = true" style="border: none!important;">Put on the market</v-btn>
+          <v-btn class="btn" @click="dialogPurchaseReview = false; dialogPaymentConfirm = true" style="border: none!important;">Proceed with payment</v-btn>
         </div>
       </v-card>
     </v-dialog>
@@ -927,7 +922,7 @@
         <h6>Payment confirmation</h6>
         <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
 
-        <v-card class="card cards-rec mt-6 pa-6" v-for="(item, index) in dataCardEnergy" :key="index">
+        <v-card class="card mt-6 pa-6" v-for="(item, index) in dataCardEnergy" :key="index">
           <div class="jspace divrow mb-1 acenter">
             <h5 class="acenter h5-mobile"><img src="@/assets/sources/images/avatar-rec.svg" alt="Avatar" class="mr-2" style="width: 40px;"> #123455667</h5>
             <div class="divrow astart acenter">
@@ -951,13 +946,13 @@
           </div>
 
           <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Date of Inssuance</span>
+            <span style="color: #475467;">Start date</span>
             <span>{{ item.date }}</span>
           </div>
 
           <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Certification type</span>
-            <span>{{ item.certification }}</span>
+            <span style="color: #475467;">End date</span>
+            <span>24/12/2023</span>
           </div>
         </v-card>
 
@@ -977,7 +972,26 @@
 
         <div class="divrow center mt-6" style="gap: 10px;">
           <v-btn class="btn" style="background-color: #fff!important;"  @click="$router.push('marketplace')">Back to marketplace</v-btn>
-          <v-btn class="btn" @click="dialogPaymentConfirm = false;" style="border: none!important;">View token</v-btn>
+          <v-btn class="btn" @click="dialogPaymentConfirm = false; dialogRedeemCertificates = true" style="border: none!important;">View token</v-btn>
+        </div>
+      </v-card>
+    </v-dialog>
+    <!-- Dialog Redeem Certificates -->
+    <v-dialog v-model="dialogRedeemCertificates" persistent>
+      <v-card class="card dialog-card-detokenize">
+        <v-icon class="close" @click="dialogRedeemCertificates = false">mdi-close</v-icon>
+        <v-sheet class="mb-6 double-sheet">
+          <v-sheet>
+            <v-icon>mdi-check-decagram-outline</v-icon>
+          </v-sheet>
+        </v-sheet>
+        <h6>Do you want to redeem the cerfificates you just bought?</h6>
+        <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
+        <span class="tertiary bold mt-2 acenter"><v-icon class="mr-1">mdi-information-outline</v-icon>Learn more</span>
+
+        <div class="divrow center mt-6" style="gap: 10px;">
+          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogRedeemCertificates = false">Not Now</v-btn>
+          <v-btn class="btn" @click="dialogRedeemCertificates = false;" style="border: none!important;">Yes, redeem</v-btn>
         </div>
       </v-card>
     </v-dialog>
@@ -1115,6 +1129,7 @@ export default {
       dialogRedeem: false,
       dialogRedeemSure: false,
       dialogDetokenize: false,
+      dialogRedeemCertificates: false,
       tabsSpecifications: null,
       dataDates: [
         {

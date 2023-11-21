@@ -78,9 +78,9 @@ const routes = [
     children: [
       {
         path: '',
-        name: 'Rec Single',
+        name: 'Rec Single Portfolio',
         component: () => import('@/pages/rec-single-portfolio.vue'),
-        meta: { head: `Rec Single - ${DEFAULT_TITLE}` }
+        meta: { head: `Rec Single Portfolio - ${DEFAULT_TITLE}` }
       },
     ],
   },

@@ -7,7 +7,8 @@
       <v-icon>mdi-chevron-right</v-icon> 
       <span style="color: #00555B;">IREC #5</span>
     </span>
-    <h3 class="acenter"><img src="@/assets/sources/images/avatar-rec.svg" alt="Avatar" class="mr-2"> IREC #5</h3>
+    <h3 class="acenter mb-0"><img src="@/assets/sources/images/avatar-rec.svg" alt="Avatar" class="mr-2"> IREC #5</h3>
+    <span class="bold mb-6 ml-16" style="color: #475467;">#1223456778</span>
     <!-- <div class="divrow aend" style="gap: 10px;">
       <h4 class="mb-0">
         $ 124.05
@@ -70,7 +71,12 @@
           </v-col>
 
           <v-col xl="3" lg="3" cols="12">
-            <v-card class="card divcol jspace absolute-card">
+            <v-card class="card divcol jspace absolute-card-portfolio mb-2">
+              <span>Total amount owned</span>
+              <h5 class="bold" style="position: absolute; bottom: 0; left: 20px;">113.4 MWh</h5>
+            </v-card>
+
+            <v-card class="card divcol jspace absolute-card-portfolio">
               <span>Total asset volume</span>
               <h5 class="bold" style="position: absolute; bottom: 0; left: 20px;">113.4 MWh</h5>
             </v-card>
@@ -371,26 +377,43 @@
           </v-card>
 
           <div class="divrow mb-4" style="gap: 10px; flex-wrap: wrap;">
-            <v-btn class="btn" @click="dialogAreYouSure = true" style="min-width: 100%!important;">
+            <v-btn class="btn" @click="dialogPurchaseReview = true" style="min-width: 100%!important;">
               Buy
             </v-btn>
 
-            <v-btn class="btn" @click="dialogRedeemSure = true" style="min-width: 32%!important;">
-              Reedem
+            <v-btn class="btn" @click="dialogRedeemSure = true" style="min-width: 49%!important;">
+              Reedem Token
             </v-btn>
 
-            <v-btn class="btn btn2" @click="dialogParticipantBenefits = true" style="min-width: 31%!important;">
+            <!-- <v-btn class="btn btn2" @click="dialogParticipantBenefits = true" style="min-width: 31%!important;">
               Tokenize
-            </v-btn>
+            </v-btn> -->
 
-            <v-btn class="btn btn2" @click="dialogSellOptions = true" style="min-width: 31%!important;">
+            <v-btn class="btn btn2" @click="dialogStaticPrice = true" style="min-width: 48%!important;">
               Sell token
             </v-btn>
           </div>
 
+          <div v-for="(item,index) in dataPdf" :key="index" class="border mb-2 jspace">
+            <div class="divrow acenter">
+              <img src="@/assets/sources/icons/pdf.svg" alt="PDF">
+              <div class="divcol ml-2">
+                <span style="color: #475467; font-weight: 500;">{{ item.name }}</span>
+                <span style="color: #475467;">{{ item.weight }}</span>
+              </div>
+            </div>
+
+            <v-card class="card center" style="width: max-content!important; border-radius: 10px!important;">
+              <v-icon>mdi-tray-arrow-down</v-icon>
+            </v-card>
+          </div>
+
           <v-card class="card divcol pt-6">
-            <!-- <span style="color: #475467;">Inssuance Date</span>
-            <span class="mt-2 mb-4">{{ date }}</span> -->
+            <span style="color: #475467;">Redemption amount (MWh)</span>
+            <span class="mt-2 mb-4" style="color: #475467;"><v-icon>mdi-lightbulb-variant-outline</v-icon>420</span>
+
+            <span style="color: #475467;">Redemption Date</span>
+            <span class="mt-2 mb-4">{{ date }}</span>
 
             <div v-for="(item,index) in dataPdf" :key="index" class="border mb-2 jspace">
               <div class="divrow acenter">
@@ -507,7 +530,7 @@
         <h6>Are you sure you want to redeem your I-REC?</h6>
         <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
 
-        <div class="div-check-items mt-4 mb-2">
+        <!-- <div class="div-check-items mt-4 mb-2">
           <span class="tertiary center">
             <img src="@/assets/sources/icons/check-grey.svg" alt="Check icon" class="mr-2"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, vitae. 
           </span>
@@ -517,11 +540,11 @@
           <span class="tertiary center">
             <img src="@/assets/sources/icons/check-grey.svg" alt="Check icon" class="mr-2"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, vitae. 
           </span>
-        </div>
+        </div> -->
 
         <div class="divrow center mt-6" style="gap: 10px;">
           <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogRedeemSure = false">Cancel</v-btn>
-          <v-btn class="btn" @click="dialogRedeemSure = false;  dialogRedeem = true" style="border: none!important;">Yes I am sure</v-btn>
+          <v-btn class="btn" @click="dialogRedeemSure = false;  dialogRedeem = true" style="border: none!important;">Yes, I am sure</v-btn>
         </div>
       </v-card>
     </v-dialog>
@@ -535,24 +558,39 @@
           </v-sheet>
         </v-sheet>
         <h6>Token redemption details</h6>
-        <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
+        <span class="tertiary mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
 
-        <v-card class="card cards-rec mt-6 pa-6" v-for="(item, index) in dataCardEnergy" :key="index">
+        <label for="beneficiary">Beneficiary account (company)</label>
+        <v-select
+          id="beneficiary"
+          :items="['Account']"
+          variant="outline"
+          flat
+          menu-icon="mdi-chevron-down"
+          class="select mb-4 mt-1"
+          bg-color="#ffffff"
+          hide-details
+          density="compact"
+          placeholder="Select beneficiary account"
+          style="min-width: 100%;"
+          ></v-select>
+
+        <v-card class="card mt-6 pa-6" v-for="(item, index) in dataCardEnergy" :key="index">
           <div class="jspace divrow mb-1 acenter">
             <h5 class="acenter h5-mobile"><img src="@/assets/sources/images/avatar-rec.svg" alt="Avatar" class="mr-2" style="width: 40px;"> #123455667</h5>
             <v-icon class="ml-1 mr-1">mdi-arrow-right</v-icon>
             <h5 class="acenter h5-mobile"><img src="@/assets/sources/images/avatar-rec.svg" alt="Avatar" class="mr-2" style="width: 40px;"> #123455667</h5>
           </div>
 
-          <div class="divrow mb-10 astart acenter">
+          <!-- <div class="divrow mb-10 astart acenter">
             <h5 class="mb-0 mr-2 h5-mobile">
               $ 124.05
             </h5>
             <span style="color:#475467">per MWh</span>
-          </div>
+          </div> -->
 
           <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Energy source</span>
+            <span style="color: #475467;">Energy source type</span>
             <span>
               <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
             </span>
@@ -564,17 +602,17 @@
           </div>
 
           <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Date of Inssuance</span>
+            <span style="color: #475467;">Start date</span>
             <span>{{ item.date }}</span>
           </div>
 
           <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Certification type</span>
-            <span>{{ item.certification }}</span>
+            <span style="color: #475467;">End date</span>
+            <span>24/12/2023</span>
           </div>
         </v-card>
 
-        <div v-for="(item,index) in dataPdfRedeem" :key="index" class="border mb-4 mt-6 jspace">
+        <!-- <div v-for="(item,index) in dataPdfRedeem" :key="index" class="border mb-4 mt-6 jspace">
           <div class="divrow acenter">
             <img src="@/assets/sources/icons/pdf.svg" alt="PDF">
             <div class="divcol ml-2">
@@ -586,11 +624,11 @@
           <v-card class="card center" style="width: max-content!important;">
             <v-icon>mdi-tray-arrow-down</v-icon>
           </v-card>
-        </div>
+        </div> -->
 
         <div class="divrow center mt-6" style="gap: 10px;">
           <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogRedeem = false">Cancel</v-btn>
-          <v-btn class="btn" @click="dialogRedeem = false;" style="border: none!important;">De-Tokenize</v-btn>
+          <v-btn class="btn" @click="dialogRedeem = false;" style="border: none!important;">Redeem</v-btn>
         </div>
       </v-card>
     </v-dialog>
@@ -644,10 +682,10 @@
         <v-icon class="close" @click="dialogStaticPrice = false">mdi-close</v-icon>
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
-            <img src="@/assets/sources/icons/static-price.svg" alt="Dynamic Sell" style="width: 20px; height: 20px;">
+            <img src="@/assets/sources/icons/sell.svg" alt="Sell" style="width: 20px; height: 20px;">
           </v-sheet>
         </v-sheet>
-        <h6>Static price</h6>
+        <h6 class="bold">Price</h6>
         <span class="tertiary mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
 
         <label for="sale_amount">Sale amount</label>
@@ -676,7 +714,7 @@
         <span>Amount per 1 MWh</span>
 
         <div class="divrow center mt-6" style="gap: 10px;">
-          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogStaticPrice = false; dialogSellOptions= true"><v-icon class="mr-2">mdi-arrow-left</v-icon> Back</v-btn>
+          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogStaticPrice = false;"><v-icon class="mr-2">mdi-arrow-left</v-icon> Back</v-btn>
           <v-btn class="btn" @click="dialogStaticPrice = false; dialogSellingDetailsReview = true" style="border: none!important;">Confirm</v-btn>
         </div>
       </v-card>
@@ -735,7 +773,7 @@
         <h6>Selling details review</h6>
         <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
 
-        <v-card class="card cards-rec mt-6 pa-6" v-for="(item, index) in dataCardEnergy" :key="index">
+        <v-card class="card mt-6 pa-6" v-for="(item, index) in dataCardEnergy" :key="index">
           <span class="bold mt-3">Checkout review</span>
 
           <v-divider class="mb-3 mt-4"  thickness="2" style="width: 150%; position: relative; left: -50px;"></v-divider>
@@ -750,10 +788,13 @@
             </div>          
           </div>
 
-          
+          <div class="jspace divrow mb-1">
+            <span style="color: #475467;">Price range</span>
+            <span>100.00€ - 148.00€</span>
+          </div>
 
           <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Energy source</span>
+            <span style="color: #475467;">Energy source type</span>
             <span>
               <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
             </span>
@@ -762,16 +803,6 @@
           <div class="jspace divrow mb-1">
             <span style="color: #475467;">Region</span>
             <span>{{ item.region }}</span>
-          </div>
-
-          <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Date of Inssuance</span>
-            <span>{{ item.date }}</span>
-          </div>
-
-          <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Certification type</span>
-            <span>{{ item.certification }}</span>
           </div>
 
           <v-divider class="mb-3 mt-4"  thickness="2" style="width: 100%;"></v-divider>
@@ -873,11 +904,6 @@
             <span>{{ item.region }}</span>
           </div>
 
-          <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Certification type</span>
-            <span>{{ item.certification }}</span>
-          </div>
-
           <v-divider class="mb-3 mt-4"  thickness="2" style="width: 100%;"></v-divider>
 
           <div class="jspace divrow mt-4">
@@ -911,7 +937,7 @@
 
         <div class="divrow center mt-6" style="gap: 10px;">
           <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogPurchaseReview = false">Cancel</v-btn>
-          <v-btn class="btn" @click="dialogPurchaseReview = false; dialogPaymentConfirm = true" style="border: none!important;">Put on the market</v-btn>
+          <v-btn class="btn" @click="dialogPurchaseReview = false; dialogPaymentConfirm = true" style="border: none!important;">Proceed with payment</v-btn>
         </div>
       </v-card>
     </v-dialog>
@@ -927,7 +953,7 @@
         <h6>Payment confirmation</h6>
         <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
 
-        <v-card class="card cards-rec mt-6 pa-6" v-for="(item, index) in dataCardEnergy" :key="index">
+        <v-card class="card mt-6 pa-6" v-for="(item, index) in dataCardEnergy" :key="index">
           <div class="jspace divrow mb-1 acenter">
             <h5 class="acenter h5-mobile"><img src="@/assets/sources/images/avatar-rec.svg" alt="Avatar" class="mr-2" style="width: 40px;"> #123455667</h5>
             <div class="divrow astart acenter">
@@ -951,13 +977,13 @@
           </div>
 
           <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Date of Inssuance</span>
+            <span style="color: #475467;">Start date</span>
             <span>{{ item.date }}</span>
           </div>
 
           <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Certification type</span>
-            <span>{{ item.certification }}</span>
+            <span style="color: #475467;">End date</span>
+            <span>24/12/2023</span>
           </div>
         </v-card>
 
@@ -977,7 +1003,26 @@
 
         <div class="divrow center mt-6" style="gap: 10px;">
           <v-btn class="btn" style="background-color: #fff!important;"  @click="$router.push('marketplace')">Back to marketplace</v-btn>
-          <v-btn class="btn" @click="dialogPaymentConfirm = false;" style="border: none!important;">View token</v-btn>
+          <v-btn class="btn" @click="dialogPaymentConfirm = false; dialogRedeemCertificates = true" style="border: none!important;">View token</v-btn>
+        </div>
+      </v-card>
+    </v-dialog>
+    <!-- Dialog Redeem Certificates -->
+    <v-dialog v-model="dialogRedeemCertificates" persistent>
+      <v-card class="card dialog-card-detokenize">
+        <v-icon class="close" @click="dialogRedeemCertificates = false">mdi-close</v-icon>
+        <v-sheet class="mb-6 double-sheet">
+          <v-sheet>
+            <v-icon>mdi-check-decagram-outline</v-icon>
+          </v-sheet>
+        </v-sheet>
+        <h6>Do you want to redeem the cerfificates you just bought?</h6>
+        <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
+        <span class="tertiary bold mt-2 acenter"><v-icon class="mr-1">mdi-information-outline</v-icon>Learn more</span>
+
+        <div class="divrow center mt-6" style="gap: 10px;">
+          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogRedeemCertificates = false">Not Now</v-btn>
+          <v-btn class="btn" @click="dialogRedeemCertificates = false;" style="border: none!important;">Yes, redeem</v-btn>
         </div>
       </v-card>
     </v-dialog>
@@ -1104,6 +1149,7 @@ export default {
       itemsPerPage: 100,
       dialogPaymentConfirm: false,
       dialogPurchaseReview: false,
+      dialogRedeemCertificates: false,
       dialogParticipantBenefits: false,
       dialogSellingDetailsReview: false,
       dialogDynamicPrice: false,
@@ -1157,10 +1203,6 @@ export default {
         }
       ],
       dataPdf:[
-        {
-          name: 'Certificate',
-          weight: '200 KB'
-        },
         {
           name: 'Receipt',
           weight: '148 KB',

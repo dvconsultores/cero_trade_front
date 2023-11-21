@@ -36,12 +36,12 @@
         </v-card>
 
         <v-card class="card card-mwh">
-          <h6>Total MWh</h6>
+          <h6>Tokenized MWh</h6>
           <h5 style="position: absolute; bottom: 0; left: 20px;">10MWh</h5>
         </v-card>
 
         <v-card class="card card-mwh" >
-          <h6>Total MWh</h6>
+          <h6>Redeemed MWh</h6>
           <h5 style="position: absolute; bottom: 0; left: 20px;">10MWh</h5>
         </v-card>
       </v-col>
@@ -58,22 +58,22 @@
           <v-tab :value="1" class="tab-btn" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
             All tokens
           </v-tab>
-          <v-tab :value="6" class="tab-btn show-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+          <!-- <v-tab :value="6" class="tab-btn show-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
             De-tokenize
           </v-tab>
           <v-tab :value="2" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
             Tokenized
-          </v-tab>
-          <v-tab :value="3" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+          </v-tab> -->
+          <!-- <v-tab :value="3" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
             Non Tokenized
-          </v-tab>
-          <v-tab :value="4" class="tab-btn" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+          </v-tab> -->
+          <v-tab :value="2" class="tab-btn" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
             Redeemed
           </v-tab>
-          <v-tab :value="5" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+          <v-tab :value="3" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
             Sold
           </v-tab>
-          <v-tab :value="7" class="tab-btn show-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
+          <v-tab :value="4" class="tab-btn show-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
             Selling
           </v-tab>
         </v-tabs>
@@ -82,8 +82,8 @@
       <v-col xl="6" lg="6" cols="12" class="divrow aend jend" style="gap: 10px;">
         <v-btn class="btn2"><img src="@/assets/sources/icons/sell-btn.svg" alt="Sell">Sell</v-btn>
         <v-btn class="btn2"><img src="@/assets/sources/icons/sell-btn.svg" alt="Sell">Take of market</v-btn>
-        <v-btn class="btn2"><img src="@/assets/sources/icons/de-tokenize-btn.svg" alt="Sell">De-tokenize</v-btn>
-        <v-btn class="btn2"><img src="@/assets/sources/icons/tokenize-btn.svg" alt="Sell">Tokenize</v-btn>
+        <!-- <v-btn class="btn2"><img src="@/assets/sources/icons/de-tokenize-btn.svg" alt="Sell">De-tokenize</v-btn>
+        <v-btn class="btn2"><img src="@/assets/sources/icons/tokenize-btn.svg" alt="Sell">Tokenize</v-btn> -->
         <v-btn class="btn2"><img src="@/assets/sources/icons/redeem-btn.svg" alt="Sell">Redeem</v-btn>
       </v-col>
     </v-row>
@@ -251,8 +251,16 @@ export default{
       tabsWindow: 1,
       donutSeries: [44, 55, 81],
       donutOptions: {
+        labels: ['Redeemed', 'Tokenized', 'Raw'], 
         chart: {
           type: 'donut',
+        },
+        plotOptions: {
+          pie: {
+            donut: {
+              size: '50%',
+            },
+          },
         },
         colors: ['#00393D', '#00555B', '#C6F221'],
         dataLabels: {
@@ -281,7 +289,7 @@ export default{
         { title: 'Region', key: 'region', sortable: false },
         { title: 'Asset ID', key: 'id', sortable: false },
         { title: 'MWh', key: 'mwh', sortable: false },
-        { title: 'Volume', key: 'status', sortable: false },
+        { title: 'Status', key: 'status', sortable: false },
       ],
       dataMarketplace: [
         { 
