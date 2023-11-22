@@ -155,7 +155,8 @@
     align-items: center;
 
     .card-dialog-reset{
-     width: 600px!important;
+     width: 600px;
+     max-width: 600px!important;
      position: relative;
      padding-block: 20px!important;
      .tertiary{
@@ -228,7 +229,8 @@
     align-items: center;
 
     .card-dialog-company{
-      width: 600px!important;
+    width: 600px;
+    max-width: 600px!important;
      position: relative;
      padding-block: 20px!important;
      .tertiary{
@@ -300,7 +302,8 @@
   justify-content: center;
   align-items: center;
   .card-dialog-connect{
-    width: 900px!important;
+    max-width: 900px!important;
+    width: 900px;
     position: relative;
     padding-block: 20px!important;
     .tertiary{
@@ -338,7 +341,8 @@
    justify-content: center;
    align-items: center;
    .card-dialog-credit-card{
-     width: 600px!important;
+     width: 600px;
+     max-width: 600px!important;
      position: relative;
      padding-block: 20px!important;
      .tertiary{
@@ -411,7 +415,8 @@
    justify-content: center;
    align-items: center;
    .card-dialog-2fa{
-     width: 400px!important;
+     width: 400px;
+     max-width: 400px!important;
      position: relative;
      padding-block: 20px!important;
      .tertiary{
@@ -493,7 +498,8 @@
     justify-content: center;
     align-items: center;
     .card-dialog-participant{
-      width: 900px!important;
+      width: 900px;
+      max-width: 900px!important;
       position: relative;
       padding-block: 20px!important;
       .tertiary{
@@ -549,7 +555,8 @@
    justify-content: center;
    align-items: center;
    .card-dialog-form{
-     width: 400px!important;
+     width: 400px;
+     max-width: 400px!important;
      position: relative;
      padding-block: 20px!important;
      .tertiary{
