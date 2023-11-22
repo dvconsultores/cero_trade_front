@@ -79,12 +79,13 @@
         </v-tabs>
       </v-col>
 
-      <v-col xl="6" lg="6" cols="12" class="divrow aend jend" style="gap: 10px;">
+      <v-col xl="6" lg="6" cols="12" class="divrow aend jend delete-mobile" style="gap: 10px;">
         <v-btn class="btn2"><img src="@/assets/sources/icons/sell-btn.svg" alt="Sell">Sell</v-btn>
         <v-btn class="btn2"><img src="@/assets/sources/icons/sell-btn.svg" alt="Sell">Take of market</v-btn>
         <!-- <v-btn class="btn2"><img src="@/assets/sources/icons/de-tokenize-btn.svg" alt="Sell">De-tokenize</v-btn>
         <v-btn class="btn2"><img src="@/assets/sources/icons/tokenize-btn.svg" alt="Sell">Tokenize</v-btn> -->
         <v-btn class="btn2"><img src="@/assets/sources/icons/redeem-btn.svg" alt="Sell">Redeem</v-btn>
+        <v-btn class="btn2"><v-icon>mdi-plus</v-icon>Select</v-btn>
       </v-col>
     </v-row>
 
@@ -130,7 +131,7 @@
           <v-btn class="btn-toggle" @click="windowStep = 2"><img src="@/assets/sources/icons/card-view.svg" alt="Card icon"></v-btn>
         </v-btn-toggle>
 
-        <v-btn class="btn" icon="mdi-dots-vertical" style="font-size: 20px!important; padding: 15px!important;"></v-btn>
+        <!-- <v-btn class="btn" icon="mdi-dots-vertical" style="font-size: 20px!important; padding: 15px!important;"></v-btn> -->
       </div>
     </div>
 
@@ -165,6 +166,12 @@
             # {{ item.selectable.id }}
           </template>
 
+          <template #[`item.energy_source`]="{ item }">
+            <span>
+              <v-icon :class="{'blue' : item.selectable.energy_source === 'Hydroenergy', 'grey' : item.selectable.energy_source === 'Wind energy', 'yellow' : item.selectable.energy_source === 'Sun'}">{{ item.selectable.icon_source }}</v-icon> {{ item.selectable.energy_source }}
+            </span>
+          </template>
+
           <template #[`item.price`]="{ item }">
             <span class="divrow jspace acenter">
               {{ item.selectable.price }} <v-sheet style="color: #475467; ;padding-inline: 5px; border: 1px solid rgba(0,0,0,0.25); border-radius: 5px;">{{ item.selectable.currency }}</v-sheet>
@@ -173,8 +180,14 @@
 
           <template #[`item.mwh`]="{ item }">
             <span class="divrow acenter">
-              {{ item.selectable.mwh }} <v-icon>mdi-lightbulb-variant-outline</v-icon>
+              <v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.selectable.mwh }}
             </span>
+          </template>
+
+          <template #[`item.region`]="{ item }">
+            <div class="divrow acenter">
+              <img :src="iconMap[item.selectable.region_img]" alt="Icon" style="width: 20px;"> <span class="ml-2">{{ item.selectable.region }}</span>
+            </div>
           </template>
 
           <template #[`item.status`]="{ item }">
@@ -184,6 +197,7 @@
           </template>
         </v-data-table>
       </v-window-item>
+
       <v-window-item :value="2" class="pa-2">
         <v-row class="mt-6">
           <v-col v-for="(item,index) in dataMarketplace" :key="index" xl="3" lg="3" md="4" sm="6" cols="12">
@@ -193,7 +207,17 @@
                   <h6 class="mb-0 font700">IREC #{{ item.irec_id }}</h6>
                   <!-- <v-chip :class="{ 'red-chip': item.icon_arrow === 'mdi-arrow-down', 'green-chip': item.icon_arrow === 'mdi-arrow-up'}"><v-icon>{{ item.icon_arrow }}</v-icon> {{ item.percent }} %</v-chip> -->
                 </div>
-                <v-btn class="btn btn-dots" icon="mdi-dots-vertical"></v-btn>
+                <v-menu location="start">
+                  <template v-slot:activator="{ props }">
+                    <v-btn class="btn btn-dots" icon="mdi-dots-vertical" v-bind="props"></v-btn>
+                  </template>
+
+                  <v-card class="divcol pt-2 pb-2 pl-1 pr-1 card-menu" style="gap: 25px;">
+                    <a>Sell</a>
+                    <a>Redeem</a>
+                    <a>Take of market</a>
+                  </v-card>
+                </v-menu>
               </div>
 
               <div class="jspace divrow mb-1">
@@ -204,8 +228,10 @@
               </div>
 
               <div class="jspace divrow mb-1">
-                <span>Region</span>
-                <span style="color: #475467;">{{ item.region }}</span>
+                <span>Country</span>
+                <span style="color: #475467;" class="acenter">
+                  <img :src="iconMap[item.region_img]" alt="icon" class="mr-1" style="width: 20px;"> {{ item.region }}
+                </span>
               </div>
 
               <div class="jspace divrow mb-1">
@@ -238,6 +264,7 @@ import VueApexCharts from "vue3-apexcharts"
 import sphere from '@/assets/sources/icons/sphere.svg'
 import tokenized from '@/assets/sources/icons/tokenized-table.svg'
 import redeemed from '@/assets/sources/icons/redeemed-table.svg'
+import chile from '@/assets/sources/icons/CL.svg'
 
 
 
@@ -286,7 +313,7 @@ export default{
         { title: '$', key: 'checkbox', sortable: false, align: 'center'},
         { title: 'IREC ID', sortable: false, key: 'irec_id'},
         { title: 'Energy source', key: 'energy_source', sortable: false },
-        { title: 'Region', key: 'region', sortable: false },
+        { title: 'Country', key: 'region', sortable: false },
         { title: 'Asset ID', key: 'id', sortable: false },
         { title: 'MWh', key: 'mwh', sortable: false },
         { title: 'Status', key: 'status', sortable: false },
@@ -303,7 +330,8 @@ export default{
           currency: '$',
           icon_source: 'mdi-waves',
           energy_source: 'Hydroenergy',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
@@ -321,7 +349,8 @@ export default{
           currency: '$',
           icon_source: 'mdi-weather-sunny',
           energy_source: 'Sun',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
@@ -339,7 +368,8 @@ export default{
           currency: '$',
           icon_source: 'mdi-weather-windy',
           energy_source: 'Wind energy',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
@@ -357,7 +387,8 @@ export default{
           currency: '$',
           icon_source: 'mdi-weather-sunny',
           energy_source: 'Sun',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
@@ -375,7 +406,8 @@ export default{
           currency: '$',
           icon_source: 'mdi-weather-windy',
           energy_source: 'Wind energy',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
@@ -393,7 +425,8 @@ export default{
           currency: '$',
           icon_source: 'mdi-weather-sunny',
           energy_source: 'Sun',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
@@ -411,7 +444,8 @@ export default{
           currency: '$',
           icon_source: 'mdi-weather-windy',
           energy_source: 'Wind energy',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
@@ -429,7 +463,8 @@ export default{
           currency: '$',
           icon_source: 'mdi-weather-sunny',
           energy_source: 'Sun',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
@@ -447,7 +482,8 @@ export default{
           currency: '$',
           icon_source: 'mdi-weather-windy',
           energy_source: 'Wind energy',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
@@ -465,7 +501,8 @@ export default{
           currency: '$',
           icon_source: 'mdi-weather-sunny',
           energy_source: 'Sun',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
@@ -478,6 +515,7 @@ export default{
         sphere,
         redeemed,
         tokenized,
+        chile,
       },
 
       allItems: 'All items',
@@ -551,7 +589,7 @@ export default{
   },
   methods:{
     goDetails(){
-      this.$router.push('rec-single')
+      this.$router.push('rec-single-portfolio')
     }
   }
 }

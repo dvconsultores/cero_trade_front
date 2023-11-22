@@ -24,7 +24,7 @@
         <span class="center nav-text" :class="{ 'lime': $route.path === '/settings' }" @click="$router.push('/settings')">
           <img v-if="$route.path != '/settings'" src="@/assets/sources/icons/config.svg" alt="settings" class="mr-2"> 
           <img v-if="$route.path == '/settings'" src="@/assets/sources/icons/config-green.svg" alt="settings" class="mr-2"> 
-          Marketplace
+          Settings
         </span>
 
         <span class="center nav-text" :class="{ 'lime': $route.path === '/support' }" @click="$router.push('/support')">

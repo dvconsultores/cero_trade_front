@@ -7,7 +7,15 @@
       <v-icon>mdi-chevron-right</v-icon> 
       <span style="color: #00555B;">#12345678</span>
     </span>
-    <h3 class="acenter"><img src="@/assets/sources/images/avatar-rec.svg" alt="Avatar" class="mr-2"> #12345678</h3>
+    <div class="divrow acenter mb-4">
+      <div class="div-avatar-asset mr-6">
+        <img src="@/assets/sources/icons/CL.svg" alt="Flag" class="flag">
+        <div class="icon-div center">
+          <v-icon class="icon">mdi-weather-windy</v-icon>
+        </div>
+      </div>
+      <h3 class="mb-0"> #12345678</h3>
+    </div>
     <!-- <div class="divrow aend" style="gap: 10px;">
       <h4 class="mb-0">
         $ 124.05
@@ -133,7 +141,7 @@
                       Company address
                     </span>
                     <span class="mb-4">
-                      Fake address 123, Santiago, Chile
+                      Fake address 123, Chile
                     </span>
 
                     <v-sheet class="divrow" style="gap: 10px; background-color: transparent;">
@@ -149,12 +157,25 @@
             </v-card>
           </v-col> -->
           <v-col cols="12">
-            <v-card class="card">
-              <v-tabs v-model="tabsSpecifications">
-                <v-tab>Device Details</v-tab>
-                <v-tab>Specifications</v-tab>
-                <v-tab>Dates</v-tab>
+            <v-card class="card" style="padding-left: 20px!important;">
+              <v-tabs
+                v-model="tabsSpecifications"
+                bg-color="transparent"
+                color="basil"
+                class="mt-6"
+              >
+                <v-tab value="one" class="tab-btn" style="border: none!important; border-radius: 0px!important;">
+                  Device Details
+                </v-tab>
+                <v-tab value="two" class="tab-btn" style="border: none!important; border-radius: 0px!important;">
+                  Specifications
+                </v-tab>
+                <v-tab value="three" class="tab-btn delete-mobile" style="border: none!important; border-radius: 0px!important;">
+                  Dates
+                </v-tab>
               </v-tabs>
+
+              <hr style="border-bottom: 2px solid rgba(0,0,0,0.25)!important; width: 100%!important; position: relative; top: -2px;">
               <v-window v-model="tabsSpecifications">
                 <v-window-item value="one" v-for="(item, index) in dataDeviceDetails" :key="index">
                   <h5 class="bold mb-6 mt-4">Device Details</h5>
@@ -268,7 +289,7 @@
             :headers="headers"
             :items="dataMarketplace"
             items-per-page="-1"
-            class="my-data-table"
+            class="my-data-table deletemobile"
             density="compact"
             >
               <template #[`item.checkbox`]="{ item }">
@@ -283,6 +304,12 @@
               <template #[`item.facility`]="{ item }">
                 <span class="acenter">
                   <img :src="iconMap[item.selectable.facility_img]" :alt="item.facility_img" class="mr-1"> {{ item.selectable.facility }} 
+                </span>
+              </template>
+
+              <template #[`item.region`]="{ item }">
+                <span class="acenter">
+                  <img :src="iconMap[item.selectable.region_img]" :alt="item.region_img" class="mr-1" style="width: 20px;"> {{ item.selectable.region }} 
                 </span>
               </template>
 
@@ -304,6 +331,48 @@
                 </div>
               </template>
             </v-data-table>
+          </v-col>
+
+          <v-col v-for="(item,index) in dataMarketplace" :key="index" xl="3" lg="3" md="4" sm="6" cols="12" class="showmobile">
+            <v-card class="card cards-marketplace" @click="goDetails(item)">
+              <div class="divrow jspace acenter mb-6">
+                <div class="divrow center" style="gap: 5px;">
+                  <h6 class="mb-0 font700">{{ item.facility }}</h6>
+                </div>
+                <!-- <v-menu location="start">
+                  <template v-slot:activator="{ props }">
+                    <v-btn class="btn2 btn-dots" icon="mdi-dots-vertical" v-bind="props"></v-btn>
+                  </template>
+
+                  <v-card class="divcol pt-2 pb-2 pl-1 pr-1 card-menu" style="gap: 25px;">
+                    <a>Sell</a>
+                    <a>Redeem</a>
+                    <a>Take of market</a>
+                  </v-card>
+                </v-menu> -->
+              </div>
+
+              <div class="jspace divrow mb-1">
+                <span>Country</span>
+                <span style="color: #475467;" class="acenter">
+                  <img :src="iconMap[item.region_img]" alt="icon" class="mr-1" style="width: 20px;"> {{ item.region }}
+                </span>
+              </div>
+
+              <div class="jspace divrow mb-1">
+                <span>Price</span>
+                <span style="color: #475467;">{{ item.price }}</span>
+              </div>
+
+              <div class="jspace divrow mb-1">
+                <span>MWh</span>
+                <span style="color: #475467;"><v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.mwh }}</span>
+              </div>
+
+              <div class="jend">
+                <v-btn class="btn">Buy</v-btn>
+              </div>
+            </v-card>
           </v-col>
         </v-row>
       </v-col>
@@ -1002,6 +1071,7 @@
 import '@/assets/styles/pages/rec-single.scss'
 import VueApexCharts from "vue3-apexcharts"
 import sphere from '@/assets/sources/icons/sphere.svg'
+import chile from '@/assets/sources/icons/CL.svg'
 
 
 export default {
@@ -1015,7 +1085,7 @@ export default {
         { title: 'Company name', sortable: false, key: 'facility'},
         // { title: 'Asset ID', key: 'asset_id', sortable: false },
         // { title: 'Energy source', key: 'energy_source', sortable: false },
-        { title: 'Region', key: 'region', sortable: false },
+        { title: 'Country', key: 'region', sortable: false },
         { title: 'Price', key: 'price', sortable: false },
         { title: 'MWh', key: 'mwh', sortable: false },
         // { title: 'Volume Produced', key: 'volume', sortable: false },
@@ -1027,7 +1097,8 @@ export default {
           facility: 'Sphere',
           price: "125.00",
           currency: '$',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
         },
         {
@@ -1035,7 +1106,8 @@ export default {
           facility: 'Sphere',
           price: "125.00",
           currency: '$',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
         },
         {
@@ -1043,7 +1115,8 @@ export default {
           facility: 'Sphere',
           price: "125.00",
           currency: '$',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
         },
         {
@@ -1051,7 +1124,8 @@ export default {
           facility: 'Sphere',
           price: "125.00",
           currency: '$',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
         },
         {
@@ -1059,7 +1133,8 @@ export default {
           facility: 'Sphere',
           price: "125.00",
           currency: '$',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
         },
         {
@@ -1067,7 +1142,8 @@ export default {
           facility: 'Sphere',
           price: "125.00",
           currency: '$',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
         },
         {
@@ -1075,7 +1151,8 @@ export default {
           facility: 'Sphere',
           price: "125.00",
           currency: '$',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
         },
         {
@@ -1083,37 +1160,15 @@ export default {
           facility: 'Sphere',
           price: "125.00",
           currency: '$',
-          region: 'Santiago, Chile',
-          mwh: 32,
-        },
-        {
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: "125.00",
-          currency: '$',
-          region: 'Santiago, Chile',
-          mwh: 32,
-        },
-        {
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: "125.00",
-          currency: '$',
-          region: 'Santiago, Chile',
-          mwh: 32,
-        },
-        {
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: "125.00",
-          currency: '$',
-          region: 'Santiago, Chile',
+          region: 'Chile',
+          region_img: 'chile',
           mwh: 32,
         },
       ],
 
       iconMap: {
         sphere,
+        chile,
       },
       itemsPerPage: 100,
       dialogPaymentConfirm: false,

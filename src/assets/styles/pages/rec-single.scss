@@ -12,6 +12,38 @@
   justify-content: flex-start;
   margin-block: 30px;
 
+  .div-avatar-asset{
+    background-color: $primary;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+
+    .flag{
+      border: 4px solid #fff;
+      border-radius: 50%;
+      width: 30px;
+      top: -10px;
+      position: absolute;
+      left: -12px;
+    }
+
+    .icon-div{
+      border: 1px solid rgba(0,0,0,0.25);
+      background-color: #fff;
+      border-radius: 50%;
+      width: 25px;
+      bottom: -10px;
+      position: absolute;
+      right: -12px;
+      padding: 3px;
+
+      .icon{
+        font-size: 15px;
+      }
+    }
+  }
+
   .relative{
     position: relative;
   }
@@ -167,6 +199,30 @@
 
   .yellow{
     color: #FDB022;
+  }
+
+  .tab-btn{
+    @include media(max, 960px){
+      padding-inline: 10px!important;
+      width: max-content!important;
+      min-width: 1px!important;
+      span{
+        font-size: 12px;
+      }
+    }
+  }
+
+  .deletemobile{
+    @include media(max, 960px){
+      display: none;
+    }
+  }
+
+  .showmobile{
+    display: none;
+    @include media(max, 960px){
+      display: grid;
+    }
   }
 }
 
