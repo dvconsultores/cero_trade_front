@@ -164,9 +164,8 @@
                     <v-btn class="btn btn-dots" icon="mdi-dots-vertical" v-bind="props"></v-btn>
                   </template>
 
-                  <v-card class="divcol pt-2 pb-2 pl-1 pr-1 card-menu" style="gap: 25px;">
-                    <a>Buy</a>
-                    <a>Take of market</a>
+                  <v-card class="acenter jstart pt-2 pb-2 pl-1 pr-1 card-menu" style="gap: 25px;">
+                    <a @click="$router.push('rec-single-marketplace')">Buy</a>
                   </v-card>
                 </v-menu>
               </div>
