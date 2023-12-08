@@ -1,6 +1,6 @@
 .DS_Store
 node_modules
-# /dist
+/dist
 
 
 # local env files
@@ -21,3 +21,19 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# icp config
+.DS_Store
+node_modules
+dist
+dist-ssr
+TODOs.md
+*.log
+temp
+explorations
+.idea
+*.local
+/packages/vite/LICENSE
+*.cpuprofile
+.vscode/
+.dfx
