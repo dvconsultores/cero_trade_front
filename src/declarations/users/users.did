@@ -1,0 +1,103 @@
+type User = principal;
+type Redentions = 
+ vec record {
+       text;
+       Redention;
+     };
+type Redention = 
+ record {
+   irecId: text;
+   metadata: MetadataDesc;
+   operator: User;
+   owner: User;
+   tokenId: nat;
+ };
+type MetadataVal = 
+ variant {
+   BlobContent: blob;
+   Nat16Content: nat16;
+   Nat32Content: nat32;
+   Nat64Content: nat64;
+   Nat8Content: nat8;
+   NatContent: nat;
+   TextContent: text;
+ };
+type MetadataPurpose = 
+ variant {
+   Preview;
+   Rendered;
+ };
+type MetadataPart = 
+ record {
+   data: blob;
+   key_val_data: vec MetadataKeyVal;
+   purpose: MetadataPurpose;
+ };
+type MetadataKeyVal = 
+ record {
+   key: text;
+   val: MetadataVal;
+ };
+type MetadataDesc = vec MetadataPart;
+type IrecTokens = 
+ vec record {
+       text;
+       IrecToken;
+     };
+type IrecToken = 
+ record {
+   custodial: opt text;
+   irecId: IrecId;
+   tokenId: text;
+ };
+type IrecId = text;
+type InputDataUser = 
+ record {
+   nombre: text;
+   typeUser: text;
+   uid: opt text;
+ };
+type Error = 
+ variant {
+   AdminAlreadyExists;
+   AdminNotFound;
+   Other;
+   Unauthorized;
+   UserAlreadyExists;
+   UserNotFound;
+   ZeroAddress;
+ };
+type DataUserResult = 
+ variant {
+   Err: Error;
+   Ok: DataUser;
+ };
+type DataUser = 
+ record {
+   nombre: text;
+   typeUser: text;
+   uid: opt text;
+   wallet: User;
+ };
+type DataAdminResult = 
+ variant {
+   Err: Error;
+   Ok: DataAdmin;
+ };
+type DataAdmin = 
+ record {
+   level: nat;
+   wallet: User;
+ };
+service : {
+  addAdmin: (nat, principal) -> (DataAdminResult);
+  addRedention: (IrecId, nat, User) -> (Redention);
+  createUser: (InputDataUser) -> (DataUserResult);
+  getAdmin: (User) -> (DataAdminResult) query;
+  getIrecTokens: (User) -> (IrecTokens) query;
+  getRedentions: (User) -> (Redentions) query;
+  getUser: (User) -> (DataUser) query;
+  getWallet: () -> (principal);
+  removeAdmin: (principal) -> (DataAdminResult);
+  tokenizeIrec: (IrecId, MetadataDesc) -> (IrecId, text);
+}

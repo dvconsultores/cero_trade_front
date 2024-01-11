@@ -1,42 +1,29 @@
-# default
+# Cero Trade
 
 ## Project setup
 
 ```
-# yarn
-yarn
+# init ic background replica
+dfx start
 
-# npm
+# install dependencies
 npm install
 
-# pnpm
-pnpm install
+# generate declarations
+dfx generate
+
+cp src/declarations/market/* .dfx/local/canisters/market/
+cp src/declarations/nft/* .dfx/local/canisters/nft/
+cp src/declarations/users/* .dfx/local/canisters/users/
+
+# deploy canisters
+dfx deploy
 ```
 
 ### Compiles and hot-reloads for development
 
 ```
-# yarn
-yarn dev
-
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-```
-
-### Compiles and minifies for production
-
-```
-# yarn
-yarn build
-
-# npm
-npm run build
-
-# pnpm
-pnpm build
 ```
 
 ### Customize configuration

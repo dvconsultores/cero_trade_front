@@ -33,8 +33,11 @@
               </span> -->
 
               <v-col cols="12">
-                <v-btn class="center btn2" @click="$router.push('/dashboard')">Login with Internet Identity <img src="@/assets/sources/icons/internet-computer-icon.svg" alt="IC icon" class="ic-icon"></v-btn>
+                <ConnectButton />
+                <!-- <v-btn class="center btn2" @click="$router.push('/dashboard')">Login with Internet Identity <img src="@/assets/sources/icons/internet-computer-icon.svg" alt="IC icon" class="ic-icon"></v-btn> -->
               </v-col>
+              
+              <ConnectDialog />
 
               <!-- <v-col cols="12">
                 <v-btn class="center btn" @click="windowStep = 2; $router.push('/dashboard')">Log in <v-icon style="margin-bottom: -3px; margin-left: 5px;">mdi-login</v-icon></v-btn>
@@ -73,12 +76,44 @@
 
 <script>
 import '@/assets/styles/pages/login.scss'
+import "@connect2ic/core/style.css"
+import icIcon from '@/assets/sources/icons/internet-computer-icon.svg'
+import { ConnectButton, ConnectDialog } from "@connect2ic/vue"
+import { ref } from 'vue'
+const connectButtonRef = '.connect-button'
 
 export default {
-  data(){
+  components: { ConnectButton, ConnectDialog },
+  setup(){
     return{
-      windowStep: 1,
-      show_password: false,
+      windowStep: ref(1),
+      show_password: ref(false),
+    }
+  },
+  mounted() {
+    this.connectButtonStyles()
+  },
+  watch: {
+    connectButtonListener() {
+      this.connectButtonStyles()
+    }
+  },
+  computed: {
+    connectButtonListener() {
+      const connectButton = document.querySelector(connectButtonRef)
+      return connectButton?.textContent.trim()
+    }
+  },
+  methods: {
+    connectButtonStyles() {
+      const connectButton = document.querySelector(connectButtonRef)
+
+      // update styles
+      connectButton.className = "connect-button .v-btn btn2 center"
+
+      // update html
+      const innerText = connectButton.textContent.trim() === 'Connect' ? 'Login with Internet Identity' : 'Disconnect'
+      connectButton.innerHTML = `<span class="center">${innerText} <img src=${icIcon} alt="IC icon" class="ic-icon"></span>`
     }
   },
 }

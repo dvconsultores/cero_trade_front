@@ -1,12 +1,22 @@
 {
   "canisters": {
-    "counter": {
-      "main": "canisters/counter/main.mo",
+    "market": {
+      "main": "canisters/market/main.mo",
+      "type": "motoko"
+    },
+    "nft": {
+      "main": "canisters/nft/main.mo",
+      "type": "motoko"
+    },
+    "users": {
+      "main": "canisters/users/main.mo",
       "type": "motoko"
     },
     "assets": {
       "dependencies": [
-        "counter"
+        "market",
+        "nft",
+        "users"
       ],
       "frontend": {
         "entrypoint": "dist/index.html"

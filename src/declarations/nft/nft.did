@@ -1,0 +1,100 @@
+type TxReceipt = 
+ variant {
+   Err: ApiError;
+   Ok: nat;
+ };
+type TokenId = nat;
+type OwnerResult = 
+ variant {
+   Err: ApiError;
+   Ok: principal;
+ };
+type MintReceiptPart = 
+ record {
+   id: nat;
+   token_id: TokenId;
+ };
+type MintReceipt = 
+ variant {
+   Err: ApiError;
+   Ok: MintReceiptPart;
+ };
+type MetadataVal = 
+ variant {
+   BlobContent: blob;
+   Nat16Content: nat16;
+   Nat32Content: nat32;
+   Nat64Content: nat64;
+   Nat8Content: nat8;
+   NatContent: nat;
+   TextContent: text;
+ };
+type MetadataResult = 
+ variant {
+   Err: ApiError;
+   Ok: MetadataDesc;
+ };
+type MetadataPurpose = 
+ variant {
+   Preview;
+   Rendered;
+ };
+type MetadataPart = 
+ record {
+   data: blob;
+   key_val_data: vec MetadataKeyVal;
+   purpose: MetadataPurpose;
+ };
+type MetadataKeyVal = 
+ record {
+   key: text;
+   val: MetadataVal;
+ };
+type MetadataDesc = vec MetadataPart;
+type LogoResult = 
+ record {
+   data: text;
+   logo_type: text;
+ };
+type InterfaceId = 
+ variant {
+   Approval;
+   Burn;
+   Mint;
+   TransactionHistory;
+   TransferNotification;
+ };
+type ExtendedMetadataResult = 
+ variant {
+   Err: ApiError;
+   Ok: record {
+         metadata_desc: MetadataDesc;
+         token_id: TokenId;
+       };
+ };
+type ApiError = 
+ variant {
+   InvalidTokenId;
+   Other;
+   Unauthorized;
+   ZeroAddress;
+ };
+service : {
+  balanceOf: (principal) -> (nat64) query;
+  burn: (TokenId) -> (TxReceipt);
+  getCustodians: () -> (vec principal) query;
+  getMaxLimit: () -> (nat16) query;
+  getMetadata: (TokenId) -> (MetadataResult) query;
+  getMetadataForUser: (principal) -> (ExtendedMetadataResult);
+  getTokenIdsForUser: (principal) -> (vec TokenId) query;
+  init: () -> (vec principal);
+  logo: () -> (LogoResult) query;
+  mint: (principal, MetadataDesc) -> (MintReceipt);
+  name: () -> (text) query;
+  ownerOf: (TokenId) -> (OwnerResult) query;
+  safeTransferFrom: (principal, principal, TokenId) -> (TxReceipt);
+  supportedInterfaces: () -> (vec InterfaceId) query;
+  symbol: () -> (text) query;
+  totalSupply: () -> (nat64) query;
+  transferFrom: (principal, principal, TokenId) -> (TxReceipt);
+}

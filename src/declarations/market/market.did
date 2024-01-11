@@ -1,0 +1,69 @@
+type User = principal;
+type TokenId = text;
+type MetadataVal = 
+ variant {
+   BlobContent: blob;
+   Nat16Content: nat16;
+   Nat32Content: nat32;
+   Nat64Content: nat64;
+   Nat8Content: nat8;
+   NatContent: nat;
+   TextContent: text;
+ };
+type MetadataPurpose = 
+ variant {
+   Preview;
+   Rendered;
+ };
+type MetadataPart = 
+ record {
+   data: blob;
+   key_val_data: vec MetadataKeyVal;
+   purpose: MetadataPurpose;
+ };
+type MetadataKeyVal = 
+ record {
+   key: text;
+   val: MetadataVal;
+ };
+type MetadataDesc = vec MetadataPart;
+type MarketResult = 
+ variant {
+   Err: Error;
+   Ok: Market;
+ };
+type MarketInput = 
+ record {
+   price: nat;
+   tokenId: TokenId;
+ };
+type Market = 
+ record {
+   metadata: MetadataDesc;
+   owner: User;
+   price: nat;
+   tokenId: TokenId;
+ };
+type Error = 
+ variant {
+   AdminAlreadyExists;
+   AdminNotFound;
+   Other;
+   TheAmountIsLessThanThePrice;
+   TheTokenIsAlreadyOnSale;
+   TokenNotFound;
+   Unauthorized;
+   UserAlreadyExists;
+   UserNotFound;
+   ZeroAddress;
+ };
+service : {
+  addMarket: (MarketInput) -> (MarketResult);
+  buy: (TokenId, nat) -> (MarketResult);
+  getMarket: () -> (vec record {
+                          TokenId;
+                          Market;
+                        }) query;
+  getWallet: () -> (principal);
+  removeMarket: (TokenId) -> (MarketResult);
+}
