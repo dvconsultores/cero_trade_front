@@ -213,9 +213,9 @@
                   </template>
 
                   <v-card class="divcol pt-2 pb-2 pl-1 pr-1 card-menu" style="gap: 25px;">
-                    <a @click="$router.push('rec-single-portfolio')">Sell</a>
-                    <a @click="$router.push('rec-single-portfolio')">Redeem</a>
-                    <a @click="$router.push('rec-single-portfolio')">Take of market</a>
+                    <a @click="$router.push('/rec-single-portfolio')">Sell</a>
+                    <a @click="$router.push('/rec-single-portfolio')">Redeem</a>
+                    <a @click="$router.push('/rec-single-portfolio')">Take of market</a>
                   </v-card>
                 </v-menu>
               </div>
@@ -589,7 +589,7 @@ export default{
   },
   methods:{
     goDetails(){
-      this.$router.push('rec-single-portfolio')
+      this.$router.push('/rec-single-portfolio')
     }
   }
 }

@@ -2,12 +2,10 @@
   <Connect2ICProvider :client="client">
     <loader></loader>
     <router-view />
-    <!-- <Login></Login> -->
   </Connect2ICProvider>
 </template>
 
 <script setup>
-// import Login from '@/pages/login.vue'
 import Loader from '@/components/modals/loader.vue'
 /*
  * Connect2ic provides essential utilities for IC app development

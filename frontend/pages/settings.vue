@@ -94,7 +94,7 @@
           <span class="tertiary" style="font-weight: 300;">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
           </span>
-          <v-btn class="btn mt-6" @click="$router.push('support')">
+          <v-btn class="btn mt-6" @click="$router.push('/support')">
             Contact Support <v-icon>mdi-headphones</v-icon>
           </v-btn>
         </v-card>
