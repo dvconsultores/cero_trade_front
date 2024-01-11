@@ -9,47 +9,7 @@ const DEFAULT_TITLE = APP_NAMES.capitalize;
 const routes = [
   // ? Default routes
   {
-    path: '/register',
-    component: () => import('@/layouts/empty-layout.vue'),
-    children: [
-      {
-        path: '',
-        name: 'Register',
-        component: () => import('@/pages/register.vue'),
-        meta: { head: `Register - ${DEFAULT_TITLE}` }
-      },
-    ],
-  },
-
-
-  {
     path: '/',
-    component: () => import('@/layouts/empty-layout.vue'),
-    children: [
-      {
-        path: '',
-        name: 'Login',
-        component: () => import('@/pages/login.vue'),
-        meta: { head: `Login - ${DEFAULT_TITLE}` }
-      },
-    ],
-  },
-
-  {
-    path: '/password-reset',
-    component: () => import('@/layouts/empty-layout.vue'),
-    children: [
-      {
-        path: '',
-        name: 'Password Reset',
-        component: () => import('@/pages/password-reset.vue'),
-        meta: { head: `Password Reset - ${DEFAULT_TITLE}` }
-      },
-    ],
-  },
-
-  {
-    path: '/dashboard',
     component: () => import('@/layouts/default-layout.vue'),
     children: [
       {
@@ -58,89 +18,74 @@ const routes = [
         component: () => import('@/pages/dashboard.vue'),
         meta: { head: `Dashboard - ${DEFAULT_TITLE}` }
       },
-    ],
-  },
-  {
-    path: '/marketplace',
-    component: () => import('@/layouts/default-layout.vue'),
-    children: [
       {
-        path: '',
+        path: 'marketplace',
         name: 'Marketplace',
         component: () => import('@/pages/marketplace.vue'),
         meta: { head: `Marketplace - ${DEFAULT_TITLE}` }
       },
-    ],
-  },
-  {
-    path: '/rec-single-portfolio',
-    component: () => import('@/layouts/default-layout.vue'),
-    children: [
       {
-        path: '',
+        path: '/rec-single-portfolio',
         name: 'Rec Single Portfolio',
         component: () => import('@/pages/rec-single-portfolio.vue'),
         meta: { head: `Rec Single Portfolio - ${DEFAULT_TITLE}` }
       },
-    ],
-  },
-  {
-    path: '/rec-single-marketplace',
-    component: () => import('@/layouts/default-layout.vue'),
-    children: [
       {
-        path: '',
+        path: 'rec-single',
         name: 'Rec Single',
         component: () => import('@/pages/rec-single-marketplace.vue'),
         meta: { head: `Rec Single - ${DEFAULT_TITLE}` }
       },
-    ],
-  },
-  {
-    path: '/settings',
-    component: () => import('@/layouts/default-layout.vue'),
-    children: [
       {
-        path: '',
+        path: 'settings',
         name: 'Settings',
         component: () => import('@/pages/settings.vue'),
         meta: { head: `Settings - ${DEFAULT_TITLE}` }
       },
-    ],
-  },
-  {
-    path: '/support',
-    component: () => import('@/layouts/default-layout.vue'),
-    children: [
       {
-        path: '',
+        path: 'support',
         name: 'Support',
         component: () => import('@/pages/support.vue'),
         meta: { head: `Support - ${DEFAULT_TITLE}` }
       },
-    ],
-  },
-  {
-    path: '/my-portfolio',
-    component: () => import('@/layouts/default-layout.vue'),
-    children: [
       {
-        path: '',
+        path: 'my-portfolio',
         name: 'My portfolio',
         component: () => import('@/pages/my-portfolio.vue'),
         meta: { head: `My portfolio - ${DEFAULT_TITLE}` }
       },
-    ],
-  },
-  {
-    path: '/market-trends',
-    component: () => import('@/layouts/default-layout.vue'),
-    children: [
       {
-        path: '',
+        path: 'market-trends',
         name: 'Market trends',
         component: () => import('@/pages/market-trends.vue'),
         meta: { head: `Market trends - ${DEFAULT_TITLE}` }
+      },
+    ],
+  },
+
+
+  // ? Authenticated routes
+  {
+    path: '/auth',
+    component: () => import('@/layouts/empty-layout.vue'),
+    children: [
+      {
+        path: 'register',
+        name: 'Register',
+        component: () => import('@/pages/register.vue'),
+        meta: { head: `Register - ${DEFAULT_TITLE}` }
+      },
+      {
+        path: 'login',
+        name: 'Login',
+        component: () => import('@/pages/login.vue'),
+        meta: { head: `Login - ${DEFAULT_TITLE}` }
+      },
+      {
+        path: 'password-reset',
+        name: 'Password Reset',
+        component: () => import('@/pages/password-reset.vue'),
+        meta: { head: `Password Reset - ${DEFAULT_TITLE}` }
       },
     ],
   },

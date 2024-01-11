@@ -69,15 +69,6 @@ export default defineConfig((userConfig) => {
 
   return {
     base: env.VITE_BASE_URL,
-    // build: {
-    //   rollupOptions: {
-    //     external: [
-    //       'vuetify/labs/VSkeletonLoader',
-    //       'vuetify/labs/VOtpInput',
-    //       'vuetify/labs/VDataTable',
-    //     ],
-    //   },
-    // },
     plugins: [
       vue({ 
         template: { transformAssetUrls }

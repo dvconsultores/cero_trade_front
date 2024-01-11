@@ -42,3 +42,12 @@ pnpm build
 ### Customize configuration
 
 See [Configuration Reference](https://vitejs.dev/config/).
+
+
+### Guides
+
+#### vue frontend
+https://internetcomputer.org/docs/current/developer-docs/frontend/vue-frontend
+
+#### internet identity integration
+https://internetcomputer.org/docs/current/developer-docs/integrations/internet-identity/integrate-identity

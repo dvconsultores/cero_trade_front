@@ -1,13 +1,13 @@
 <template>
   <Connect2ICProvider :client="client">
     <loader></loader>
-    <!-- <router-view /> -->
-    <Dashboard></Dashboard>
+    <router-view />
+    <!-- <Login></Login> -->
   </Connect2ICProvider>
 </template>
 
 <script setup>
-import Dashboard from '@/pages/dashboard.vue'
+// import Login from '@/pages/login.vue'
 import Loader from '@/components/modals/loader.vue'
 /*
  * Connect2ic provides essential utilities for IC app development
