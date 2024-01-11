@@ -78,10 +78,12 @@
 import '@/assets/styles/pages/login.scss'
 import "@connect2ic/core/style.css"
 import icIcon from '@/assets/sources/icons/internet-computer-icon.svg'
-import { ConnectButton, ConnectDialog, useWallet, useBalance } from "@connect2ic/vue"
+import { ConnectButton, ConnectDialog, useWallet, useBalance, useCanister } from "@connect2ic/vue"
 import { ref } from 'vue'
 
-const connectButtonRef = '.connect-button'
+const
+// [market] = useCanister("market"),
+connectButtonRef = '.connect-button'
 
 export default {
   components: { ConnectButton, ConnectDialog },
@@ -100,20 +102,11 @@ export default {
   mounted() {
     this.connectButtonStyles()
 
+    // this.testing()
     // FIXME should show these values
     console.log("wallet", this.wallet);
     console.log("assets", this.assets);
-  },
-  watch: {
-    connectButtonListener() {
-      this.connectButtonStyles()
-    }
-  },
-  computed: {
-    connectButtonListener() {
-      const connectButton = document.querySelector(connectButtonRef)
-      return connectButton?.textContent.trim()
-    }
+    // console.log("market canister", market);
   },
   methods: {
     connectButtonStyles() {
@@ -123,8 +116,13 @@ export default {
       connectButton.className = "connect-button .v-btn btn2 center"
 
       // update html
-      const innerText = connectButton.textContent.trim() === 'Connect' ? 'Login with Internet Identity' : 'Disconnect'
+      const innerText = connectButton.textContent.trim() !== 'Disconnect' ? 'Login with Internet Identity' : connectButton.textContent
       connectButton.innerHTML = `<span class="center">${innerText} <img src=${icIcon} alt="IC icon" class="ic-icon"></span>`
+    },
+    testing() {
+      setTimeout(() => {
+        console.log("here", market?.value?.getWallet());
+      }, 2000);
     }
   },
 }
