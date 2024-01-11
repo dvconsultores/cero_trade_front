@@ -33,11 +33,9 @@
               </span> -->
 
               <v-col cols="12">
-                <ConnectButton />
+                <connect-button />
                 <!-- <v-btn class="center btn2" @click="$router.push('/dashboard')">Login with Internet Identity <img src="@/assets/sources/icons/internet-computer-icon.svg" alt="IC icon" class="ic-icon"></v-btn> -->
               </v-col>
-              
-              <ConnectDialog />
 
               <!-- <v-col cols="12">
                 <v-btn class="center btn" @click="windowStep = 2; $router.push('/dashboard')">Log in <v-icon style="margin-bottom: -3px; margin-left: 5px;">mdi-login</v-icon></v-btn>
@@ -76,17 +74,12 @@
 
 <script>
 import '@/assets/styles/pages/login.scss'
-import "@connect2ic/core/style.css"
-import icIcon from '@/assets/sources/icons/internet-computer-icon.svg'
-import { ConnectButton, ConnectDialog, useWallet, useBalance, useCanister } from "@connect2ic/vue"
+import ConnectButton from '@/components/connect-button.vue'
+import { useWallet, useBalance } from "@connect2ic/vue"
 import { ref } from 'vue'
 
-const
-// [market] = useCanister("market"),
-connectButtonRef = '.connect-button'
-
 export default {
-  components: { ConnectButton, ConnectDialog },
+  components: { ConnectButton },
   setup() {
     const
     [wallet] = useWallet(),
@@ -97,32 +90,6 @@ export default {
       show_password: ref(false),
       wallet,
       assets
-    }
-  },
-  mounted() {
-    this.connectButtonStyles()
-
-    // this.testing()
-    // FIXME should show these values
-    console.log("wallet", this.wallet);
-    console.log("assets", this.assets);
-    // console.log("market canister", market);
-  },
-  methods: {
-    connectButtonStyles() {
-      const connectButton = document.querySelector(connectButtonRef)
-
-      // update styles
-      connectButton.className = "connect-button .v-btn btn2 center"
-
-      // update html
-      const innerText = connectButton.textContent.trim() !== 'Disconnect' ? 'Login with Internet Identity' : connectButton.textContent
-      connectButton.innerHTML = `<span class="center">${innerText} <img src=${icIcon} alt="IC icon" class="ic-icon"></span>`
-    },
-    testing() {
-      setTimeout(() => {
-        console.log("here", market?.value?.getWallet());
-      }, 2000);
     }
   },
 }

@@ -1,6 +1,7 @@
 <template>
   <Connect2ICProvider :client="client">
-    <loader></loader>
+    <loader />
+    <test-canister />
     <router-view />
   </Connect2ICProvider>
 </template>
@@ -10,10 +11,10 @@ import Loader from '@/components/modals/loader.vue'
 /*
  * Connect2ic provides essential utilities for IC app development
  */
+import TestCanister from '@/components/test-canister.vue'
 import { createClient } from "@connect2ic/core"
 import { defaultProviders } from "@connect2ic/core/providers"
 import { Connect2ICProvider } from "@connect2ic/vue"
-import "@connect2ic/core/style.css"
 /*
  * Import canister definitions like this:
  */
