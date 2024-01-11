@@ -13,7 +13,7 @@ const routes = [
     component: () => import('@/layouts/default-layout.vue'),
     children: [
       {
-        path: '',
+        path: 'dashboard',
         name: 'Dashboard',
         component: () => import('@/pages/dashboard.vue'),
         meta: { head: `Dashboard - ${DEFAULT_TITLE}` }
@@ -98,7 +98,8 @@ const router = createRouter({
 
 
 router.beforeEach((to, from, next) => {
-  if (to.path === '/auth') return next({ name: 'Login' })
+  if (to.path === '/') return next({ name: 'Dashboard' })
+  else if (to.path === '/auth') return next({ name: 'Login' })
 
 
   // this route requires auth, check if logged in

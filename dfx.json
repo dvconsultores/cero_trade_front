@@ -34,5 +34,6 @@
       "type": "persistent"
     }
   },
+  "output_env_file": ".env.local",
   "version": 1
 }
