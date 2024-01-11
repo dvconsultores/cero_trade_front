@@ -17,11 +17,15 @@ import "@connect2ic/core/style.css"
 /*
  * Import canister definitions like this:
  */
-import * as counter from "../.dfx/local/canisters/counter"
+import * as market from "../.dfx/local/canisters/market"
+import * as nft from "../.dfx/local/canisters/nft"
+import * as users from "../.dfx/local/canisters/users"
 
 const client = createClient({
   canisters: {
-    counter,
+    market,
+    nft,
+    users
   },
   providers: defaultProviders,
   globalProviderConfig: {

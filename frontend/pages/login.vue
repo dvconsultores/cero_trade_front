@@ -78,20 +78,31 @@
 import '@/assets/styles/pages/login.scss'
 import "@connect2ic/core/style.css"
 import icIcon from '@/assets/sources/icons/internet-computer-icon.svg'
-import { ConnectButton, ConnectDialog } from "@connect2ic/vue"
+import { ConnectButton, ConnectDialog, useWallet, useBalance } from "@connect2ic/vue"
 import { ref } from 'vue'
+
 const connectButtonRef = '.connect-button'
 
 export default {
   components: { ConnectButton, ConnectDialog },
-  setup(){
+  setup() {
+    const
+    [wallet] = useWallet(),
+    [assets] = useBalance()
+
     return{
       windowStep: ref(1),
       show_password: ref(false),
+      wallet,
+      assets
     }
   },
   mounted() {
     this.connectButtonStyles()
+
+    // FIXME should show these values
+    console.log("wallet", this.wallet);
+    console.log("assets", this.assets);
   },
   watch: {
     connectButtonListener() {
