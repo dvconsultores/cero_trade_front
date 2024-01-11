@@ -75,22 +75,15 @@
 <script>
 import '@/assets/styles/pages/login.scss'
 import ConnectButton from '@/components/connect-button.vue'
-import { useWallet, useBalance } from "@connect2ic/vue"
 import { ref } from 'vue'
 
 export default {
   components: { ConnectButton },
   setup() {
-    const
-    [wallet] = useWallet(),
-    [assets] = useBalance()
-
     return{
       windowStep: ref(1),
-      show_password: ref(false),
-      wallet,
-      assets
+      show_password: ref(false)
     }
-  },
+  }
 }
 </script>
