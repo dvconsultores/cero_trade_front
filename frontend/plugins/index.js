@@ -16,8 +16,7 @@ import googleMaps from './google-maps'
 import mixins from './mixins-import'
 
 // Services
-import firebaseApi from '../services/firebase-api'
-// import nearApi from '@/services/near-api'
+import icpProvider from '../services/icp-provider'
 
 export function registerPlugins (app) {
   // Use principals
@@ -35,8 +34,7 @@ export function registerPlugins (app) {
     .use(store)
 
   // Use services
-  firebaseApi(app)
-  // nearApi(app)
+  icpProvider(app)
 
   // Use custom plugins
   // loadFonts()

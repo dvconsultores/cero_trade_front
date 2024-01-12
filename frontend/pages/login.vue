@@ -33,8 +33,7 @@
               </span> -->
 
               <v-col cols="12">
-                <connect-button />
-                <!-- <v-btn class="center btn2" @click="$router.push('/dashboard')">Login with Internet Identity <img src="@/assets/sources/icons/internet-computer-icon.svg" alt="IC icon" class="ic-icon"></v-btn> -->
+                <v-btn class="center btn2" @click="loginII">Login with Internet Identity <img src="@/assets/sources/icons/internet-computer-icon.svg" alt="IC icon" class="ic-icon"></v-btn>
               </v-col>
 
               <!-- <v-col cols="12">
@@ -74,15 +73,31 @@
 
 <script>
 import '@/assets/styles/pages/login.scss'
-import ConnectButton from '@/components/connect-button.vue'
-import { ref } from 'vue'
+import { ClientAuthApi } from '@/repository/auth-client-api'
+import { ICP_PROVIDE_COLLECTION } from '@/services/icp-provider'
+import { ref, inject } from 'vue'
 
 export default {
-  components: { ConnectButton },
   setup() {
+    const
+    client = inject(ICP_PROVIDE_COLLECTION.authClient),
+    clientAuthApi = new ClientAuthApi({ client })
+
     return{
+      clientAuthApi,
       windowStep: ref(1),
       show_password: ref(false)
+    }
+  },
+  beforeMount() {
+    this.logoutII()
+  },
+  methods: {
+    loginII() {
+      this.clientAuthApi.signIn(() => this.$router.push('/'))
+    },
+    logoutII() {
+      this.clientAuthApi.signOut()
     }
   }
 }

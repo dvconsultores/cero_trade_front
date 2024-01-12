@@ -98,6 +98,7 @@ export default defineConfig((userConfig) => {
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./frontend', import.meta.url)),
+        '@canister': fileURLToPath(new URL('./.dfx/local/canisters', import.meta.url)),
         // Here we tell Vite the "fake" modules that we want to define
         "vue": path.resolve("./node_modules/vue"),
         ...aliases,

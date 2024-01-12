@@ -1,8 +1,9 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
 import { useStorage } from "vue3-storage-secure";
-import { nextTick } from 'vue'
+import { inject, nextTick } from 'vue'
 import { APP_NAMES } from '@/plugins/dictionary';
+import { ICP_PROVIDE_COLLECTION } from '@/services/icp-provider';
 
 const DEFAULT_TITLE = APP_NAMES.capitalize;
 
@@ -11,6 +12,7 @@ const routes = [
   {
     path: '/',
     component: () => import('@/layouts/default-layout.vue'),
+    meta: { requiresAuth: true },
     children: [
       {
         path: 'dashboard',
@@ -97,15 +99,16 @@ const router = createRouter({
 })
 
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   if (to.path === '/') return next({ name: 'Dashboard' })
   else if (to.path === '/auth') return next({ name: 'Login' })
 
 
   // this route requires auth, check if logged in
   // if not, redirect to login page.
-  const tokenAuth = useStorage().getStorageSync("tokenAuth")
-  if (to.matched.some(record => record.meta.requiresAuth) && !tokenAuth)
+  const isAuthenticated = await inject(ICP_PROVIDE_COLLECTION.authClient).isAuthenticated()
+  // const tokenAuth = useStorage().getStorageSync("tokenAuth")
+  if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated)
     return next({ name: 'Login' })
 
   // go to wherever I'm going

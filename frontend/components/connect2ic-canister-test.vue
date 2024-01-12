@@ -11,4 +11,8 @@ const
 console.log("market", market.value);
 console.log("nft", nft.value);
 console.log("users", users.value);
+
+setTimeout(async () => {
+  console.log("testing", await market.value.getWallet());
+},1000)
 </script>
