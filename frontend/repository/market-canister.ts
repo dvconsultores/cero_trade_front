@@ -4,7 +4,7 @@ export class MarketCanister {
     this.market = market
   }
 
-  init(): void {
+  async init(): Promise<void> {
     console.log("here", this.market);
   }
 }

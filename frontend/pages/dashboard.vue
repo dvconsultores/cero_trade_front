@@ -454,12 +454,21 @@
 <script>
 import '@/assets/styles/pages/dashboard.scss'
 import VueApexCharts from "vue3-apexcharts"
+import { inject } from 'vue'
+import { ICP_PROVIDE_COLLECTION } from '@/services/icp-provider'
+import { MarketCanister } from '@/repository/market-canister'
 
 export default {
   components: {
     apexchart: VueApexCharts,
   },
   data(){
+    // TODO this is for showcase marketCanister
+    const
+    market = inject(ICP_PROVIDE_COLLECTION.market),
+    marketCanister = new MarketCanister({ market })
+    marketCanister.init()
+
     return{
       walletStatus: false,
       status2fa: false,
