@@ -393,7 +393,7 @@
           </v-card> -->
 
           <v-card class="card mb-6 divcol astart card-currency">
-            <div class="divrow acenter mb-4" style="gap: 5px;"> 
+            <!-- <div class="divrow acenter mb-4" style="gap: 5px;"> 
               <label for="currency">Currency</label>
               <v-select
               :items="['$ - USD', 'Bs - VES']"
@@ -405,8 +405,8 @@
               hide-details
               density="compact"
               ></v-select>
-            </div>
-            <label class="mb-2" for="currency">Choose seller</label>
+            </div> -->
+            <!-- <label class="mb-2" for="currency">Choose seller</label>
             <v-select
             :items="['Sphere']"
             variant="outline"
@@ -417,7 +417,7 @@
             hide-details
             density="compact"
             style="min-width: 100%;"
-            ></v-select>
+            ></v-select> -->
             <div class="jspace" style="width: 100%;">
               <div class="divcol" style="gap: 10px;">
                 <label>Choose quantity (MWh)</label>
@@ -438,20 +438,20 @@
           </v-card>
 
           <div class="divrow mb-4" style="gap: 10px; flex-wrap: wrap;">
-            <v-btn class="btn" @click="dialogPurchaseReview = true" style="min-width: 100%!important;">
+            <v-btn class="btn btn2" @click="dialogStaticPrice = true" style="flex: 1 1 calc(50% - 10px)">
+              Sell
+            </v-btn>
+
+            <v-btn class="btn btn2" @click="dialogTakeOffMarket = true" style="flex: 1 1 calc(50% - 10px)">
+              Take off market
+            </v-btn>
+
+            <v-btn class="btn btn2" @click="dialogPurchaseReview = true" style="flex: 1 1 calc(50% - 10px)">
               Buy
             </v-btn>
 
-            <v-btn class="btn" @click="dialogRedeemSure = true" style="min-width: 49%!important;">
+            <v-btn class="btn" @click="dialogRedeemSure = true" style="flex: 1 1 calc(50% - 10px)">
               Reedem Token
-            </v-btn>
-
-            <!-- <v-btn class="btn btn2" @click="dialogParticipantBenefits = true" style="min-width: 31%!important;">
-              Tokenize
-            </v-btn> -->
-
-            <v-btn class="btn btn2" @click="dialogStaticPrice = true" style="min-width: 48%!important;">
-              Sell token
             </v-btn>
           </div>
 
@@ -493,7 +493,61 @@
         </v-col>
       </v-col>
     </v-row>
+    
+    <!-- Dialog Take off market -->
+    <v-dialog v-model="dialogTakeOffMarket" persistent>
+      <v-card class="card dialog-card-detokenize">
+        <v-icon class="close" @click="dialogTakeOffMarket = false">mdi-close</v-icon>
+        <v-sheet class="mb-6 double-sheet">
+          <v-sheet>
+            <img src="@/assets/sources/icons/wallet.svg" alt="Wallet" style="width: 20px;">
+          </v-sheet>
+        </v-sheet>
+        <h6>Take off market details</h6>
+        <span class="tertiary">You are about to take some of your tokens off the marketplace. They will just be stored in your portafolio now.</span>
 
+        <v-card class="card mt-6 pa-6" v-for="(item, index) in dataCardEnergy" :key="index">
+          <span class="bold mt-3">Checkout review</span>
+
+          <v-divider class="mb-3 mt-4"  thickness="2" style="width: 150%; position: relative; left: -50px;"></v-divider>
+          
+          <div class="jspace divrow mb-4 acenter">
+            <h5 class="acenter mb-0 bold h5-mobile"><img src="@/assets/sources/images/avatar-rec.svg" alt="Avatar" class="mr-2" style="width: 40px;"> #123455667</h5>
+            <div class="divrow mb-0 astart acenter">
+              <h5 class="mb-0 mr-2 h5-mobile">
+                $ 124.05
+              </h5>
+              <span style="color:#475467">per MWh</span>
+            </div>          
+          </div>
+          
+          <div class="jspace divrow mb-1">
+            <span style="color: #475467;">Energy source type</span>
+            <span>
+              <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
+            </span>
+          </div>
+
+          <div class="jspace divrow mb-1">
+            <span style="color: #475467;">Country</span>
+            <span class="flex-center" style="gap: 5px">
+              <img :src="item.countryImg" :alt="`${item.country} flag`">
+              {{ item.country }}
+            </span>
+          </div>
+
+          <div class="jspace divrow mb-1">
+            <span style="color: #475467;">Amount</span>
+            <span>140MWh</span>
+          </div>
+        </v-card>
+
+        <div class="divrow center mt-6" style="gap: 10px;">
+          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogTakeOffMarket = false">Cancel</v-btn>
+          <v-btn class="btn" @click="dialogTakeOffMarket = false;" style="border: none!important;">Take off market</v-btn>
+        </div>
+      </v-card>
+    </v-dialog>
     <!-- Dialog Tokenize Are your sure? -->
     <v-dialog v-model="dialogAreYouSure" persistent>
       <v-card class="card dialog-card-tokenize">
@@ -615,40 +669,42 @@
         <v-icon class="close" @click="dialogRedeem = false">mdi-close</v-icon>
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
-            <img src="@/assets/sources/icons/redeem.svg" alt="Redeem" style="width: 20px;">
+            <img src="@/assets/sources/icons/wallet.svg" alt="Wallet" style="width: 20px;">
           </v-sheet>
         </v-sheet>
-        <h6>Token redemption details</h6>
-        <span class="tertiary mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
+        <h6>IREC redeemption details</h6>
+        <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
 
-        <label for="beneficiary">Beneficiary account (company)</label>
-        <v-select
-          id="beneficiary"
-          :items="['Account']"
-          variant="outline"
-          flat
-          menu-icon="mdi-chevron-down"
-          class="select mb-4 mt-1"
-          bg-color="#ffffff"
-          hide-details
-          density="compact"
-          placeholder="Select beneficiary account"
-          style="min-width: 100%;"
-          ></v-select>
+        <div class="flex-column mt-4" style="gap: 5px">
+          <label for="beneficiary">Beneficiary account (company)</label>
+          <v-select
+            id="beneficiary"
+            :items="[]"
+            variant="solo"
+            flat
+            menu-icon="mdi-chevron-down"
+            class="select mb-8"
+            bg-color="transparent"
+            placeholder="Select beneficiary account"
+          />
+        </div>
 
-        <v-card class="card mt-6 pa-6" v-for="(item, index) in dataCardEnergy" :key="index">
-          <div class="jspace divrow mb-1 acenter">
+        <v-btn class="btn2" style="width: max-content !important">Add beneficiary</v-btn>
+
+        <v-card class="card cards-rec mt-6 pa-6" v-for="(item, index) in dataCardEnergy" :key="index">
+          <span class="bold mt-3">Checkout review</span>
+
+          <v-divider class="mb-3 mt-4"  thickness="2" style="width: 150%; position: relative; left: -50px;"></v-divider>
+          
+          <div class="jspace divrow mb-2 acenter">
             <h5 class="acenter h5-mobile"><img src="@/assets/sources/images/avatar-rec.svg" alt="Avatar" class="mr-2" style="width: 40px;"> #123455667</h5>
-            <v-icon class="ml-1 mr-1">mdi-arrow-right</v-icon>
-            <h5 class="acenter h5-mobile"><img src="@/assets/sources/images/avatar-rec.svg" alt="Avatar" class="mr-2" style="width: 40px;"> #123455667</h5>
+            <div class="divrow astart acenter">
+              <h5 class="mr-2 h5-mobile">
+                $ 124.05
+              </h5>
+              <span style="color:#475467">per MWh</span>
+            </div>
           </div>
-
-          <!-- <div class="divrow mb-10 astart acenter">
-            <h5 class="mb-0 mr-2 h5-mobile">
-              $ 124.05
-            </h5>
-            <span style="color:#475467">per MWh</span>
-          </div> -->
 
           <div class="jspace divrow mb-1">
             <span style="color: #475467;">Energy source type</span>
@@ -658,38 +714,54 @@
           </div>
 
           <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Region</span>
-            <span>{{ item.region }}</span>
+            <span style="color: #475467;">Country</span>
+            <span class="flex-center" style="gap: 5px">
+              <img :src="item.countryImg" :alt="`${item.country} flag`">
+              {{ item.country }}
+            </span>
           </div>
 
           <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Start date</span>
-            <span>{{ item.date }}</span>
+            <span style="color: #475467;">Amount</span>
+            <span>140MWh</span>
           </div>
 
-          <div class="jspace divrow mb-1">
-            <span style="color: #475467;">End date</span>
-            <span>24/12/2023</span>
+          <v-divider class="mb-3 mt-4"  thickness="2" style="width: 100%;"></v-divider>
+
+          <div class="jspace divrow mt-4">
+            <span>Subtotal</span>
+            <span>$124.05</span>
+          </div>
+          <div class="jspace divrow mt-1">
+            <span>IVA (19%)</span>
+            <span>$12.41</span>
+          </div>
+          <div class="jspace divrow mt-1">
+            <span class="bold">Total</span>
+            <span class="bold">$136.46</span>
           </div>
         </v-card>
 
-        <!-- <div v-for="(item,index) in dataPdfRedeem" :key="index" class="border mb-4 mt-6 jspace">
-          <div class="divrow acenter">
-            <img src="@/assets/sources/icons/pdf.svg" alt="PDF">
-            <div class="divcol ml-2">
-              <span style="color: #475467; font-weight: 500;">{{ item.name }}</span>
-              <span style="color: #475467;">{{ item.weight }}</span>
+        <div class="border-card mt-6">
+          <div class="jspace divrow">
+            <span class="bold">Payment method</span>
+            <div class="divrow mb-4" style="gap: 10px;">
+              <!-- <img src="@/assets/sources/icons/visa.svg" alt="Visa">
+              <img src="@/assets/sources/icons/mastercard.svg" alt="Mastercard">
+              <img src="@/assets/sources/icons/mastercard-yellow.svg" alt="Mastercard"> -->
+              <img src="@/assets/sources/icons/internet-computer-icon.svg" alt="icp">
             </div>
           </div>
-
-          <v-card class="card center" style="width: max-content!important;">
-            <v-icon>mdi-tray-arrow-down</v-icon>
-          </v-card>
-        </div> -->
+          <div class="jspace divrow">
+            <v-btn class="btn" style="background-color: #fff!important; width: max-content!important;">Change</v-btn>
+            <!-- <span class="bold">Credit / Debit cards</span> -->
+            <span class="bold">Payment with ICP</span>
+          </div>
+        </div>
 
         <div class="divrow center mt-6" style="gap: 10px;">
           <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogRedeem = false">Cancel</v-btn>
-          <v-btn class="btn" @click="dialogRedeem = false;" style="border: none!important;">Redeem</v-btn>
+          <v-btn class="btn" @click="dialogRedeem = false" style="border: none!important;">Redeem</v-btn>
         </div>
       </v-card>
     </v-dialog>
@@ -849,10 +921,6 @@
             </div>          
           </div>
 
-          <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Price range</span>
-            <span>100.00€ - 148.00€</span>
-          </div>
 
           <div class="jspace divrow mb-1">
             <span style="color: #475467;">Energy source type</span>
@@ -862,15 +930,16 @@
           </div>
 
           <div class="jspace divrow mb-1">
-            <span style="color: #475467;">Region</span>
-            <span>{{ item.region }}</span>
+            <span style="color: #475467;">Country</span>
+            <span class="flex-center" style="gap: 5px">
+              <img :src="item.countryImg" :alt="`${item.country} flag`">
+              {{ item.country }}
+            </span>
           </div>
 
-          <v-divider class="mb-3 mt-4"  thickness="2" style="width: 100%;"></v-divider>
-
-          <div class="jspace divrow mt-4">
-            <span>Transaction fee (10%)</span>
-            <span>2.41€ - 8.24€</span>
+          <div class="jspace divrow mb-1">
+            <span style="color: #475467;">Amount</span>
+            <span>140MWh</span>
           </div>
         </v-card>
 
@@ -976,6 +1045,10 @@
             <span>$12.41</span>
           </div>
           <div class="jspace divrow mt-1">
+            <span>IVA (19%)</span>
+            <span>$12.41</span>
+          </div>
+          <div class="jspace divrow mt-1">
             <span class="bold">Total</span>
             <span class="bold">$136.46</span>
           </div>
@@ -983,16 +1056,18 @@
 
         <div class="border-card mt-6">
           <div class="jspace divrow">
-            <span class="bold">Payment methods</span>
+            <span class="bold">Payment method</span>
             <div class="divrow mb-4" style="gap: 10px;">
-              <img src="@/assets/sources/icons/visa.svg" alt="Visa">
+              <!-- <img src="@/assets/sources/icons/visa.svg" alt="Visa">
               <img src="@/assets/sources/icons/mastercard.svg" alt="Mastercard">
-              <img src="@/assets/sources/icons/mastercard-yellow.svg" alt="Mastercard">
+              <img src="@/assets/sources/icons/mastercard-yellow.svg" alt="Mastercard"> -->
+              <img src="@/assets/sources/icons/internet-computer-icon.svg" alt="icp">
             </div>
           </div>
           <div class="jspace divrow">
             <v-btn class="btn" style="background-color: #fff!important; width: max-content!important;">Change</v-btn>
-            <span class="bold">Credit / Debit cards</span>
+            <!-- <span class="bold">Credit / Debit cards</span> -->
+            <span class="bold">Payment with ICP</span>
           </div>
         </div>
 
@@ -1194,6 +1269,7 @@ export default {
         chile,
       },
       itemsPerPage: 100,
+      dialogTakeOffMarket: false,
       dialogPaymentConfirm: false,
       dialogPurchaseReview: false,
       dialogRedeemCertificates: false,
@@ -1281,6 +1357,8 @@ export default {
           icon_source: 'mdi-waves',
           energy_source: 'Hydroenergy',
           region: 'Valparaiso, Chile',
+          country: 'Chile',
+          countryImg: chile,
           date: '24/12/2023',
           date_start: '12/03/2023',
           co2: '0,12%',

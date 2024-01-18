@@ -31,47 +31,24 @@
 
     <div class="divrow jspace">
       <div class="divrow" style="gap: 15px;">
-        <!-- <v-select
-        v-model="allItems"
-        :items="items"
-        variant="solo"
-        flat
-        menu-icon="mdi-chevron-down"
-        class="select deletemobile"
-        bg-color="#EAECF0"
-        hide-details
-        density="compact"
-        ></v-select> -->
 
         <v-btn class="btn"><v-icon>mdi-filter-variant</v-icon> Add filter</v-btn>
       </div>
 
       <div class="divrow jcenter acenter" style="gap: 5px;">
-        <v-text-field
+        <!-- <v-text-field
         class="input" variant="solo" flat
         elevation="0" placeholder="Search"
         prepend-inner-icon="mdi-magnify"
         style="min-width: 110px;"
-        ></v-text-field>
-
-        <!-- <v-select
-        v-model="timeline"
-        :items="items_timeline"
-        variant="solo"
-        flat
-        menu-icon="mdi-chevron-down"
-        class="select deletemobile"
-        bg-color="#EAECF0"
-        hide-details
-        density="compact"
-        ></v-select> -->
+        ></v-text-field> -->
 
         <v-btn-toggle class="center deletemobile" rounded="1" v-model="toggle">
           <v-btn class="btn-toggle" @click="windowStep = 1"><img src="@/assets/sources/icons/table-view.svg" alt="Table icon"></v-btn>
           <v-btn class="btn-toggle" @click="windowStep = 2"><img src="@/assets/sources/icons/card-view.svg" alt="Card icon"></v-btn>
         </v-btn-toggle>
 
-        <v-btn class="btn deletemobile" icon="mdi-dots-vertical" style="font-size: 20px!important; padding: 15px!important;"></v-btn>
+        <!-- <v-btn class="btn deletemobile" icon="mdi-dots-vertical" style="font-size: 20px!important; padding: 15px!important;"></v-btn> -->
       </div>
     </div>
 

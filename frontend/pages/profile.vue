@@ -32,12 +32,12 @@
           <v-col xl="4" lg="4" cols="12" class="d-flex flex-column justify-space-between" style="gap: 20px">
             <v-card class="card relative d-flex flex-column-jcenter flex-grow-1">
               <span>Offered MWh</span>
-              <span style="font-size: 24px; font-weight: bold;">10MWh</span>
+              <h5 class="mb-0">10MWh</h5>
             </v-card>
             
             <v-card class="card relative d-flex flex-column-jcenter flex-grow-1">
               <span>Redeemed MWh</span>
-              <span style="font-size: 24px; font-weight: bold;">10MWh</span>
+              <h5 class="mb-0">10MWh</h5>
             </v-card>
           </v-col>
 
@@ -45,7 +45,7 @@
             <div class="flex-space-center mb-3">
               <h5 class="mb-0 bold">Sellers</h5>
 
-              <v-btn class="btn"><v-icon>mdi-google-circles</v-icon> Buy</v-btn>
+              <v-btn class="btn"><img src="@/assets/sources/icons/redeem-btn.svg" alt="Sell">Buy</v-btn>
             </div>
             
             <div class="divrow jspace">

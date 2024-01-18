@@ -65,12 +65,20 @@
                 <span style="color: #475467;">Radioactivity emission</span>
                 <span>{{ item.radioactivity }}</span>
               </div>
+              
+              <div class="jspace divrow mt-3 mb-1">
+                <span style="color: #475467;">Volume produced</span>
+                <span class="flex-center" style="gap: 5px">
+                  <v-icon>mdi-lightbulb-variant-outline</v-icon>
+                  {{ item.volume }}MWh
+                </span>
+              </div>
             </v-card>
           </v-col>
 
           <v-col xl="4" lg="4" cols="12">
             <v-card class="card relative" style="min-height: 100%!important;">
-              <span>Total available</span>
+              <span>Available in platform</span>
               <div id="chart">
                 <apexchart type="radialBar" :options="chartOptions" :series="series"></apexchart>
               </div>
@@ -395,7 +403,7 @@
           </v-card> -->
 
           <v-card class="card mb-6 divcol astart card-currency">
-            <div class="divrow acenter mb-4" style="gap: 5px;"> 
+            <!-- <div class="divrow acenter mb-4" style="gap: 5px;"> 
               <label for="currency">Currency</label>
               <v-select
               :items="['$ - USD', 'Bs - VES']"
@@ -407,19 +415,7 @@
               hide-details
               density="compact"
               ></v-select>
-            </div>
-            <label class="mb-2" for="currency">Choose seller</label>
-            <v-select
-            :items="['Sphere']"
-            variant="outline"
-            flat
-            menu-icon="mdi-chevron-down"
-            class="select mb-4"
-            bg-color="#ffffff"
-            hide-details
-            density="compact"
-            style="min-width: 100%;"
-            ></v-select>
+            </div> -->
             <div class="jspace" style="width: 100%;">
               <div class="divcol" style="gap: 10px;">
                 <label>Choose quantity (MWh)</label>
@@ -440,7 +436,7 @@
           </v-card>
 
           <div class="divrow mb-4" style="gap: 10px; flex-wrap: wrap;">
-            <v-btn class="btn" @click="dialogPurchaseReview = true" style="min-width: 100%!important;">
+            <v-btn class="btn" @click="dialogChooseSeller = true" style="min-width: 100%!important;">
               Buy
             </v-btn>
 
@@ -903,6 +899,44 @@
         </div>
       </v-card>
     </v-dialog>
+
+    <!-- Dialog choose seller -->
+    <v-dialog v-model="dialogChooseSeller" persistent>
+      <v-card class="card dialog-card-detokenize">
+        <v-icon class="close" @click="dialogChooseSeller = false">mdi-close</v-icon>
+        <v-sheet class="mb-6 double-sheet">
+          <v-sheet>
+            <img src="@/assets/sources/icons/wallet.svg" alt="Wallet" style="width: 20px;">
+          </v-sheet>
+        </v-sheet>
+        <h6>Choose seller</h6>
+        <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
+
+        <div class="d-flex" style="gap: 20px">
+          <v-select
+            :items="['Sphere']"
+            variant="outline"
+            flat
+            menu-icon="mdi-chevron-down"
+            class="select mb-4"
+            bg-color="#ffffff"
+            hide-details
+            density="compact"
+          ></v-select>
+          
+          <div class="divcol" style="gap: 10px;">
+            <label class="text-end">Price</label>
+            <h6>$125.04</h6>
+          </div>
+        </div>
+
+        <div class="divrow center mt-6" style="gap: 10px;">
+          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogChooseSeller = false">Cancel</v-btn>
+          <v-btn class="btn" @click="dialogChooseSeller = false; dialogPurchaseReview = true" style="border: none!important;">Proceed with payment</v-btn>
+        </div>
+      </v-card>
+    </v-dialog>
+
     <!-- Dialog purchase review -->
     <v-dialog v-model="dialogPurchaseReview" persistent>
       <v-card class="card dialog-card-detokenize">
@@ -953,6 +987,10 @@
             <span>$12.41</span>
           </div>
           <div class="jspace divrow mt-1">
+            <span>IVA (19%)</span>
+            <span>$12.41</span>
+          </div>
+          <div class="jspace divrow mt-1">
             <span class="bold">Total</span>
             <span class="bold">$136.46</span>
           </div>
@@ -960,16 +998,18 @@
 
         <div class="border-card mt-6">
           <div class="jspace divrow">
-            <span class="bold">Payment methods</span>
+            <span class="bold">Payment method</span>
             <div class="divrow mb-4" style="gap: 10px;">
-              <img src="@/assets/sources/icons/visa.svg" alt="Visa">
+              <!-- <img src="@/assets/sources/icons/visa.svg" alt="Visa">
               <img src="@/assets/sources/icons/mastercard.svg" alt="Mastercard">
-              <img src="@/assets/sources/icons/mastercard-yellow.svg" alt="Mastercard">
+              <img src="@/assets/sources/icons/mastercard-yellow.svg" alt="Mastercard"> -->
+              <img src="@/assets/sources/icons/internet-computer-icon.svg" alt="icp">
             </div>
           </div>
           <div class="jspace divrow">
             <v-btn class="btn" style="background-color: #fff!important; width: max-content!important;">Change</v-btn>
-            <span class="bold">Credit / Debit cards</span>
+            <!-- <span class="bold">Credit / Debit cards</span> -->
+            <span class="bold">Payment with ICP</span>
           </div>
         </div>
 
@@ -1171,6 +1211,7 @@ export default {
         chile,
       },
       itemsPerPage: 100,
+      dialogChooseSeller: false,
       dialogPaymentConfirm: false,
       dialogPurchaseReview: false,
       dialogParticipantBenefits: false,
@@ -1266,6 +1307,7 @@ export default {
           date_start: '12/03/2023',
           co2: '0,12%',
           radioactivity: '0,005%',
+          volume: '45',
           // certification: 'Certification type',
         },
       ],
@@ -1330,161 +1372,6 @@ export default {
         labels: ['Available'],
       },
 
-      // seriesCandle: [{
-      //   data: [
-      //     {
-      //       x: new Date(1538778600000),
-      //       y: [180, 185, 179, 182]
-      //     },
-      //     {
-      //       x: new Date(1538780400000),
-      //       y: [182, 188, 179, 183]
-      //     },
-      //     {
-      //       x: new Date(1538782200000),
-      //       y: [179, 186, 180, 184]
-      //     },
-      //     {
-      //       x: new Date(1538784000000),
-      //       y: [183, 184, 182, 185]
-      //     },
-      //     {
-      //       x: new Date(1538785800000),
-      //       y: [181, 187, 178, 183]
-      //     },
-      //     {
-      //       x: new Date(1538787600000),
-      //       y: [180, 185, 179, 182]
-      //     },
-      //     {
-      //       x: new Date(1538789400000),
-      //       y: [183, 184, 179, 182] 
-      //     },
-      //     {
-      //       x: new Date(1538791200000),
-      //       y: [179, 187, 181, 184]
-      //     },
-      //     {
-      //       x: new Date(1538793000000),
-      //       y: [181, 185, 179, 182]
-      //     },
-      //     {
-      //       x: new Date(1538794800000),
-      //       y: [183, 184, 179, 182] 
-      //     },
-      //     {
-      //       x: new Date(1538796600000),
-      //       y: [180, 187, 179, 183]
-      //     },
-      //     {
-      //       x: new Date(1538798400000),
-      //       y: [182, 185, 181, 184]
-      //     },
-      //     {
-      //       x: new Date(1538800200000),
-      //       y: [181, 185, 180, 182]
-      //     },
-      //     {
-      //       x: new Date(1538802000000),
-      //       y: [179, 186, 179, 183]
-      //     },
-      //     {
-      //       x: new Date(1538803800000),
-      //       y: [180, 184, 178, 183]
-      //     },
-      //     {
-      //       x: new Date(1538805600000),
-      //       y: [183, 184, 179, 182] 
-      //     },
-      //     {
-      //       x: new Date(1538807400000),
-      //       y: [182, 185, 179, 183]
-      //     },
-      //     {
-      //       x: new Date(1538809200000),
-      //       y: [179, 188, 181, 184]
-      //     },
-      //     {
-      //       x: new Date(1538811000000),
-      //       y: [181, 186, 180, 183]
-      //     },
-      //     {
-      //       x: new Date(1538812800000),
-      //       y: [183, 184, 179, 182] 
-      //     },
-      //     {
-      //       x: new Date(1538814600000),
-      //       y: [180, 185, 179, 182]
-      //     },
-      //     {
-      //       x: new Date(1538816400000),
-      //       y: [182, 187, 180, 183]
-      //     },
-      //     {
-      //       x: new Date(1538818200000),
-      //       y: [179, 186, 181, 184]
-      //     },
-      //     {
-      //       x: new Date(1538820000000),
-      //       y: [183, 184, 179, 182] 
-      //     },
-      //     {
-      //       x: new Date(1538821800000),
-      //       y: [183, 184, 181, 185]
-      //     },
-      //     {
-      //       x: new Date(1538823600000),
-      //       y: [182, 186, 178, 183]
-      //     },
-      //     {
-      //       x: new Date(1538825400000),
-      //       y: [180, 187, 180, 184]
-      //     },
-      //     {
-      //       x: new Date(1538827200000),
-      //       y: [182, 185, 179, 183]
-      //     },
-      //     {
-      //       x: new Date(1538829000000),
-      //       y: [179, 186, 180, 182]
-      //     },
-      //     {
-      //       x: new Date(1538830800000),
-      //       y: [181, 185, 179, 183]
-      //     },
-      //   ]
-      // }],
-      // chartOptionsCandle: {
-      //   chart: {
-      //     type: 'candlestick',
-      //     height: 350,
-      //     toolbar: {
-      //       show: false
-      //     },
-      //   },
-      //   title: {
-      //     show: false,
-      //   },
-      //   xaxis: {
-      //     type: 'datetime',
-      //     labels: {
-      //       show: false
-      //     }
-      //   },
-      //   yaxis: {
-      //     tooltip: {
-      //       enabled: true
-      //     }
-      //   },
-      //   plotOptions: {
-      //     candlestick: {
-      //       colors: {
-      //         upward: '#00555B',
-      //         downward: '#F97066'
-      //       },
-      //     },
-      //   },
-      // },
       seriesBar: [
         {
         name: 'PRODUCT A',

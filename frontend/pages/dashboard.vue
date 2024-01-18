@@ -76,10 +76,10 @@
     <v-row>
       <v-col xl="9" lg="9" cols="12">
         <v-row>
-          <v-col xl="4" lg="4" md="4" cols="12">
-            <v-card class="card jspace no-bottom-pa">
+          <v-col xl="4" lg="4" md="4" cols="12" class="d-flex flex-column" style="gap: 20px">
+            <v-card class="card jspace no-bottom-pa flex-grow-1">
               <div class="divcol">
-                <span>Tokenized MWh</span>
+                <span>Total MWh</span>
                 <h4 class="bold mb-0">10MWh</h4>
               </div>
 
@@ -87,38 +87,16 @@
                 <apexchart type="area" height="80" :options="chartOptionsMwh" :series="seriesMwh"></apexchart>
               </div>
             </v-card>
-          </v-col>
-
-          <v-col xl="4" lg="4" md="4" cols="12">
-            <v-card class="card jspace no-bottom-pa">
+            
+            <v-card class="card jspace no-bottom-pa flex-grow-1">
               <div class="divcol">
-                <span>Tokenized MWh</span>
+                <span>Redeemed MWh</span>
                 <h4 class="bold mb-0">10MWh</h4>
               </div>
 
               <div style="width: 140px;">
                 <apexchart type="area" height="80" :options="chartOptionsMwh" :series="seriesMwh"></apexchart>
               </div>
-            </v-card>
-          </v-col>
-
-          <v-col xl="4" lg="4" md="4" cols="12">
-            <v-card class="card jspace no-bottom-pa">
-              <div class="divcol">
-                <span>Tokenized MWh</span>
-                <h4 class="bold mb-0">10MWh</h4>
-              </div>
-
-              <div style="width: 140px;">
-                <apexchart type="area" height="80" :options="chartOptionsMwh" :series="seriesMwh"></apexchart>
-              </div>
-            </v-card>
-          </v-col>
-
-          <v-col xl="4" lg="4" md="6" cols="12">
-            <v-card class="card mb-6" style="min-height: 100%!important;">
-              <h6 class="mb-10">My portfolio</h6>
-              <apexchart type="donut" :options="donutOptions" :series="donutSeries"></apexchart>
             </v-card>
           </v-col>
 

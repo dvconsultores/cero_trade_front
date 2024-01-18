@@ -22,6 +22,19 @@
         </v-card>
       </v-col>
 
+      <v-col xl="4" lg="4" md="4" sm="6" cols="12">
+        <v-card class="card" style="background-color: #F9FAFB!important;">
+          <v-icon class="mb-10">mdi-credit-card-outline</v-icon>
+          <h5 class="mb-6">Bank transfer details</h5>
+          <span class="tertiary" style="font-weight: 300;">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
+          </span>
+          <v-btn class="btn mt-6" @click="dialogBankTransferDetails = true">
+            Setup <v-icon>mdi-pencil-outline</v-icon>
+          </v-btn>
+        </v-card>
+      </v-col>
+
       <!-- <v-col xl="4" lg="4" md="4" sm="6" cols="12">
         <v-card class="card" style="background-color: #F9FAFB!important;">
           <img class="mb-10" src="@/assets/sources/icons/wallet.svg" alt="Wallet">
@@ -365,6 +378,88 @@
         <div class="divrow mt-6" style="gap: 10px;">
           <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogCompany = false">Cancel <v-icon>mdi-close</v-icon></v-btn>
           <v-btn class="btn" @click="dialogCompany = false;" style="border: none!important;">Save changes <v-icon>mdi-content-save-outline</v-icon></v-btn>
+        </div>
+      </v-card>
+    </v-dialog>
+    
+    <!-- Dialog bank details -->
+    <v-dialog v-model="dialogBankTransferDetails" persistent>
+      <v-card class="card card-dialog-company" style="width: min(100%, 600px) !important">
+        <v-icon class="close" @click="dialogBankTransferDetails = false">mdi-close</v-icon>
+        <v-sheet class="mb-10 double-sheet">
+          <v-sheet>
+            <v-icon style="width: 25px;">mdi-credit-card-outline</v-icon>
+          </v-sheet>
+        </v-sheet>
+        <h5>Bank transfer details</h5>
+
+        <div class="flex-column mb-5" style="gap: 5px">
+          <label for="account">Account owner name</label>
+          <v-text-field
+            id="account"
+            variant="solo"
+            flat
+            class="input"
+            placeholder="olivia@untitledui.com"
+          />
+        </div>
+        
+        <div class="flex-column mb-5" style="gap: 5px">
+          <label for="country">Country</label>
+          <v-select
+            id="country"
+            variant="solo"
+            flat
+            menu-icon="mdi-chevron-down"
+            class="input"
+            placeholder="United Kingdom"
+          />
+        </div>
+        
+        <div class="flex-column mb-5" style="gap: 5px">
+          <label for="number">Account number</label>
+          <v-text-field
+            id="number"
+            variant="solo"
+            flat
+            class="input"
+            placeholder="Card number"
+            hint="This is a hint text to help the user"
+            append-inner-icon="mdi-help-circle-outline"
+          />
+        </div>
+        
+        <aside class="d-flex flex-wrap mb-5" style="column-gap: 20px">
+          <div class="flex-column flex-grow-1" style="gap: 5px; flex-basis: 150px">
+            <label for="bank">Select Bank</label>
+            <v-text-field
+              id="bank"
+              variant="solo"
+              flat
+              class="input"
+              placeholder="BANCO BICE"
+            />
+          </div>
+          
+          
+          <div class="flex-column flex-grow-1" style="gap: 5px; flex-basis: 150px">
+            <label for="id-number">Enter ID number</label>
+            <v-text-field
+              id="id-number"
+              variant="solo"
+              flat
+              menu-icon="mdi-chevron-down"
+              class="input"
+              placeholder="19605978-4"
+              hint="This is a hint text to help the user"
+              append-inner-icon="mdi-help-circle-outline"
+            />
+          </div>
+        </aside>
+
+        <div class="divrow mt-6" style="gap: 10px;">
+          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogBankTransferDetails = false">Cancel <v-icon>mdi-close</v-icon></v-btn>
+          <v-btn class="btn" @click="dialogBankTransferDetails = false;" style="border: none!important;">Confirm <v-icon>mdi-check</v-icon></v-btn>
         </div>
       </v-card>
     </v-dialog>
@@ -752,6 +847,7 @@ export default{
       const show_password= ref(false);
       const dialogResetPassword= ref(false);
       const dialogCompany= ref(false);
+      const dialogBankTransferDetails= ref(false);
       const walletStatus= ref(false);
       const status2fa= ref(false);
       const verifyStatus= ref(false);
@@ -777,6 +873,7 @@ export default{
       show_password,
       dialogResetPassword,
       dialogCompany,
+      dialogBankTransferDetails,
       walletStatus,
       status2fa,
       verifyStatus,
