@@ -1,9 +1,9 @@
 @use "@/assets/styles/main.scss" as *;
 //---------------------------------------------------------------------------------------------//
-//========================================= my portfolio ========================================//
+//========================================= my-transactions ========================================//
 //---------------------------------------------------------------------------------------------//
 
-#my-portfolio {
+#my-transactions {
   @extend .parent;
   @extend .margin-global;
   display: flex;
@@ -11,13 +11,7 @@
   justify-content: flex-start;
   margin-block: 30px;
 
-  .delete-mobile{
-    @include media(max, 960px){
-      display: none;
-    }
-  }
-
-  h3, h5, h4{
+  h3{
     font-weight: 700;
   }
 
@@ -93,13 +87,6 @@
     }
   }
 
-  .card-mwh{
-    min-height: 100px!important; 
-    position: relative;
-    min-width: 300px!important;
-    max-width: 400px!important;
-  }
-
   .btn-toggle{
     border: 0px!important;
     background-color: transparent!important;
@@ -116,12 +103,6 @@
     background-color: #EAECF0;
     padding-inline: 5px;
     border-radius: 10px;
-  }
-
-  .btn2{
-    border: 2px solid #EAECF0;
-    background-color: var(--bg, #fff) !important;
-    padding-inline: 10px!important;
   }
 
   .cards-my-transactions{
@@ -178,21 +159,28 @@
     }
   }
 
-  .tab-btn{
-    @include media(max, 960px){
-      padding-inline: 10px!important;
-      width: max-content!important;
-      min-width: 1px!important;
-      span{
-        font-size: 12px;
-      }
+  .mbb16{
+    @include media(max, 660px){
+      margin-bottom: 16px!important;
     }
   }
-
-  .show-mobile{
+  .mbb0{
+    @include media(max, 660px){
+      margin-bottom: 0px!important;
+    }
+  }
+  .showmobile{
     display: none;
+
     @include media(max, 960px){
       display: grid;
+    }
+  }
+  .deletemobile{
+    display: flex;
+
+    @include media(max, 960px){
+      display: none;
     }
   }
 }
@@ -201,26 +189,65 @@
 .card-menu{
   background-color: #fff!important;
   border-radius: 5px!important;
-  width: 150px!important;
+  width: 100px!important;
   border: 1px solid #b9b8b8;
+  padding-block: 15px!important;
   a{
     color: #000;
     margin-left: 5px!important;
     cursor: pointer;
-    font-weight: 700;
+    font-weight: 700!important;
   }
 }
 
 
+/////////// responsive ////////////////////
+
+span{
+  @include media(max, 660px){
+    font-size: 12px!important;
+  }
+}
+
+.mbb16{
+  @include media(max, 660px){
+    margin-bottom: 16px!important;
+  }
+}
+.mbb0{
+  @include media(max, 660px){
+    margin-bottom: 0px!important;
+  }
+}
+
+.v-card{
+  @include media(max, 660px){
+    padding: 15px!important;
+  }
+}
 
 // /////////////// Data Table//////////////////////
 
+
+.v-table__wrapper{
+  overflow: visible!important;
+}
+
+table{
+  overflow: visible!important;
+}
+
+.v-table{
+  overflow: visible!important;
+}
 .my-data-table th{
   background-color: transparent!important;
   border: 1px solid #f2f3f6;
+  // box-shadow: 0 0 0 .3px rgba(0,0,0,0.1)!important;
   min-height: 1px!important;
   height: 40px!important;
   max-height: 40px!important;
+  overflow: visible!important;
 
   span{
     color: #000;
@@ -240,6 +267,7 @@
 .my-data-table td{
   background-color: transparent!important;
   border: 1px solid #f2f3f6;
+  // box-shadow: 0 0 0 .3px rgba(0,0,0,0.1)!important;
   min-height: 1px!important;
   height: 40px!important;
   max-height: 40px!important;
@@ -304,8 +332,15 @@
   }
 }
 
+.chip-currency{
+  color: #475467; 
+  padding-inline: 5px; 
+  border: 1px solid #EAECF0; 
+  border-radius: 5px;
+}
+
 
 .chip-table{
   padding-inline: 5px!important;
-  border: 1px solid rgba(0,0,0,0.25);
+  border: 1px solid #EAECF0;
 }

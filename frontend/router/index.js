@@ -28,13 +28,13 @@ const routes = [
       },
       {
         path: '/rec-single-portfolio',
-        name: 'Rec Single Portfolio',
+        name: 'RecSinglePortfolio',
         component: () => import('@/pages/rec-single-portfolio.vue'),
         meta: { head: `Rec Single Portfolio - ${DEFAULT_TITLE}` }
       },
       {
         path: 'rec-single-marketplace',
-        name: 'Rec Single-marketplace',
+        name: 'RecSingleMarketplace',
         component: () => import('@/pages/rec-single-marketplace.vue'),
         meta: { head: `Rec Single - ${DEFAULT_TITLE}` }
       },
@@ -52,9 +52,21 @@ const routes = [
       },
       {
         path: 'my-portfolio',
-        name: 'My portfolio',
+        name: 'MyPortfolio',
         component: () => import('@/pages/my-portfolio.vue'),
         meta: { head: `My portfolio - ${DEFAULT_TITLE}` }
+      },
+      {
+        path: 'my-transactions',
+        name: 'MyTransactions',
+        component: () => import('@/pages/my-transactions.vue'),
+        meta: { head: `My transactions - ${DEFAULT_TITLE}` }
+      },
+      {
+        path: 'profile',
+        name: 'Profile',
+        component: () => import('@/pages/profile.vue'),
+        meta: { head: `Profile - ${DEFAULT_TITLE}` }
       },
       {
         path: 'market-trends',

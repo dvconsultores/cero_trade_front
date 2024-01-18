@@ -36,7 +36,7 @@
 
       <div class="center divrow displaynone" style="gap: 20px;">
         <v-icon color="#fff">mdi-bell-outline</v-icon>
-        <v-sheet class="center divrow" style="gap: 10px; background-color: transparent;">
+        <v-sheet class="center divrow pointer" style="gap: 10px; background-color: transparent;" @click="$router.push('/profile')">
           <img src="@/assets/sources/images/avatar-online.svg" alt="Avatar">
           <div class="divcol">
             <span style="font-weight: 700; color: #fff;">Sysiphus</span>
@@ -49,7 +49,7 @@
       <img src="@/assets/sources/logos/logo-mobile.svg" alt="Logo" class="logo-mobile show-mobile">
 
       <div class="right-mobile" style="gap: 20px;">
-        <img src="@/assets/sources/images/avatar-online.svg" alt="Avatar" style="width: 35px;">
+        <img src="@/assets/sources/images/avatar-online.svg" alt="Avatar" class="pointer" style="width: 35px;" @click="$router.push('/profile')">
         <v-icon color="#fff" style="font-size: 25px;">mdi-bell-outline</v-icon>
         <img src="@/assets/sources/icons/menu-bars-mobile.svg" alt="Menu Bars" class="menu-bars show-mobile" @click.stop="drawer = !drawer">
       </div>
@@ -149,9 +149,9 @@ export default {
     }
   },
 
-  mounted(){
-    console.log(this.$route.path, 'doiendfwe')
-  }
+  // mounted(){
+  //   console.log(this.$route.path, 'doiendfwe')
+  // }
 }
 </script>
 

@@ -11,7 +11,11 @@
     <div class="jspace wrap mb-16" style="gap: 10px;">    
       <span style="color:#475467">Lorem ipsum dolor sit amet Lorem, ipsum dolor</span>
 
-      <v-btn class="btn2"><v-icon>mdi-pencil-outline</v-icon> Edit profile information</v-btn>
+      <div class="flex-center" style="gap: 20px;">
+        <v-btn class="btn2" style="--bg: rgb(var(--v-theme-primary))" @click="$router.push('/my-transactions')">My Transactions</v-btn>
+
+        <v-btn class="btn2"><v-icon>mdi-pencil-outline</v-icon> Edit profile information</v-btn>
+      </div>
     </div>
 
     <v-row>
