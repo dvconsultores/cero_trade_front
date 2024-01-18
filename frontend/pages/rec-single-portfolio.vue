@@ -301,25 +301,25 @@
 
               <template #[`item.facility`]="{ item }">
                 <span class="acenter">
-                  <img :src="iconMap[item.selectable.facility_img]" :alt="item.facility_img" class="mr-1"> {{ item.selectable.facility }} 
+                  <img :src="iconMap[item.facility_img]" :alt="item.facility_img" class="mr-1"> {{ item.facility }} 
                 </span>
               </template>
 
               <template #[`item.region`]="{ item }">
                 <span class="acenter">
-                  <img :src="iconMap[item.selectable.region_img]" :alt="item.region_img" class="mr-1" style="width: 20px;"> {{ item.selectable.region }} 
+                  <img :src="iconMap[item.region_img]" :alt="item.region_img" class="mr-1" style="width: 20px;"> {{ item.region }} 
                 </span>
               </template>
 
               <template #[`item.price`]="{ item }">
                 <span class="divrow jspace acenter">
-                  {{ item.selectable.price }} <v-sheet class="chip-currency bold">{{ item.selectable.currency }}</v-sheet>
+                  {{ item.price }} <v-sheet class="chip-currency bold">{{ item.currency }}</v-sheet>
                 </span>
               </template>
 
               <template #[`item.mwh`]="{ item }">
                 <span class="divrow acenter">
-                  <v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.selectable.mwh }}
+                  <v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.mwh }}
                 </span>
               </template>
 

@@ -33,8 +33,8 @@ const routes = [
         meta: { head: `Rec Single Portfolio - ${DEFAULT_TITLE}` }
       },
       {
-        path: 'rec-single',
-        name: 'Rec Single',
+        path: 'rec-single-marketplace',
+        name: 'Rec Single-marketplace',
         component: () => import('@/pages/rec-single-marketplace.vue'),
         meta: { head: `Rec Single - ${DEFAULT_TITLE}` }
       },
@@ -104,12 +104,13 @@ router.beforeEach(async (to, from, next) => {
   else if (to.path === '/auth') return next({ name: 'Login' })
 
 
-  // this route requires auth, check if logged in
+  //!FIXME commented for testing
+  /* // this route requires auth, check if logged in
   // if not, redirect to login page.
   const isAuthenticated = await inject(ICP_PROVIDE_COLLECTION.authClient).isAuthenticated()
   // const tokenAuth = useStorage().getStorageSync("tokenAuth")
   if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated)
-    return next({ name: 'Login' })
+    return next({ name: 'Login' }) */
 
   // go to wherever I'm going
   next()

@@ -93,49 +93,49 @@
           ></v-checkbox>
         </template>
 
-          <template #[`item.checkbox`]="{ item }">
+          <!-- <template #[`item.checkbox`]="{ item }">
             <v-checkbox
             v-model="item.checkbox"
             hide-details
             density="compact"
             style="max-width: 10px!important; min-width: 10px!important;"
             ></v-checkbox>
-          </template>
+          </template> -->
 
           <template #[`item.asset_id`]="{ item }">
             <span class="acenter bold" style="color: #475467;">
-              {{ item.selectable.asset_id }} 
+              {{ item.asset_id }} 
             </span>
           </template>
 
           <template #[`item.energy_source`]="{ item }">
             <span>
-              <v-icon :class="{'blue' : item.selectable.energy_source === 'Hydroenergy', 'grey' : item.selectable.energy_source === 'Wind energy', 'yellow' : item.selectable.energy_source === 'Sun'}">{{ item.selectable.icon_source }}</v-icon> {{ item.selectable.energy_source }}
+              <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
             </span>
           </template>
 
           <template #[`item.price`]="{ item }">
             <span class="divrow jspace acenter">
-              {{ item.selectable.price }} <v-sheet class="chip-currency bold">{{ item.selectable.currency }}</v-sheet>
+              {{ item.price }} <v-sheet class="chip-currency bold">{{ item.currency }}</v-sheet>
             </span>
           </template>
 
           <template #[`item.region`]="{ item }">
             <div class="divrow acenter">
-              <img :src="iconMap[item.selectable.region_img]" alt="Icon" style="width: 20px;"> <span class="ml-2">{{ item.selectable.region }}</span>
+              <img :src="iconMap[item.region_img]" alt="Icon" style="width: 20px;"> <span class="ml-2">{{ item.region }}</span>
             </div>
           </template>
 
           <template #[`item.mwh`]="{ item }">
             <span class="divrow acenter">
-              <v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.selectable.mwh }}
+              <v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.mwh }}
             </span>
           </template>
 
           <!-- <template #[`item.volume`]="{ item }">
             <div class="divrow acenter">
-              <v-chip style="border-radius: 10px!important;" :class="{ 'red-chip-table': item.selectable.icon_arrow === 'mdi-arrow-down', 'green-chip-table': item.selectable.icon_arrow === 'mdi-arrow-up'}"><v-icon>{{ item.selectable.icon_arrow }}</v-icon> {{ item.selectable.percent }} %</v-chip>
-              <span class="ml-2">{{ item.selectable.volume }}</span>
+              <v-chip style="border-radius: 10px!important;" :class="{ 'red-chip-table': item.icon_arrow === 'mdi-arrow-down', 'green-chip-table': item.icon_arrow === 'mdi-arrow-up'}"><v-icon>{{ item.icon_arrow }}</v-icon> {{ item.percent }} %</v-chip>
+              <span class="ml-2">{{ item.volume }}</span>
             </div>
           </template> -->
 
@@ -231,7 +231,7 @@ export default{
       toggle: 0,
 
        headers: [
-        { title: '', key: 'checkbox', sortable: false, align: 'center'},
+        // { title: '', key: 'checkbox', sortable: false, align: 'center'},
         // { title: 'Facility name', sortable: false, key: 'facility'},
         { title: 'Asset ID', key: 'asset_id', sortable: false },
         { title: 'Energy source', key: 'energy_source', sortable: false },

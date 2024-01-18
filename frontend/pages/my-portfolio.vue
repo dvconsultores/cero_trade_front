@@ -163,36 +163,36 @@
           </template>
 
           <template #[`item.id`]="{ item }">
-            # {{ item.selectable.id }}
+            # {{ item.id }}
           </template>
 
           <template #[`item.energy_source`]="{ item }">
             <span>
-              <v-icon :class="{'blue' : item.selectable.energy_source === 'Hydroenergy', 'grey' : item.selectable.energy_source === 'Wind energy', 'yellow' : item.selectable.energy_source === 'Sun'}">{{ item.selectable.icon_source }}</v-icon> {{ item.selectable.energy_source }}
+              <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
             </span>
           </template>
 
           <template #[`item.price`]="{ item }">
             <span class="divrow jspace acenter">
-              {{ item.selectable.price }} <v-sheet style="color: #475467; ;padding-inline: 5px; border: 1px solid rgba(0,0,0,0.25); border-radius: 5px;">{{ item.selectable.currency }}</v-sheet>
+              {{ item.price }} <v-sheet style="color: #475467; ;padding-inline: 5px; border: 1px solid rgba(0,0,0,0.25); border-radius: 5px;">{{ item.currency }}</v-sheet>
             </span>
           </template>
 
           <template #[`item.mwh`]="{ item }">
             <span class="divrow acenter">
-              <v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.selectable.mwh }}
+              <v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.mwh }}
             </span>
           </template>
 
           <template #[`item.region`]="{ item }">
             <div class="divrow acenter">
-              <img :src="iconMap[item.selectable.region_img]" alt="Icon" style="width: 20px;"> <span class="ml-2">{{ item.selectable.region }}</span>
+              <img :src="iconMap[item.region_img]" alt="Icon" style="width: 20px;"> <span class="ml-2">{{ item.region }}</span>
             </div>
           </template>
 
           <template #[`item.status`]="{ item }">
             <div class="divrow acenter">
-              <img :src="iconMap[item.selectable.icon_status]" alt="Icon"> <span class="ml-2">{{ item.selectable.status }}</span>
+              <img :src="iconMap[item.icon_status]" alt="Icon"> <span class="ml-2">{{ item.status }}</span>
             </div>
           </template>
         </v-data-table>
