@@ -84,7 +84,7 @@
               </div>
 
               <div style="width: 140px;">
-                <apexchart type="area" height="80" :options="chartOptionsMwh" :series="seriesMwh"></apexchart>
+                <mwh-chart height="80" :series="seriesMwh" />
               </div>
             </v-card>
             
@@ -95,7 +95,7 @@
               </div>
 
               <div style="width: 140px;">
-                <apexchart type="area" height="80" :options="chartOptionsMwh" :series="seriesMwh"></apexchart>
+                <mwh-chart height="80" :series="seriesMwh" />
               </div>
             </v-card>
           </v-col>
@@ -103,14 +103,14 @@
           <v-col xl="8" lg="8" md="6" cols="12">
             <v-card class="card" style="min-height: 100%!important;">
               <h6>Renewable sources</h6>
-              <apexchart type="bar" height="200" :options="chartOptionsRenewable" :series="seriesRenewable"></apexchart>
+              <renewable-chart height="200" :series="seriesRenewable" />
             </v-card>
           </v-col>
 
           <v-col cols="12">
             <v-card class="card">
               <h6>Tokenized I-RECs</h6>
-              <apexchart type="bar" height="250" :options="chartOptions" :series="series"></apexchart>
+              <irec-chart height="250" :series="series" />
             </v-card>
           </v-col>
         </v-row>
@@ -432,6 +432,9 @@
 <script>
 import '@/assets/styles/pages/dashboard.scss'
 import VueApexCharts from "vue3-apexcharts"
+import RenewableChart from '@/components/renewable-chart.vue'
+import MwhChart from '@/components/mwh-chart.vue'
+import IrecChart from '@/components/irec-chart.vue'
 import { inject } from 'vue'
 import { ICP_PROVIDE_COLLECTION } from '@/services/icp-provider'
 import { MarketCanister } from '@/repository/market-canister'
@@ -439,6 +442,9 @@ import { MarketCanister } from '@/repository/market-canister'
 export default {
   components: {
     apexchart: VueApexCharts,
+    RenewableChart,
+    MwhChart,
+    IrecChart
   },
   data(){
     // TODO this is for showcase marketCanister
@@ -461,38 +467,38 @@ export default {
       dialogConect: false,
       dialogCreditCrad: false,
       dialog2fa: false,
-      donutSeries: [44, 55, 81],
-      donutOptions: {
-        labels: ['Redeemed', 'Tokenized', 'Raw'], 
-        chart: {
-          type: 'donut',
-        },
-        plotOptions: {
-          pie: {
-            donut: {
-              size: '50%', // Ajusta este valor para cambiar el grosor del anillo
-            },
-          },
-        },
-        colors: ['#00393D', '#00555B', '#C6F221'],
-        dataLabels: {
-          enabled: false,
-        },
-        stroke: {
-          width: 0, // Ajusta este valor para cambiar el grosor del anillo
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 300
-            },
-            // legend: {
-            //   position: 'bottom'
-            // }
-          }
-        }]
-      },
+      // donutSeries: [44, 55, 81],
+      // donutOptions: {
+      //   labels: ['Redeemed', 'Tokenized', 'Raw'], 
+      //   chart: {
+      //     type: 'donut',
+      //   },
+      //   plotOptions: {
+      //     pie: {
+      //       donut: {
+      //         size: '50%', // Ajusta este valor para cambiar el grosor del anillo
+      //       },
+      //     },
+      //   },
+      //   colors: ['#00393D', '#00555B', '#C6F221'],
+      //   dataLabels: {
+      //     enabled: false,
+      //   },
+      //   stroke: {
+      //     width: 0, // Ajusta este valor para cambiar el grosor del anillo
+      //   },
+      //   responsive: [{
+      //     breakpoint: 480,
+      //     options: {
+      //       chart: {
+      //         width: 300
+      //       },
+      //       // legend: {
+      //       //   position: 'bottom'
+      //       // }
+      //     }
+      //   }]
+      // },
 
       series: [{
         name: 'PRODUCT A',
@@ -506,139 +512,15 @@ export default {
         name: 'PRODUCT C',
         data: [111, 187, 165, 115, 821, 814, 411, 173, 315, 115, 261, 314]
       },],
-      chartOptions: {
-        chart: {
-          type: 'bar',
-          height: 250,
-          stacked: true,
-          toolbar: {
-            show: false
-          },
-          zoom: {
-            enabled: true
-          }
-        },
-        colors: ['#00393D', '#00555B', '#EAECF0'],
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            legend: {
-              position: 'bottom',
-              offsetX: -10,
-              offsetY: 0
-            }
-          }
-        }],
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            borderRadius: 10,
-            dataLabels: {
-              enabled: false,
-            }
-          },
-        },
-        xaxis: {
-          type: 'category',
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        },
-        legend: {
-          show: false,
-        },
-        dataLabels: {
-          enabled: false
-        },
-        fill: {
-          opacity: 1
-        }
-      },
       seriesRenewable: [{
         name: 'PRODUCT A',
         data: [24, 55, 31, 67, 12, 43]
       },],
-      chartOptionsRenewable: {
-        chart: {
-          type: 'bar',
-          height: 200,
-          stacked: true,
-          toolbar: {
-            show: false
-          },
-          zoom: {
-            enabled: true
-          }
-        },
-        colors: ['#C6F221'],
-        
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            borderRadius: 10,
-            dataLabels: {
-              enabled: false,
-            }
-          },
-        },
-        yaxis: {
-          show: false,
-        },
-        xaxis: {
-          type: 'category',
-          categories: ['Wind', 'Solar', 'Biomass', 'Geothermal', 'Hydro', 'Ocean'],
-          labels: {
-            show: true,
-            style:{
-              fontWeight: 700,
-            }
-          },
-        },
-        dataLabels: {
-          enabled: false
-        },
-        legend: {
-          show: false,
-        },
-        fill: {
-          opacity: 1
-        },
-      },
-
       seriesMwh: [{
           name: 'Series 1',
           data: [31, 40, 28, 51, 42, 109, 100, 31, 40, 28, 51, 42, 109, 100 ]
         }, 
       ],
-      chartOptionsMwh: {
-        chart: {
-          height: 80,
-          type: 'area'
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          curve: 'straight',
-          colors: ['#00555B'] 
-        },
-        xaxis: {
-          type: 'datetime',
-          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z", "2018-09-19T07:30:00.000Z", "2018-09-19T08:00:00.000Z", "2018-09-19T08:30:00.000Z", "2018-09-19T09:00:00.000Z", "2018-09-19T09:30:00.000Z", "2018-09-19T10:00:00.000Z", "2018-09-19T10:30:00.000Z"],
-          labels: {
-            show: false
-          },
-          axisBorder: {
-            show: false
-          }
-        },
-        yaxis: {
-          labels: {
-            show: false 
-          }
-        },
-        grid: {
-          show: false
-        },
-      },
     }
   },
 }

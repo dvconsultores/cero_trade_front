@@ -22,7 +22,7 @@
       <v-col lg="9" md="8" cols="12">
         <v-card class="card" style="min-height: 100%!important;">
           <h6>Renewable sources</h6>
-          <apexchart type="bar" height="250" :options="chartOptions" :series="series"></apexchart>
+          <renewable-chart height="250" :series="series" />
         </v-card>
       </v-col>
 
@@ -240,7 +240,7 @@
 
 <script>
 import '@/assets/styles/pages/my-portfolio.scss'
-import VueApexCharts from "vue3-apexcharts"
+import RenewableChart from "@/components/renewable-chart.vue"
 import sphere from '@/assets/sources/icons/sphere.svg'
 import tokenized from '@/assets/sources/icons/tokenized-table.svg'
 import redeemed from '@/assets/sources/icons/redeemed-table.svg'
@@ -249,9 +249,7 @@ import chile from '@/assets/sources/icons/CL.svg'
 
 
 export default{
-  components: {
-    apexchart: VueApexCharts,
-  },
+  components: { RenewableChart },
   data(){
     return{
       windowStep: undefined,
@@ -508,46 +506,6 @@ export default{
         name: 'PRODUCT A',
         data: [24, 55, 31, 67, 12, 43]
       },],
-      chartOptions: {
-        chart: {
-          type: 'bar',
-          height: 150,
-          stacked: true,
-          toolbar: {
-            show: false
-          },
-          zoom: {
-            enabled: true
-          }
-        },
-        colors: ['#C6F221'],
-        
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            borderRadius: 10,
-            dataLabels: {
-              enabled: false,
-            }
-          },
-        },
-        yaxis: {
-          show: false,
-        },
-        xaxis: {
-          type: 'category',
-          categories: ['Wind', 'Solar', 'Biomass', 'Geothermal', 'Hydro', 'Ocean'],
-        },
-        dataLabels: {
-          enabled: false
-        },
-        legend: {
-          show: false,
-        },
-        fill: {
-          opacity: 1
-        }
-      },
     }
   },
   computed: {

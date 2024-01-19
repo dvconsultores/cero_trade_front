@@ -25,7 +25,7 @@
           <v-col xl="8" lg="8" cols="12">
             <v-card class="card" style="min-height: 100%!important;">
               <h6>Renewable sources</h6>
-              <apexchart type="bar" height="200" :options="chartOptionsRenewable" :series="seriesRenewable"></apexchart>
+              <renewable-chart height="200" :series="seriesRenewable" />
             </v-card>
           </v-col>
           
@@ -412,8 +412,7 @@
         </div>
 
         <div class="divrow center mt-6" style="gap: 10px;">
-          <v-btn class="btn" style="background-color: #fff!important;"  @click="$router.push('/marketplace')">Back to marketplace</v-btn>
-          <v-btn class="btn" @click="dialogPaymentConfirm = false; dialogRedeemCertificates = true" style="border: none!important;">View token</v-btn>
+          <v-btn class="btn flex-grow-1" @click="dialogPaymentConfirm = false; dialogRedeemCertificates = true" style="border: none!important;">Continue</v-btn>
         </div>
       </v-card>
     </v-dialog>
@@ -441,15 +440,13 @@
 
 <script>
 import '@/assets/styles/pages/profile.scss'
-import VueApexCharts from "vue3-apexcharts"
+import RenewableChart from "@/components/renewable-chart.vue"
 import sphere from '@/assets/sources/icons/sphere.svg'
 import chile from '@/assets/sources/icons/CL.svg'
 
 
 export default {
-  components:{
-    apexchart: VueApexCharts,
-  },
+  components: { RenewableChart },
   data(){
     return{
       windowStep: undefined,
@@ -644,109 +641,63 @@ export default {
         },
       ],
 
-      series: [43],
+      // series: [43],
       seriesRenewable: [{
         name: 'PRODUCT A',
         data: [24, 55, 31, 67, 12, 43]
       },],
-      chartOptionsRenewable: {
-        chart: {
-          type: 'bar',
-          height: 200,
-          stacked: true,
-          toolbar: {
-            show: false
-          },
-          zoom: {
-            enabled: true
-          }
-        },
-        colors: ['#C6F221'],
-        
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            borderRadius: 10,
-            dataLabels: {
-              enabled: false,
-            }
-          },
-        },
-        yaxis: {
-          show: false,
-        },
-        xaxis: {
-          type: 'category',
-          categories: ['Wind', 'Solar', 'Biomass', 'Geothermal', 'Hydro', 'Ocean'],
-          labels: {
-            show: true,
-            style:{
-              fontWeight: 700,
-            }
-          },
-        },
-        dataLabels: {
-          enabled: false
-        },
-        legend: {
-          show: false,
-        },
-        fill: {
-          opacity: 1
-        },
-      },
-      seriesBar: [
-        {
-        name: 'PRODUCT A',
-        data: [11424, 33355, 32431, 21167, 9212, 44543, 11664, 45155, 12841, 45637, 12122, 19443]
-        }, 
-      ],
-      chartOptionsBar: {
-        chart: {
-          type: 'bar',
-          height: 150,
-          stacked: true,
-          toolbar: {
-            show: false
-          },
-          zoom: {
-            enabled: true
-          }
-        },
-        colors: ['#00393D'],
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            legend: {
-              position: 'bottom',
-              offsetX: -10,
-              offsetY: 0
-            }
-          }
-        }],
-        plotOptions: {
-          bar: {
-            horizontal: false,
-            borderRadius: 10,
-            dataLabels: {
-              enabled: false,
-            }
-          },
-        },
-        xaxis: {
-          type: 'category',
-          categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        },
-        legend: {
-          show: false,
-        },
-        dataLabels: {
-          enabled: false
-        },
-        fill: {
-          opacity: 1
-        }
-      },
+      // seriesBar: [
+      //   {
+      //   name: 'PRODUCT A',
+      //   data: [11424, 33355, 32431, 21167, 9212, 44543, 11664, 45155, 12841, 45637, 12122, 19443]
+      //   }, 
+      // ],
+      // chartOptionsBar: {
+      //   chart: {
+      //     type: 'bar',
+      //     height: 150,
+      //     stacked: true,
+      //     toolbar: {
+      //       show: false
+      //     },
+      //     zoom: {
+      //       enabled: true
+      //     }
+      //   },
+      //   colors: ['#00393D'],
+      //   responsive: [{
+      //     breakpoint: 480,
+      //     options: {
+      //       legend: {
+      //         position: 'bottom',
+      //         offsetX: -10,
+      //         offsetY: 0
+      //       }
+      //     }
+      //   }],
+      //   plotOptions: {
+      //     bar: {
+      //       horizontal: false,
+      //       borderRadius: 10,
+      //       dataLabels: {
+      //         enabled: false,
+      //       }
+      //     },
+      //   },
+      //   xaxis: {
+      //     type: 'category',
+      //     categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      //   },
+      //   legend: {
+      //     show: false,
+      //   },
+      //   dataLabels: {
+      //     enabled: false
+      //   },
+      //   fill: {
+      //     opacity: 1
+      //   }
+      // },
     }
   },
   computed: {

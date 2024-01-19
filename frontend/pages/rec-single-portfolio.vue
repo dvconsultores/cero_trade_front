@@ -1138,8 +1138,7 @@
         </div>
 
         <div class="divrow center mt-6" style="gap: 10px;">
-          <v-btn class="btn" style="background-color: #fff!important;"  @click="$router.push('/marketplace')">Back to marketplace</v-btn>
-          <v-btn class="btn" @click="dialogPaymentConfirm = false; dialogRedeemCertificates = true" style="border: none!important;">View token</v-btn>
+          <v-btn class="btn flex-grow-1" @click="dialogPaymentConfirm = false; dialogRedeemCertificates = true" style="border: none!important;">Continue</v-btn>
         </div>
       </v-card>
     </v-dialog>

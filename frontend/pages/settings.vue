@@ -22,19 +22,6 @@
         </v-card>
       </v-col>
 
-      <v-col xl="4" lg="4" md="4" sm="6" cols="12">
-        <v-card class="card" style="background-color: #F9FAFB!important;">
-          <v-icon class="mb-10">mdi-credit-card-outline</v-icon>
-          <h5 class="mb-6">Bank transfer details</h5>
-          <span class="tertiary" style="font-weight: 300;">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
-          </span>
-          <v-btn class="btn mt-6" @click="dialogBankTransferDetails = true">
-            Setup <v-icon>mdi-pencil-outline</v-icon>
-          </v-btn>
-        </v-card>
-      </v-col>
-
       <!-- <v-col xl="4" lg="4" md="4" sm="6" cols="12">
         <v-card class="card" style="background-color: #F9FAFB!important;">
           <img class="mb-10" src="@/assets/sources/icons/wallet.svg" alt="Wallet">
@@ -122,6 +109,19 @@
           </span>
           <v-btn class="btn mt-6" @click="dialogBeneficiary = true">
             Edit accounts <v-icon>mdi-pencil-outline</v-icon>
+          </v-btn>
+        </v-card>
+      </v-col>
+      
+      <v-col xl="4" lg="4" md="4" sm="6" cols="12">
+        <v-card class="card flex-column" style="background-color: #F9FAFB!important; --h: 100%">
+          <img src="@/assets/sources/icons/wallet.svg" alt="wallet icon" class="mb-10" style="width: 20px">
+          <h5 class="mb-6">Select Prefered Payment</h5>
+          <span class="tertiary" style="font-weight: 300;">
+            Connect your wallet or include your bank transfer details.
+          </span>
+          <v-btn class="btn mt-auto mr-auto" @click="dialogSelectPayment = true">
+            Connect <v-icon>mdi-plus</v-icon>
           </v-btn>
         </v-card>
       </v-col>
@@ -378,6 +378,33 @@
         <div class="divrow mt-6" style="gap: 10px;">
           <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogCompany = false">Cancel <v-icon>mdi-close</v-icon></v-btn>
           <v-btn class="btn" @click="dialogCompany = false;" style="border: none!important;">Save changes <v-icon>mdi-content-save-outline</v-icon></v-btn>
+        </div>
+      </v-card>
+    </v-dialog>
+    
+    <!-- Dialog Select Payment -->
+    <v-dialog v-model="dialogSelectPayment" persistent>
+      <v-card class="card card-dialog-notification">
+        <v-icon class="close" @click="dialogSelectPayment = false;">mdi-close</v-icon>
+        <v-sheet class="mb-6 double-sheet">
+          <v-sheet>
+            <img src="@/assets/sources/icons/wallet.svg" alt="wallet icon" style="width: 20px">
+          </v-sheet>
+        </v-sheet>
+        <h5 class="bold">Select prefered payment</h5>
+        <span class="tertiary">Lorem ipsum dolor sit amet consectetur. Odio neque auctor neque a. Sed eu lobortis luctus ultrices nibh non massa augue.</span>
+
+        <div
+          v-for="(item, i) in payments"
+          :key="i"
+          class="div-radio-sell flex-column align-start"
+          style="cursor: default !important; gap: 15px"
+        >
+          <img :src="item.icon" :alt="`${item.name} icon`" :style="`width: ${item.width}px`">
+
+          <span class="bold">{{ item.name }}</span>
+
+          <v-btn class="btn2" @click="onConnectPayment(item)">Connect</v-btn>
         </div>
       </v-card>
     </v-dialog>
@@ -838,6 +865,8 @@
 
 <script>
 import '@/assets/styles/pages/settings.scss'
+import icpIcon from '@/assets/sources/icons/internet-computer-icon.svg'
+import bankIcon from '@/assets/sources/icons/bank.svg'
 import { ref } from 'vue'
 
 export default{
@@ -848,6 +877,7 @@ export default{
       const dialogResetPassword= ref(false);
       const dialogCompany= ref(false);
       const dialogBankTransferDetails= ref(false);
+      const dialogSelectPayment= ref(false);
       const walletStatus= ref(false);
       const status2fa= ref(false);
       const verifyStatus= ref(false);
@@ -866,6 +896,20 @@ export default{
       const dataBanks = ref([]);
       const address_bank = ref('');
       const account_name = ref('');
+      const payments = [
+        {
+          key: 'bank',
+          icon: bankIcon,
+          name: "Bank Transfer",
+          width: 50
+        },
+        {
+          key: 'icp',
+          icon: icpIcon,
+          name: "Payment with ICP",
+          width: 40
+        },
+      ]
 
     return{
       tabsWindow,
@@ -874,6 +918,7 @@ export default{
       dialogResetPassword,
       dialogCompany,
       dialogBankTransferDetails,
+      dialogSelectPayment,
       walletStatus,
       status2fa,
       verifyStatus,
@@ -891,10 +936,22 @@ export default{
       dataBanks,
       address_bank,
       account_name,
+      payments,
     }
   },
 
   methods:{
+    onConnectPayment(item) {
+      switch (item.key) {
+        case 'bank': {
+          this.dialogSelectPayment = false;
+          this.dialogBankTransferDetails = true
+        } break;
+        case 'icp': {
+          this.dialogSelectPayment = false;
+        } break;
+      }
+    },
     pushBanks() {
       if (this.address_bank && this.account_name) {
         this.dataBanks.push({
