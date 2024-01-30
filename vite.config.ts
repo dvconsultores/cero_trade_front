@@ -4,18 +4,17 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 // Utilities
 import { defineConfig, loadEnv } from 'vite'
-import { fileURLToPath, URL } from 'node:url'
-import path from "path"
 import dfxJson from "./dfx.json"
 import fs from "fs"
 
 // See guide on how to configure Vite at:
 // https://vitejs.dev/config/
 export default defineConfig((userConfig) => {
-  const env = loadEnv(userConfig.mode, process.cwd(), '')
+  const path = require('path'),
+  env = loadEnv(userConfig.mode, process.cwd(), ''),
   // isProduction = process.env.NODE_ENV === 'production',
 
-  const isDev = process.env["DFX_NETWORK"] !== "ic"
+  isDev = process.env["DFX_NETWORK"] !== "ic"
 
   let canisterIds
   try {
@@ -97,10 +96,10 @@ export default defineConfig((userConfig) => {
     },
     resolve: {
       alias: {
-        '@': fileURLToPath(new URL('./frontend', import.meta.url)),
-        '@canister': fileURLToPath(new URL('./.dfx/local/canisters', import.meta.url)),
         // Here we tell Vite the "fake" modules that we want to define
         "vue": path.resolve("./node_modules/vue"),
+        '@': path.resolve(__dirname, './frontend'),
+        '@canister': path.resolve(__dirname, './.dfx/local/canisters'),
         ...aliases,
       },
     },

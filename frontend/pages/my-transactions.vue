@@ -139,10 +139,12 @@
 import '@/assets/styles/pages/my-transactions.scss'
 import sphere from '@/assets/sources/icons/sphere.svg'
 import chile from '@/assets/sources/icons/CL.svg'
+import variables from '@/mixins/variables'
 
 export default{
   data() {
     return{
+      basePath: variables.basePath,
       tabsMobile: 1,
       itemsPerPage: 100,
       windowStep: undefined,
@@ -392,7 +394,7 @@ export default{
 
   methods:{
     goDetails(){
-      this.$router.push('/rec-single-my-transactions')
+      this.$router.push(basePath('/rec-single-my-transactions'))
     },
   },
   watch: {

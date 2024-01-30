@@ -94,7 +94,7 @@
           <span class="tertiary" style="font-weight: 300;">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
           </span>
-          <v-btn class="btn mt-6" @click="$router.push('/support')">
+          <v-btn class="btn mt-6" @click="$router.push(basePath('/support'))">
             Contact Support <v-icon>mdi-headphones</v-icon>
           </v-btn>
         </v-card>
@@ -868,9 +868,11 @@ import '@/assets/styles/pages/settings.scss'
 import icpIcon from '@/assets/sources/icons/internet-computer-icon.svg'
 import bankIcon from '@/assets/sources/icons/bank.svg'
 import { ref } from 'vue'
+import variables from '@/mixins/variables'
 
 export default{
   setup(){
+      const { basePath } = variables
       const tabsWindow = ref(1);
       const dialogNotification = ref(false);
       const show_password= ref(false);
@@ -912,6 +914,7 @@ export default{
       ]
 
     return{
+      basePath,
       tabsWindow,
       dialogNotification,
       show_password,

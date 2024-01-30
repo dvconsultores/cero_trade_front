@@ -152,7 +152,7 @@
                           </template>
 
                           <v-card class="acenter jstart pt-2 pb-2 pl-1 pr-1 card-menu" style="gap: 25px;">
-                            <a @click="$router.push('/rec-single-marketplace')">Buy</a>
+                            <a @click="$router.push(basePath('/rec-single-marketplace'))">Buy</a>
                           </v-card>
                         </v-menu>
                       </div>
@@ -443,12 +443,14 @@ import '@/assets/styles/pages/profile.scss'
 import RenewableChart from "@/components/renewable-chart.vue"
 import sphere from '@/assets/sources/icons/sphere.svg'
 import chile from '@/assets/sources/icons/CL.svg'
+import variables from '@/mixins/variables'
 
 
 export default {
   components: { RenewableChart },
   data(){
     return{
+      basePath: variables.basePath,
       windowStep: undefined,
       toggle: 0,
       headers: [

@@ -7,6 +7,11 @@ import * as nft from "../../.dfx/local/canisters/nft"
 import * as users from "../../.dfx/local/canisters/users"
 
 
+export const canisterImpl = {
+  // canisterId: '' // <-- prod
+  canisterId: 'bkyz2-fmaaa-aaaaa-qaaaq-cai' // <-- develop
+}
+
 export const ICP_PROVIDE_COLLECTION = {
   authClient: 'authClient',
   market: 'market',

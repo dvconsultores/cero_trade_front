@@ -1,11 +1,12 @@
 {
   "name": "cero_trade",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
-    "dev": "vite",
+    "serve": "vite preview",
     "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint . --fix --ignore-path .gitignore"
+    "lint": "eslint . --fix --ignore-path .gitignore",
+    "dev": "vite",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@connect2ic/core": "^0.1.6",
@@ -49,6 +50,7 @@
     "sass": "^1.64.2",
     "sass-loader": "^13.3.2",
     "vite": "^5.0.2",
-    "vite-plugin-vuetify": "^2.0.1"
+    "vite-plugin-vuetify": "^2.0.1",
+    "vue-cli-plugin-vuetify": "~2.5.8"
   }
 }

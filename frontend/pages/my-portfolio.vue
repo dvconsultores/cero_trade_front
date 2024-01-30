@@ -12,7 +12,7 @@
       <span style="color:#475467">Lorem ipsum dolor sit amet Lorem, ipsum dolor</span>
 
       <div class="flex-center" style="gap: 20px;">
-        <v-btn class="btn2" style="--bg: rgb(var(--v-theme-primary))" @click="$router.push('/my-transactions')">My Transactions</v-btn>
+        <v-btn class="btn2" style="--bg: rgb(var(--v-theme-primary))" @click="$router.push(basePath('/my-transactions'))">My Transactions</v-btn>
 
         <v-btn class="btn2"><v-icon>mdi-pencil-outline</v-icon> Edit profile information</v-btn>
       </div>
@@ -193,9 +193,9 @@
                   </template>
 
                   <v-card class="divcol pt-2 pb-2 pl-1 pr-1 card-menu" style="gap: 25px;">
-                    <a @click="$router.push('/rec-single-portfolio')">Sell</a>
-                    <a @click="$router.push('/rec-single-portfolio')">Redeem</a>
-                    <a @click="$router.push('/rec-single-portfolio')">Take of market</a>
+                    <a @click="$router.push(basePath('/rec-single-portfolio'))">Sell</a>
+                    <a @click="$router.push(basePath('/rec-single-portfolio'))">Redeem</a>
+                    <a @click="$router.push(basePath('/rec-single-portfolio'))">Take of market</a>
                   </v-card>
                 </v-menu>
               </div>
@@ -245,13 +245,14 @@ import sphere from '@/assets/sources/icons/sphere.svg'
 import tokenized from '@/assets/sources/icons/tokenized-table.svg'
 import redeemed from '@/assets/sources/icons/redeemed-table.svg'
 import chile from '@/assets/sources/icons/CL.svg'
-
+import variables from '@/mixins/variables'
 
 
 export default{
   components: { RenewableChart },
   data(){
     return{
+      basePath: variables.basePath,
       windowStep: undefined,
       tabsWindow: 1,
       donutSeries: [44, 55, 81],
@@ -527,7 +528,7 @@ export default{
   },
   methods:{
     goDetails(){
-      this.$router.push('/rec-single-portfolio')
+      this.$router.push(basePath('/rec-single-portfolio'))
     }
   }
 }

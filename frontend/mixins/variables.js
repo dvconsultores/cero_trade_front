@@ -2,6 +2,7 @@ import axios from "axios"
 import store from "@/store"
 import { useStorage } from "vue3-storage-secure"
 import { useTheme } from "vuetify/lib/framework.mjs"
+import { canisterImpl } from '@/services/icp-provider';
 
 export default {
   // ? custom defines
@@ -21,9 +22,6 @@ export default {
   profile() {
     return store.state.profile
   },
-  appIsLaunched() {
-    return useStorage().getStorageSync('appIsLaunched')
-  },
   baseDomainPath() {
     return axios.defaults.baseURL
   },
@@ -33,8 +31,12 @@ export default {
   getThemeSrc() {
     return `@/assets/sources/themes/${useTheme().name}/`
   },
-  basePath(url, prefix = "/app") {
-    return `${this.appIsLaunched() ? prefix : ''}${url}`
+  basePath(url, options) {
+    options ??= {}
+
+    if (url) options['path'] = url
+    options['query'] = { ...canisterImpl, ...options.query  }
+    return options
   },
 
   //?  life cycle
