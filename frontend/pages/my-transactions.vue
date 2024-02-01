@@ -24,40 +24,8 @@
 
     <div class="divrow jspace flex-wrap" style="row-gap: 10px;">
       <div class="divrow" style="gap: 15px;">
-        <!-- <v-select
-        v-model="allItems"
-        :items="items"
-        variant="solo"
-        flat
-        menu-icon="mdi-chevron-down"
-        class="select deletemobile"
-        bg-color="#EAECF0"
-        hide-details
-        density="compact"
-        ></v-select> -->
 
         <v-btn class="btn"><v-icon>mdi-filter-variant</v-icon> Add filter</v-btn>
-      </div>
-
-      <div class="divrow jcenter acenter" style="gap: 5px;">
-        <v-text-field
-        class="input" variant="solo" flat
-        elevation="0" placeholder="Search by transaction number"
-        prepend-inner-icon="mdi-magnify"
-        style="min-width: 255px;"
-        ></v-text-field>
-
-        <!-- <v-select
-        v-model="timeline"
-        :items="items_timeline"
-        variant="solo"
-        flat
-        menu-icon="mdi-chevron-down"
-        class="select deletemobile"
-        bg-color="#EAECF0"
-        hide-details
-        density="compact"
-        ></v-select> -->
       </div>
     </div>
 
@@ -66,35 +34,30 @@
       :headers="headers"
       :items="dataTransactions"
       class="mt-6 my-data-table"
-      density="compact"
       >
-      <template #[`column.checkbox`]="{ column }">
-        <span style="display: none;">{{ column.title }}</span>
-        <v-checkbox
-        hide-details
-        density="compact"
-        style="max-width: 10px!important; min-width: 10px!important;"
-        ></v-checkbox>
-      </template>
+        <template #[`item.token_id`]="{ item }">
+          <span class="flex-center wbold" style="color: #475467;">{{ item.token_id }}</span>
+        </template>
 
-        <!-- <template #[`item.checkbox`]="{ item }">
-          <v-checkbox
-          v-model="item.checkbox"
-          hide-details
-          density="compact"
-          style="max-width: 10px!important; min-width: 10px!important;"
-          ></v-checkbox>
-        </template> -->
-
-        <template #[`item.asset_id`]="{ item }">
-          <span class="acenter bold" style="color: #475467;">
-            {{ item.asset_id }} 
+        <template #item.type="{ item }">
+          <span class="text-capitalize w700" :style="`
+            color: ${item.type === 'sale' ? '#00555B'
+            : item.type === 'redemption' ? '#5A02CA'
+            : '#2970FF'
+          } !important`">{{ item.type }}</span>
+        </template>
+        
+        <template #[`item.recipent`]="{ item }">
+          <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+            <img :src="recipents[item.recipent]" :alt="`${item.recipent} icon`" style="width: 20px;">
+            {{ item.recipent }}
           </span>
         </template>
 
         <template #[`item.energy_source`]="{ item }">
-          <span>
-            <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
+          <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+            <img :src="energies[item.energy_source]" :alt="`${item.energy_source} icon`" style="width: 20px;">
+            {{ item.energy_source }}
           </span>
         </template>
 
@@ -104,10 +67,11 @@
           </span>
         </template>
 
-        <template #[`item.region`]="{ item }">
-          <div class="divrow acenter">
-            <img :src="iconMap[item.region_img]" alt="Icon" style="width: 20px;"> <span class="ml-2">{{ item.region }}</span>
-          </div>
+        <template #[`item.country`]="{ item }">
+          <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+            <img :src="countries[item.country]" :alt="`${item.country} Icon`" style="width: 20px;">
+            {{ item.country }}
+          </span>
         </template>
 
         <template #[`item.mwh`]="{ item }">
@@ -115,21 +79,13 @@
             <v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.mwh }}
           </span>
         </template>
+        
+        <template #item.via="{ item }">
+          <span style="text-wrap: nowrap">{{ item.via }}</span>
+        </template>
 
-        <!-- <template #[`item.volume`]="{ item }">
-          <div class="divrow acenter">
-            <v-chip style="border-radius: 10px!important;" :class="{ 'red-chip-table': item.icon_arrow === 'mdi-arrow-down', 'green-chip-table': item.icon_arrow === 'mdi-arrow-up'}"><v-icon>{{ item.icon_arrow }}</v-icon> {{ item.percent }} %</v-chip>
-            <span class="ml-2">{{ item.volume }}</span>
-          </div>
-        </template> -->
-
-        <template #[`item.actions`]="{ item }">
-          <v-chip @click="goDetails(item)" color="white" class="chip-table mr-1" style="border-radius: 10px!important;">
-            <img src="@/assets/sources/icons/wallet.svg" alt="wallet">
-          </v-chip>
-          <!-- <v-chip class="chip-table" color="white" style="border-radius: 10px!important;">
-            <v-icon size="default" style="color: #000!important;">mdi-file-chart-outline</v-icon>
-          </v-chip> -->
+        <template #item.amount="{ item }">
+          {{ item.amount ? `$${item.amount}` : '-' }}
         </template>
       </v-data-table>
   </div>
@@ -137,8 +93,18 @@
 
 <script>
 import '@/assets/styles/pages/my-transactions.scss'
-import sphere from '@/assets/sources/icons/sphere.svg'
-import chile from '@/assets/sources/icons/CL.svg'
+import SphereIcon from '@/assets/sources/recipents/sphere.svg'
+import SisyphusIcon from '@/assets/sources/recipents/sisyphus.svg'
+import SilverStoneIcon from '@/assets/sources/recipents/silverstone.svg'
+import FocalPointIcon from '@/assets/sources/recipents/focal-point.svg'
+import GeneralElectricIcon from '@/assets/sources/recipents/general-electric.svg'
+import HydroEnergyIcon from '@/assets/sources/energies/hydro-color.svg'
+import OceanEnergyIcon from '@/assets/sources/energies/ocean.svg'
+import GeothermalEnergyIcon from '@/assets/sources/energies/geothermal.svg'
+import BiomeEnergyIcon from '@/assets/sources/energies/biome.svg'
+import WindEnergyIcon from '@/assets/sources/energies/wind-color.svg'
+import SolarEnergyIcon from '@/assets/sources/energies/solar-color.svg'
+import ChileIcon from '@/assets/sources/icons/CL.svg'
 import variables from '@/mixins/variables'
 
 export default{
@@ -157,228 +123,209 @@ export default{
       tab: 0,
       tabs: ["All", "Sale", "Purchase", "Redemption"],
 
+      recipents: {
+        sphere: SphereIcon,
+        sisyphus: SisyphusIcon,
+        silverstone: SilverStoneIcon,
+        'focal-point': FocalPointIcon,
+        'general-electric': GeneralElectricIcon,
+      },
+      energies: {
+        'hydro energy': HydroEnergyIcon,
+        ocean: OceanEnergyIcon,
+        geothermal: GeothermalEnergyIcon,
+        biome: BiomeEnergyIcon,
+        'wind energy': WindEnergyIcon,
+        solar: SolarEnergyIcon,
+      },
+      countries: {
+        chile: ChileIcon
+      },
+
        headers: [
         // { title: '', key: 'checkbox', sortable: false, align: 'center'},
-        // { title: 'Facility name', sortable: false, key: 'facility'},
-        { title: 'Asset ID', key: 'asset_id', sortable: false },
+        { title: 'Token ID', key: 'token_id', align: 'center', sortable: false },
+        { title: 'Type', key: 'type', sortable: false },
+        { title: 'Recipent', key: 'recipent', sortable: false },
         { title: 'Energy source', key: 'energy_source', sortable: false },
-        { title: 'Region', key: 'region', sortable: false },
-        { title: 'Price', key: 'price', sortable: false },
+        { title: 'Country', key: 'country', sortable: false },
         { title: 'MWh', key: 'mwh', sortable: false },
-        { title: 'Volume Produced', key: 'volume', sortable: false },
-        { title: 'Actions', key: 'actions', sortable: false, align: 'center'},
+        { title: 'Asset ID', key: 'asset_id', sortable: false },
+        { title: 'Date', key: 'date', sortable: false },
+        { title: 'Amount (USD)', key: 'amount', align: 'center', sortable: false },
+        { title: 'Via', key: 'via', align: 'center', sortable: false },
+        { title: 'Transaction ID', key: 'transaction_id', align: 'center', sortable: false },
       ],
       dataTransactions: [
         {
-          asset_id: '#1234567',
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-down',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: "125.00 - 223.00",
-          currency: '$',
+          token_id: '1',
+          type: "sale",
+          recipent: 'sphere',
           icon_source: 'mdi-waves',
-          energy_source: 'Hydroenergy',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'hydro energy',
+          country: 'chile',
           mwh: 32,
-          volume: 7654,
-          checkbox: false,
+          asset_id: '#1234567',
+          date: "01/04/2024",
+          amount: 100,
+          via: "Bank Transfer",
+          transaction_id: 1
         },
         {
-          asset_id: '#1234567',
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-down',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: "125.00 - 223.00",
-          currency: '$',
-          icon_source: 'mdi-weather-windy',
-          energy_source: 'Wind energy',
-          region: 'Chile',
-          region_img: 'chile',
-          mwh: 32,
-          volume: 7654,
-          checkbox: false,
-        },
-        {
-          asset_id: '#1234567',
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-down',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: "125.00 - 223.00",
-          currency: '$',
+          token_id: '2',
+          type: "redemption",
+          recipent: 'sphere',
           icon_source: 'mdi-waves',
-          energy_source: 'Hydroenergy',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'ocean',
+          country: 'chile',
           mwh: 32,
-          volume: 7654,
-          checkbox: false,
+          asset_id: '#1234567',
+          date: "01/04/2024",
+          amount: 100,
+          via: "Bank Transfer",
+          transaction_id: 1
         },
         {
-          asset_id: '#1234567',
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-down',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: "125.00 - 223.00",
-          currency: '$',
-          icon_source: 'mdi-weather-sunny',
-          energy_source: 'Sun',
-          region: 'Chile',
-          region_img: 'chile',
-          mwh: 32,
-          volume: 7654,
-          checkbox: false,
-        },
-        {
-          asset_id: '#1234567',
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-down',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: "125.00 - 223.00",
-          currency: '$',
+          token_id: '3',
+          type: "redemption",
+          recipent: 'sphere',
           icon_source: 'mdi-waves',
-          energy_source: 'Hydroenergy',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'wind energy',
+          country: 'chile',
           mwh: 32,
-          volume: 7654,
-          checkbox: false,
+          asset_id: '#1234567',
+          date: "01/04/2024",
+          amount: 100,
+          via: "Bank Transfer",
+          transaction_id: 1
         },
         {
-          asset_id: '#1234567',
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-down',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: "125.00 - 223.00",
-          currency: '$',
-          icon_source: 'mdi-weather-windy',
-          energy_source: 'Wind energy',
-          region: 'Chile',
-          region_img: 'chile',
-          mwh: 32,
-          volume: 7654,
-          checkbox: false,
-        },
-        {
-          asset_id: '#1234567',
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-down',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: "125.00 - 223.00",
-          currency: '$',
+          token_id: '4',
+          type: "sale",
+          recipent: 'sphere',
           icon_source: 'mdi-waves',
-          energy_source: 'Hydroenergy',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'biome',
+          country: 'chile',
           mwh: 32,
-          volume: 7654,
-          checkbox: false,
+          asset_id: '#1234567',
+          date: "01/04/2024",
+          amount: 100,
+          via: "Bank Transfer",
+          transaction_id: 1
         },
         {
-          asset_id: '#1234567',
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-down',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: "125.00 - 223.00",
-          currency: '$',
-          icon_source: 'mdi-weather-sunny',
-          energy_source: 'Sun',
-          region: 'Chile',
-          region_img: 'chile',
-          mwh: 32,
-          volume: 7654,
-          checkbox: false,
-        },
-        {
-          asset_id: '#1234567',
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-down',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: "125.00 - 223.00",
-          currency: '$',
+          token_id: '5',
+          type: "sale",
+          recipent: 'sphere',
           icon_source: 'mdi-waves',
-          energy_source: 'Hydroenergy',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'solar',
+          country: 'chile',
           mwh: 32,
-          volume: 7654,
-          checkbox: false,
+          asset_id: '#1234567',
+          date: "01/04/2024",
+          amount: 100,
+          via: "Bank Transfer",
+          transaction_id: 1
         },
         {
-          asset_id: '#1234567',
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-down',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: "125.00 - 223.00",
-          currency: '$',
-          icon_source: 'mdi-weather-windy',
-          energy_source: 'Wind energy',
-          region: 'Chile',
-          region_img: 'chile',
-          mwh: 32,
-          volume: 7654,
-          checkbox: false,
-        },
-        {
-          asset_id: '#1234567',
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-down',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: "125.00 - 223.00",
-          currency: '$',
+          token_id: '6',
+          type: "redemption",
+          recipent: 'sphere',
           icon_source: 'mdi-waves',
-          energy_source: 'Hydroenergy',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'geothermal',
+          country: 'chile',
           mwh: 32,
-          volume: 7654,
-          checkbox: false,
+          asset_id: '#1234567',
+          date: "01/04/2024",
+          amount: 100,
+          via: "Bank Transfer",
+          transaction_id: 1
         },
         {
-          asset_id: '#1234567',
-          id: '1234567',
-          icon_arrow: 'mdi-arrow-down',
-          percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
-          price: "125.00 - 223.00",
-          currency: '$',
-          icon_source: 'mdi-weather-sunny',
-          energy_source: 'Sun',
-          region: 'Chile',
-          region_img: 'chile',
+          token_id: '7',
+          type: "redemption",
+          recipent: 'sphere',
+          icon_source: 'mdi-waves',
+          energy_source: 'hydro energy',
+          country: 'chile',
           mwh: 32,
-          volume: 7654,
-          checkbox: false,
+          asset_id: '#1234567',
+          date: "01/04/2024",
+          amount: 100,
+          via: "Bank Transfer",
+          transaction_id: 1
+        },
+        {
+          token_id: '8',
+          type: "purchase",
+          recipent: 'sphere',
+          icon_source: 'mdi-waves',
+          energy_source: 'hydro energy',
+          country: 'chile',
+          mwh: 32,
+          asset_id: '#1234567',
+          date: "01/04/2024",
+          amount: 100,
+          via: "Bank Transfer",
+          transaction_id: 1
+        },
+        {
+          token_id: '9',
+          type: "purchase",
+          recipent: 'sphere',
+          icon_source: 'mdi-waves',
+          energy_source: 'hydro energy',
+          country: 'chile',
+          mwh: 32,
+          asset_id: '#1234567',
+          date: "01/04/2024",
+          amount: 100,
+          via: "Bank Transfer",
+          transaction_id: 1
+        },
+        {
+          token_id: '10',
+          type: "purchase",
+          recipent: 'sphere',
+          icon_source: 'mdi-waves',
+          energy_source: 'hydro energy',
+          country: 'chile',
+          mwh: 32,
+          asset_id: '#1234567',
+          date: "01/04/2024",
+          amount: 100,
+          via: "Bank Transfer",
+          transaction_id: 1
+        },
+        {
+          token_id: '11',
+          type: "purchase",
+          recipent: 'sphere',
+          icon_source: 'mdi-waves',
+          energy_source: 'hydro energy',
+          country: 'chile',
+          mwh: 32,
+          asset_id: '#1234567',
+          date: "01/04/2024",
+          amount: 100,
+          via: "Bank Transfer",
+          transaction_id: 1
+        },
+        {
+          token_id: '12',
+          type: "sale",
+          recipent: 'sphere',
+          icon_source: 'mdi-waves',
+          energy_source: 'hydro energy',
+          country: 'chile',
+          mwh: 32,
+          asset_id: '#1234567',
+          date: "01/04/2024",
+          amount: 100,
+          via: "Bank Transfer",
+          transaction_id: 1
         },
       ],
-
-      iconMap: {
-        sphere,
-        chile,
-      },
     }
   },
 
