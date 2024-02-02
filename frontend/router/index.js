@@ -85,12 +85,6 @@ const routes = [
         component: Profile,
         meta: { head: `Profile - ${DEFAULT_TITLE}` }
       },
-      {
-        path: 'market-trends',
-        name: 'Market trends',
-        component: MarketTrends,
-        meta: { head: `Market trends - ${DEFAULT_TITLE}` }
-      },
     ],
   },
 

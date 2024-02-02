@@ -2,19 +2,22 @@
   <div id="my-portfolio">
     <span class="mb-4 acenter" style="color:#475467; font-size: 16px; font-weight: 700;">
       <img src="@/assets/sources/icons/home-layout.svg" alt="Home Icon" style="width: 20px;">
-      <v-icon>mdi-chevron-right</v-icon> 
-      My portfolio 
-      <v-icon>mdi-chevron-right</v-icon>  
-      <span style="color: #00555B;">My wallet</span>
+      <img src="@/assets/sources/icons/chevron-right-light.svg" alt="arrow right icon" class="mx-1"> 
+      My portfolio
     </span>
     <h3>My portfolio</h3>
     <div class="jspace wrap mb-16" style="gap: 10px;">    
-      <span style="color:#475467">Lorem ipsum dolor sit amet Lorem, ipsum dolor</span>
+      <span style="color:#475467; max-width: 640px">
+        Overview and management of your tokenized assets. Track performance, manage sales, and view asset redemption status in one convenient location.
+      </span>
 
       <div class="flex-center" style="gap: 20px;">
         <v-btn class="btn2" style="--bg: rgb(var(--v-theme-primary))" @click="$router.push(basePath('/my-transactions'))">My Transactions</v-btn>
 
-        <v-btn class="btn2"><v-icon>mdi-pencil-outline</v-icon> Edit profile information</v-btn>
+        <v-btn class="btn2">
+          <img src="@/assets/sources/icons/pencil.svg" alt="pencil icon">
+          Edit profile information
+        </v-btn>
       </div>
     </div>
 
@@ -50,15 +53,6 @@
           <v-tab :value="1" class="tab-btn" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
             All
           </v-tab>
-          <!-- <v-tab :value="6" class="tab-btn show-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
-            De-tokenize
-          </v-tab>
-          <v-tab :value="2" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
-            Tokenized
-          </v-tab> -->
-          <!-- <v-tab :value="3" class="tab-btn delete-mobile" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
-            Non Tokenized
-          </v-tab> -->
           <v-tab :value="2" class="tab-btn" style="border: none!important; border-bottom: 2px solid rgba(0,0,0,0.25)!important; border-radius: 0px!important;">
             For sale
           </v-tab>
@@ -74,44 +68,23 @@
       <v-col xl="6" lg="6" cols="12" class="divrow aend jend delete-mobile" style="gap: 10px;">
         <v-btn class="btn2"><img src="@/assets/sources/icons/sell-btn.svg" alt="Sell">Sell</v-btn>
         <v-btn class="btn2"><img src="@/assets/sources/icons/sell-btn.svg" alt="Sell">Take of market</v-btn>
-        <!-- <v-btn class="btn2"><img src="@/assets/sources/icons/de-tokenize-btn.svg" alt="Sell">De-tokenize</v-btn>
-        <v-btn class="btn2"><img src="@/assets/sources/icons/tokenize-btn.svg" alt="Sell">Tokenize</v-btn> -->
         <v-btn class="btn2"><img src="@/assets/sources/icons/redeem-btn.svg" alt="Sell">Redeem</v-btn>
-        <!-- <v-btn class="btn2"><v-icon>mdi-plus</v-icon>Select</v-btn> -->
       </v-col>
     </v-row>
 
     <div class="divrow jspace mt-4">
       <div class="divrow" style="gap: 15px;">
-        <!-- <v-select
-        v-model="allItems"
-        :items="items"
-        variant="solo"
-        flat
-        menu-icon="mdi-chevron-down"
-        class="select delete-mobile"
-        bg-color="#EAECF0"
-        hide-details
-        density="compact"
-        ></v-select> -->
-
-        <v-btn class="btn"><v-icon>mdi-filter-variant</v-icon> Add filter</v-btn>
+        <v-btn class="btn">
+          <img src="@/assets/sources/icons/filter-lines.svg" alt="filter-lines icon">
+          Add filter
+        </v-btn>
       </div>
 
       <div class="divrow jcenter acenter" style="gap: 5px;">
-        <!-- <v-text-field
-        class="input" variant="solo" flat
-        elevation="0" placeholder="Search"
-        prepend-inner-icon="mdi-magnify"
-        style="min-width: 110px;"
-        ></v-text-field> -->
-
         <v-btn-toggle class="center delete-mobile" rounded="1" v-model="toggle">
           <v-btn class="btn-toggle" @click="windowStep = 1"><img src="@/assets/sources/icons/table-view.svg" alt="Table icon"></v-btn>
           <v-btn class="btn-toggle" @click="windowStep = 2"><img src="@/assets/sources/icons/card-view.svg" alt="Card icon"></v-btn>
         </v-btn-toggle>
-
-        <!-- <v-btn class="btn" icon="mdi-dots-vertical" style="font-size: 20px!important; padding: 15px!important;"></v-btn> -->
       </div>
     </div>
 
@@ -124,31 +97,35 @@
         class="mt-6 my-data-table"
         density="compact"
         >
-        <template #[`column.checkbox`]="{ column }">
-          <span style="display: none;">{{ column.title }}</span>
-          <v-checkbox
-          hide-details
-          density="compact"
-          style="max-width: 10px!important; min-width: 10px!important;"
-          ></v-checkbox>
-        </template>
-
           <template #[`item.checkbox`]="{ item }">
             <v-checkbox
             v-model="item.checkbox"
             hide-details
             density="compact"
-            style="max-width: 10px!important; min-width: 10px!important;"
-            ></v-checkbox>
+            class="mx-auto"
+            style="max-width: 22px!important; min-width: 22px!important;"
+            >
+              <template #input="{ model }">
+                <img
+                  :src="model.value ? checkboxCheckedIcon : checkboxBaseIcon"
+                  alt="checkbox icon"
+                  style="width: 22px"
+                  @click="model.value = !model.value"
+                >
+              </template>
+            </v-checkbox>
           </template>
 
-          <template #[`item.id`]="{ item }">
-            # {{ item.id }}
+          <template #[`item.asset_id`]="{ item }">
+            <span class="acenter bold" style="color: #475467;">
+              {{ item.asset_id }} 
+            </span>
           </template>
 
           <template #[`item.energy_source`]="{ item }">
-            <span>
-              <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
+            <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+              <img :src="energies[item.energy_source]" :alt="`${item.energy_source} icon`" style="width: 20px;">
+              {{ item.energy_source }}
             </span>
           </template>
 
@@ -160,20 +137,23 @@
 
           <template #[`item.mwh`]="{ item }">
             <span class="divrow acenter">
-              <v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.mwh }}
+              <img src="@/assets/sources/icons/lightbulb.svg" alt="lightbulb icon">
+              {{ item.mwh }}
             </span>
           </template>
 
-          <template #[`item.region`]="{ item }">
-            <div class="divrow acenter">
-              <img :src="iconMap[item.region_img]" alt="Icon" style="width: 20px;"> <span class="ml-2">{{ item.region }}</span>
-            </div>
+          <template #[`item.country`]="{ item }">
+            <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+              <img :src="countries[item.country]" :alt="`${item.country} Icon`" style="width: 20px;">
+              {{ item.country }}
+            </span>
           </template>
 
           <template #[`item.status`]="{ item }">
-            <div class="divrow acenter">
-              <img :src="iconMap[item.icon_status]" alt="Icon"> <span class="ml-2">{{ item.status }}</span>
-            </div>
+            <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+              <img :src="statuses[item.status]" :alt="`${item.status} icon`" style="width: 20px;">
+              {{ item.status }}
+            </span>
           </template>
         </v-data-table>
       </v-window-item>
@@ -184,12 +164,13 @@
             <v-card class="card cards-marketplace" @click="goDetails(item)">
               <div class="divrow jspace acenter mb-6">
                 <div class="divrow center" style="gap: 5px;">
-                  <h6 class="mb-0 font700">IREC #{{ item.irec_id }}</h6>
-                  <!-- <v-chip :class="{ 'red-chip': item.icon_arrow === 'mdi-arrow-down', 'green-chip': item.icon_arrow === 'mdi-arrow-up'}"><v-icon>{{ item.icon_arrow }}</v-icon> {{ item.percent }} %</v-chip> -->
+                  <h6 class="mb-0 font700">IREC #{{ item.token_id }}</h6>
                 </div>
                 <v-menu location="start">
                   <template v-slot:activator="{ props }">
-                    <v-btn class="btn btn-dots" icon="mdi-dots-vertical" v-bind="props"></v-btn>
+                    <v-btn class="btn btn-dots" v-bind="props">
+                      <img src="@/assets/sources/icons/dots-vertical.svg" alt="dots-vertical icon">
+                    </v-btn>
                   </template>
 
                   <v-card class="divcol pt-2 pb-2 pl-1 pr-1 card-menu" style="gap: 25px;">
@@ -202,15 +183,16 @@
 
               <div class="jspace divrow mb-1">
                 <span>Energy source</span>
-                <span style="color: #475467;">
-                  <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
+                <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap; color: #475467;">
+                  <img :src="energies[item.energy_source]" :alt="`${item.energy_source} icon`" style="width: 20px;">
+                  {{ item.energy_source }}
                 </span>
               </div>
 
               <div class="jspace divrow mb-1">
                 <span>Country</span>
-                <span style="color: #475467;" class="acenter">
-                  <img :src="iconMap[item.region_img]" alt="icon" class="mr-1" style="width: 20px;"> {{ item.region }}
+                <span style="color: #475467;" class="acenter text-capitalize">
+                  <img :src="countries[item.country]" alt="icon" class="mr-1" style="width: 20px;"> {{ item.country }}
                 </span>
               </div>
 
@@ -221,13 +203,15 @@
 
               <div class="jspace divrow mb-1">
                 <span>MWh</span>
-                <span style="color: #475467;"><v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.mwh }}</span>
+                <span class="d-flex flex-acenter mr-1" style="color: #475467;">
+                  <img src="@/assets/sources/icons/lightbulb.svg" alt="lightbulb icon" style="width: 20px">
+                {{ item.mwh }}</span>
               </div>
 
               <div class="jspace divrow mb-1">
                 <span>Status</span>
-                <span class="center" style="color: #475467">
-                  <img :src="iconMap[item.icon_status]" alt="Icon" class="mr-1"> {{ item.status }}
+                <span style="color: #475467;" class="acenter text-capitalize">
+                  <img :src="statuses[item.status]" alt="icon" class="mr-1" style="width: 20px;"> {{ item.status }}
                 </span>
               </div>
             </v-card>
@@ -240,11 +224,19 @@
 
 <script>
 import '@/assets/styles/pages/my-portfolio.scss'
+import checkboxCheckedIcon from '@/assets/sources/icons/checkbox-checked.svg'
+import checkboxBaseIcon from '@/assets/sources/icons/checkbox-base.svg'
 import RenewableChart from "@/components/renewable-chart.vue"
-import sphere from '@/assets/sources/icons/sphere.svg'
-import tokenized from '@/assets/sources/icons/tokenized-table.svg'
-import redeemed from '@/assets/sources/icons/redeemed-table.svg'
-import chile from '@/assets/sources/icons/CL.svg'
+import HydroEnergyIcon from '@/assets/sources/energies/hydro-color.svg'
+import OceanEnergyIcon from '@/assets/sources/energies/ocean.svg'
+import GeothermalEnergyIcon from '@/assets/sources/energies/geothermal.svg'
+import BiomeEnergyIcon from '@/assets/sources/energies/biome.svg'
+import WindEnergyIcon from '@/assets/sources/energies/wind-color.svg'
+import SolarEnergyIcon from '@/assets/sources/energies/solar-color.svg'
+import ChileIcon from '@/assets/sources/icons/CL.svg'
+import WalletIcon from '@/assets/sources/icons/wallet-light.svg'
+import TokenizedIcon from '@/assets/sources/icons/tokenized-table.svg'
+import RedeemedIcon from '@/assets/sources/icons/redeemed-table.svg'
 import variables from '@/mixins/variables'
 
 
@@ -253,6 +245,8 @@ export default{
   data(){
     return{
       basePath: variables.basePath,
+      checkboxCheckedIcon,
+      checkboxBaseIcon,
       windowStep: undefined,
       tabsWindow: 1,
       donutSeries: [44, 55, 81],
@@ -287,215 +281,186 @@ export default{
           }
         }]
       },
+      
+      energies: {
+        'hydro energy': HydroEnergyIcon,
+        ocean: OceanEnergyIcon,
+        geothermal: GeothermalEnergyIcon,
+        biome: BiomeEnergyIcon,
+        'wind energy': WindEnergyIcon,
+        sun: SolarEnergyIcon,
+      },
+      countries: {
+        chile: ChileIcon
+      },
+      statuses: {
+        'not for sale': WalletIcon,
+        'for sale': TokenizedIcon,
+        'sold': TokenizedIcon,
+        redeemed: RedeemedIcon
+      },
 
       headers: [
-        { title: '$', key: 'checkbox', sortable: false, align: 'center'},
-        { title: 'IREC ID', sortable: false, key: 'irec_id'},
+        { key: 'checkbox', sortable: false, align: 'center'},
+        { title: 'Token ID', sortable: false, key: 'token_id', align: "center" },
         { title: 'Energy source', key: 'energy_source', sortable: false },
-        { title: 'Country', key: 'region', sortable: false },
-        { title: 'Asset ID', key: 'id', sortable: false },
+        { title: 'Country', key: 'country', sortable: false },
+        { title: 'Asset ID', key: 'asset_id', sortable: false },
         { title: 'MWh', key: 'mwh', sortable: false },
         { title: 'Status', key: 'status', sortable: false },
       ],
       dataMarketplace: [
         { 
-          irec_id: 1,
-          id: '1234567',
+          token_id: 1,
+          asset_id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
           price: 125.00,
           currency: '$',
           icon_source: 'mdi-waves',
-          energy_source: 'Hydroenergy',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'hydro energy',
+          country: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
-          status: 'Tokenized',
-          icon_status: 'tokenized'
+          status: 'for sale',
         },
         {
-          irec_id: 2,
-          id: '1234567',
+          token_id: 2,
+          asset_id: '1234567',
           icon_arrow: 'mdi-arrow-up',
           percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
           price: 125.00,
           currency: '$',
           icon_source: 'mdi-weather-sunny',
-          energy_source: 'Sun',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'sun',
+          country: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
-          status: 'Redeemed',
-          icon_status: 'redeemed'
+          status: 'redeemed',
         },
         {
-          irec_id: 3,
-          id: '1234567',
+          token_id: 3,
+          asset_id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
           price: 125.00,
           currency: '$',
           icon_source: 'mdi-weather-windy',
-          energy_source: 'Wind energy',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'wind energy',
+          country: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
-          status: 'Tokenized',
-          icon_status: 'tokenized'
+          status: 'not for sale',
         },
         {
-          irec_id: 4,
-          id: '1234567',
+          token_id: 4,
+          asset_id: '1234567',
           icon_arrow: 'mdi-arrow-up',
           percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
           price: 125.00,
           currency: '$',
           icon_source: 'mdi-weather-sunny',
-          energy_source: 'Sun',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'sun',
+          country: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
-          status: 'Redeemed',
-          icon_status: 'redeemed'
+          status: 'redeemed',
         },
         {
-          irec_id: 5,
-          id: '1234567',
+          token_id: 5,
+          asset_id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
           price: 125.00,
           currency: '$',
           icon_source: 'mdi-weather-windy',
-          energy_source: 'Wind energy',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'wind energy',
+          country: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
-          status: 'Tokenized',
-          icon_status: 'tokenized'
+          status: 'sold',
         },
         {
-          irec_id: 6,
-          id: '1234567',
+          token_id: 6,
+          asset_id: '1234567',
           icon_arrow: 'mdi-arrow-up',
           percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
           price: 125.00,
           currency: '$',
           icon_source: 'mdi-weather-sunny',
-          energy_source: 'Sun',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'sun',
+          country: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
-          status: 'Redeemed',
-          icon_status: 'redeemed'
+          status: 'redeemed',
         },
         {
-          irec_id: 7,
-          id: '1234567',
+          token_id: 7,
+          asset_id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
           price: 125.00,
           currency: '$',
           icon_source: 'mdi-weather-windy',
-          energy_source: 'Wind energy',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'wind energy',
+          country: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
-          status: 'Tokenized',
-          icon_status: 'tokenized'
+          status: 'for sale',
         },
         {
-          irec_id: 8,
-          id: '1234567',
+          token_id: 8,
+          asset_id: '1234567',
           icon_arrow: 'mdi-arrow-up',
           percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
           price: 125.00,
           currency: '$',
           icon_source: 'mdi-weather-sunny',
-          energy_source: 'Sun',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'sun',
+          country: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
-          status: 'Redeemed',
-          icon_status: 'redeemed'
+          status: 'redeemed',
         },
         {
-          irec_id: 9,
-          id: '1234567',
+          token_id: 9,
+          asset_id: '1234567',
           icon_arrow: 'mdi-arrow-down',
           percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
           price: 125.00,
           currency: '$',
           icon_source: 'mdi-weather-windy',
-          energy_source: 'Wind energy',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'wind energy',
+          country: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
-          status: 'Tokenized',
-          icon_status: 'tokenized'
+          status: 'for sale',
         },
         {
-          irec_id: 10,
-          id: '1234567',
+          token_id: 10,
+          asset_id: '1234567',
           icon_arrow: 'mdi-arrow-up',
           percent: '20',
-          facility_img: 'sphere',
-          facility: 'Sphere',
           price: 125.00,
           currency: '$',
           icon_source: 'mdi-weather-sunny',
-          energy_source: 'Sun',
-          region: 'Chile',
-          region_img: 'chile',
+          energy_source: 'sun',
+          country: 'chile',
           mwh: 32,
           volume: 7654,
           checkbox: false,
-          status: 'Redeemed',
-          icon_status: 'redeemed'
+          status: 'redeemed',
         },
       ],
-
-      iconMap: {
-        sphere,
-        redeemed,
-        tokenized,
-        chile,
-      },
 
       allItems: 'All items',
       items: ['All items', 'Items'],
@@ -528,7 +493,7 @@ export default{
   },
   methods:{
     goDetails(){
-      this.$router.push(basePath('/rec-single-portfolio'))
+      this.$router.push(this.basePath('/rec-single-portfolio'))
     }
   }
 }

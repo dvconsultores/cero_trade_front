@@ -2,9 +2,9 @@
   <div id="my-transactions">
     <span class="mb-4 acenter" style="color:#475467 ;font-size: 16px; font-weight: 700;">
       <img src="@/assets/sources/icons/home-layout.svg" alt="Home Icon" style="width: 20px;">
-      <v-icon>mdi-chevron-right</v-icon> 
+      <img src="@/assets/sources/icons/chevron-right-light.svg" alt="arrow right icon" class="mx-1">
       <span>My porfolio</span>
-      <v-icon>mdi-chevron-right</v-icon> 
+      <img src="@/assets/sources/icons/chevron-right-light.svg" alt="arrow right icon" class="mx-1">
       <span style="color: #00555B;">Transactions</span>
     </span>
     <h3>My Transactions</h3>
@@ -25,7 +25,10 @@
     <div class="divrow jspace flex-wrap" style="row-gap: 10px;">
       <div class="divrow" style="gap: 15px;">
 
-        <v-btn class="btn"><v-icon>mdi-filter-variant</v-icon> Add filter</v-btn>
+        <v-btn class="btn">
+          <img src="@/assets/sources/icons/filter-lines.svg" alt="filter-lines icon">
+          Add filter
+        </v-btn>
       </div>
     </div>
 
@@ -48,8 +51,8 @@
         </template>
         
         <template #[`item.recipent`]="{ item }">
-          <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
-            <img :src="recipents[item.recipent]" :alt="`${item.recipent} icon`" style="width: 20px;">
+          <span class="flex-acenter" style="gap: 5px; text-wrap: nowrap">
+            <img :src="companies[item.recipent]" :alt="`${item.recipent} icon`" style="width: 20px;">
             {{ item.recipent }}
           </span>
         </template>
@@ -75,8 +78,9 @@
         </template>
 
         <template #[`item.mwh`]="{ item }">
-          <span class="divrow acenter">
-            <v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.mwh }}
+          <span class="flex-acenter">
+            <img src="@/assets/sources/icons/lightbulb.svg" alt="lightbulb icon">
+            {{ item.mwh }}
           </span>
         </template>
         
@@ -93,18 +97,24 @@
 
 <script>
 import '@/assets/styles/pages/my-transactions.scss'
-import SphereIcon from '@/assets/sources/recipents/sphere.svg'
-import SisyphusIcon from '@/assets/sources/recipents/sisyphus.svg'
-import SilverStoneIcon from '@/assets/sources/recipents/silverstone.svg'
-import FocalPointIcon from '@/assets/sources/recipents/focal-point.svg'
-import GeneralElectricIcon from '@/assets/sources/recipents/general-electric.svg'
-import HydroEnergyIcon from '@/assets/sources/energies/hydro-color.svg'
+import SphereIcon from '@/assets/sources/companies/sphere.svg'
+import KapidagIcon from '@/assets/sources/companies/kapidag.svg'
+import SisyphusIcon from '@/assets/sources/companies/sisyphus.svg'
+import FocalPointIcon from '@/assets/sources/companies/focal-point.svg'
+import SilverStoneIcon from '@/assets/sources/companies/silverstone.svg'
+import GeneralElectricIcon from '@/assets/sources/companies/general-electric.svg'
+import BlueSkyIcon from '@/assets/sources/companies/bluesky.svg'
+import ZenithIcon from '@/assets/sources/companies/zenith.svg'
+import LibertyIcon from '@/assets/sources/companies/liberty.svg'
+import SunshineIcon from '@/assets/sources/companies/sunshine.svg'
+import PrimeIcon from '@/assets/sources/companies/prime.svg'
+
+import HydroEnergyIcon from '@/assets/sources/energies/hydro.svg'
 import OceanEnergyIcon from '@/assets/sources/energies/ocean.svg'
 import GeothermalEnergyIcon from '@/assets/sources/energies/geothermal.svg'
 import BiomeEnergyIcon from '@/assets/sources/energies/biome.svg'
-import WindEnergyIcon from '@/assets/sources/energies/wind-color.svg'
-import SolarEnergyIcon from '@/assets/sources/energies/solar-color.svg'
-import ChileIcon from '@/assets/sources/icons/CL.svg'
+import WindEnergyIcon from '@/assets/sources/energies/wind.svg'
+import SolarEnergyIcon from '@/assets/sources/energies/solar.svg'
 import variables from '@/mixins/variables'
 
 export default{
@@ -123,12 +133,18 @@ export default{
       tab: 0,
       tabs: ["All", "Sale", "Purchase", "Redemption"],
 
-      recipents: {
-        sphere: SphereIcon,
-        sisyphus: SisyphusIcon,
-        silverstone: SilverStoneIcon,
-        'focal-point': FocalPointIcon,
-        'general-electric': GeneralElectricIcon,
+      companies: {
+        'Sphere': SphereIcon,
+        'KAPIDAĞ RES': KapidagIcon,
+        'Sisyphus': SisyphusIcon,
+        'Focal Point': FocalPointIcon,
+        'SIlverstone': SilverStoneIcon,
+        'General Electric': GeneralElectricIcon,
+        'BlueSky': BlueSkyIcon,
+        'Zenith': ZenithIcon,
+        'Liberty': LibertyIcon,
+        'Sunshine': SunshineIcon,
+        'Prime': PrimeIcon,
       },
       energies: {
         'hydro energy': HydroEnergyIcon,
@@ -136,7 +152,7 @@ export default{
         geothermal: GeothermalEnergyIcon,
         biome: BiomeEnergyIcon,
         'wind energy': WindEnergyIcon,
-        solar: SolarEnergyIcon,
+        sun: SolarEnergyIcon,
       },
       countries: {
         chile: ChileIcon
@@ -160,7 +176,7 @@ export default{
         {
           token_id: '1',
           type: "sale",
-          recipent: 'sphere',
+          recipent: 'Sphere',
           icon_source: 'mdi-waves',
           energy_source: 'hydro energy',
           country: 'chile',
@@ -174,7 +190,7 @@ export default{
         {
           token_id: '2',
           type: "redemption",
-          recipent: 'sphere',
+          recipent: 'Sphere',
           icon_source: 'mdi-waves',
           energy_source: 'ocean',
           country: 'chile',
@@ -188,7 +204,7 @@ export default{
         {
           token_id: '3',
           type: "redemption",
-          recipent: 'sphere',
+          recipent: 'Sphere',
           icon_source: 'mdi-waves',
           energy_source: 'wind energy',
           country: 'chile',
@@ -202,7 +218,7 @@ export default{
         {
           token_id: '4',
           type: "sale",
-          recipent: 'sphere',
+          recipent: 'Sphere',
           icon_source: 'mdi-waves',
           energy_source: 'biome',
           country: 'chile',
@@ -216,9 +232,9 @@ export default{
         {
           token_id: '5',
           type: "sale",
-          recipent: 'sphere',
+          recipent: 'Sphere',
           icon_source: 'mdi-waves',
-          energy_source: 'solar',
+          energy_source: 'sun',
           country: 'chile',
           mwh: 32,
           asset_id: '#1234567',
@@ -230,7 +246,7 @@ export default{
         {
           token_id: '6',
           type: "redemption",
-          recipent: 'sphere',
+          recipent: 'Sphere',
           icon_source: 'mdi-waves',
           energy_source: 'geothermal',
           country: 'chile',
@@ -244,7 +260,7 @@ export default{
         {
           token_id: '7',
           type: "redemption",
-          recipent: 'sphere',
+          recipent: 'Sphere',
           icon_source: 'mdi-waves',
           energy_source: 'hydro energy',
           country: 'chile',
@@ -258,7 +274,7 @@ export default{
         {
           token_id: '8',
           type: "purchase",
-          recipent: 'sphere',
+          recipent: 'Sphere',
           icon_source: 'mdi-waves',
           energy_source: 'hydro energy',
           country: 'chile',
@@ -272,7 +288,7 @@ export default{
         {
           token_id: '9',
           type: "purchase",
-          recipent: 'sphere',
+          recipent: 'Sphere',
           icon_source: 'mdi-waves',
           energy_source: 'hydro energy',
           country: 'chile',
@@ -286,7 +302,7 @@ export default{
         {
           token_id: '10',
           type: "purchase",
-          recipent: 'sphere',
+          recipent: 'Sphere',
           icon_source: 'mdi-waves',
           energy_source: 'hydro energy',
           country: 'chile',
@@ -300,7 +316,7 @@ export default{
         {
           token_id: '11',
           type: "purchase",
-          recipent: 'sphere',
+          recipent: 'Sphere',
           icon_source: 'mdi-waves',
           energy_source: 'hydro energy',
           country: 'chile',
@@ -314,7 +330,7 @@ export default{
         {
           token_id: '12',
           type: "sale",
-          recipent: 'sphere',
+          recipent: 'Sphere',
           icon_source: 'mdi-waves',
           energy_source: 'hydro energy',
           country: 'chile',

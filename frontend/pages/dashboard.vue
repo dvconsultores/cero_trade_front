@@ -3,76 +3,6 @@
     <h4>Hi Valentina 👋</h4>
     <span class="mbb16" style="color:#475467; margin-bottom: 64px;">Welcome to Cero Trade platform.</span>
 
-    <!-- <v-row>
-      <v-col xl="6" lg="6" cols="8" class="jstart acenter divrow" style="gap: 10px;">
-            <v-sheet class="center sheet"><v-icon>mdi-image-filter-center-focus-weak</v-icon></v-sheet>
-            <h5 class="mb-0" style="font-weight: 700;">Setup your profile</h5>
-      </v-col>
-      <v-col xl="6" lg="6" cols="4" class="jend acenter">
-        <h6 class="mb-0 bold">0 / 3 Steps</h6>
-      </v-col>
-
-      <v-col xl="4" lg="4" md="4" sm="6" cols="12">
-        <v-card class="card" :class="{'verifyStatus' : walletStatus}" style="background-color: #F9FAFB!important;">
-          <div class="div-cards-mobile">
-            <img v-if="!walletStatus" class="mb-10 mbb-0" src="@/assets/sources/icons/wallet.svg" alt="Wallet">
-            <img v-if="walletStatus" class="mb-10 mbb-0" src="@/assets/sources/icons/wallet-green.svg" alt="Wallet Green" style="height: 21px; width: 21px;">
-            <h5 class="mb-6 mbb-0">Connect your wallet</h5>
-          </div>
-          <span class="tertiary" style="font-weight: 300;">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
-          </span>
-          <v-btn v-if="!walletStatus" class="btn btn-mobile-width mt-6" @click="dialogConect = true">
-            Connect +
-          </v-btn>
-          <div class="divrow jspace acenter divcol-mobile mt-6" v-if="walletStatus">
-            <span style="font-size: 12px; font-weight: 700; color: #067647;"><v-icon class="mr-2 icon-green">mdi-check</v-icon>Wallet successfuly connected</span>
-            <v-btn class="btn btn-mobile-width" style="font-size: 12px!important;background-color: #fff!important; border-radius: 10px!important; border: 1px solid rgba(0,0,0,0.25)!important;">Payment methods</v-btn>
-          </div>
-        </v-card>
-      </v-col>
-
-      <v-col xl="4" lg="4" md="4" sm="6" cols="12">
-        <v-card class="card" :class="{'verifyStatus' : status2fa}" style="background-color: #F9FAFB!important;">
-          <div class="div-cards-mobile">
-            <v-icon v-if="!status2fa" class="mb-10" color="#000" style="font-size: 21px;">mdi-lock-outline</v-icon>
-            <v-icon v-if="status2fa" class="mb-10" color="#067647" style="font-size: 21px;">mdi-lock-outline</v-icon>
-            <h5 class="mb-6">2FA Authentification</h5>
-          </div>
-          <span class="tertiary" style="font-weight: 300;">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
-          </span>
-          <v-btn v-if="!status2fa" class="btn btn-mobile-width mt-6" @click="dialog2fa = true">
-            Setup <v-icon>mdi-lock-outline</v-icon>
-          </v-btn>
-          <div class="divrow jspace acenter divcol-mobile mt-6" v-if="status2fa">
-            <span style="font-size: 12px; font-weight: 700; color: #067647;"><v-icon class="mr-2 icon-green">mdi-check</v-icon>2FA successfuly added</span>
-            <v-btn class="btn btn-mobile-width" style="font-size: 12px!important;background-color: #fff!important; border-radius: 10px!important; border: 1px solid rgba(0,0,0,0.25)!important;">Security</v-btn>
-          </div>
-        </v-card>
-      </v-col>
-
-      <v-col xl="4" lg="4" md="4" sm="6" cols="12">
-        <v-card class="card" :class="{'verifyStatus' : verifyStatus}" style="background-color: #F9FAFB!important;">
-          <div class="div-cards-mobile">
-            <v-icon v-if="!verifyStatus" class="mb-10" color="#000" style="font-size: 21px;">mdi-check-decagram-outline</v-icon>
-            <v-icon v-if="verifyStatus" class="mb-10" color="#067647" style="font-size: 21px;">mdi-check-decagram-outline</v-icon>
-            <h5 class="mb-6">Veirfy as participant</h5>
-          </div>
-          <span class="tertiary" style="font-weight: 300;">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
-          </span>
-          <v-btn v-if="!verifyStatus" class="btn btn-mobile-width mt-6" @click="dialogParticipant = true">
-            Veirfy as participant <v-icon>mdi-check-decagram-outline</v-icon>
-          </v-btn>
-          <div class="divrow divcol-mobile jspace acenter mt-6" v-if="verifyStatus">
-            <span style="font-size: 12px; font-weight: 700; color: #067647;"><v-icon class="mr-2 icon-green">mdi-check</v-icon>Veirification confirmed</span>
-            <v-btn class="btn btn-mobile-width" style="font-size: 12px!important;background-color: #fff!important; border-radius: 10px!important; border: 1px solid rgba(0,0,0,0.25)!important;">Security</v-btn>
-          </div>
-        </v-card>
-      </v-col>
-    </v-row> -->
-
     <v-row>
       <v-col xl="9" lg="9" cols="12">
         <v-row>
@@ -121,27 +51,33 @@
           <v-col cols="12">
             <v-card class="card divcol mb-4" style="background-color: #F9FAFB!important; min-height: 200px!important;">
               <h5>Quick links</h5>
-              <span class="mb-2" style="color: #00555B; font-size: 12px;"><v-icon color="#00555B">mdi-file-document-check-outline</v-icon> Documentation</span>
-              <span class="mb-2" style="color: #00555B; font-size: 12px;"><v-icon color="#00555B">mdi-headphones</v-icon> Support</span>
+              <span class="mb-2 d-flex flex-acenter" style="color: #00555B; font-size: 12px; gap: 5px">
+                <img src="@/assets/sources/icons/file.svg" alt="file icon">
+                Documentation
+              </span>
+              <span class="mb-2 d-flex flex-acenter" style="color: #00555B; font-size: 12px; gap: 5px">
+                <img src="@/assets/sources/icons/headphones.svg" alt="headphones icon">
+                Support
+              </span>
             </v-card>
 
             <v-card class="card divcol mb-4" style="background-color: #F9FAFB!important; min-height: 200px!important;">
               <h5 class="acenter"><img src="@/assets/sources/icons/account-multiple.svg" alt="Account" class="mr-4" style="width: 20px;">Profile</h5>
               <p class="p12">Lorem ipsum dolor sit amet consectetur. Amet fusce elit nunc velit ultrices nibh. Nunc phasellus odio mauris gravida</p>
-              <v-btn class="btn btn-max-content">Edit profile <v-icon>mdi-check-decagram-outline</v-icon></v-btn>
+              <v-btn class="btn btn-max-content">Edit profile <img src="@/assets/sources/icons/check-verified.svg" alt="check-verified icon"></v-btn>
             </v-card>
 
             <v-card class="card divcol mb-4" style="background-color: #F9FAFB!important; min-height: 200px!important;">
               <h5 class="acenter"><img src="@/assets/sources/icons/marketplace-black.svg" alt="Marketplace" class="mr-4" style="width: 20px;">Marketplace</h5>
               <p class="p12">Lorem ipsum dolor sit amet consectetur. Amet fusce elit nunc velit ultrices nibh. Nunc phasellus odio mauris gravida</p>
-              <v-btn class="btn btn-max-content">Go to marketplace <v-icon>mdi-circle-multiple-outline</v-icon></v-btn>
+              <v-btn class="btn btn-max-content">Go to marketplace <img src="@/assets/sources/icons/coins.svg" alt="coins icon"></v-btn>
             </v-card>
           </v-col>
         </v-row>
       </v-col>
     </v-row>
-
-    <!-- Dialog conect -->
+<!-- 
+    Dialog conect
     <v-dialog v-model="dialogConect" persistent>
       <v-card class="card card-dialog-connect">
         <v-icon class="close" @click="dialogConect = false">mdi-close</v-icon>
@@ -228,7 +164,8 @@
         </v-row>
       </v-card>
     </v-dialog>
-    <!-- Dialog Credit Card -->
+
+    Dialog Credit Card
     <v-dialog v-model="dialogCreditCrad" persistent>
       <v-card class="card card-dialog-credit-card">
         <v-icon class="close" @click="dialogCreditCrad = false">mdi-close</v-icon>
@@ -270,7 +207,8 @@
         </div>
       </v-card>
     </v-dialog>
-    <!-- Dialog 2fa -->
+
+    Dialog 2fa
     <v-dialog v-model="dialog2fa" persistent>
       <v-card class="card card-dialog-2fa">
         <v-icon class="close" @click="dialog2fa = false">mdi-close</v-icon>
@@ -309,7 +247,8 @@
         </div>
       </v-card>
     </v-dialog>
-    <!-- Dialog OTP -->
+
+    Dialog OTP
     <v-dialog v-model="dialogPhone" persistent>
       <v-card class="card card-dialog-2fa">
         <v-icon class="close" @click="dialogPhone = false; status2fa = true">mdi-close</v-icon>
@@ -328,7 +267,7 @@
         </v-row>
       </v-card>
     </v-dialog>
-    <!-- Dialog verify -->
+    Dialog verify
     <v-dialog v-model="dialogParticipant" persistent>
       <v-card class="card card-dialog-participant">
         <v-icon class="close" @click="dialogParticipant = false">mdi-close</v-icon>
@@ -379,7 +318,8 @@
         </v-row>
       </v-card>
     </v-dialog>
-    <!-- Dialog participant form -->
+
+    Dialog participant form
     <v-dialog v-model="dialogParticipantForm" persistent>
       <v-card class="card card-dialog-form">
         <v-icon class="close" @click="dialogParticipantForm = false">mdi-close</v-icon>
@@ -417,7 +357,8 @@
         </v-row>
       </v-card>
     </v-dialog>
-    <!-- Dialog pending -->
+
+    Dialog pending
     <v-dialog v-model="dialogPending" persistent>
       <v-card class="card card-dialog-2fa">
         <v-icon class="close" @click="dialogPending = false; verifyStatus = true">mdi-close</v-icon>
@@ -425,7 +366,7 @@
         <h6>Verification pending</h6>
         <span class="tertiary">Lorem ipsum dolor sit amet consectetur adipisicing elit. At alias laboriosam iste eum, repellendus.</span>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
   </div>
 </template>
 

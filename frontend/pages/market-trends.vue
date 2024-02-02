@@ -2,7 +2,7 @@
   <div id="market-trends">
     <span class="mb-10 acenter" style="color:#475467 ;font-size: 16px; font-weight: 700;">
       <img src="@/assets/sources/icons/home-layout.svg" alt="Home Icon" style="width: 20px;">
-      <v-icon>mdi-chevron-right</v-icon> 
+      <img src="@/assets/sources/icons/chevron-right-light.svg" alt="arrow right icon" class="mx-1">
       <span style="color: #00555B;">Market trends</span>
     </span>
     <h3>Market trends</h3>
@@ -45,13 +45,21 @@
             :items="['Year', 'Month']"
             variant="outline"
             flat
-            menu-icon="mdi-chevron-down"
+            menu-icon=""
             class="select"
             bg-color="#ffffff"
             hide-details
             density="compact"
             style="max-width: 120px;"
-            ></v-select>
+            >
+              <template #append-inner="{ isFocused }">
+                <img
+                  src="@/assets/sources/icons/chevron-down.svg"
+                  alt="chevron-down icon"
+                  :style="`transform: ${isFocused.value ? 'rotate(180deg)' : 'none'};`"
+                >
+              </template>
+            </v-select>
           </div>
         </v-card>
       </v-col>
@@ -69,13 +77,21 @@
             :items="['Year', 'Month']"
             variant="outline"
             flat
-            menu-icon="mdi-chevron-down"
+            menu-icon=""
             class="select"
             bg-color="#ffffff"
             hide-details
             density="compact"
             style="max-width: 120px;"
-            ></v-select>
+            >
+              <template #append-inner="{ isFocused }">
+                <img
+                  src="@/assets/sources/icons/chevron-down.svg"
+                  alt="chevron-down icon"
+                  :style="`transform: ${isFocused.value ? 'rotate(180deg)' : 'none'};`"
+                >
+              </template>
+            </v-select>
           </div>
         </v-card>
       </v-col>
@@ -96,13 +112,21 @@
             :items="['Year', 'Month']"
             variant="outline"
             flat
-            menu-icon="mdi-chevron-down"
+            menu-icon=""
             class="select"
             bg-color="#ffffff"
             hide-details
             density="compact"
             style="max-width: 120px;"
-            ></v-select>
+            >
+              <template #append-inner="{ isFocused }">
+                <img
+                  src="@/assets/sources/icons/chevron-down.svg"
+                  alt="chevron-down icon"
+                  :style="`transform: ${isFocused.value ? 'rotate(180deg)' : 'none'};`"
+                >
+              </template>
+            </v-select>
           </div>
           <apexchart type="candlestick" height="350" :options="chartOptionsCandle" :series="seriesCandle"></apexchart>
         </v-card>

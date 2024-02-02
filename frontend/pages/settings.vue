@@ -2,7 +2,7 @@
   <div id="settings">
     <span class="mb-10 acenter" style="color:#475467 ;font-size: 16px; font-weight: 700;">
       <img src="@/assets/sources/icons/home-layout.svg" alt="Home Icon" style="width: 20px;">
-      <v-icon>mdi-chevron-right</v-icon> 
+      <img src="@/assets/sources/icons/chevron-right-light.svg" alt="arrow right icon" class="mx-1">
       <span style="color: #00555B;">Settings</span>
     </span>
     <h3>Settings</h3>
@@ -11,55 +11,17 @@
     <v-row>
       <v-col xl="4" lg="4" md="4" sm="6" cols="12">
         <v-card class="card" style="background-color: #F9FAFB!important;">
-          <v-icon class="mb-10">mdi-information-outline</v-icon>
+          <img src="@/assets/sources/icons/info-circle.svg" alt="info-circle icon" class="mb-7">
           <h5 class="mb-6">Company information</h5>
           <span class="tertiary" style="font-weight: 300;">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
           </span>
           <v-btn class="btn mt-6" @click="dialogCompany = true">
-            Edit personal information <v-icon>mdi-account-edit-outline</v-icon>
+            Edit personal information
+            <img src="@/assets/sources/icons/user-edit.svg" alt="user-edit icon">
           </v-btn>
         </v-card>
       </v-col>
-
-      <!-- <v-col xl="4" lg="4" md="4" sm="6" cols="12">
-        <v-card class="card" style="background-color: #F9FAFB!important;">
-          <img class="mb-10" src="@/assets/sources/icons/wallet.svg" alt="Wallet">
-          <h5 class="mb-6">Connect your wallet</h5>
-          <span class="tertiary" style="font-weight: 300;">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
-          </span>
-          <v-btn class="btn mt-6" @click="dialogConect = true">
-            Connect +
-          </v-btn>
-        </v-card>
-      </v-col> -->
-
-      <!-- <v-col xl="4" lg="4" md="4" sm="6" cols="12">
-        <v-card class="card" style="background-color: #F9FAFB!important;">
-          <v-icon class="mb-10" color="#000">mdi-lock-outline</v-icon>
-          <h5 class="mb-6">2FA Authentification</h5>
-          <span class="tertiary" style="font-weight: 300;">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
-          </span>
-          <v-btn class="btn mt-6" @click="dialog2fa = true">
-            Setup <v-icon>mdi-lock-outline</v-icon>
-          </v-btn>
-        </v-card>
-      </v-col> -->
-
-      <!-- <v-col xl="4" lg="4" md="4" sm="6" cols="12">
-        <v-card class="card" style="background-color: #F9FAFB!important;">
-          <v-icon class="mb-10" color="#000">mdi-check-decagram-outline</v-icon>
-          <h5 class="mb-6">Veirfy as participant</h5>
-          <span class="tertiary" style="font-weight: 300;">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
-          </span>
-          <v-btn class="btn mt-6" @click="dialogParticipant = true">
-            Veirfy as participant <v-icon>mdi-check-decagram-outline</v-icon>
-          </v-btn>
-        </v-card>
-      </v-col> -->
 
       <v-col xl="4" lg="4" md="4" sm="6" cols="12">
         <v-card class="card" style="background-color: #F9FAFB!important;">
@@ -69,33 +31,22 @@
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
           </span>
           <v-btn class="btn mt-6" @click="dialogNotification = true">
-            Setup <v-icon>mdi-bell-outline</v-icon>
+            Setup
+            <img src="@/assets/sources/icons/bell-black.svg" alt="bell icon">
           </v-btn>
         </v-card>
       </v-col>
 
-      <!-- <v-col xl="4" lg="4" md="4" sm="6" cols="12">
-        <v-card class="card" style="background-color: #F9FAFB!important;">
-          <img class="mb-10" src="@/assets/sources/icons/password-resset.svg" alt="Password reset" style="width: 21px; height: 21px;">
-          <h5 class="mb-6">Reset password</h5>
-          <span class="tertiary" style="font-weight: 300;">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
-          </span>
-          <v-btn class="btn mt-6" @click="dialogResetPassword = true">
-            Reset your password <v-icon>mdi-sync</v-icon>
-          </v-btn>
-        </v-card>
-      </v-col> -->
-
       <v-col xl="4" lg="4" md="4" sm="6" cols="12">
         <v-card class="card" style="background-color: #F9FAFB!important;">
-          <v-icon class="mb-10">mdi-headphones</v-icon>
+          <img src="@/assets/sources/icons/headphones-black.svg" alt="headphones icon" class="mb-7">
           <h5 class="mb-6">Support</h5>
           <span class="tertiary" style="font-weight: 300;">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
           </span>
           <v-btn class="btn mt-6" @click="$router.push(basePath('/support'))">
-            Contact Support <v-icon>mdi-headphones</v-icon>
+            Contact Support
+            <img src="@/assets/sources/icons/headphones-black.svg" alt="headphones icon" style="width: 15px">
           </v-btn>
         </v-card>
       </v-col>
@@ -108,7 +59,8 @@
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
           </span>
           <v-btn class="btn mt-6" @click="dialogBeneficiary = true">
-            Edit accounts <v-icon>mdi-pencil-outline</v-icon>
+            Edit accounts
+            <img src="@/assets/sources/icons/pencil.svg" alt="pencil icon">
           </v-btn>
         </v-card>
       </v-col>
@@ -121,7 +73,8 @@
             Connect your wallet or include your bank transfer details.
           </span>
           <v-btn class="btn mt-auto mr-auto" @click="dialogSelectPayment = true">
-            Connect <v-icon>mdi-plus</v-icon>
+            Connect
+            <img src="@/assets/sources/icons/plus.svg" alt="plus icon">
           </v-btn>
         </v-card>
       </v-col>
@@ -130,7 +83,7 @@
     <!-- Dialog Notifications -->
     <v-dialog v-model="dialogNotification" persistent>
       <v-card class="card card-dialog-notification">
-        <v-icon class="close" @click="dialogNotification = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogNotification = false">
         <v-sheet class="mb-10 double-sheet">
           <v-sheet>
             <img src="@/assets/sources/icons/ring-belt.svg" alt="Password reset" style="width: 25px; height: 25px;">
@@ -280,15 +233,22 @@
         </v-window>
 
         <div class="divrow mt-6" style="gap: 10px;">
-          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogNotification = false">Cancel <v-icon>mdi-close</v-icon></v-btn>
-          <v-btn class="btn" @click="dialogNotification = false;" style="border: none!important;">Save changes <v-icon>mdi-content-save-outline</v-icon></v-btn>
+          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogNotification = false">
+            Cancel
+            <img src="@/assets/sources/icons/close.svg" alt="close" style="width: 15px">
+          </v-btn>
+          <v-btn class="btn" @click="dialogNotification = false;" style="border: none!important;">
+            Save changes
+            <img src="@/assets/sources/icons/save.svg" alt="save icon">
+        </v-btn>
         </div>
       </v-card>
     </v-dialog>
+
     <!-- Reset Password -->
-    <v-dialog v-model="dialogResetPassword" persistent>
+    <!-- <v-dialog v-model="dialogResetPassword" persistent>
       <v-card class="card card-dialog-reset">
-        <v-icon class="close" @click="dialogResetPassword = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogResetPassword = false">
         <v-sheet class="mb-10 double-sheet">
           <v-sheet>
             <img src="@/assets/sources/icons/password-resset.svg" alt="Password reset" style="width: 25px; height: 25px;">
@@ -321,18 +281,22 @@
         </v-row>
 
         <div class="divrow mt-6" style="gap: 10px;">
-          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogResetPassword = false">Cancel <v-icon>mdi-close</v-icon></v-btn>
+          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogResetPassword = false">
+            Cancel
+            <img src="@/assets/sources/icons/close.svg" alt="close" style="width: 15px">
+          </v-btn>
           <v-btn class="btn" @click="dialogResetPassword = false;" style="border: none!important;">Reset your password <v-icon>mdi-sync</v-icon></v-btn>
         </div>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog information -->
     <v-dialog v-model="dialogCompany" persistent>
       <v-card class="card card-dialog-company">
-        <v-icon class="close" @click="dialogCompany = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogCompany = false">
         <v-sheet class="mb-10 double-sheet">
           <v-sheet>
-            <v-icon style="width: 25px;">mdi-account-multiple-outline</v-icon>
+            <img src="@/assets/sources/icons/users.svg" alt="users icon">
           </v-sheet>
         </v-sheet>
         <h5>Company information</h5>
@@ -365,8 +329,16 @@
             <v-select 
             id="country" class="input" variant="solo" flat 
             elevation="0" placeholder="USA"
-            menu-icon="mdi-chevron-down"
-            ></v-select>
+            menu-icon=""
+            >
+              <template #append-inner="{ isFocused }">
+                <img
+                  src="@/assets/sources/icons/chevron-down.svg"
+                  alt="chevron-down icon"
+                  :style="`transform: ${isFocused.value ? 'rotate(180deg)' : 'none'};`"
+                >
+              </template>
+            </v-select>
           </v-col>
 
           <v-col cols="12">
@@ -376,8 +348,14 @@
         </v-row>
 
         <div class="divrow mt-6" style="gap: 10px;">
-          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogCompany = false">Cancel <v-icon>mdi-close</v-icon></v-btn>
-          <v-btn class="btn" @click="dialogCompany = false;" style="border: none!important;">Save changes <v-icon>mdi-content-save-outline</v-icon></v-btn>
+          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogCompany = false">
+            Cancel
+            <img src="@/assets/sources/icons/close.svg" alt="close" style="width: 15px">
+          </v-btn>
+          <v-btn class="btn" @click="dialogCompany = false;" style="border: none!important;">
+            Save changes
+            <img src="@/assets/sources/icons/save.svg" alt="save icon">
+          </v-btn>
         </div>
       </v-card>
     </v-dialog>
@@ -385,7 +363,7 @@
     <!-- Dialog Select Payment -->
     <v-dialog v-model="dialogSelectPayment" persistent>
       <v-card class="card card-dialog-notification">
-        <v-icon class="close" @click="dialogSelectPayment = false;">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogSelectPayment = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
             <img src="@/assets/sources/icons/wallet.svg" alt="wallet icon" style="width: 20px">
@@ -412,10 +390,10 @@
     <!-- Dialog bank details -->
     <v-dialog v-model="dialogBankTransferDetails" persistent>
       <v-card class="card card-dialog-company" style="width: min(100%, 600px) !important">
-        <v-icon class="close" @click="dialogBankTransferDetails = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogBankTransferDetails = false">
         <v-sheet class="mb-10 double-sheet">
           <v-sheet>
-            <v-icon style="width: 25px;">mdi-credit-card-outline</v-icon>
+            <img src="@/assets/sources/icons/credit-card.svg" alt="credit-card icon">
           </v-sheet>
         </v-sheet>
         <h5>Bank transfer details</h5>
@@ -437,10 +415,18 @@
             id="country"
             variant="solo"
             flat
-            menu-icon="mdi-chevron-down"
+            menu-icon=""
             class="input"
             placeholder="United Kingdom"
-          />
+          >
+            <template #append-inner="{ isFocused }">
+              <img
+                src="@/assets/sources/icons/chevron-down.svg"
+                alt="chevron-down icon"
+                :style="`transform: ${isFocused.value ? 'rotate(180deg)' : 'none'};`"
+              >
+            </template>
+          </v-select>
         </div>
         
         <div class="flex-column mb-5" style="gap: 5px">
@@ -485,15 +471,21 @@
         </aside>
 
         <div class="divrow mt-6" style="gap: 10px;">
-          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogBankTransferDetails = false">Cancel <v-icon>mdi-close</v-icon></v-btn>
-          <v-btn class="btn" @click="dialogBankTransferDetails = false;" style="border: none!important;">Confirm <v-icon>mdi-check</v-icon></v-btn>
+          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogBankTransferDetails = false">
+            Cancel
+            <img src="@/assets/sources/icons/close.svg" alt="close" style="width: 15px">
+          </v-btn>
+          <v-btn class="btn" @click="dialogBankTransferDetails = false;" style="border: none!important;">
+            Confirm
+            <img src="@/assets/sources/icons/check-simple.svg" alt="check icon">
+          </v-btn>
         </div>
       </v-card>
     </v-dialog>
     <!-- Dialog conect -->
-    <v-dialog v-model="dialogConect" persistent>
+    <!-- <v-dialog v-model="dialogConect" persistent>
       <v-card class="card card-dialog-connect">
-        <v-icon class="close" @click="dialogConect = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogConect = false">
         <v-sheet class="mb-10 double-sheet">
           <v-sheet>
             <img src="@/assets/sources/icons/wallet.svg" alt="Wallet" style="width: 25px; height: 25px;">
@@ -566,14 +558,15 @@
           </v-col>
         </v-row>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog Credit Card -->
-    <v-dialog v-model="dialogCreditCrad" persistent>
+    <!-- <v-dialog v-model="dialogCreditCrad" persistent>
       <v-card class="card card-dialog-credit-card">
-        <v-icon class="close" @click="dialogCreditCrad = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogCreditCrad = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
-            <v-icon>mdi-credit-card-outline</v-icon>
+            <img src="@/assets/sources/icons/credit-card.svg" alt="credit-card icon">
           </v-sheet>
         </v-sheet>
         <h5>Credit card connect</h5>
@@ -604,15 +597,22 @@
           </v-col>
         </v-row>
         <div class="divrow mt-6" style="gap: 10px;">
-          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogCreditCrad = false">Cancel <v-icon>mdi-close</v-icon></v-btn>
-          <v-btn class="btn" @click="dialogCreditCrad = false; walletStatus = true">Confirm <v-icon>mdi-check</v-icon></v-btn>
+          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogCreditCrad = false">
+            Cancel
+            <img src="@/assets/sources/icons/close.svg" alt="close" style="width: 15px">
+          </v-btn>
+          <v-btn class="btn" @click="dialogCreditCrad = false; walletStatus = true">
+            Confirm
+            <img src="@/assets/sources/icons/check-simple.svg" alt="check icon">
+          </v-btn>
         </div>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog 2fa -->
-    <v-dialog v-model="dialog2fa" persistent>
+    <!-- <v-dialog v-model="dialog2fa" persistent>
       <v-card class="card card-dialog-2fa">
-        <v-icon class="close" @click="dialog2fa = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialog2fa = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
             <v-icon>mdi-shield-outline</v-icon>
@@ -643,15 +643,22 @@
           </v-col>
         </v-row>
         <div class="divrow mt-6" style="gap: 10px;">
-          <v-btn class="btn" style="background-color: #fff!important;" @click="dialog2fa = false">Cancel <v-icon>mdi-close</v-icon></v-btn>
-          <v-btn class="btn" @click="dialog2fa = false; dialogPhone = true">Confirm <v-icon>mdi-check</v-icon></v-btn>
+          <v-btn class="btn" style="background-color: #fff!important;" @click="dialog2fa = false">
+            Cancel
+            <img src="@/assets/sources/icons/close.svg" alt="close" style="width: 15px">
+          </v-btn>
+          <v-btn class="btn" @click="dialog2fa = false; dialogPhone = true">
+            Confirm
+            <img src="@/assets/sources/icons/check-simple.svg" alt="check icon">
+          </v-btn>
         </div>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog OTP -->
-    <v-dialog v-model="dialogPhone" persistent>
+    <!-- <v-dialog v-model="dialogPhone" persistent>
       <v-card class="card card-dialog-2fa">
-        <v-icon class="close" @click="dialogPhone = false; status2fa = true">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogPhone = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
             <v-icon>mdi-shield-outline</v-icon>
@@ -666,11 +673,12 @@
           </v-col>
         </v-row>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog verify -->
-    <v-dialog v-model="dialogParticipant" persistent>
+    <!-- <v-dialog v-model="dialogParticipant" persistent>
       <v-card class="card card-dialog-participant">
-        <v-icon class="close" @click="dialogParticipant = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogParticipant = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
             <v-icon>mdi-check-decagram-outline</v-icon>
@@ -689,9 +697,18 @@
               <span class="tertiary">Lorem ipsum dolor sit amet consectetur adipisicing elit. At alias laboriosam iste eum, repellendus.</span>
               <v-divider :thickness="2" class="tertiary mt-4 mb-4" style="height: 1px;width: 150%;position: relative; left: -80px;"></v-divider>
               <div class="divcol astart ml-6" style="gap: 20px;">
-                <span><v-icon class="check mr-2">mdi-check</v-icon> Acces to basic features</span>
-                <span><v-icon class="check mr-2">mdi-check</v-icon> Basic reporting + analytics</span>
-                <span><v-icon class="check mr-2">mdi-check</v-icon> Up to 10 individual users</span>
+                <span class="flex-acenter">
+                  <img src="@/assets/sources/icons/check-simple.svg" alt="check icon" class="mr-2">
+                  Acces to basic features
+                </span>
+                <span class="flex-acenter">
+                  <img src="@/assets/sources/icons/check-simple.svg" alt="check icon" class="mr-2">
+                  Basic reporting + analytics
+                </span>
+                <span class="flex-acenter">
+                  <img src="@/assets/sources/icons/check-simple.svg" alt="check icon" class="mr-2">
+                  Up to 10 individual users
+                </span>
               </div>
             </v-card>
           </v-col>
@@ -701,21 +718,37 @@
               <span class="tertiary">Lorem ipsum dolor sit amet consectetur adipisicing elit. At alias laboriosam iste eum, repellendus.</span>
               <v-divider :thickness="2" class="tertiary mt-4 mb-4" style="height: 1px;width: 150%;position: relative; left: -80px;"></v-divider>
               <div class="divcol astart ml-6" style="gap: 20px;">
-                <span><v-icon class="check-green mr-2">mdi-check</v-icon> Acces to basic features</span>
-                <span><v-icon class="check-green mr-2">mdi-check</v-icon> Basic reporting + analytics</span>
-                <span><v-icon class="check-green mr-2">mdi-check</v-icon> Up to 10 individual users</span>
-                <span><v-icon class="check-green mr-2">mdi-check</v-icon> 20GB individual data</span>
-                <span><v-icon class="check-green mr-2">mdi-check</v-icon> Basic chat support</span>
+                <span class="flex-acenter">
+                  <img src="@/assets/sources/icons/check-simple.svg" alt="check icon" class="mr-2">
+                  Acces to basic features
+                </span>
+                <span class="flex-acenter">
+                  <img src="@/assets/sources/icons/check-simple.svg" alt="check icon" class="mr-2">
+                  Basic reporting + analytics
+                </span>
+                <span class="flex-acenter">
+                  <img src="@/assets/sources/icons/check-simple.svg" alt="check icon" class="mr-2">
+                  Up to 10 individual users
+                </span>
+                <span class="flex-acenter">
+                  <img src="@/assets/sources/icons/check-simple.svg" alt="check icon" class="mr-2">
+                  20GB individual data
+                </span>
+                <span class="flex-acenter">
+                  <img src="@/assets/sources/icons/check-simple.svg" alt="check icon" class="mr-2">
+                  Basic chat support
+                </span>
               </div>
             </v-card>
           </v-col>
         </v-row>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog participant form -->
-    <v-dialog v-model="dialogParticipantForm" persistent>
+    <!-- <v-dialog v-model="dialogParticipantForm" persistent>
       <v-card class="card card-dialog-form">
-        <v-icon class="close" @click="dialogParticipantForm = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogParticipantForm = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
             <v-icon>mdi-check-decagram-outline</v-icon>
@@ -749,11 +782,12 @@
           </v-col>
         </v-row>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog pending -->
-    <v-dialog v-model="dialogPending" persistent>
+    <!-- <v-dialog v-model="dialogPending" persistent>
       <v-card class="card card-dialog-2fa">
-        <v-icon class="close" @click="dialogPending = false; verifyStatus = true">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogPending = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
             <img src="@/assets/sources/icons/loading.svg" alt="loading" style="width: 30px;">
@@ -762,11 +796,12 @@
         <h5>Verification pending</h5>
         <span class="tertiary">Lorem ipsum dolor sit amet consectetur adipisicing elit. At alias laboriosam iste eum, repellendus.</span>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog Beneficiary Account -->
     <v-dialog v-model="dialogBeneficiary" persistent>
       <v-card class="card card-dialog-notification">
-        <v-icon class="close" @click="dialogBeneficiary = false;">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogBeneficiary = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
             <img src="@/assets/sources/icons/domain.svg" alt="Domain" style="width: 25px;">
@@ -778,7 +813,7 @@
         <div class="div-radio-sell mb-0" v-for="(item, index) in dataBanks" :key="index">
           <v-sheet class="double-sheet">
             <v-sheet>
-              <v-icon>mdi-bank-outline</v-icon>
+              <img src="@/assets/sources/icons/bank-big.svg" alt="bank icon" style="width: 20px">
             </v-sheet>
           </v-sheet>
           <div class="divcol ml-6">
@@ -790,7 +825,7 @@
         <div class="div-radio-sell" @click="dialogNewBeneficiary = true; dialogBeneficiary = false">
           <v-sheet class="double-sheet">
             <v-sheet>
-              <v-icon>mdi-plus-box-outline</v-icon>
+              <img src="@/assets/sources/icons/plus-square.svg" alt="plus-square icon" style="width: 20px">
             </v-sheet>
           </v-sheet>
           <div class="divcol ml-6">
@@ -800,10 +835,11 @@
         </div>
       </v-card>
     </v-dialog>
+
     <!-- New Beneficiary Account -->
     <v-dialog v-model="dialogNewBeneficiary" persistent>
       <v-card class="card card-dialog-company">
-        <v-icon class="close" @click="dialogNewBeneficiary = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogNewBeneficiary = false">
         <v-sheet class="mb-10 double-sheet">
           <v-sheet>
             <img src="@/assets/sources/icons/domain.svg" alt="Domain" style="width: 25px;">
@@ -836,8 +872,16 @@
             <v-select
             id="country" class="input" variant="solo" flat elevation="0" 
             placeholder="Choose country"
-            menu-icon="mdi-chevron-down"
-            ></v-select>
+            menu-icon=""
+            >
+              <template #append-inner="{ isFocused }">
+                <img
+                  src="@/assets/sources/icons/chevron-down.svg"
+                  alt="chevron-down icon"
+                  :style="`transform: ${isFocused.value ? 'rotate(180deg)' : 'none'};`"
+                >
+              </template>
+            </v-select>
           </v-col>
 
           <v-col cols="12">
@@ -855,8 +899,14 @@
         </v-row>
 
         <div class="divrow mt-6" style="gap: 10px;">
-          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogNewBeneficiary = false">Cancel <v-icon>mdi-close</v-icon></v-btn>
-          <v-btn class="btn" @click="pushBanks()" style="border: none!important;">Create account <v-icon>mdi-plus-box-outline</v-icon></v-btn>
+          <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogNewBeneficiary = false">
+            Cancel
+            <img src="@/assets/sources/icons/close.svg" alt="close" style="width: 15px">
+          </v-btn>
+          <v-btn class="btn" @click="pushBanks()" style="border: none!important;">
+            Create account
+            <img src="@/assets/sources/icons/plus-square.svg" alt="plust-square icon">
+          </v-btn>
         </div>
       </v-card>
     </v-dialog>

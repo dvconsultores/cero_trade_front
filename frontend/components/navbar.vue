@@ -35,7 +35,7 @@
       </div>
 
       <div class="center divrow displaynone" style="gap: 20px;">
-        <v-icon color="#fff">mdi-bell-outline</v-icon>
+        <img src="@/assets/sources/icons/bell.svg" alt="bell icon">
         <v-sheet class="center divrow pointer" style="gap: 10px; background-color: transparent;" @click="$router.push(basePath('/profile'))">
           <img src="@/assets/sources/images/avatar-online.svg" alt="Avatar">
           <div class="divcol">
@@ -50,7 +50,7 @@
 
       <div class="right-mobile" style="gap: 20px;">
         <img src="@/assets/sources/images/avatar-online.svg" alt="Avatar" class="pointer" style="width: 35px;" @click="$router.push(basePath('/profile'))">
-        <v-icon color="#fff" style="font-size: 25px;">mdi-bell-outline</v-icon>
+        <img src="@/assets/sources/icons/bell.svg" alt="bell icon">
         <img src="@/assets/sources/icons/menu-bars-mobile.svg" alt="Menu Bars" class="menu-bars show-mobile" @click.stop="drawer = !drawer">
       </div>
     </div>

@@ -2,27 +2,23 @@
   <div id="rec-single">
     <span class="mb-10 acenter" style="color: #475467; font-size: 16px; font-weight: 700;">
       <img src="@/assets/sources/icons/home-layout.svg" alt="Home Icon" style="width: 20px;">
-      <v-icon>mdi-chevron-right</v-icon> 
+      <img src="@/assets/sources/icons/chevron-right-light.svg" alt="arrow right icon" class="mx-1">
       Marketplace 
-      <v-icon>mdi-chevron-right</v-icon> 
+      <img src="@/assets/sources/icons/chevron-right-light.svg" alt="arrow right icon" class="mx-1">
       <span style="color: #00555B;">#12345678</span>
     </span>
+
     <div class="divrow acenter mb-4">
       <div class="div-avatar-asset mr-6">
         <img src="@/assets/sources/icons/CL.svg" alt="Flag" class="flag">
-        <div class="icon-div center">
-          <v-icon class="icon">mdi-weather-windy</v-icon>
+
+        <div class="icon-div center" style="width: 22px; height: 22px">
+          <img :src="energies['hydro energy']" alt="energy icon" style="width: 12px">
         </div>
       </div>
+
       <h3 class="mb-0"> #12345678</h3>
     </div>
-    <!-- <div class="divrow aend" style="gap: 10px;">
-      <h4 class="mb-0">
-        $ 124.05
-      </h4>
-      <span style="color:#475467">per MWh</span>
-      <v-chip class="green-chip"><v-icon>mdi-arrow-up</v-icon> 20 %</v-chip>
-    </div> -->
 
     <v-row>
       <v-col xl="8" lg="8" md="8" cols="12">
@@ -31,15 +27,11 @@
             <v-card class="card cards-rec" v-for="(item, index) in dataCardEnergy" :key="index">
               <div class="jspace divrow mb-1">
                 <span style="color: #475467;">Type</span>
-                <span>
-                  <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
+                <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+                  <img :src="energiesColored[item.energy_source]" :alt="`${item.energy_source} icon`" style="width: 20px;">
+                  {{ item.energy_source }}
                 </span>
               </div>
-
-              <!-- <div class="jspace divrow mt-3 mb-1">
-                <span style="color: #475467;">Region</span>
-                <span>{{ item.region }}</span>
-              </div> -->
 
               <div class="jspace divrow mt-3 mb-1">
                 <span style="color: #475467;">Start date of production</span>
@@ -50,11 +42,6 @@
                 <span style="color: #475467;">End date of production</span>
                 <span>{{ item.date }}</span>
               </div>
-
-              <!-- <div class="jspace divrow mt-3 mb-1">
-                <span style="color: #475467;">Certification type</span>
-                <span>{{ item.certification }}</span>
-              </div> -->
 
               <div class="jspace divrow mt-3 mb-1">
                 <span style="color: #475467;">CO2 Emission</span>
@@ -68,8 +55,8 @@
               
               <div class="jspace divrow mt-3 mb-1">
                 <span style="color: #475467;">Volume produced</span>
-                <span class="flex-center" style="gap: 5px">
-                  <v-icon>mdi-lightbulb-variant-outline</v-icon>
+                <span class="flex-acenter" style="gap: 5px">
+                  <img src="@/assets/sources/icons/lightbulb.svg" alt="lightbulb icon" style="width: 15px">
                   {{ item.volume }}MWh
                 </span>
               </div>
@@ -92,78 +79,6 @@
             </v-card>
           </v-col>
 
-          <!-- <v-col cols="12">
-            <v-card class="card">
-              <h5 class="mb-10">Trading Volume</h5>
-              <div class="jspace acenter divrow mb-6">
-                <div>
-                  <h5 class="mb-2">219.10</h5>
-                  <span style="color: #00555B;">+16.87 (8.12%) <v-icon>mdi-triangle-small-up</v-icon></span>
-                </div>
-
-                <v-select
-                v-model="time_selection"
-                :items="['Year', 'Month']"
-                variant="outline"
-                flat
-                menu-icon="mdi-chevron-down"
-                class="select"
-                bg-color="#ffffff"
-                hide-details
-                density="compact"
-                style="max-width: 120px;"
-                ></v-select>
-              </div>
-              <apexchart type="candlestick" height="350" :options="chartOptionsCandle" :series="seriesCandle"></apexchart>
-
-              <apexchart type="bar" height="150" :options="chartOptionsBar" :series="seriesBar"></apexchart>
-            </v-card>
-          </v-col> -->
-
-          <!-- <v-col cols="12">
-            <v-card class="card">
-              <v-row>
-                <v-col xl="7" lg="7" md="6" cols="12">
-                  <h5 class="mb-6">About facility</h5>
-                  <span>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad at deleniti expedita, cumque quod esse veniam eveniet commodi 
-                    similique? Quis voluptate quas ea? Alias, nisi consequuntur. Excepturi, at laborum nemo, harum placeat ea natus sunt, 
-                    provident id obcaecati a quod, Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem tempore laborum quod 
-                    doloremque ducimus, consequatur neque atque nesciunt ex aliquam debitis commodi itaque, enim natus laboriosam hic? Explicabo,
-                    consequatur corrupti.
-                    <br><br>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos quisquam error, totam voluptatum fugiat harum, Lorem ipsum 
-                    dolor sit amet consectetur adipisicing elit. Eligendi, laudantium.
-                  </span>
-                </v-col>
-
-                <v-col xl="5" lg="5" md="6" cols="12">
-                  <v-card class="card divcol" style="min-height: 100%!important;">
-                    <span style="color: #475467;">
-                      Company name
-                    </span>
-                    <span class="mb-4">
-                      Facility Name Ltd
-                    </span>
-                    <span style="color: #475467;">
-                      Company address
-                    </span>
-                    <span class="mb-4">
-                      Fake address 123, Chile
-                    </span>
-
-                    <v-sheet class="divrow" style="gap: 10px; background-color: transparent;">
-                      <img src="@/assets/sources/images/avatar-company.svg" alt="Avatar">
-                      <div class="divcol">
-                        <span style="font-weight: 700;">Sysnus</span>
-                        <span>olivia@cerotrade.com</span>
-                      </div>
-                    </v-sheet>
-                  </v-card>
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-col> -->
           <v-col cols="12">
             <v-card class="card" style="padding-left: 20px!important;">
               <v-tabs
@@ -201,9 +116,10 @@
                       </div>
 
                       <div class="jspace divrow mt-3 mb-1">
-                        <span style="color: #475467;">Device gruop</span>
-                        <span  style="text-align: left;">
-                          <v-icon :class="{'blue' : item.device_group === 'Hydroenergy', 'grey' : item.device_group === 'Wind energy', 'yellow' : item.device_group === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.device_group }}
+                        <span style="color: #475467;">Device group</span>
+                        <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+                          <img :src="energiesColored[item.device_group]" :alt="`${item.device_group} icon`" style="width: 20px;">
+                          {{ item.device_group }}
                         </span>
                       </div>
 
@@ -290,7 +206,7 @@
           </v-col>
 
           <v-col cols="12">
-            <h5 class="bold">Sellers</h5>
+            <h5 class="bold">Other sellers</h5>
 
             <v-data-table
             v-model:items-per-page="itemsPerPage"
@@ -300,24 +216,17 @@
             class="my-data-table deletemobile"
             density="compact"
             >
-              <template #[`item.checkbox`]="{ item }">
-                <v-checkbox
-                v-model="item.checkbox"
-                hide-details
-                density="compact"
-                style="max-width: 10px!important; min-width: 10px!important;"
-                ></v-checkbox>
-              </template>
-
-              <template #[`item.facility`]="{ item }">
-                <span class="acenter">
-                  <img :src="iconMap[item.facility_img]" :alt="item.facility_img" class="mr-1"> {{ item.facility }} 
+              <template #[`item.company`]="{ item }">
+                <span class="flex-acenter" style="gap: 5px; text-wrap: nowrap">
+                  <img :src="companies[item.company]" :alt="`${item.company} icon`" style="width: 20px;">
+                  {{ item.company }}
                 </span>
               </template>
 
-              <template #[`item.region`]="{ item }">
-                <span class="acenter">
-                  <img :src="iconMap[item.region_img]" :alt="item.region_img" class="mr-1" style="width: 20px;"> {{ item.region }} 
+              <template #[`item.country`]="{ item }">
+                <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+                  <img :src="countries[item.country]" :alt="`${item.country} Icon`" style="width: 20px;">
+                  {{ item.country }}
                 </span>
               </template>
 
@@ -328,13 +237,14 @@
               </template>
 
               <template #[`item.mwh`]="{ item }">
-                <span class="divrow acenter">
-                  <v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.mwh }}
+                <span class="flex-acenter">
+                  <img src="@/assets/sources/icons/lightbulb.svg" alt="lightbulb icon" class="mr-1" style="width: 15px">
+                  {{ item.mwh }}
                 </span>
               </template>
 
               <template #[`item.actions`]="{ item }">
-                <div class="center" @click="goTo(item)">
+                <div class="center">
                   <img src="@/assets/sources/icons/wallet.svg" alt="wallet" style="width: 16px; height: 16px;"> <span class="bold ml-2">Buy</span>
                 </div>
               </template>
@@ -343,27 +253,17 @@
 
           <v-col v-for="(item,index) in dataMarketplace" :key="index" xl="3" lg="3" md="4" sm="6" cols="12" class="showmobile">
             <v-card class="card cards-marketplace" @click="goDetails(item)">
-              <div class="divrow jspace acenter mb-6">
-                <div class="divrow center" style="gap: 5px;">
-                  <h6 class="mb-0 font700">{{ item.facility }}</h6>
-                </div>
-                <!-- <v-menu location="start">
-                  <template v-slot:activator="{ props }">
-                    <v-btn class="btn2 btn-dots" icon="mdi-dots-vertical" v-bind="props"></v-btn>
-                  </template>
-
-                  <v-card class="divcol pt-2 pb-2 pl-1 pr-1 card-menu" style="gap: 25px;">
-                    <a>Sell</a>
-                    <a>Redeem</a>
-                    <a>Take of market</a>
-                  </v-card>
-                </v-menu> -->
+              <div class="jspace divrow mb-1">
+                <span>Facility name</span>
+                <span style="color: #475467;" class="acenter">
+                  <img :src="companies[item.company]" alt="icon" class="mr-1" style="width: 20px;"> {{ item.company }}
+                </span>
               </div>
 
               <div class="jspace divrow mb-1">
                 <span>Country</span>
                 <span style="color: #475467;" class="acenter">
-                  <img :src="iconMap[item.region_img]" alt="icon" class="mr-1" style="width: 20px;"> {{ item.region }}
+                  <img :src="countries[item.country]" alt="icon" class="mr-1" style="width: 20px;"> {{ item.country }}
                 </span>
               </div>
 
@@ -374,12 +274,16 @@
 
               <div class="jspace divrow mb-1">
                 <span>MWh</span>
-                <span style="color: #475467;"><v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.mwh }}</span>
+                <span style="color: #475467;">
+                  <img src="@/assets/sources/icons/lightbulb.svg" alt="lightbulb icon" style="width: 12px">
+                  {{ item.mwh }}
+                </span>
               </div>
 
-              <div class="jend">
-                <v-btn class="btn">Buy</v-btn>
-              </div>
+              <v-btn class="btn2 w-100 mt-2" style="max-height: 40px !important">
+                <img src="@/assets/sources/icons/wallet-closed.svg" alt="credit-card icon">
+                Buy
+              </v-btn>
             </v-card>
           </v-col>
         </v-row>
@@ -387,35 +291,7 @@
 
       <v-col xl="4" lg="4" md="4" cols="12">
         <v-col cols="12" class="pt-0 pl-0">
-          <!-- <v-card class="card mb-6">
-            <h6>Token benefits</h6>
-            <span style="color: #475467;">
-              Certifications that accept this type of IREC
-            </span>
-
-            <v-divider :thickness="2" class="tertiary mt-4 mb-4" style="height: 1px;width: 150%;position: relative; left: -80px;"></v-divider>
-
-            <div class="divcol">
-              <span v-for="(item, index) in tokenBenefits" :key="index" style="color: #475467;" class="center mt-1 mb-1">
-                <img src="@/assets/sources/icons/check.svg" alt="Check" style="width: 20px;" class="mr-2"> {{ item.name }}
-              </span>
-            </div>
-          </v-card> -->
-
           <v-card class="card mb-6 divcol astart card-currency">
-            <!-- <div class="divrow acenter mb-4" style="gap: 5px;"> 
-              <label for="currency">Currency</label>
-              <v-select
-              :items="['$ - USD', 'Bs - VES']"
-              variant="outline"
-              flat
-              menu-icon="mdi-chevron-down"
-              class="select"
-              bg-color="#ffffff"
-              hide-details
-              density="compact"
-              ></v-select>
-            </div> -->
             <div class="jspace" style="width: 100%;">
               <div class="divcol" style="gap: 10px;">
                 <label>Choose quantity (MWh)</label>
@@ -439,49 +315,18 @@
             <v-btn class="btn" @click="dialogChooseSeller = true" style="min-width: 100%!important;">
               Buy
             </v-btn>
-
-            <!-- <v-btn class="btn" @click="dialogRedeemSure = true" style="min-width: 32%!important;">
-              Reedem
-            </v-btn>
-
-            <v-btn class="btn btn2" @click="dialogParticipantBenefits = true" style="min-width: 31%!important;">
-              Tokenize
-            </v-btn>
-
-            <v-btn class="btn btn2" @click="dialogSellOptions = true" style="min-width: 31%!important;">
-              Sell token
-            </v-btn> -->
           </div>
-
-          <!-- <v-card class="card divcol pt-6">
-            <span style="color: #475467;">Inssuance Date</span>
-            <span class="mt-2 mb-4">{{ date }}</span>
-
-            <div v-for="(item,index) in dataPdf" :key="index" class="border mb-2 jspace">
-              <div class="divrow acenter">
-                <img src="@/assets/sources/icons/pdf.svg" alt="PDF">
-                <div class="divcol ml-2">
-                  <span style="color: #475467; font-weight: 500;">{{ item.name }}</span>
-                  <span style="color: #475467;">{{ item.weight }}</span>
-                </div>
-              </div>
-
-              <v-card class="card center" style="width: max-content!important; border-radius: 10px!important;">
-                <v-icon>mdi-tray-arrow-down</v-icon>
-              </v-card>
-            </div>
-          </v-card> -->
         </v-col>
       </v-col>
     </v-row>
 
     <!-- Dialog Tokenize Are your sure? -->
-    <v-dialog v-model="dialogAreYouSure" persistent>
+    <!-- <v-dialog v-model="dialogAreYouSure" persistent>
       <v-card class="card dialog-card-tokenize">
-        <v-icon class="close" @click="dialogAreYouSure = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogAreYouSure = false">
         <v-sheet class="mb-6 double-sheet">      
           <v-sheet>
-            <v-icon>mdi-check-decagram-outline</v-icon>
+            <img src="@/assets/sources/icons/check-verified.svg" alt="check-verified icon" style="width: 24px">
           </v-sheet>
         </v-sheet>
         <h6>Are you sure you want to de-tokenize your I-REC?</h6>
@@ -504,14 +349,15 @@
           <v-btn class="btn" @click="dialogAreYouSure = false;dialogDetokenize = true" style="border: none!important;">Yes I am sure</v-btn>
         </div>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog Detokenize -->
-    <v-dialog v-model="dialogDetokenize" persistent>
+    <!-- <v-dialog v-model="dialogDetokenize" persistent>
       <v-card class="card dialog-card-detokenize">
-        <v-icon class="close" @click="dialogDetokenize = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogDetokenize = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
-            <v-icon>mdi-check-decagram-outline</v-icon>
+            <img src="@/assets/sources/icons/check-verified.svg" alt="check-verified icon" style="width: 24px">
           </v-sheet>
         </v-sheet>
         <h6>De-tokenization details</h6>
@@ -533,8 +379,9 @@
 
           <div class="jspace divrow mb-1">
             <span style="color: #475467;">Energy source</span>
-            <span>
-              <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
+            <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+              <img :src="energiesColored[item.energy_source]" :alt="`${item.energy_source} icon`" style="width: 20px;">
+              {{ item.energy_source }}
             </span>
           </div>
 
@@ -559,14 +406,15 @@
           <v-btn class="btn" @click="dialogDetokenize = false;" style="border: none!important;">De-Tokenize</v-btn>
         </div>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog redeem sure -->
-    <v-dialog v-model="dialogRedeemSure" persistent>
+    <!-- <v-dialog v-model="dialogRedeemSure" persistent>
       <v-card class="card dialog-card-tokenize">
-        <v-icon class="close" @click="dialogRedeemSure = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogRedeemSure = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
-            <v-icon>mdi-sync</v-icon>
+            <img src="@/assets/sources/icons/refresh.svg" alt="refresh icon">
           </v-sheet>
         </v-sheet>
         <h6>Are you sure you want to redeem your I-REC?</h6>
@@ -589,11 +437,12 @@
           <v-btn class="btn" @click="dialogRedeemSure = false;  dialogRedeem = true" style="border: none!important;">Yes I am sure</v-btn>
         </div>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog Redeem -->
-    <v-dialog v-model="dialogRedeem" persistent>
+    <!-- <v-dialog v-model="dialogRedeem" persistent>
       <v-card class="card dialog-card-detokenize">
-        <v-icon class="close" @click="dialogRedeem = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogRedeem = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
             <img src="@/assets/sources/icons/redeem.svg" alt="Redeem" style="width: 20px;">
@@ -618,8 +467,9 @@
 
           <div class="jspace divrow mb-1">
             <span style="color: #475467;">Energy source</span>
-            <span>
-              <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
+            <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+              <img :src="energiesColored[item.energy_source]" :alt="`${item.energy_source} icon`" style="width: 20px;">
+              {{ item.energy_source }}
             </span>
           </div>
 
@@ -658,11 +508,12 @@
           <v-btn class="btn" @click="dialogRedeem = false;" style="border: none!important;">De-Tokenize</v-btn>
         </div>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog sell options -->
-    <v-dialog v-model="dialogSellOptions" persistent>
+    <!-- <v-dialog v-model="dialogSellOptions" persistent>
       <v-card class="card dialog-card-detokenize">
-        <v-icon class="close" @click="dialogSellOptions = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogSellOptions = false">
         <v-sheet class="double-sheet">
           <v-sheet>
             <img src="@/assets/sources/icons/sell.svg" alt="Sell icon" style="width: 25px; height: 25px;">
@@ -702,11 +553,12 @@
           <v-btn class="btn" @click="goToStaticOrDynamic()" style="border: none!important;">Next <v-icon class="ml-2">mdi-arrow-right</v-icon></v-btn>
         </div>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog static price -->
-    <v-dialog v-model="dialogStaticPrice" persistent>
+    <!-- <v-dialog v-model="dialogStaticPrice" persistent>
       <v-card class="card dialog-card-detokenize">
-        <v-icon class="close" @click="dialogStaticPrice = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogStaticPrice = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
             <img src="@/assets/sources/icons/static-price.svg" alt="Dynamic Sell" style="width: 20px; height: 20px;">
@@ -730,12 +582,20 @@
             variant="solo"
             flat
             density="compact"
-            menu-icon="mdi-chevron-down"
+            menu-icon=""
             class="select"
             bg-color="transparent"
             hide-details
             style="color: #000;z-index: 99;"
-          ></v-select>
+          >
+            <template #append-inner="{ isFocused }">
+              <img
+                src="@/assets/sources/icons/chevron-down.svg"
+                alt="chevron-down icon"
+                :style="`transform: ${isFocused.value ? 'rotate(180deg)' : 'none'};`"
+              >
+            </template>
+          </v-select>
         </div>
 
         <span>Amount per 1 MWh</span>
@@ -745,11 +605,12 @@
           <v-btn class="btn" @click="dialogStaticPrice = false; dialogSellingDetailsReview = true" style="border: none!important;">Confirm</v-btn>
         </div>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog dynamic price -->
-    <v-dialog v-model="dialogDynamicPrice" persistent>
+    <!-- <v-dialog v-model="dialogDynamicPrice" persistent>
       <v-card class="card dialog-card-detokenize">
-        <v-icon class="close" @click="dialogDynamicPrice = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogDynamicPrice = false">
         <v-sheet class="mb-6 double-sheet">
             <v-sheet>
               <img src="@/assets/sources/icons/dynamic-price.svg" alt="Dynamic Sell" style="width: 20px;">
@@ -787,11 +648,12 @@
           <v-btn class="btn" @click="dialogDynamicPrice = false; dialogSellingDetailsReview = true" style="border: none!important;">Confirm</v-btn>
         </div>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog selling details review -->
-    <v-dialog v-model="dialogSellingDetailsReview" persistent>
+    <!-- <v-dialog v-model="dialogSellingDetailsReview" persistent>
       <v-card class="card dialog-card-detokenize">
-        <v-icon class="close" @click="dialogSellingDetailsReview = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogSellingDetailsReview = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
             <img src="@/assets/sources/icons/wallet.svg" alt="Wallet" style="width: 20px;">
@@ -819,8 +681,9 @@
 
           <div class="jspace divrow mb-1">
             <span style="color: #475467;">Energy source</span>
-            <span>
-              <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
+            <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+              <img :src="energiesColored[item.energy_source]" :alt="`${item.energy_source} icon`" style="width: 20px;">
+              {{ item.energy_source }}
             </span>
           </div>
 
@@ -852,14 +715,15 @@
           <v-btn class="btn" @click="dialogSellingDetailsReview = false;" style="border: none!important;">Put on the market</v-btn>
         </div>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
+
     <!-- Dialog participant benefits -->
-    <v-dialog v-model="dialogParticipantBenefits" persistent>
+    <!-- <v-dialog v-model="dialogParticipantBenefits" persistent>
       <v-card class="card card-dialog-participant">
-        <v-icon class="close" @click="dialogParticipantBenefits = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogParticipantBenefits = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
-            <v-icon>mdi-check-decagram-outline</v-icon>
+            <img src="@/assets/sources/icons/check-verified.svg" alt="check-verified icon" style="width: 24px">
           </v-sheet>
         </v-sheet>
         <h6>Enjoy participant benefits</h6>
@@ -898,12 +762,12 @@
           <v-btn class="btn" @click="dialogParticipantBenefits = false;" style="border: none!important;">Become a participant</v-btn>
         </div>
       </v-card>
-    </v-dialog>
+    </v-dialog> -->
 
     <!-- Dialog choose seller -->
     <v-dialog v-model="dialogChooseSeller" persistent>
       <v-card class="card dialog-card-detokenize">
-        <v-icon class="close" @click="dialogChooseSeller = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogChooseSeller = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
             <img src="@/assets/sources/icons/wallet.svg" alt="Wallet" style="width: 20px;">
@@ -917,12 +781,20 @@
             :items="['Sphere']"
             variant="outline"
             flat
-            menu-icon="mdi-chevron-down"
+            menu-icon=""
             class="select mb-4"
             bg-color="#ffffff"
             hide-details
             density="compact"
-          ></v-select>
+          >
+            <template #append-inner="{ isFocused }">
+              <img
+                src="@/assets/sources/icons/chevron-down.svg"
+                alt="chevron-down icon"
+                :style="`transform: ${isFocused.value ? 'rotate(180deg)' : 'none'};`"
+              >
+            </template>
+          </v-select>
           
           <div class="divcol" style="gap: 10px;">
             <label class="text-end">Price</label>
@@ -940,7 +812,7 @@
     <!-- Dialog purchase review -->
     <v-dialog v-model="dialogPurchaseReview" persistent>
       <v-card class="card dialog-card-detokenize">
-        <v-icon class="close" @click="dialogPurchaseReview = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogPurchaseReview = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
             <img src="@/assets/sources/icons/wallet.svg" alt="Wallet" style="width: 20px;">
@@ -966,8 +838,9 @@
 
           <div class="jspace divrow mb-1">
             <span style="color: #475467;">Energy source type</span>
-            <span>
-              <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
+            <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+              <img :src="energiesColored[item.energy_source]" :alt="`${item.energy_source} icon`" style="width: 20px;">
+              {{ item.energy_source }}
             </span>
           </div>
 
@@ -1019,13 +892,14 @@
         </div>
       </v-card>
     </v-dialog>
+
     <!-- Dialog payment confirm -->
     <v-dialog v-model="dialogPaymentConfirm" persistent>
       <v-card class="card dialog-card-detokenize">
-        <v-icon class="close" @click="dialogPaymentConfirm = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogPaymentConfirm = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
-            <v-icon>mdi-check-decagram-outline</v-icon>
+            <img src="@/assets/sources/icons/check-verified.svg" alt="check-verified icon" style="width: 22px">
           </v-sheet>
         </v-sheet>
         <h6>Payment confirmation</h6>
@@ -1044,8 +918,9 @@
 
           <div class="jspace divrow mb-1">
             <span style="color: #475467;">Energy source type</span>
-            <span>
-              <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
+            <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+              <img :src="energiesColored[item.energy_source]" :alt="`${item.energy_source} icon`" style="width: 20px;">
+              {{ item.energy_source }}
             </span>
           </div>
 
@@ -1075,7 +950,7 @@
           </div>
 
           <v-card class="card center" style="width: max-content!important;">
-            <v-icon>mdi-tray-arrow-down</v-icon>
+            <img src="@/assets/sources/icons/download.svg" alt="download icon" style="width: 22px">
           </v-card>
         </div>
 
@@ -1084,18 +959,22 @@
         </div>
       </v-card>
     </v-dialog>
+
     <!-- Dialog Redeem Certificates -->
     <v-dialog v-model="dialogRedeemCertificates" persistent>
       <v-card class="card dialog-card-detokenize">
-        <v-icon class="close" @click="dialogRedeemCertificates = false">mdi-close</v-icon>
+        <img src="@/assets/sources/icons/close.svg" alt="close icon" class="close" @click="dialogRedeemCertificates = false">
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
-            <v-icon>mdi-check-decagram-outline</v-icon>
+            <img src="@/assets/sources/icons/check-verified.svg" alt="check-verified icon" style="width: 22px">
           </v-sheet>
         </v-sheet>
         <h6>Do you want to redeem the cerfificates you just bought?</h6>
         <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
-        <span class="tertiary bold mt-2 acenter"><v-icon class="mr-1">mdi-information-outline</v-icon>Learn more</span>
+        <span class="tertiary bold mt-2 acenter">
+          <img src="@/assets/sources/icons/info-circle.svg" alt="info-circle icon" class="mr-1" style="width: 23px">
+          Learn more
+        </span>
 
         <div class="divrow center mt-6" style="gap: 10px;">
           <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogRedeemCertificates = false">Not Now</v-btn>
@@ -1108,9 +987,33 @@
 
 <script>
 import '@/assets/styles/pages/rec-single.scss'
+import checkboxCheckedIcon from '@/assets/sources/icons/checkbox-checked.svg'
+import checkboxBaseIcon from '@/assets/sources/icons/checkbox-base.svg'
 import VueApexCharts from "vue3-apexcharts"
-import sphere from '@/assets/sources/icons/sphere.svg'
-import chile from '@/assets/sources/icons/CL.svg'
+import SphereIcon from '@/assets/sources/companies/sphere.svg'
+import KapidagIcon from '@/assets/sources/companies/kapidag.svg'
+import SisyphusIcon from '@/assets/sources/companies/sisyphus.svg'
+import FocalPointIcon from '@/assets/sources/companies/focal-point.svg'
+import SilverStoneIcon from '@/assets/sources/companies/silverstone.svg'
+import GeneralElectricIcon from '@/assets/sources/companies/general-electric.svg'
+import BlueSkyIcon from '@/assets/sources/companies/bluesky.svg'
+import ZenithIcon from '@/assets/sources/companies/zenith.svg'
+import LibertyIcon from '@/assets/sources/companies/liberty.svg'
+import SunshineIcon from '@/assets/sources/companies/sunshine.svg'
+import PrimeIcon from '@/assets/sources/companies/prime.svg'
+
+import HydroEnergyIcon from '@/assets/sources/energies/hydro.svg'
+import OceanEnergyIcon from '@/assets/sources/energies/ocean.svg'
+import GeothermalEnergyIcon from '@/assets/sources/energies/geothermal.svg'
+import BiomeEnergyIcon from '@/assets/sources/energies/biome.svg'
+import WindEnergyIcon from '@/assets/sources/energies/wind.svg'
+import SolarEnergyIcon from '@/assets/sources/energies/solar.svg'
+
+import HydroEnergyColorIcon from '@/assets/sources/energies/hydro-color.svg'
+import WindEnergyColorIcon from '@/assets/sources/energies/wind-color.svg'
+import SolarEnergyColorIcon from '@/assets/sources/energies/solar-color.svg'
+
+import ChileIcon from '@/assets/sources/icons/CL.svg'
 
 
 export default {
@@ -1119,96 +1022,127 @@ export default {
   },
   data(){
     return{
+      checkboxCheckedIcon,
+      checkboxBaseIcon,
+      companies: {
+        'Sphere': SphereIcon,
+        'KAPIDAĞ RES': KapidagIcon,
+        'Sisyphus': SisyphusIcon,
+        'Focal Point': FocalPointIcon,
+        'SIlverstone': SilverStoneIcon,
+        'General Electric': GeneralElectricIcon,
+        'BlueSky': BlueSkyIcon,
+        'Zenith': ZenithIcon,
+        'Liberty': LibertyIcon,
+        'Sunshine': SunshineIcon,
+        'Prime': PrimeIcon,
+      },
+      energiesColored: {
+        'hydro energy': HydroEnergyColorIcon,
+        ocean: OceanEnergyIcon,
+        geothermal: GeothermalEnergyIcon,
+        biome: BiomeEnergyIcon,
+        'wind energy': WindEnergyColorIcon,
+        sun: SolarEnergyColorIcon,
+      },
+      energies: {
+        'hydro energy': HydroEnergyIcon,
+        ocean: OceanEnergyIcon,
+        geothermal: GeothermalEnergyIcon,
+        biome: BiomeEnergyIcon,
+        'wind energy': WindEnergyIcon,
+        sun: SolarEnergyIcon,
+      },
+      countries: {
+        chile: ChileIcon
+      },
       headers: [
-        // { title: '', key: 'checkbox', sortable: false, align: 'center'},
-        { title: 'Company name', sortable: false, key: 'facility'},
-        // { title: 'Asset ID', key: 'asset_id', sortable: false },
-        // { title: 'Energy source', key: 'energy_source', sortable: false },
-        { title: 'Country', key: 'region', sortable: false },
+        { title: 'Company name', sortable: false, key: 'company'},
+        { title: 'Country', key: 'country', sortable: false },
         { title: 'Price', key: 'price', sortable: false },
         { title: 'MWh', key: 'mwh', sortable: false },
-        // { title: 'Volume Produced', key: 'volume', sortable: false },
         { title: 'Actions', key: 'actions', sortable: false, align: 'center'},
       ],
       dataMarketplace: [
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          company: 'Sphere',
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
           mwh: 32,
         },
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          company: 'KAPIDAĞ RES',
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
           mwh: 32,
         },
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          company: 'Sisyphus',
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
           mwh: 32,
         },
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          company: 'Focal Point',
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
           mwh: 32,
         },
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          company: 'SIlverstone',
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
           mwh: 32,
         },
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          company: 'General Electric',
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
           mwh: 32,
         },
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          company: 'BlueSky',
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
           mwh: 32,
         },
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          company: 'Zenith',
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
+          mwh: 32,
+        },
+        {
+          company: 'Liberty',
+          price: "125.00",
+          currency: '$',
+          country: 'chile',
+          mwh: 32,
+        },
+        {
+          company: 'Sunshine',
+          price: "125.00",
+          currency: '$',
+          country: 'chile',
+          mwh: 32,
+        },
+        {
+          company: 'Prime',
+          price: "125.00",
+          currency: '$',
+          country: 'chile',
           mwh: 32,
         },
       ],
 
-      iconMap: {
-        sphere,
-        chile,
-      },
       itemsPerPage: 100,
       dialogChooseSeller: false,
       dialogPaymentConfirm: false,
@@ -1249,7 +1183,7 @@ export default {
         {
           name: 'Wind Turbine T-100X',
           type: 'Wind Turbine',
-          device_group: 'Wind energy',
+          device_group: 'wind energy',
           icon_source: 'mdi-weather-windy',
           description: 'A state-of-the-art wind turbine designed for optimal energy production with minimal environmental impact.'
         }
@@ -1300,7 +1234,7 @@ export default {
       dataCardEnergy: [
         {
           icon_source: 'mdi-waves',
-          energy_source: 'Hydroenergy',
+          energy_source: 'hydro energy',
           region: 'Valparaiso, Chile',
           date: '24/12/2023',
           date_start: '12/03/2023',

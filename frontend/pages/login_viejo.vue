@@ -38,7 +38,16 @@
           hide-details
           color="rgb(var(--v-theme-primary))"
           class="flex-grow-0"
-        ></v-checkbox>
+        >
+          <template #input="{ model }">
+            <img
+              :src="model.value ? checkboxCheckedIcon : checkboxBaseIcon"
+              alt="checkbox icon"
+              style="width: 22px"
+              @click="model.value = !model.value"
+            >
+          </template>
+        </v-checkbox>
 
         <a class="text-end">¿Olvidaste tu contraseña?</a>
       </div>
@@ -60,6 +69,8 @@
 
 <script setup>
 import '@/assets/styles/pages/login.scss'
+import checkboxCheckedIcon from '@/assets/sources/icons/checkbox-checked.svg'
+import checkboxBaseIcon from '@/assets/sources/icons/checkbox-base.svg'
 import variables from '@/mixins/variables';
 import AuthApi from '@/repository/auth_api';
 import { onBeforeMount, ref } from 'vue';

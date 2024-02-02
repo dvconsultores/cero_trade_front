@@ -2,7 +2,7 @@
   <div id="profile">
     <span class="mb-10 acenter" style="color: #475467; font-size: 16px; font-weight: 700;">
       <img src="@/assets/sources/icons/home-layout.svg" alt="Home Icon" style="width: 20px;">
-      <v-icon>mdi-chevron-right</v-icon> 
+      <img src="@/assets/sources/icons/chevron-right-light.svg" alt="arrow right icon" class="mx-1">
        Profile
     </span>
     <div class="divrow acenter mb-4">
@@ -11,13 +11,6 @@
       </div>
       <h3 class="mb-0">Sphere</h3>
     </div>
-    <!-- <div class="divrow aend" style="gap: 10px;">
-      <h4 class="mb-0">
-        $ 124.05
-      </h4>
-      <span style="color:#475467">per MWh</span>
-      <v-chip class="green-chip"><v-icon>mdi-arrow-up</v-icon> 20 %</v-chip>
-    </div> -->
 
     <v-row>
       <v-col xl="8" lg="8" md="8" cols="12">
@@ -51,7 +44,10 @@
             <div class="divrow jspace">
               <div class="divrow" style="gap: 15px;">
 
-                <v-btn class="btn"><v-icon>mdi-filter-variant</v-icon> Add filter</v-btn>
+                <v-btn class="btn">
+                  <img src="@/assets/sources/icons/filter-lines.svg" alt="filter-lines icon">
+                  Add filter
+                </v-btn>
               </div>
 
               <div class="divrow jcenter acenter" style="gap: 5px;">
@@ -71,23 +67,24 @@
                 class="mt-6 my-data-table"
                 density="compact"
                 >
-                <template #[`column.checkbox`]="{ column }">
-                  <span style="display: none;">{{ column.title }}</span>
-                  <v-checkbox
-                  hide-details
-                  density="compact"
-                  style="max-width: 10px!important; min-width: 10px!important;"
-                  ></v-checkbox>
-                </template>
-
-                  <!-- <template #[`item.checkbox`]="{ item }">
+                  <template #[`item.checkbox`]="{ item }">
                     <v-checkbox
                     v-model="item.checkbox"
                     hide-details
                     density="compact"
-                    style="max-width: 10px!important; min-width: 10px!important;"
-                    ></v-checkbox>
-                  </template> -->
+                    class="mx-auto"
+                    style="max-width: 22px!important; min-width: 22px!important;"
+                    >
+                      <template #input="{ model }">
+                        <img
+                          :src="model.value ? checkboxCheckedIcon : checkboxBaseIcon"
+                          alt="checkbox icon"
+                          style="width: 22px"
+                          @click="model.value = !model.value"
+                        >
+                      </template>
+                    </v-checkbox>
+                  </template>
 
                   <template #[`item.asset_id`]="{ item }">
                     <span class="acenter bold" style="color: #475467;">
@@ -96,8 +93,9 @@
                   </template>
 
                   <template #[`item.energy_source`]="{ item }">
-                    <span>
-                      <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
+                    <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+                      <img :src="energies[item.energy_source]" :alt="`${item.energy_source} icon`" style="width: 20px;">
+                      {{ item.energy_source }}
                     </span>
                   </template>
 
@@ -107,32 +105,24 @@
                     </span>
                   </template>
 
-                  <template #[`item.region`]="{ item }">
-                    <div class="divrow acenter">
-                      <img :src="iconMap[item.region_img]" alt="Icon" style="width: 20px;"> <span class="ml-2">{{ item.region }}</span>
-                    </div>
+                  <template #[`item.country`]="{ item }">
+                    <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+                      <img :src="countries[item.country]" :alt="`${item.country} Icon`" style="width: 20px;">
+                      {{ item.country }}
+                    </span>
                   </template>
 
                   <template #[`item.mwh`]="{ item }">
                     <span class="divrow acenter">
-                      <v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.mwh }}
+                      <img src="@/assets/sources/icons/lightbulb.svg" alt="lightbulb icon">
+                      {{ item.mwh }}
                     </span>
                   </template>
-
-                  <!-- <template #[`item.volume`]="{ item }">
-                    <div class="divrow acenter">
-                      <v-chip style="border-radius: 10px!important;" :class="{ 'red-chip-table': item.icon_arrow === 'mdi-arrow-down', 'green-chip-table': item.icon_arrow === 'mdi-arrow-up'}"><v-icon>{{ item.icon_arrow }}</v-icon> {{ item.percent }} %</v-chip>
-                      <span class="ml-2">{{ item.volume }}</span>
-                    </div>
-                  </template> -->
 
                   <template #[`item.actions`]="{ item }">
                     <v-chip @click="goDetails(item)" color="white" class="chip-table mr-1" style="border-radius: 10px!important;">
                       <img src="@/assets/sources/icons/wallet.svg" alt="wallet">
                     </v-chip>
-                    <!-- <v-chip class="chip-table" color="white" style="border-radius: 10px!important;">
-                      <v-icon size="default" style="color: #000!important;">mdi-file-chart-outline</v-icon>
-                    </v-chip> -->
                   </template>
                 </v-data-table>
               </v-window-item>
@@ -144,11 +134,13 @@
                         <div class="divcol astart" style="gap: 5px;">
                           <span style="color: #475467;">Asset</span>
                           <h6 class="mb-0 font700">{{ item.asset_id }}</h6>
-                          <!-- <v-chip :class="{ 'red-chip': item.icon_arrow === 'mdi-arrow-down', 'green-chip': item.icon_arrow === 'mdi-arrow-up'}"><v-icon>{{ item.icon_arrow }}</v-icon> {{ item.percent }} %</v-chip> -->
+                          
                         </div>
                         <v-menu location="start">
                           <template v-slot:activator="{ props }">
-                            <v-btn class="btn btn-dots" icon="mdi-dots-vertical" v-bind="props"></v-btn>
+                            <v-btn class="btn btn-dots" v-bind="props">
+                              <img src="@/assets/sources/icons/dots-vertical.svg" alt="dots-vertical icon">
+                            </v-btn>
                           </template>
 
                           <v-card class="acenter jstart pt-2 pb-2 pl-1 pr-1 card-menu" style="gap: 25px;">
@@ -162,30 +154,26 @@
                         <span style="color: #475467;">{{ item.currency }} {{ item.price }}</span>
                       </div>
 
-                      <!-- <div class="jspace divrow mb-1">
-                        <span>Facility name</span>
-                        <span class="center" style="color: #475467">
-                          <img :src="iconMap[item.facility_img]" :alt="item.facility_img" class="mr-1"> {{ item.facility }}
-                        </span>
-                      </div> -->
-
                       <div class="jspace divrow mb-1">
                         <span>Energy source</span>
-                        <span style="color: #475467;">
-                          <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
+                        <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap; color: #475467;">
+                          <img :src="energies[item.energy_source]" :alt="`${item.energy_source} icon`" style="width: 20px;">
+                          {{ item.energy_source }}
                         </span>
                       </div>
 
                       <div class="jspace divrow mb-1">
                         <span>Country</span>
-                        <span style="color: #475467;" class="acenter">
-                          <img :src="iconMap[item.region_img]" alt="icon" class="mr-1" style="width: 20px;"> {{ item.region }}
+                        <span style="color: #475467;" class="acenter text-capitalize">
+                          <img :src="countries[item.country]" alt="icon" class="mr-1" style="width: 20px;"> {{ item.country }}
                         </span>
                       </div>
 
                       <div class="jspace divrow mb-1">
                         <span>MWh</span>
-                        <span style="color: #475467;"><v-icon>mdi-lightbulb-variant-outline</v-icon> {{ item.mwh }}</span>
+                        <span class="d-flex flex-acenter mr-1" style="color: #475467;">
+                          <img src="@/assets/sources/icons/lightbulb.svg" alt="lightbulb icon" style="width: 20px">
+                        {{ item.mwh }}</span>
                       </div>
 
                       <div class="jspace divrow mb-1">
@@ -209,13 +197,21 @@
             :items="['Sphere']"
             variant="outline"
             flat
-            menu-icon="mdi-chevron-down"
+            menu-icon=""
             class="select mb-4"
             bg-color="#ffffff"
             hide-details
             density="compact"
             style="min-width: 100%;"
-            ></v-select>
+            >
+              <template #append-inner="{ isFocused }">
+                <img
+                  src="@/assets/sources/icons/chevron-down.svg"
+                  alt="chevron-down icon"
+                  :style="`transform: ${isFocused.value ? 'rotate(180deg)' : 'none'};`"
+                >
+              </template>
+            </v-select>
             <div class="jspace" style="width: 100%;">
               <div class="divcol" style="gap: 10px;">
                 <label>Choose quantity (MWh)</label>
@@ -239,38 +235,7 @@
             <v-btn class="btn" @click="dialogPurchaseReview = true" style="min-width: 100%!important;">
               Buy
             </v-btn>
-
-            <!-- <v-btn class="btn" @click="dialogRedeemSure = true" style="min-width: 32%!important;">
-              Reedem
-            </v-btn>
-
-            <v-btn class="btn btn2" @click="dialogParticipantBenefits = true" style="min-width: 31%!important;">
-              Tokenize
-            </v-btn>
-
-            <v-btn class="btn btn2" @click="dialogSellOptions = true" style="min-width: 31%!important;">
-              Sell token
-            </v-btn> -->
           </div>
-
-          <!-- <v-card class="card divcol pt-6">
-            <span style="color: #475467;">Inssuance Date</span>
-            <span class="mt-2 mb-4">{{ date }}</span>
-
-            <div v-for="(item,index) in dataPdf" :key="index" class="border mb-2 jspace">
-              <div class="divrow acenter">
-                <img src="@/assets/sources/icons/pdf.svg" alt="PDF">
-                <div class="divcol ml-2">
-                  <span style="color: #475467; font-weight: 500;">{{ item.name }}</span>
-                  <span style="color: #475467;">{{ item.weight }}</span>
-                </div>
-              </div>
-
-              <v-card class="card center" style="width: max-content!important; border-radius: 10px!important;">
-                <v-icon>mdi-tray-arrow-down</v-icon>
-              </v-card>
-            </div>
-          </v-card> -->
         </v-col>
       </v-col>
     </v-row>
@@ -278,7 +243,13 @@
     <!-- Dialog purchase review -->
     <v-dialog v-model="dialogPurchaseReview" persistent>
       <v-card class="card dialog-card-detokenize">
-        <v-icon class="close" @click="dialogPurchaseReview = false">mdi-close</v-icon>
+        <img
+          src="@/assets/sources/icons/close.svg"
+          alt="close icon"
+          class="close"
+          style="width: 24px"
+          @click="dialogPurchaseReview = false"
+        >
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
             <img src="@/assets/sources/icons/wallet.svg" alt="Wallet" style="width: 20px;">
@@ -304,8 +275,9 @@
 
           <div class="jspace divrow mb-1">
             <span style="color: #475467;">Energy source type</span>
-            <span>
-              <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
+            <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+              <img :src="energies[item.energy_source]" :alt="`${item.energy_source} icon`" style="width: 20px;">
+              {{ item.energy_source }}
             </span>
           </div>
 
@@ -354,10 +326,16 @@
     <!-- Dialog payment confirm -->
     <v-dialog v-model="dialogPaymentConfirm" persistent>
       <v-card class="card dialog-card-detokenize">
-        <v-icon class="close" @click="dialogPaymentConfirm = false">mdi-close</v-icon>
+        <img
+          src="@/assets/sources/icons/close.svg"
+          alt="close icon"
+          class="close"
+          style="width: 24px"
+          @click="dialogPaymentConfirm = false"
+        >
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
-            <v-icon>mdi-check-decagram-outline</v-icon>
+            <img src="@/assets/sources/icons/check-verified.svg" alt="check-verified icon" style="width: 22px">
           </v-sheet>
         </v-sheet>
         <h6>Payment confirmation</h6>
@@ -376,8 +354,9 @@
 
           <div class="jspace divrow mb-1">
             <span style="color: #475467;">Energy source type</span>
-            <span>
-              <v-icon :class="{'blue' : item.energy_source === 'Hydroenergy', 'grey' : item.energy_source === 'Wind energy', 'yellow' : item.energy_source === 'Sun'}">{{ item.icon_source }}</v-icon> {{ item.energy_source }}
+            <span class="text-capitalize flex-acenter" style="gap: 5px; text-wrap: nowrap">
+              <img :src="energies[item.energy_source]" :alt="`${item.energy_source} icon`" style="width: 20px;">
+              {{ item.energy_source }}
             </span>
           </div>
 
@@ -407,7 +386,7 @@
           </div>
 
           <v-card class="card center" style="width: max-content!important;">
-            <v-icon>mdi-tray-arrow-down</v-icon>
+            <img src="@/assets/sources/icons/download.svg" alt="download icon" style="width: 20px">
           </v-card>
         </div>
 
@@ -419,15 +398,24 @@
     <!-- Dialog Redeem Certificates -->
     <v-dialog v-model="dialogRedeemCertificates" persistent>
       <v-card class="card dialog-card-detokenize">
-        <v-icon class="close" @click="dialogRedeemCertificates = false">mdi-close</v-icon>
+        <img
+          src="@/assets/sources/icons/close.svg"
+          alt="close icon"
+          class="close"
+          style="width: 24px"
+          @click="dialogRedeemCertificates = false"
+        >
         <v-sheet class="mb-6 double-sheet">
           <v-sheet>
-            <v-icon>mdi-check-decagram-outline</v-icon>
+            <img src="@/assets/sources/icons/check-verified.svg" alt="check-verified icon" style="width: 22px">
           </v-sheet>
         </v-sheet>
         <h6>Do you want to redeem the cerfificates you just bought?</h6>
         <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
-        <span class="tertiary bold mt-2 acenter"><v-icon class="mr-1">mdi-information-outline</v-icon>Learn more</span>
+        <span class="tertiary wbold mt-2 d-flex flex-acenter">
+          <img src="@/assets/sources/icons/info-circle-light.svg" alt="info-circle icon" class="mr-1" style="width: 23px">
+          Learn more
+        </span>
 
         <div class="divrow center mt-6" style="gap: 10px;">
           <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogRedeemCertificates = false">Not Now</v-btn>
@@ -440,9 +428,16 @@
 
 <script>
 import '@/assets/styles/pages/profile.scss'
+import checkboxCheckedIcon from '@/assets/sources/icons/checkbox-checked.svg'
+import checkboxBaseIcon from '@/assets/sources/icons/checkbox-base.svg'
 import RenewableChart from "@/components/renewable-chart.vue"
-import sphere from '@/assets/sources/icons/sphere.svg'
-import chile from '@/assets/sources/icons/CL.svg'
+import HydroEnergyIcon from '@/assets/sources/energies/hydro-color.svg'
+import OceanEnergyIcon from '@/assets/sources/energies/ocean.svg'
+import GeothermalEnergyIcon from '@/assets/sources/energies/geothermal.svg'
+import BiomeEnergyIcon from '@/assets/sources/energies/biome.svg'
+import WindEnergyIcon from '@/assets/sources/energies/wind-color.svg'
+import SolarEnergyIcon from '@/assets/sources/energies/solar-color.svg'
+import ChileIcon from '@/assets/sources/icons/CL.svg'
 import variables from '@/mixins/variables'
 
 
@@ -451,98 +446,95 @@ export default {
   data(){
     return{
       basePath: variables.basePath,
+      checkboxCheckedIcon,
+      checkboxBaseIcon,
       windowStep: undefined,
       toggle: 0,
+      energies: {
+        'hydro energy': HydroEnergyIcon,
+        ocean: OceanEnergyIcon,
+        geothermal: GeothermalEnergyIcon,
+        biome: BiomeEnergyIcon,
+        'wind energy': WindEnergyIcon,
+        sun: SolarEnergyIcon,
+      },
+      countries: {
+        chile: ChileIcon
+      },
       headers: [
-        // { title: '', key: 'checkbox', sortable: false, align: 'center'},
-        { title: 'Company name', sortable: false, key: 'facility'},
-        // { title: 'Asset ID', key: 'asset_id', sortable: false },
-        // { title: 'Energy source', key: 'energy_source', sortable: false },
-        { title: 'Country', key: 'region', sortable: false },
+        { sortable: false, key: 'checkbox', align: "center" },
+        { title: 'Energy source', sortable: false, key: 'energy_source'},
+        { title: 'Country', key: 'country', sortable: false },
         { title: 'Price', key: 'price', sortable: false },
         { title: 'MWh', key: 'mwh', sortable: false },
-        // { title: 'Volume Produced', key: 'volume', sortable: false },
         { title: 'Actions', key: 'actions', sortable: false, align: 'center'},
       ],
       dataMarketplace: [
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          energy_source: "hydro energy",
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
           mwh: 32,
+          checkbox: false,
         },
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          energy_source: "wind energy",
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
           mwh: 32,
+          checkbox: false,
         },
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          energy_source: "sun",
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
           mwh: 32,
+          checkbox: false,
         },
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          energy_source: "hydro energy",
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
           mwh: 32,
+          checkbox: false,
         },
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          energy_source: "hydro energy",
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
           mwh: 32,
+          checkbox: false,
         },
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          energy_source: "hydro energy",
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
           mwh: 32,
+          checkbox: false,
         },
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          energy_source: "hydro energy",
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
           mwh: 32,
+          checkbox: false,
         },
         {
-          facility_img: 'sphere',
-          facility: 'Sphere',
+          energy_source: "hydro energy",
           price: "125.00",
           currency: '$',
-          region: 'Chile',
-          region_img: 'chile',
+          country: 'chile',
           mwh: 32,
+          checkbox: false,
         },
       ],
-
-      iconMap: {
-        sphere,
-        chile,
-      },
       itemsPerPage: 100,
       dialogPaymentConfirm: false,
       dialogPurchaseReview: false,
@@ -633,7 +625,7 @@ export default {
       dataCardEnergy: [
         {
           icon_source: 'mdi-waves',
-          energy_source: 'Hydroenergy',
+          energy_source: 'hydro energy',
           region: 'Valparaiso, Chile',
           date: '24/12/2023',
           date_start: '12/03/2023',

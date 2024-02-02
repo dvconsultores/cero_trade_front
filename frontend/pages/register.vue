@@ -24,24 +24,43 @@
                 <v-text-field 
                 id="company-id" class="input" variant="solo" flat elevation="0" 
                 placeholder="123456789"
-                append-inner-icon="mdi-help-circle-outline"
-                ></v-text-field>
+                >
+                  <template #append-inner>
+                    <img src="@/assets/sources/icons/help-circle.svg" alt="help-circle icon">
+                  </template>
+                </v-text-field>
               </v-col>
               <v-col xl="6" lg="6" md="6" sm="12" cols="12">
                 <label for="city">City</label>
                 <v-select 
                 id="city" class="input" variant="solo" flat elevation="0" 
                 placeholder="New York"
-                menu-icon="mdi-chevron-down"
-                ></v-select>
+                menu-icon=""
+                >
+                  <template #append-inner="{ isFocused }">
+                    <img
+                      src="@/assets/sources/icons/chevron-down.svg"
+                      alt="chevron-down icon"
+                      :style="`transform: ${isFocused.value ? 'rotate(180deg)' : 'none'};`"
+                    >
+                  </template>
+                </v-select>
               </v-col>
               <v-col xl="6" lg="6" md="6" sm="12" cols="12">
                 <label for="country">Country</label>
                 <v-select
                 id="country" class="input" variant="solo" flat 
                 elevation="0" placeholder="USA"
-                menu-icon="mdi-chevron-down"
-                ></v-select>
+                menu-icon=""
+                >
+                  <template #append-inner="{ isFocused }">
+                    <img
+                      src="@/assets/sources/icons/chevron-down.svg"
+                      alt="chevron-down icon"
+                      :style="`transform: ${isFocused.value ? 'rotate(180deg)' : 'none'};`"
+                    >
+                  </template>
+                </v-select>
               </v-col>
               <v-col cols="12">
                 <label for="company-address">Company address</label>
@@ -75,7 +94,10 @@
               </v-col>
 
               <v-col cols="12">
-                <v-btn class="center btn" @click="windowStep = 2">Create account <v-icon style="margin-bottom: -3px; margin-left: 5px;">mdi-arrow-right</v-icon></v-btn>
+                <v-btn class="center btn" @click="windowStep = 2">
+                  Create account
+                  <img src="@/assets/sources/icons/arrow-right.svg" alt="arrow-right icon">
+                </v-btn>
               </v-col>
             </v-row>
           </v-card>
