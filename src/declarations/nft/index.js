@@ -40,4 +40,4 @@ export const createActor = (canisterId, options = {}) => {
   });
 };
 
-export const nft = createActor(canisterId);
+export const nft = canisterId ? createActor(canisterId) : undefined;

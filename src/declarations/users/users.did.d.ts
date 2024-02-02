@@ -1,5 +1,6 @@
 import type { Principal } from '@dfinity/principal';
 import type { ActorMethod } from '@dfinity/agent';
+import type { IDL } from '@dfinity/candid';
 
 export interface DataAdmin { 'level' : bigint, 'wallet' : User }
 export type DataAdminResult = { 'Ok' : DataAdmin } |
@@ -68,3 +69,4 @@ export interface _SERVICE {
   'removeAdmin' : ActorMethod<[Principal], DataAdminResult>,
   'tokenizeIrec' : ActorMethod<[IrecId, MetadataDesc], [IrecId, string]>,
 }
+export declare const idlFactory: IDL.InterfaceFactory;
