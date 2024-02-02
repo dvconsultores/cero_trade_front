@@ -690,7 +690,7 @@
           </v-sheet>
         </v-sheet>
         <h6 class="bold">Price</h6>
-        <span class="tertiary mb-4">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
+        <span class="tertiary mb-4">Set the price you want to sell every MWh of your tokenized asset for. The price is set in USD.</span>
 
         <label for="sale_amount">Sale amount</label>
 
@@ -791,7 +791,7 @@
           </v-sheet>
         </v-sheet>
         <h6>Selling details review</h6>
-        <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
+        <span class="tertiary">Please check all details regarding the sale of your tokenized asset before you proceed, including the price and amount in MWh you will to put on the market.</span>
 
         <v-card class="card mt-6 pa-6" v-for="(item, index) in dataCardEnergy" :key="index">
           <span class="bold mt-3">Checkout review</span>
