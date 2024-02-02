@@ -511,7 +511,7 @@
           </v-sheet>
         </v-sheet>
         <h6>Are you sure you want to redeem your I-REC?</h6>
-        <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
+        <span class="tertiary">By redeeming your I-RECs, the associated tokens will be irreversibly burnt and sent to a burn wallet, removing them from circulation. The I-RECs will then be officially redeemed in your name, rendering them non-tradeable. This process is utilized to claim certifications and other environmental benefits. Once completed, this action is final and cannot be reversed.</span>
 
         <div class="divrow center mt-6" style="gap: 10px;">
           <v-btn class="btn" style="background-color: #fff!important;"  @click="dialogRedeemSure = false">Cancel</v-btn>
@@ -529,8 +529,8 @@
             <img src="@/assets/sources/icons/wallet.svg" alt="Wallet" style="width: 20px;">
           </v-sheet>
         </v-sheet>
-        <h6>IREC redeemption details</h6>
-        <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
+        <h6>IREC redemption details</h6>
+        <span class="tertiary">Please check all information on your tokenized assets’ redemption. You can redeem them to your own name, or to another company’s name by deeming them a beneficiary of yours.</span>
 
         <div class="flex-column mt-4" style="gap: 5px">
           <label for="beneficiary">Beneficiary account (company)</label>
