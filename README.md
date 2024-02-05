@@ -39,6 +39,9 @@ https://internetcomputer.org/docs/current/developer-docs/frontend/vue-frontend
 #### Internet identity integration
 https://internetcomputer.org/docs/current/developer-docs/integrations/internet-identity/integrate-identity
 
+#### how to Cycles faucet
+https://internetcomputer.org/docs/current/developer-docs/setup/cycles/cycles-faucet
+
 #### How to export and import identities between devices
 * export: `dfx identity export <identity_name> > exported_identity.pem`
 
