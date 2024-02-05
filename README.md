@@ -40,7 +40,9 @@ https://internetcomputer.org/docs/current/developer-docs/frontend/vue-frontend
 https://internetcomputer.org/docs/current/developer-docs/integrations/internet-identity/integrate-identity
 
 #### How to export and import identities between devices
-
 * export: `dfx identity export <identity_name> > exported_identity.pem`
 
 * import: `dfx identity import <new_identity_name> <exported_identity_root_file.pem>`
+
+#### Mainnet deploy
+https://internetcomputer.org/docs/current/developer-docs/setup/deploy-mainnet
