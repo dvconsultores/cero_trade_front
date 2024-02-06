@@ -1,5 +1,6 @@
 import type { Principal } from '@dfinity/principal';
 import type { ActorMethod } from '@dfinity/agent';
+import type { IDL } from '@dfinity/candid';
 
 export type ApiError = { 'ZeroAddress' : null } |
   { 'InvalidTokenId' : null } |
@@ -60,3 +61,4 @@ export interface _SERVICE {
   'totalSupply' : ActorMethod<[], bigint>,
   'transferFrom' : ActorMethod<[Principal, Principal, TokenId], TxReceipt>,
 }
+export declare const idlFactory: IDL.InterfaceFactory;

@@ -1,5 +1,6 @@
 import type { Principal } from '@dfinity/principal';
 import type { ActorMethod } from '@dfinity/agent';
+import type { IDL } from '@dfinity/candid';
 
 export type Error = { 'UserAlreadyExists' : null } |
   { 'TokenNotFound' : null } |
@@ -45,3 +46,4 @@ export interface _SERVICE {
   'getWallet' : ActorMethod<[], Principal>,
   'removeMarket' : ActorMethod<[TokenId], MarketResult>,
 }
+export declare const idlFactory: IDL.InterfaceFactory;

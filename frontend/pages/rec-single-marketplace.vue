@@ -774,7 +774,7 @@
           </v-sheet>
         </v-sheet>
         <h6>Choose seller</h6>
-        <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
+        <span class="tertiary">This is a list of all sellers of this tokenized asset.</span>
 
         <div class="d-flex" style="gap: 20px">
           <v-select
@@ -819,7 +819,7 @@
           </v-sheet>
         </v-sheet>
         <h6>Purchase review</h6>
-        <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
+        <span class="tertiary">Please make sure all details on your token purchase are correct and you agree with transaction and tax fees. After selecting your payment method, please proceed with payment.</span>
 
         <v-card class="card cards-rec mt-6 pa-6" v-for="(item, index) in dataCardEnergy" :key="index">
           <span class="bold mt-3">Checkout review</span>
@@ -903,7 +903,7 @@
           </v-sheet>
         </v-sheet>
         <h6>Payment confirmation</h6>
-        <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
+        <span class="tertiary">The transaction was done succesfully. You can now check your Portafolio to find your new token. In the receipt bellow you will find all purchase information, feel free to download.</span>
 
         <v-card class="card mt-6 pa-6" v-for="(item, index) in dataCardEnergy" :key="index">
           <div class="jspace divrow mb-1 acenter">
@@ -970,7 +970,7 @@
           </v-sheet>
         </v-sheet>
         <h6>Do you want to redeem the cerfificates you just bought?</h6>
-        <span class="tertiary">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo illum asperiores eaque perferendis iure nemo.</span>
+        <span class="tertiary">Obtain the redemption statement for your certificates right away by triggering the redemption flow: it’s a couple of clicks away.</span>
         <span class="tertiary bold mt-2 acenter">
           <img src="@/assets/sources/icons/info-circle.svg" alt="info-circle icon" class="mr-1" style="width: 23px">
           Learn more

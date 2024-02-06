@@ -6,7 +6,7 @@
       <span style="color: #00555B;">Settings</span>
     </span>
     <h3>Settings</h3>
-    <span class="mb-16" style="color:#475467">Lorem ipsum dolor sit amet.</span>
+    <span class="mb-16" style="color:#475467">Customize your Cero Trade experience. Manage your company information, set notification preferences, update beneficiary accounts, and select your preferred payment methods here.</span>
 
     <v-row>
       <v-col xl="4" lg="4" md="4" sm="6" cols="12">
@@ -14,7 +14,7 @@
           <img src="@/assets/sources/icons/info-circle.svg" alt="info-circle icon" class="mb-7">
           <h5 class="mb-6">Company information</h5>
           <span class="tertiary" style="font-weight: 300;">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
+            Update your company details to ensure accurate representation in all transactions and communications. Keep your profile current for seamless business operations.
           </span>
           <v-btn class="btn mt-6" @click="dialogCompany = true">
             Edit personal information
@@ -28,7 +28,7 @@
           <img class="mb-10" src="@/assets/sources/icons/ring-belt.svg" alt="Wallet" style="width: 21px; height: 21px;">
           <h5 class="mb-6">Notification</h5>
           <span class="tertiary" style="font-weight: 300;">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
+            Stay informed with the latest updates and alerts. Configure your notification settings to receive timely information about your trades and account activity.
           </span>
           <v-btn class="btn mt-6" @click="dialogNotification = true">
             Setup
@@ -42,7 +42,7 @@
           <img src="@/assets/sources/icons/headphones-black.svg" alt="headphones icon" class="mb-7">
           <h5 class="mb-6">Support</h5>
           <span class="tertiary" style="font-weight: 300;">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
+            Contact our Cero Trade team for any needed support.
           </span>
           <v-btn class="btn mt-6" @click="$router.push(basePath('/support'))">
             Contact Support
@@ -56,7 +56,7 @@
           <img src="@/assets/sources/icons/domain.svg" alt="Domain" class="mb-10" style="width: 25px;">
           <h5 class="mb-6">Beneficiary accounts</h5>
           <span class="tertiary" style="font-weight: 300;">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, Modi voluptate nobis ducimus tempora? Alias.
+            Securely manage and edit your beneficiary accounts to streamline your redemptions.
           </span>
           <v-btn class="btn mt-6" @click="dialogBeneficiary = true">
             Edit accounts

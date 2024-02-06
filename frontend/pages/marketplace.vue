@@ -6,7 +6,7 @@
       <span style="color: #00555B;">Marketplace</span>
     </span>
     <h3>Marketplace</h3>
-    <span class="mbb16 mb-6" style="color:#475467;">Lorem ipsum dolor sit amet.</span>
+    <span class="mbb16 mb-6" style="color:#475467;">Select any type of tokenized asset you want to buy. Every asset represents an amount of clean energy, made into an IREC. There can be multiple sellers for each asset, click on the action button to access the single IREC view.</span>
 
     <div class="divrow jspace">
       <div class="divrow" style="gap: 15px;">
