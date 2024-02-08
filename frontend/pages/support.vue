@@ -6,7 +6,7 @@
       <span class="green-span">Support</span>
     </span>
     <h3 class="bold">Support</h3>
-    <span class="mbb16 mb-6 grey-span">Lorem ipsum dolor sit amet.</span>
+    <span class="mbb16 mb-6 grey-span" style="max-width: 774px">Lorem ipsum dolor sit amet.</span>
 
     <v-card class="card divcol mb-4 card-bg-diferent">
       <h5>Quick links</h5>

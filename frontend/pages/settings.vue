@@ -6,7 +6,9 @@
       <span style="color: #00555B;">Settings</span>
     </span>
     <h3>Settings</h3>
-    <span class="mb-16" style="color:#475467">Customize your Cero Trade experience. Manage your company information, set notification preferences, update beneficiary accounts, and select your preferred payment methods here.</span>
+    <span class="mb-16" style="color:#475467; max-width: 774px">
+      Customize your Cero Trade experience. Manage your company information, set notification preferences, update beneficiary accounts, and select your preferred payment methods here.
+    </span>
 
     <v-row>
       <v-col xl="4" lg="4" md="4" sm="6" cols="12">
