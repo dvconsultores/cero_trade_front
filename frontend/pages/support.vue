@@ -6,7 +6,9 @@
       <span class="green-span">Support</span>
     </span>
     <h3 class="bold">Support</h3>
-    <span class="mbb16 mb-6 grey-span" style="max-width: 774px">Lorem ipsum dolor sit amet.</span>
+    <span class="mbb16 mb-6 grey-span" style="max-width: 774px">
+      Get in touch with us. We will support you in any issues you might be facing.
+    </span>
 
     <v-card class="card divcol mb-4 card-bg-diferent">
       <h5>Quick links</h5>
@@ -20,11 +22,15 @@
       <h5>Contact information</h5>
       <span class="mb-2 bold green-span font12 d-flex flex-acenter">
         <img src="@/assets/sources/icons/phone-call.svg" alt="phone-call icon" class="mr-2">
-        +123 45 123 123 4
+        +56 9 5616 0626
       </span>
       <span class="mb-2 bold green-span font12 d-flex flex-acenter">
         <img src="@/assets/sources/icons/mail.svg" alt="phone-call icon" class="mr-2">
-        support@officemail.com
+        valentina@cerotrade.cl
+      </span>
+      <span class="mb-2 bold green-span font12 d-flex flex-acenter">
+        <img src="@/assets/sources/icons/mail.svg" alt="phone-call icon" class="mr-2">
+        joaquin@cerotrade.cl
       </span>
     </v-card>
   </div>

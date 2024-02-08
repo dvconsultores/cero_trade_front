@@ -372,7 +372,9 @@
           </v-sheet>
         </v-sheet>
         <h5 class="bold">Select prefered payment</h5>
-        <span class="tertiary">Lorem ipsum dolor sit amet consectetur. Odio neque auctor neque a. Sed eu lobortis luctus ultrices nibh non massa augue.</span>
+        <span class="tertiary">
+          You can choose to pay by bank transfer or with your ICP tokens. Connect directly to your wallet or access our bank transfer providers.
+        </span>
 
         <div
           v-for="(item, i) in payments"
@@ -810,7 +812,7 @@
           </v-sheet>
         </v-sheet>
         <h5 class="bold">Beneficiary accounts</h5>
-        <span class="tertiary">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+        <span class="tertiary">These are all companies you can redeem certificates in the name of.</span>
 
         <div class="div-radio-sell mb-0" v-for="(item, index) in dataBanks" :key="index">
           <v-sheet class="double-sheet">
@@ -832,7 +834,7 @@
           </v-sheet>
           <div class="divcol ml-6">
             <span class="bold">Add an account</span>
-            <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span>
+            <span>Lorem ipsum dolor sit amet consectetur. Aliquet porttitor bibendum ultrices.</span>
           </div>
         </div>
       </v-card>
