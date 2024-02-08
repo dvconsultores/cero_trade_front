@@ -850,7 +850,7 @@
           </v-sheet>
         </v-sheet>
         <h5 class="bold">New beneficiary account</h5>
-        <span class="tertiary mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit</span>
+        <span class="tertiary mb-4">Adding a new beneficiary will allow you to redeem certificates to their name.</span>
 
         <v-row>
           <v-col cols="12">
