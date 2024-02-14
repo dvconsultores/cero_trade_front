@@ -1,10 +1,37 @@
 export class UsersCanister {
-  users: any
+  canister: any
   constructor({ users }) {
-    this.users = users
+    this.canister = users
   }
 
-  init(): void {
-    console.log("here", this.users);
+  getWallet() {
+    this.canister.getWallet()
   }
+
+  // addAdmin(level: Nat, user: Principal) {
+  // }
+
+  // removeAdmin(user: Principal) {
+  // }
+
+  // createUser(data: Types.InputDataUser) {
+  // }
+
+  // addRedention(irecId: Types.IrecId, tokenId: Nat, operator: Types.User) {
+  // }
+
+  // tokenizeIrec(irecId: Types.IrecId, metadata: TypesNft.MetadataDesc) {
+  // }
+
+  // getAdmin(user : Types.User) {
+  // }
+
+  // getUser(user : Types.User) {
+  // }
+
+  // getIrecTokens(user : Types.User) {
+  // }
+
+  // getRedentions(user : Types.User) {
+  // }
 }

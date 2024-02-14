@@ -104,6 +104,7 @@ export default defineConfig((userConfig) => {
       },
     },
     server: {
+      host: true,
       fs: {
         allow: ["."],
       },

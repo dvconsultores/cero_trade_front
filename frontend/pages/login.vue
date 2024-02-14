@@ -77,17 +77,21 @@ import { ClientAuthApi } from '@/repository/auth-client-api'
 import { ICP_PROVIDE_COLLECTION } from '@/services/icp-provider'
 import { ref, inject } from 'vue'
 import variables from '@/mixins/variables'
+import { UsersCanister } from '@/repository/users-canister'
 
 export default {
   setup() {
     const
       { basePath } = variables,
       client = inject(ICP_PROVIDE_COLLECTION.authClient),
-      clientAuthApi = new ClientAuthApi({ client })
+      users = inject(ICP_PROVIDE_COLLECTION.users),
+      clientAuthApi = new ClientAuthApi({ client }),
+      usersCanister = new UsersCanister({ users })
 
     return {
       basePath,
       clientAuthApi,
+      usersCanister,
       windowStep: ref(1),
       show_password: ref(false)
     }
@@ -97,7 +101,10 @@ export default {
   },
   methods: {
     loginII() {
-      this.clientAuthApi.signIn(() => this.$router.push(basePath('/')))
+      this.clientAuthApi.signIn(() => {
+        console.log(this.usersCanister.getWallet());
+        // this.$router.push(basePath('/'))
+      })
     },
     logoutII() {
       this.clientAuthApi.signOut()
