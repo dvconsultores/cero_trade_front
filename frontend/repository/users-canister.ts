@@ -1,11 +1,15 @@
+import { useUsersCanister } from "@/services/icp-provider"
+
 export class UsersCanister {
   canister: any
-  constructor({ users }) {
-    this.canister = users
+
+  constructor() {
+    this.canister = useUsersCanister()
   }
 
-  getWallet() {
-    this.canister.getWallet()
+
+  getWallet(): Promise<any> {
+    return this.canister.getWallet()
   }
 
   // addAdmin(level: Nat, user: Principal) {

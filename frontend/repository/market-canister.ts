@@ -1,10 +1,14 @@
+import { useMarketCanister } from "@/services/icp-provider";
+
 export class MarketCanister {
-  market: any
-  constructor({ market }) {
-    this.market = market
+  canister: any
+
+  constructor() {
+    this.canister = useMarketCanister()
   }
 
+
   async init(): Promise<void> {
-    console.log("here", this.market);
+    console.log("here", this.canister);
   }
 }

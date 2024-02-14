@@ -1,5 +1,6 @@
 import { Actor, HttpAgent } from "@dfinity/agent";
 import { AuthClient } from "@dfinity/auth-client";
+import { app as vueApp } from "@/main";
 
 // canisters
 import * as market from "../../.dfx/local/canisters/market"
@@ -13,34 +14,37 @@ export const canisterImpl = {
 }
 
 export const ICP_PROVIDE_COLLECTION = {
-  authClient: 'authClient',
-  market: 'market',
-  nft: 'nft',
-  users: 'users'
+  authClient: 'authClient'
 }
 
-export default async (app) => {
-  const
-  authClient = await AuthClient.create(),
-  identity = authClient.getIdentity(),
+export const useUsersCanister = () => {
+  const identity = vueApp._instance.provides.authClient.getIdentity()
 
-  marketActor = Actor.createActor(market.idlFactory, {
-    agent: new HttpAgent({ identity }),
-    canisterId: market.canisterId,
-  }),
-  nftActor = Actor.createActor(nft.idlFactory, {
-    agent: new HttpAgent({ identity }),
-    canisterId: nft.canisterId,
-  }),
-  usersActor = Actor.createActor(users.idlFactory, {
+  return Actor.createActor(users.idlFactory, {
     agent: new HttpAgent({ identity }),
     canisterId: users.canisterId,
   })
+}
 
-  // provide data to vue
-  app
-    .provide('authClient', authClient)
-    .provide('market', marketActor)
-    .provide('nft', nftActor)
-    .provide('users', usersActor)
+export const useNftCanister = () => {
+  const identity = vueApp._instance.provides.authClient.getIdentity()
+
+  return Actor.createActor(users.idlFactory, {
+    agent: new HttpAgent({ identity }),
+    canisterId: nft.canisterId,
+  })
+}
+
+export const useMarketCanister = () => {
+  const identity = vueApp._instance.provides.authClient.getIdentity()
+
+  return Actor.createActor(users.idlFactory, {
+    agent: new HttpAgent({ identity }),
+    canisterId: market.canisterId,
+  })
+}
+
+export default async (app) => {
+  const authClient = await AuthClient.create()
+  app.provide('authClient', authClient)
 }

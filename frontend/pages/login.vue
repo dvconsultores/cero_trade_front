@@ -74,24 +74,18 @@
 <script>
 import '@/assets/styles/pages/login.scss'
 import { ClientAuthApi } from '@/repository/auth-client-api'
-import { ICP_PROVIDE_COLLECTION } from '@/services/icp-provider'
-import { ref, inject } from 'vue'
+import { ref } from 'vue'
 import variables from '@/mixins/variables'
-import { UsersCanister } from '@/repository/users-canister'
 
 export default {
   setup() {
     const
       { basePath } = variables,
-      client = inject(ICP_PROVIDE_COLLECTION.authClient),
-      users = inject(ICP_PROVIDE_COLLECTION.users),
-      clientAuthApi = new ClientAuthApi({ client }),
-      usersCanister = new UsersCanister({ users })
+      clientAuthApi = new ClientAuthApi()
 
     return {
       basePath,
       clientAuthApi,
-      usersCanister,
       windowStep: ref(1),
       show_password: ref(false)
     }
@@ -100,9 +94,8 @@ export default {
     this.logoutII()
   },
   methods: {
-    loginII() {
-      this.clientAuthApi.signIn(() => {
-        console.log(this.usersCanister.getWallet());
+    async loginII() {
+      this.clientAuthApi.signIn(async () => {
         // this.$router.push(basePath('/'))
       })
     },

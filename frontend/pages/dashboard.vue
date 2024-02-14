@@ -376,8 +376,6 @@ import VueApexCharts from "vue3-apexcharts"
 import RenewableChart from '@/components/renewable-chart.vue'
 import MwhChart from '@/components/mwh-chart.vue'
 import IrecChart from '@/components/irec-chart.vue'
-import { inject } from 'vue'
-import { ICP_PROVIDE_COLLECTION } from '@/services/icp-provider'
 import { MarketCanister } from '@/repository/market-canister'
 
 export default {
@@ -390,8 +388,7 @@ export default {
   data(){
     // TODO this is for showcase marketCanister
     const
-    market = inject(ICP_PROVIDE_COLLECTION.market),
-    marketCanister = new MarketCanister({ market })
+    marketCanister = new MarketCanister()
     marketCanister.init()
 
     return{

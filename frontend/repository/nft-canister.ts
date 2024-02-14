@@ -1,10 +1,14 @@
+import { useNftCanister } from "@/services/icp-provider";
+
 export class NftCanister {
-  nft: any
-  constructor({ nft }) {
-    this.nft = nft
+  canister: any
+
+  constructor() {
+    this.canister = useNftCanister()
   }
 
+
   init(): void {
-    console.log("here", this.nft);
+    console.log("here", this.canister);
   }
 }

@@ -1,9 +1,8 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
-import { useStorage } from "vue3-storage-secure";
-import { inject, nextTick } from 'vue'
+import { nextTick } from 'vue'
 import { APP_NAMES } from '@/plugins/dictionary';
-import { ICP_PROVIDE_COLLECTION, canisterImpl } from '@/services/icp-provider';
+import { canisterImpl } from '@/services/icp-provider';
 
 // route imports
 import DefaultLayout from '@/layouts/default-layout.vue'
@@ -21,6 +20,7 @@ import Auth from '@/layouts/empty-layout.vue'
 import Register from '@/pages/register.vue'
 import Login from '@/pages/login.vue'
 import PasswordReset from '@/pages/password-reset.vue'
+import { useAuthClient } from '@/repository/auth-client-api';
 
 const DEFAULT_TITLE = APP_NAMES.capitalize;
 
@@ -130,7 +130,7 @@ router.beforeEach(async (to, from, next) => {
   //!FIXME commented for testing
   /* // this route requires auth, check if logged in
   // if not, redirect to login page.
-  const isAuthenticated = await inject(ICP_PROVIDE_COLLECTION.authClient).isAuthenticated()
+  const isAuthenticated = await useAuthClient().isAuthenticated()
   // const tokenAuth = useStorage().getStorageSync("tokenAuth")
   if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated)
     return next({ name: 'Login', query: canisterImpl }) */
