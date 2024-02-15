@@ -32,7 +32,7 @@ export class ClientAuthApi {
       *Error: Server returned an error:
       *Code: 403 (Forbidden)
     */
-    console.log(await usersCanister.getWallet());
+    await usersCanister.getWallet()
 
     onComplete()
   }

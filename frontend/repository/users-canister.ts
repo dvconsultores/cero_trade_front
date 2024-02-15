@@ -8,8 +8,14 @@ export class UsersCanister {
   }
 
 
-  getWallet(): Promise<any> {
-    return this.canister.getWallet()
+  async getWallet(): Promise<any> {
+    try {
+      const res = await this.canister.getWallet()
+      console.log(res)
+      return res
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   // addAdmin(level: Nat, user: Principal) {
@@ -18,7 +24,19 @@ export class UsersCanister {
   // removeAdmin(user: Principal) {
   // }
 
-  // createUser(data: Types.InputDataUser) {
+  // async createUser(data: {
+  //   nombre: string;
+  //   typeUser: string;
+  //   uid?: string;
+  // }): Promise<any> {
+  //   try {
+  //     const result = await this.canister.createUser(data)
+  //     console.log(result);
+
+  //     return result
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
   // }
 
   // addRedention(irecId: Types.IrecId, tokenId: Nat, operator: Types.User) {
