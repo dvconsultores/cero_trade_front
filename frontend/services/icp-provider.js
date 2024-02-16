@@ -3,46 +3,43 @@ import { AuthClient } from "@dfinity/auth-client";
 import { app as vueApp } from "@/main";
 
 // canisters
-import * as market from "../../.dfx/local/canisters/market"
-import * as nft from "../../.dfx/local/canisters/nft"
-import * as users from "../../.dfx/local/canisters/users"
+import * as market from "~market"
+import * as nft from "~nft"
+import * as users from "~users"
 
 
 export const canisterImpl = {
-  // canisterId: '' // <-- prod
-  canisterId: 'bkyz2-fmaaa-aaaaa-qaaaq-cai' // <-- develop
+  canisterId: process.env.ASSETS_CANISTER_ID
 }
 
 export const ICP_PROVIDE_COLLECTION = {
   authClient: 'authClient'
 }
 
-export const useUsersCanister = () => {
-  const identity = vueApp._instance.provides.authClient.getIdentity()
+export const createActor = (canisterId, idlFactory, options) => {
+  const isDevelopment = process.env.DFX_NETWORK !== "ic",
+  identity = vueApp._instance.provides.authClient.getIdentity(),
+  agent = new HttpAgent({ identity: isDevelopment ? null : identity, ...options?.agentOptions });
+  
+  // Fetch root key for certificate validation during development
+  if (isDevelopment) {
+    agent.fetchRootKey().catch(err=>{
+      console.warn("Unable to fetch root key. Check to ensure that your local replica is running");
+      console.error(err);
+    });
+  }
 
-  return Actor.createActor(users.idlFactory, {
-    agent: new HttpAgent({ identity }),
-    canisterId: users.canisterId,
-  })
+  // Creates an actor with using the candid interface and the HttpAgent
+  return Actor.createActor(idlFactory, {
+    agent,
+    canisterId,
+    ...options?.actorOptions,
+  });
 }
 
-export const useNftCanister = () => {
-  const identity = vueApp._instance.provides.authClient.getIdentity()
-
-  return Actor.createActor(users.idlFactory, {
-    agent: new HttpAgent({ identity }),
-    canisterId: nft.canisterId,
-  })
-}
-
-export const useMarketCanister = () => {
-  const identity = vueApp._instance.provides.authClient.getIdentity()
-
-  return Actor.createActor(users.idlFactory, {
-    agent: new HttpAgent({ identity }),
-    canisterId: market.canisterId,
-  })
-}
+export const useUsersCanister = () => createActor(users.canisterId, users.idlFactory)
+export const useNftCanister = () => createActor(nft.canisterId, nft.idlFactory)
+export const useMarketCanister = () => createActor(market.canisterId, market.idlFactory)
 
 export default async (app) => {
   const authClient = await AuthClient.create()

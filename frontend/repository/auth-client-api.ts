@@ -24,15 +24,8 @@ export class ClientAuthApi {
   }
 
   async onSignedIdentity(onComplete: Function): void {
-    console.log("you are authenticated", await this.authClient.isAuthenticated());
-    
     const usersCanister = new UsersCanister()
-    /*
-      TODO troubles in this request 
-      *Error: Server returned an error:
-      *Code: 403 (Forbidden)
-    */
-    await usersCanister.getWallet()
+    console.log(await usersCanister.getWallet())
 
     onComplete()
   }

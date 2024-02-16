@@ -1,4 +1,5 @@
 import { useUsersCanister } from "@/services/icp-provider"
+import { IDL } from "@dfinity/candid"
 
 export class UsersCanister {
   canister: any
@@ -8,11 +9,9 @@ export class UsersCanister {
   }
 
 
-  async getWallet(): Promise<any> {
+  async getWallet(): Promise<IDL.PrincipalClass> {
     try {
-      const res = await this.canister.getWallet()
-      console.log(res)
-      return res
+      return await this.canister.getWallet()
     } catch (error) {
       console.error(error);
     }
