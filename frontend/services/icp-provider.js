@@ -8,9 +8,7 @@ import * as nft from "~nft"
 import * as users from "~users"
 
 
-export const canisterImpl = {
-  canisterId: process.env.ASSETS_CANISTER_ID
-}
+export const canisterImpl = { canisterId: process.env.ASSETS_CANISTER_ID }
 
 export const ICP_PROVIDE_COLLECTION = {
   authClient: 'authClient'
